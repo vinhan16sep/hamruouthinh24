@@ -1,0 +1,19 @@
+.nav_side h3{
+	color: #b2479b;
+	padding-bottom: 7px;
+	border-bottom: 2px solid #b2479b;
+}
+
+.nav_side ul li{
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #eaeaea;
+}
+
+.nav_side ul li a{
+	color: #333;
+}
+
+.nav_side ul li a:hover{
+	color: #b2479b;
+}

@@ -1,0 +1,32 @@
+.award_item{
+	text-align: center;
+}
+
+.award_item img{
+	width: 100%;
+}
+
+.image_item{
+	height: 350px;
+	padding-bottom: 30px;
+	text-align: center;
+}
+
+.image_item .inner{
+	height: 300px;
+	overflow: hidden;
+}
+
+.image_item .inner img{
+	width: 100%;
+}
+
+.nav_side ul{
+	margin-bottom: 30px;
+}
+
+.nav_side h3{
+	color: #b2479b;
+	padding-bottom: 7px;
+	border-bottom: 2px solid #b2479b;
+}

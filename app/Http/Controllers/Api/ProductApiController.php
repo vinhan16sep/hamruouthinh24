@@ -1,0 +1,199 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+use App\Http\Controllers\Controller;
+use App\Product;
+use Response;
+
+class ProductApiController extends Controller
+{
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(){
+//        $this->middleware('auth:admin');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(){
+        $products = Product::all();
+
+        return response()->json($products, 200);
+    }
+
+    public function fetchAllProduct(){
+        $result = DB::table('product')
+            ->select('*')
+            ->where('is_deleted', '=', 0)
+            ->get();
+
+        if(!$result){
+            return response()->json('No item found', 404);
+        }
+        return response()->json($result, 200);
+    }
+
+    public function detail(){
+        $slug = Input::get('slug');
+
+        $result = DB::table('product')
+            ->select('product.*', 'product_category.slug as category_slug')
+            ->join('product_category', 'product.category_id', '=', 'product_category.id')
+            ->where('product.slug', '=', $slug)
+            ->where('product.is_deleted', '=', 0)
+            ->get();
+
+        if(!$result){
+            return response()->json('No item found', 404);
+        }
+        return response()->json($result, 200);
+    }
+
+    public function fetchDiscountProduct(){
+        $result = DB::table('product')
+            ->select('*')
+            ->where('is_discount', '=', 1)
+            ->where('is_deleted', '=', 0)
+            ->get();
+
+        if(!$result){
+            return response()->json('No item found', 404);
+        }
+        return response()->json($result, 200);
+    }
+
+    /**
+     * Fetch products in one trademark or category
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function fetchTargetProducts(){
+        $target = Input::get('target');
+        $subTarget = Input::get('subTarget');
+        $query = DB::table('product');
+
+        if($target == 'thuong-hieu'){
+            $query->select('product.*')
+                ->join('product_trademark', 'product.trademark_id', '=', 'product_trademark.id')
+                ->where('product_trademark.slug', '=', $subTarget);
+        }elseif($target == 'danh-muc'){
+            $query->select('product.*')
+                ->join('product_category', 'product.category_id', '=', 'product_category.id')
+                ->where('product_category.slug', '=', $subTarget);
+        }else{
+            return response()->json(null, 400);
+        }
+
+        $result['targetProducts'] = $query->where('product.is_deleted', '=', 0)->get();
+        $result['type'] = $target;
+        $result['target'] = $this->fetchTarget($target, $subTarget);
+        if(!$result){
+            return response()->json($result, 404);
+        }
+        return response()->json($result, 200);
+    }
+
+    /**
+     * Fetch Trademark or Category selected
+     *
+     * @param string $target (type = trademark or category?)
+     * @param string subTarget (which trademark? or which category?)
+     *
+     * @return object
+     */
+    public function fetchTarget($target, $subTarget){
+        if($target == 'thuong-hieu'){
+            $query = DB::table('product_trademark')
+                ->select('*')
+                ->where('slug', '=', $subTarget);
+        }else{
+            $query = DB::table('product_category')
+                ->select('*')
+                ->where('slug', '=', $subTarget);
+        }
+
+        return $query->where('is_deleted', '=', 0)->get();
+    }
+
+    public function fetchMenuProduct(){
+        $trademarks = DB::table('product_trademark')
+            ->select('*')
+            ->where('is_active', '=', 1)
+            ->where('is_deleted', '=', 0)
+            ->get();
+
+        $categories = DB::table('product_category')
+            ->select('*')
+            ->where('is_active', '=', 1)
+            ->where('is_deleted', '=', 0)
+            ->get();
+
+        if(!$trademarks){
+            return response()->json('No item found', 404);
+        }
+
+        $menuProduct = [
+            'trademarks' => $trademarks ? $trademarks : [],
+            'categories' => $categories ? $categories : [],
+
+        ];
+
+        return response()->json($menuProduct, 200);
+    }
+
+    public function search(Request $request){
+        $post = $request->all();
+
+        $query = DB::table('product')->select('product.*');
+
+        if(isset($post['target']) && isset($post['subTarget'])){
+            if($post['target'] == 'thuong-hieu'){
+                $query->join('product_trademark', 'product.trademark_id', '=', 'product_trademark.id')
+                    ->where('product_trademark.slug', '=', $post['subTarget']);
+            }elseif($post['target'] == 'danh-muc'){
+                $query->join('product_category', 'product.category_id', '=', 'product_category.id')
+                    ->where('product_category.slug', '=', $post['subTarget']);
+            }
+        }
+        if(isset($post['name'])){
+            $query->where('product.name', 'like', '%' . $post['name'] . '%');
+        }
+        if(isset($post['price'])){
+            switch($post['price']){
+                case 0:
+                    $query->whereBetween('product.price', [0, 100000]);
+                    break;
+                case 1:
+                    $query->whereBetween('product.price', [100001, 300000]);
+                    break;
+                case 2:
+                    $query->whereBetween('product.price', [300001, 500000]);
+                    break;
+                case 3:
+                    $query->whereBetween('product.price', [500001, 800000]);
+                    break;
+                case 4:
+                    $query->where('product.price', '>=', 800001);
+                    break;
+                default:
+                    break;
+            }
+        }
+        $query->where('product.is_deleted', '=', 0);
+
+        $result = $query->get();
+
+        return response()->json($result, 200);
+    }
+}
+
