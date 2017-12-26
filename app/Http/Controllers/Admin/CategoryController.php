@@ -171,19 +171,9 @@ class CategoryController extends Controller
 
     private function validateInput($request) {
         $this->validate($request, [
-            'name' => 'required|max:60',
-//            'price' => 'required|max:60',
-//            'middlename' => 'required|max:60',
-//            'address' => 'required|max:120',
-//            'city_id' => 'required',
-//            'state_id' => 'required',
-//            'country_id' => 'required',
-//            'zip' => 'required|max:10',
-//            'age' => 'required',
-//            'birthdate' => 'required',
-//            'date_hired' => 'required',
-//            'department_id' => 'required',
-//            'division_id' => 'required'
+            'name' => 'required|max:255',
+            'slug' => 'required|unique:product_category|max:255',
+            'trademark_id' => 'required'
         ]);
     }
 
