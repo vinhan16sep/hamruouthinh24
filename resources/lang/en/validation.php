@@ -98,9 +98,15 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'trademark_id' => [
+            'required' => 'Cần phải nhập :attribute.',
         ],
+        'name' => [
+            'required' => 'Cần phải nhập :attribute.',
+        ],
+        'slug' => [
+            'required' => 'Cần phải nhập Tên phía trên',
+        ]
     ],
 
     /*
@@ -114,6 +120,10 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'Tên',
+        'slug' => 'Slug',
+        'trademark_id' => 'Tên thương hiệu'
+    ],
 
 ];
