@@ -31,7 +31,7 @@
                                     <td><img src="{{ asset('storage/app') }}/<% product.image %>"></td>
                                     <td><% product.cost | currency:VND:0 | commaToDot | removeUSCurrency %> VNĐ</td>
                                     <td>
-                                        <input class="form-control" type="number" ng-model="inputQuantity" ng-change="calculatePrice(inputQuantity, $index)" ng-value="product.quantity">
+                                        <input class="form-control" type="number" min="1" ng-model="inputQuantity" ng-change="calculatePrice(inputQuantity, $index)" ng-value="product.quantity">
                                     </td>
                                     <td><% product.totalCost | currency:VND:0 | commaToDot | removeUSCurrency %> VNĐ</td>
                                     <td><button class="btn btn-danger" type="button" ng-click="removeFromCart($index);"><i class="fa fa-ban"></i> Xóa sản phẩm</button></td>
