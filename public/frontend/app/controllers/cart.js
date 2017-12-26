@@ -1,7 +1,7 @@
 (function(){
     app.controller('CartController', function($rootScope, $scope, $http, $location, $uibModal, $timeout, $window, API_URL, $cookieStore){
         if($rootScope.countAddedProducts == 0){
-            window.location = '/mmm';
+            window.location = '/hamruouthinh24';
         }
         $scope.fetchedProducts = (Cookies.get('cartProducts').length > 0) ? JSON.parse(Cookies.get('cartProducts')) : [];
         $scope.storedProducts = Cookies.get('cartProducts');
@@ -68,7 +68,7 @@
             $scope.customerInfo.id = $('input[name="hidden"]').val();
 
             $cookieStore.put('personalInfo', $scope.customerInfo);
-            window.location = '/mmm' + '/xac-nhan-don-hang';
+            window.location = '/hamruouthinh24' + '/xac-nhan-don-hang';
         };
         $scope.customerInfo = $cookieStore.get('personalInfo');
         console.log($scope.customerInfo);
@@ -103,14 +103,11 @@
                 $scope.showMessage = false;
                 if(response.data.message == 'success'){
                     Cookies.remove('cartProducts', {path: '/'});
-                    Cookies.remove('cartProducts', {path: '/mmm'});
+                    Cookies.remove('cartProducts', {path: '/hamruouthinh24'});
                     $cookieStore.remove('personalInfo');
                     $scope.orderCode = response.data.orderCode
                     $scope.hideButton = true;
                     $scope.showMessage = true;
-                    // $timeout(function () {
-                    //     window.location = '/mmm';
-                    // }, 5000);
                 }
             }, function(error){
 
