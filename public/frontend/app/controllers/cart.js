@@ -7,7 +7,7 @@
         $scope.storedProducts = Cookies.get('cartProducts');
         $rootScope.countAddedProducts = JSON.parse(Cookies.get('cartProducts')).length;
         $scope.totalPrice = 0;
-        $scope.inputQuantity = 0;
+        $scope.inputQuantity = 1;
         $scope.customerInfo = [];
         $scope.customerId = 0;
         $scope.hideButton = false;
