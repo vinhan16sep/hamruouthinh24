@@ -149,6 +149,15 @@ Route::prefix('admin')->group(function() {
         Route::get('introduce/{type}', 'IntroduceController@introduce');
         Route::post('introduce/saveIntroduce/{slug}', 'IntroduceController@saveIntroduce')->name('introduce.saveIntroduce');
 
+        //image library
+        Route::resource('library', 'LibraryController');
+        // Route::post('library/store', 'LibraryController@store')->name('library.store');
+        Route::post('library/update/{id}', 'LibraryController@update')->name('library.update');
+
+        // list image
+        Route::resource('image', 'ImageController');
+        Route::post('image/store/{id}', 'ImageController@store')->name('image.store');
+        
         // Product routes
         Route::resource('product', 'ProductController');
         Route::post('product/search', 'ProductController@search')->name('product.search');
