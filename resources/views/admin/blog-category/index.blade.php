@@ -2,7 +2,7 @@
 @section('action-content')
     <!-- Main content -->
     <section class="content">
-      <div class="box">
+      <div class="box ">
   <div class="box-header">
     <div class="row">
         <div class="col-sm-4">
