@@ -4,7 +4,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Quản lý giới thiệu
+                Quản lý ảnh
             </h1>
             <ol class="breadcrumb">
                 <!-- li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li-->

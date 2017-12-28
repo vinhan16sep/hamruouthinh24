@@ -81,14 +81,28 @@ class LibraryController extends Controller
         return view('admin/library/edit', ['library' => $library]);
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
+    	$library = Library::findOrFail($id);
     	$input = $request->all();
-    	$data = ['title' => $input['title'], 'slug' => $input['slug'], 'description' => $input['description'], 'updated_at' => date('Y:m:d H:i:s')];
+    	$uniqueSlug = $this->buildUniqueSlug('library', $request->id, $request->slug);
+    	$path = base_path() . '/storage/app/library/';
+    	
+    	$data = ['title' => $input['title'], 'slug' => $uniqueSlug, 'description' => $input['description'], 'updated_at' => date('Y:m:d H:i:s')];
+    	if(DB::table('library')->where('id', $id)->update($data)){
+    		if($library->slug != $request->slug){
+	    		rename($path . $library->slug, $path . '/' . $uniqueSlug);
+	    	}
+    	}
+    	return redirect()->intended('admin/library');
     }
 
 	public function destroy($id){
 		$library = Library::find($id);
+		$images = Library::find($id)->images;
+		if($images){
+			return redirect()->intended('admin/library');
+		}
 		$slug = $library->slug;
 		$upload = base_path() . '/' . 'storage/app/library/'.$slug;
 		

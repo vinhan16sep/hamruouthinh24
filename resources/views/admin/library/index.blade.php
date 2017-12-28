@@ -40,9 +40,14 @@
                     <form class="row" method="POST" action="{{ route('library.destroy', ['id' => $value->id]) }}" onsubmit = "return confirm('Chắc chắn xoá?')">
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="">
+                        <a href="{{ route('image.index', ['id' => $value->id]) }}" class="btn btn-warning col-sm-3 col-xs-5 btn-margin">
+                        Xem ảnh
+                        </a>
+
                         <a href="{{ route('library.edit', ['id' => $value->id]) }}" class="btn btn-warning col-sm-3 col-xs-5 btn-margin">
                         Sửa
                         </a>
+                        
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                          <button type="submit" class="btn btn-danger col-sm-3 col-xs-5 btn-margin">
                           Xoá

@@ -19,4 +19,8 @@ class Library extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function images(){
+        return $this->hasMany('App\Image');
+    }
 }
