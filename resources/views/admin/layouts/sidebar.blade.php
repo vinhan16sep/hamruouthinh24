@@ -43,7 +43,7 @@
             <li><a href="{{ url('admin/introduce/su-menh') }}">Sứ mệnh</a></li>
             <li><a href="{{ url('admin/introduce/chung-nhan') }}">Chứng nhận</a></li>
             <li><a href="{{ url('admin/introduce/dieu-khoan') }}">Điểu khoản</a></li>
-            <li><a href="{{ url('admin/introduce/thu-vien-anh') }}">Thư viện ảnh</a></li>
+            <li><a href="{{ url('admin/library') }}">Thư viện ảnh</a></li>
           </ul>
         </li>
         <li class="treeview">
