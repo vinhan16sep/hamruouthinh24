@@ -59,13 +59,19 @@
             </li>
           </ul>
         </li>
-        <li class="treeview {{(Request::segment(2) == 'trademark' || Request::segment(2) == 'category' || Request::segment(2) == 'product')? 'active' : '' }}">
+        <li class="treeview {{(Request::segment(2) == 'trademark' || Request::segment(2) == 'category' || Request::segment(2) == 'product' || Request::segment(2) == 'type' || Request::segment(2) == 'kind')? 'active' : '' }}">
           <a href="#"><i class="fa fa-link"></i> <span>Quản lý sản phẩm</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
+            <li class="{{(Request::segment(2) == 'type')? 'active' : '' }}">
+              <a href="{{ url('admin/type') }}">Loại sản phẩm</a>
+            </li>
+            <li class="{{(Request::segment(2) == 'kind')? 'active' : '' }}">
+              <a href="{{ url('admin/kind') }}">Dòng sản phẩm</a>
+            </li>
             <li class="{{(Request::segment(2) == 'trademark')? 'active' : '' }}">
               <a href="{{ url('admin/trademark') }}">Thương hiệu</a>
             </li>

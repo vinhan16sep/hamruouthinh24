@@ -157,6 +157,14 @@ Route::prefix('admin')->group(function() {
         // list image
         Route::resource('image', 'ImageController');
         Route::post('image/store/{id}', 'ImageController@store')->name('image.store');
+
+        //Type routes
+        Route::resource('type', 'TypeController');
+        Route::post('type/update/{id}', 'TypeController@update')->name('type.update');
+
+        //Kind routes
+        Route::resource('kind', 'KindController');
+        Route::post('kind/update/{id}', 'KindController@update')->name('kind.update');
         
         // Product routes
         Route::resource('product', 'ProductController');

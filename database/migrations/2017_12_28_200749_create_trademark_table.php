@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBlogTable extends Migration
+class CreateTrademarkTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateBlogTable extends Migration
      */
     public function up()
     {
-        Schema::create('blog', function (Blueprint $table) {
+        Schema::create('trademark', function (Blueprint $table) {
             $table->increments('id');
-            $table->tinyInteger('type');
+            $table->integer('type_id', 11);
+            $table->integer('kind_id', 11);
             $table->string('title', 255);
             $table->string('slug', 255);
-            $table->text('image');
             $table->text('description');
-            $table->longText('content');
             $table->tinyInteger('is_deleted')->default(0);
             $table->timestamps();
         });
@@ -33,6 +32,6 @@ class CreateBlogTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog');
+        Schema::dropIfExists('trademark');
     }
 }
