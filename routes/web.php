@@ -186,6 +186,7 @@ Route::prefix('admin')->group(function() {
         Route::post('trademark/search', 'TrademarkController@search')->name('trademark.search');
         Route::post('trademark/store', 'TrademarkController@store')->name('trademark.store');
         Route::post('trademark/update/{id}', 'TrademarkController@update')->name('trademark.update');
+        Route::get('trademark/kind/{type_id}', 'TrademarkController@selectKind');
 
         // Product Category routes
         Route::resource('category', 'CategoryController');

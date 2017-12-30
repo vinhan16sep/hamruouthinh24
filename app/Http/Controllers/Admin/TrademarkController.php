@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use App\Trademark;
+use App\Type;
+use App\Kind;
 use Response;
 use File;
 
@@ -18,6 +21,7 @@ class TrademarkController extends Controller
      * @return void
      */
     public function __construct(){
+
         $this->middleware('auth:admin');
     }
 
@@ -27,7 +31,13 @@ class TrademarkController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $trademarks = $this->fetchAllTrademark();
+        $trademarks = DB::table('product_trademark')
+                    ->join('type', 'product_trademark.type_id', '=', 'type.id')
+                    ->join('kind', 'product_trademark.kind_id', '=', 'kind.id')
+                    ->select('product_trademark.*', 'type.title as type_title', 'kind.title as kind_title')
+                    ->where('kind.is_deleted', 0)
+                    ->paginate(10);
+                    // print_r($trademarks);die;
         return view('admin/trademark/index', ['trademarks' => $trademarks]);
     }
 
@@ -37,7 +47,9 @@ class TrademarkController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
-        return view('admin/trademark/create');
+        $type = DB::table('type')->get();
+        // $kind = DB::table('kind')->get();
+        return view('admin/trademark/create', ['type' => $type]);
     }
 
     /**
@@ -51,7 +63,7 @@ class TrademarkController extends Controller
 
         // Upload image
         $path = $request->file('image')->store('trademarks');
-        $keys = ['name', 'slug', 'is_active', 'description'];
+        $keys = ['name', 'slug', 'is_active', 'description', 'type_id', 'kind_id'];
         $input = $this->createQueryInput($keys, $request);
         $input['image'] = $path;
         // Not implement yet
@@ -78,13 +90,18 @@ class TrademarkController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id){
+        $type = DB::table('type')->get();
+        
         $trademark = Trademark::find($id);
+        $kind = DB::table('kind')->where('id', $trademark->kind_id)->get();
         // Redirect to trademark list if updating trademark wasn't existed
         if ($trademark == null || count($trademark) == 0) {
             return redirect()->intended('admin/trademark');
         }
         return view('admin/trademark/edit', [
-            'trademark' => $trademark
+            'trademark' => $trademark,
+            'type' => $type,
+            'kind' => $kind
         ]);
     }
 
@@ -188,5 +205,27 @@ class TrademarkController extends Controller
             'name' => 'required|max:255',
             'slug' => 'required|unique:product_trademark|max:255'
         ]);
+    }
+
+    public function selectKind()
+    {
+        $type_id = Input::get("type_id");
+        $kinds = DB::table('kind')
+            ->select('*')
+            ->where('type_id', '=', $type_id)
+            ->where('is_active', '=', 1)
+            ->where('is_deleted', '=', 0)
+            ->get();
+
+        if(!$kinds){
+            return response()->json(['type_id' => $type_id, 'status' => '404']);
+        }
+
+        $arrayKind = [];
+        foreach($kinds as $item){
+            $arrayKind[$item->id] = $item->title;
+        }
+
+        return response()->json(['kinds' => $arrayKind, 'status' => '200']);
     }
 }

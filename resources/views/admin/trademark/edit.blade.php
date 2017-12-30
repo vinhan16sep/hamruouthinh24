@@ -10,6 +10,30 @@
                         <p style="color:orange">TIP: Nếu trong Thương hiệu đang chứa Danh mục, không thể bỏ chọn Dùng thương hiệu</p>
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('trademark.update', ['id' => $trademark->id]) }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
+                            <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+                                <label for="type" class="col-md-2 control-label">Loại sản phẩm</label>
+
+                                <div class="col-md-8">
+                                    <select name="type_id"  class="form-control type" data-page="{{ $trademark->kind_id }}" autofocus>
+                                        @foreach($type as $value)
+                                            <option value="{{ $value->id }}" {{ ($value->id == $trademark->type_id)? 'selected' : '' }} >{{ $value->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+                                <label for="type" class="col-md-2 control-label">Loại sản phẩm</label>
+
+                                <div class="col-md-8">
+                                    <select name="kind_id"  class="form-control kind">
+                                        <!-- @foreach($kind as $value)
+                                            <option value="{{ $value->id }}" {{ ($value->id == $trademark->kind_id)? 'selected' : '' }} >{{ $value->title }}</option>
+                                        @endforeach -->
+                                    </select>
+                                </div>
+                            </div>
+
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="col-md-2 control-label">Tên thương hiệu</label>
 
