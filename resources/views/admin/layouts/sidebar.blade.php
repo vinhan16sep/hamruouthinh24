@@ -79,8 +79,6 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ url('admin/blog-category') }}">Danh mục</a></li>
-          </ul>
-          <ul class="treeview-menu">
             <li><a href="{{ url('admin/advise') }}">Tư vấn</a></li>
             <li><a href="{{ url('admin/news') }}">Tin tức</a></li>
           </ul>
