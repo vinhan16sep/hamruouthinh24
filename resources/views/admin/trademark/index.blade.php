@@ -35,7 +35,10 @@
           <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
             <thead>
               <tr role="row">
-                <th width="50%" class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">Tên thương hiệu</th>
+                <th width="15%" class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">Hình ảnh</th>
+                <th width="20%" class="sorting hidden-xs" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Tên thương hiệu</th>
+                <th width="20%" class="sorting hidden-xs" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Dòng sản phẩm</th>
+                <th width="20%" class="sorting hidden-xs" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Loại sản phẩm</th>
                 <th width="10%" class="sorting hidden-xs" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Sử dụng?</th>
                 <th tabindex="0" aria-controls="example2" rowspan="1" colspan="2" aria-label="Action: activate to sort column ascending">Hành động</th>
               </tr>
@@ -43,7 +46,12 @@
             <tbody>
             @foreach ($trademarks as $item)
                 <tr role="row" class="odd">
+                  <td class="sorting_1">
+                    {{ HTML::image('storage/app/'.$item->image,'', array('width' => 100)) }}
+                  </td>
                   <td class="sorting_1">{{ $item->name }}</td>
+                  <td class="sorting_1">{{ $item->kind_title }}</td>
+                  <td class="sorting_1">{{ $item->type_title }}</td>
                   @if($item->is_active != 0)
                   <td class="hidden-xs"><span class="glyphicon glyphicon-ok"></span></td>
                   @else

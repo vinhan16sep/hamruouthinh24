@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use App\Product;
 use App\Trademark;
+use App\Type;
+use App\Kind;
 use Response;
 use File;
 use Illuminate\Support\Facades\Cookie;
@@ -32,8 +35,11 @@ class ProductController extends Controller
      */
     public function index(){
         $products = DB::table('product')
-            ->select('product.*')
-            ->where('is_deleted', '=', 0)
+            ->join('type', 'type.id', '=', 'product.type_id')
+            ->join('kind', 'kind.id', '=', 'product.kind_id')
+            ->join('product_trademark', 'product_trademark.id', '=', 'product.trademark_id')
+            ->select('product.*', 'type.title as type_title', 'kind.title as kind_title', 'product_trademark.name as trademark_title')
+            ->where('product.is_deleted', '=', 0)
             ->paginate(10);
         return view('admin/product/index', [
             'products' => $products
@@ -46,8 +52,10 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
+        $type = DB::table('type')->get();
         return view('admin/product/create', [
-            'trademarks' => $this->fetchAllTrademark()
+            'trademarks' => $this->fetchAllTrademark(),
+            'type' => $type
         ]);
     }
 
@@ -67,10 +75,13 @@ class ProductController extends Controller
 
         // Upload image
         $path = $request->file('image')->store('products/' . $newFolderPath[0]);
-        $keys = ['name', 'trademark_id', 'category_id', 'is_special', 'is_new', 'quantity', 'effect', 'weight', 'producer', 'price', 'selling_price', 'content', 'guide', 'is_discount', 'discount_percent', 'discount_price'];
+        $keys = ['name','type_id', 'kind_id', 'trademark_id', 'is_special', 'is_new', 'capacity', 'material', 'year', 'producer', 'volume', 'origin', 'price', 'selling_price', 'content', 'is_discount', 'discount_percent', 'discount_price', 'is_gift', 'gift', 'description'];
+        // $keys = ['name'];
         $input = $this->createQueryInput($keys, $request);
         $input['image'] = $path;
         $input['slug'] = $uniqueSlug;
+        // print_r($input);die;
+
         // Not implement yet
         Product::create($input);
 
@@ -96,6 +107,7 @@ class ProductController extends Controller
      */
     public function edit($id){
         $product = Product::find($id);
+        $type = DB::table('type')->get();
         // Redirect to product list if updating product wasn't existed
         if ($product == null || count($product) == 0) {
             return redirect()->intended('admin/product');
@@ -103,7 +115,8 @@ class ProductController extends Controller
         return view('admin/product/edit', [
             'product' => $product,
             'trademarks' => $this->fetchAllTrademark(),
-            'categories' => $this->fetchCategoryByTrademark($product->trademark_id)
+            'categories' => $this->fetchCategoryByTrademark($product->trademark_id),
+            'type' => $type
         ]);
     }
 
@@ -124,7 +137,7 @@ class ProductController extends Controller
             rename($path . '/' . $product->slug, $path . '/' . $uniqueSlug);
         }
 
-        $keys = ['name', 'trademark_id', 'category_id', 'is_special', 'is_new', 'quantity', 'effect', 'weight', 'producer', 'price', 'selling_price', 'content', 'guide', 'is_discount', 'discount_percent', 'discount_price'];
+        $keys = ['name','type_id', 'kind_id', 'trademark_id', 'is_special', 'is_new', 'capacity', 'material', 'year', 'producer', 'volume', 'origin', 'price', 'selling_price', 'content', 'is_discount', 'discount_percent', 'discount_price', 'is_gift', 'gift', 'description'];
         $input = $this->createQueryInput($keys, $request);
         $input['slug'] = $uniqueSlug;
 
@@ -171,12 +184,16 @@ class ProductController extends Controller
 
     private function doSearchingQuery($constraints){
         $query = DB::table('product')
-            ->select('product.*');
+            ->where('product.is_deleted', '=', 0)
+            ->join('type', 'type.id', '=', 'product.type_id')
+            ->join('kind', 'kind.id', '=', 'product.kind_id')
+            ->join('product_trademark', 'product_trademark.id', '=', 'product.trademark_id')
+            ->select('product.*', 'type.title as type_title', 'kind.title as kind_title', 'product_trademark.name as trademark_title');
         $fields = array_keys($constraints);
         $index = 0;
         foreach ($constraints as $constraint) {
             if ($constraint != null) {
-                $query = $query->where($fields[$index], 'like', '%'.$constraint.'%');
+                $query = $query->where('product.'.$fields[$index], 'like', '%'.$constraint.'%');
             }
 
             $index++;
@@ -189,9 +206,10 @@ class ProductController extends Controller
             'name' => 'required|max:255',
             'slug' => 'required|unique:product|max:255',
             'trademark_id' => 'required',
-            'category_id' => 'required',
-            'quantity' => 'required|integer',
-            'price' => 'required|numeric'
+            'price' => 'required|numeric',
+            'selling_price' => 'numeric',
+            'discount_percent' => 'numeric',
+            'discount_price' => 'numeric'
         ]);
     }
 
@@ -237,5 +255,45 @@ class ProductController extends Controller
         }
 
         return $arrayCategory;
+    }
+
+    function fetchByType(){
+        $type_id = Input::get('type_id');
+        $kind = DB::table('kind')
+            ->select('*')
+            ->where('type_id', $type_id)
+            ->where('is_active', '=', 1)
+            ->where('is_deleted', '=', 0)
+            ->get();
+        if(!$kind){
+            return response()->json(['kind_id' => $kind_id, 'status' => '404']);
+        }
+
+        $arrayKind = [];
+        foreach($kind as $item){
+            $arrayKind[$item->id] = $item->title;
+        }
+
+        return response()->json(['kinds' => $arrayKind, 'status' => '200']);
+    }
+
+    function fetchByKind(){
+        $kind_id = Input::get('kind_id');
+        $trademark = DB::table('product_trademark')
+            ->select('*')
+            ->where('kind_id', $kind_id)
+            ->where('is_active', '=', 1)
+            ->where('is_deleted', '=', 0)
+            ->get();
+        if(!$trademark){
+            return response()->json(['trademark_id' => $trademark_id, 'status' => '404']);
+        }
+
+        $arrayTrademark = [];
+        foreach($trademark as $item){
+            $arrayTrademark[$item->id] = $item->name;
+        }
+
+        return response()->json(['trademarks' => $arrayTrademark, 'status' => '200']);
     }
 }

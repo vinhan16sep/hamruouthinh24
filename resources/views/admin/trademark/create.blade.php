@@ -8,12 +8,36 @@
                     <div class="panel-heading">Thêm mới thương hiệu</div>
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('trademark.store') }}" enctype="multipart/form-data">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             {{ csrf_field() }}
+                            <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+                                <label for="type" class="col-md-4 control-label">Loại sản phẩm</label>
+
+                                <div class="col-md-6">
+                                    <select name="type_id"  class="form-control type" autofocus>
+                                        <option value="">---------------------Chọn loại sản phẩm---------------------</option>
+                                        @foreach($type as $value)
+                                            <option value="{{ $value->id }}">{{ $value->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+                                <label for="type" class="col-md-4 control-label">Loại sản phẩm</label>
+
+                                <div class="col-md-6">
+                                    <select name="kind_id"  class="form-control kind">
+                                        <option class="kind_option" value="">-------------------Chọn loại sản phẩm trước -------------------</option>
+                                    </select>
+                                </div>
+                            </div>
+
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="col-md-4 control-label">Tên thương hiệu</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
+                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}">
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">

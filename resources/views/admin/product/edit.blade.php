@@ -20,46 +20,36 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('trademark_id') ? ' has-error' : '' }}">
-                                <label for="trademark_id" class="col-md-2 control-label">Thương hiệu</label>
+                            <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+                                <label for="type" class="col-md-2 control-label">Loại sản phẩm</label>
 
-                                <div class="col-md-8">
-                                    <select name="trademark_id" id="trademark_id">
-                                        <option value="">Chọn thương hiệu</option>
-                                        @if(!empty($trademarks))
-                                            @foreach($trademarks as $key => $item)
-                                                <option value="{{ $key }}"
-                                                        @if ($product->trademark_id == $key) selected="selected" @endif>
-                                                    {{ $item }}</option>
-                                            @endforeach
-                                        @endif
+                                <div class="col-md-4">
+                                    <select name="type_id"  class="form-control type" data-page="{{ $product->kind_id }}" >
+                                        <option value="">---------------------Chọn loại sản phẩm---------------------</option>
+                                        @foreach($type as $value)
+                                            <option value="{{ $value->id }}" {{ ($value->id == $product->type_id)? 'selected' : ''}} >{{ $value->title }}</option>
+                                        @endforeach
                                     </select>
-                                    @if ($errors->has('trademark_id'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('trademark_id') }}</strong>
-                                    </span>
-                                    @endif
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
-                                <label for="category_id" class="col-md-2 control-label">Danh mục</label>
 
-                                <div class="col-md-8">
-                                    <select name="category_id" id="category_id">
-                                        <option value="">Chọn danh mục</option>
-                                        @if(!empty($categories))
-                                            @foreach($categories as $key => $item)
-                                                <option value="{{ $key }}"
-                                                        @if ($product->category_id == $key) selected="selected" @endif>
-                                                    {{ $item }}</option>
-                                            @endforeach
-                                        @endif
+                            <div class="form-group{{ $errors->has('kind') ? ' has-error' : '' }}">
+                                <label for="kind" class="col-md-2 control-label">Loại sản phẩm</label>
+
+                                <div class="col-md-4">
+                                    <select name="kind_id"  class="form-control kind"  data-page="{{ $product->trademark_id }}" data-id="{{ $product->kind_id }}" >
+                                        <option class="kind_option" value="">-------------------Chọn loại sản phẩm trước -------------------</option>
                                     </select>
-                                    @if ($errors->has('category_id'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('category_id') }}</strong>
-                                    </span>
-                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('trademark') ? ' has-error' : '' }}">
+                                <label for="trademark" class="col-md-2 control-label">Thương hiệu sản phẩm</label>
+
+                                <div class="col-md-4">
+                                    <select name="trademark_id"  class="form-control trademark">
+                                        <option class="trademark_option" value="">-------------------Chọn loại sản phẩm trước -------------------</option>
+                                    </select>
                                 </div>
                             </div>
                             <input type="hidden" name="is_special" value="0">
@@ -105,41 +95,49 @@
                                     @endif
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label for="avatar" class="col-md-2 control-label" >Hình ảnh đang sử dụng</label>
+                                <div class="col-md-6">
+                                    {{ HTML::image('storage/app/'.$product->image, '', array('width' => 150)) }}
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <label for="avatar" class="col-md-2 control-label" >Hình ảnh</label>
                                 <div class="col-md-6">
                                     <input type="file" id="image" name="image">
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('quantity') ? ' has-error' : '' }}">
-                                <label for="quantity" class="col-md-2 control-label">Số lượng</label>
+                            <div class="form-group{{ $errors->has('capacity') ? ' has-error' : '' }}">
+                                <label for="capacity" class="col-md-2 control-label">Dung tích</label>
                                 <div class="col-md-8">
-                                    <input id="quantity" type="text" class="form-control" name="quantity" value="{{ $product->quantity }}" required>
-                                    @if ($errors->has('quantity'))
+                                    <textarea id="capacity" type="text" class="form-control" name="capacity" value="{{ old('capacity') }}">{{ $product->capacity }}</textarea>
+                                    @if ($errors->has('capacity'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('quantity') }}</strong>
+                                        <strong>{{ $errors->first('capacity') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('effect') ? ' has-error' : '' }}">
-                                <label for="effect" class="col-md-2 control-label">Công dụng</label>
+                            <div class="form-group{{ $errors->has('material') ? ' has-error' : '' }}">
+                                <label for="material" class="col-md-2 control-label">Nguyên liệu</label>
                                 <div class="col-md-8">
-                                    <textarea id="effect" type="text" class="form-control" name="effect">{{ $product->effect }}</textarea>
-                                    @if ($errors->has('effect'))
+                                    <input id="material" type="text" class="form-control" name="material" value="{{ $product->material }}">
+                                    @if ($errors->has('material'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('effect') }}</strong>
+                                        <strong>{{ $errors->first('material') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('weight') ? ' has-error' : '' }}">
-                                <label for="weight" class="col-md-2 control-label">Trọng lượng</label>
+                            <div class="form-group{{ $errors->has('year') ? ' has-error' : '' }}">
+                                <label for="year" class="col-md-2 control-label">Niên vụ</label>
                                 <div class="col-md-8">
-                                    <input id="weight" type="text" class="form-control" name="weight" value="{{ $product->weight }}">
-                                    @if ($errors->has('weight'))
+                                    <input id="year" type="text" class="form-control" name="year" value="{{ $product->year }}">
+                                    @if ($errors->has('year'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('weight') }}</strong>
+                                        <strong>{{ $errors->first('year') }}</strong>
                                     </span>
                                     @endif
                                 </div>
@@ -151,6 +149,28 @@
                                     @if ($errors->has('producer'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('producer') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group{{ $errors->has('volume') ? ' has-error' : '' }}">
+                                <label for="volume" class="col-md-2 control-label">Thể tích</label>
+                                <div class="col-md-8">
+                                    <input id="volume" type="text" class="form-control" name="volume" value="{{ $product->volume }}">
+                                    @if ($errors->has('volume'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('volume') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group{{ $errors->has('origin') ? ' has-error' : '' }}">
+                                <label for="origin" class="col-md-2 control-label">Xuất xứ</label>
+                                <div class="col-md-8">
+                                    <input id="origin" type="text" class="form-control" name="origin" value="{{ $product->origin }}">
+                                    @if ($errors->has('origin'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('origin') }}</strong>
                                     </span>
                                     @endif
                                 </div>
@@ -219,6 +239,48 @@
                                 </div>
                                 <div class="col-md-1 control-label"><strong>VNĐ</strong></div>
                             </div>
+                            <input type="hidden" name="is_gift" value="0">
+                            <div class="form-group{{ $errors->has('is_gift') ? ' has-error' : '' }}">
+                                <label for="is_gift" class="col-md-2 control-label">Quà tặng khuyến mại?</label>
+                                <div class="col-md-8">
+                                    <input id="is_gift" type="checkbox" class="minimal" name="is_gift" value="1"
+                                           @if(old('is_gift') == 1)
+                                           checked
+                                            @endif
+                                    >
+                                    @if ($errors->has('is_gift'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('is_gift') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group{{ $errors->has('gift') ? ' has-error' : '' }}">
+                                <label for="gift" class="col-md-2 control-label">Nội dung quà tặng</label>
+
+                                <div class="col-md-8">
+                                    <textarea id="gift" rows="10" class="form-control tinymce" name="gift" value="{{ old('gift') }}" disabled>{{ $product->gift }}</textarea>
+
+                                    @if ($errors->has('gift'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('gift') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
+                                <label for="description" class="col-md-2 control-label">Giới thiệu</label>
+
+                                <div class="col-md-8">
+                                    <textarea id="description" rows="10" class="form-control tinymce" name="description" value="{{ old('description') }}">{{ $product->description }}</textarea>
+
+                                    @if ($errors->has('description'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('description') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
                             <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
                                 <label for="content" class="col-md-2 control-label">Nội dung</label>
 
@@ -228,19 +290,6 @@
                                     @if ($errors->has('content'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('content') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="form-group{{ $errors->has('guide') ? ' has-error' : '' }}">
-                                <label for="guide" class="col-md-2 control-label">Hướng dẫn sử dụng</label>
-
-                                <div class="col-md-8">
-                                    <textarea id="guide" rows="10" class="form-control tinymce" name="guide">{{ $product->guide }}</textarea>
-
-                                    @if ($errors->has('guide'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('guide') }}</strong>
                                     </span>
                                     @endif
                                 </div>

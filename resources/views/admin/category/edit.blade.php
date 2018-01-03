@@ -52,25 +52,36 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('trademark_id') ? ' has-error' : '' }}">
-                                <label for="trademark_id" class="col-md-4 control-label">Thương hiệu</label>
+                            <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+                                <label for="type" class="col-md-4 control-label">Loại sản phẩm</label>
 
                                 <div class="col-md-6">
-                                    <select name="trademark_id">
-                                        <option value="">Chọn thương hiệu</option>
-                                        @if(!empty($trademarks))
-                                        @foreach($trademarks as $key => $item)
-                                            <option value="{{ $key }}"
-                                            @if ($category->trademark_id == $key) selected="selected" @endif>
-                                            {{ $item }}</option>
+                                    <select name="type_id"  class="form-control type" data-page="{{ $category->kind_id }}">
+                                        <option value="">---------------------Chọn loại sản phẩm---------------------</option>
+                                        @foreach($type as $value)
+                                            <option value="{{ $value->id }}" {{ ($value->id == $category->type_id)? 'selected' : '' }} >{{ $value->title }}</option>
                                         @endforeach
-                                        @endif
                                     </select>
-                                    @if ($errors->has('trademark_id'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('trademark_id') }}</strong>
-                                    </span>
-                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+                                <label for="type" class="col-md-4 control-label">Loại sản phẩm</label>
+
+                                <div class="col-md-6">
+                                    <select name="kind_id"  class="form-control kind"  data-page="{{ $category->trademark_id }}" data-id="{{ $category->kind_id }}">
+                                        <option class="kind_option" value="">-------------------Chọn loại sản phẩm trước -------------------</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+                                <label for="type" class="col-md-4 control-label">Thương hiệu sản phẩm</label>
+
+                                <div class="col-md-6">
+                                    <select name="trademark_id"  class="form-control trademark">
+                                        <option class="trademark_option" value="">-------------------Chọn loại sản phẩm trước -------------------</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">

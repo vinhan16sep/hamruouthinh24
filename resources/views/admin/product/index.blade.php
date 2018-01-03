@@ -31,20 +31,26 @@
           <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
             <thead>
               <tr role="row">
-                <th width="30%" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">Tên sản phẩm</th>
-                <th width="10%" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Số lượng</th>
+                <th width="20%" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">Tên sản phẩm</th>
                 <th width="20%" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Giá thành</th>
+                <th width="10%" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Khuyến mại</th>
                 <th width="5%" class="hidden-xs" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Đặc biệt?</th>
                 <th width="5%" class="hidden-xs" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Mới?</th>
-                <th tabindex="0" aria-controls="example2" rowspan="1" colspan="2" aria-label="Action: activate to sort column ascending">Hành động</th>
+                <th  width="30%" tabindex="0" aria-controls="example2" rowspan="1" colspan="2" aria-label="Action: activate to sort column ascending">Hành động</th>
               </tr>
             </thead>
             <tbody>
             @foreach ($products as $item)
                 <tr role="row" class="odd">
                   <td class="sorting_1">{{ $item->name }}</td>
-                  <td class="sorting_1">{{ $item->quantity }}</td>
                   <td>{{ str_replace(',', '.', number_format($item->price, 0)) }}</td>
+
+                  @if($item->gift != null)
+                  <td class="hidden-xs"><span class="glyphicon glyphicon-ok"></span></td>
+                  @else
+                  <td class="hidden-xs"></td>
+                  @endif
+                  
                   @if($item->is_special != 0)
                   <td class="hidden-xs"><span class="glyphicon glyphicon-ok"></span></td>
                   @else
@@ -57,6 +63,8 @@
                   @endif
                   <td>
                     <form class="row" method="POST" action="{{ route('product.destroy', ['id' => $item->id]) }}" onsubmit = "return confirm('Chắc chắn xoá?')">
+                        <button class="btn btn-primary collapsed col-sm-3 col-xs-5 btn-margin" type="button" data-toggle="collapse" href="#{{ $item->id }}" aria-expanded="true" aria-controls="messageContent">Chi tiết</button>
+
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <a href="{{ route('product.edit', ['id' => $item->id]) }}" class="btn btn-warning col-sm-3 col-xs-5 btn-margin">
@@ -70,14 +78,59 @@
                     </form>
                   </td>
               </tr>
+              <tr>
+                <td colspan="7" class="no_border">
+                    <div class="collapse" id="{{ $item->id }}">
+                      <div clas="row">
+                          <div class="col-md-5">
+                              <!-- <strong>Hình ảnh:</strong>
+                              <br> -->
+                              {{ HTML::image('storage/app/'.$item->image, '', array('width' => 100)) }}
+                              <br />
+                              <strong>Loại sản phẩm:</strong> {{ $item->type_title }}
+                              <br>
+                              <strong>Dòng sản phẩm:</strong> {{ $item->kind_title }}
+                              <br>
+                              <strong>Thương hiệu sản phẩm:</strong> {{ $item->trademark_title }}
+                              <br>
+                              <strong>Nồng độ:</strong> {{ $item->concentration }}
+                              <br>
+                              <strong>Dung tích:</strong> {{ $item->capacity }}
+                              <br>
+                              <strong>Nguyên liệu:</strong> {{ $item->material }}
+                              <br>
+                              <strong>Niên vụ:</strong >{{ $item->year }}
+                              <br>
+                              <strong>Nhà sản xuất:</strong> {{ $item->producer }}
+                              <br>
+                              <strong>Thể tích:</strong> {{ $item->volume }}
+                              <br>
+                              <strong>Xuất xứ:</strong> {{ $item->origin }}
+                          </div>
+                          <div class="col-md-7">
+                              <table style="width: 100%">
+                                  <tr>
+                                      <td style="width: 50%;"><strong>Giới thiệu</strong></td>
+                                      <td style="width: 50%;"><strong>Mô tả</strong></td>
+                                  </tr>
+                                  <tr>
+                                      <td>{!! $item->description !!}</td>
+                                      <td>{!! $item->content !!}</td>
+                                  </tr>
+                              </table>
+                          </div>
+                      </div>
+                    </div>
+                </td>
+              </tr>
             @endforeach
             </tbody>
             @if(count($products) > 0)
             <tfoot>
               <tr>
                 <th width="10%" rowspan="1" colspan="1">Tên sản phẩm</th>
-                <th width="10%" rowspan="1" colspan="1">Số lượng</th>
-                <th width="20%" rowspan="1" colspan="1">Giá thành</th>
+                <th width="10%" rowspan="1" colspan="1">Giá thành</th>
+                <th width="20%" rowspan="1" colspan="1">  Khuyến mại</th>
                 <th class="hidden-xs" width="10%" rowspan="1" colspan="1">Đặc biệt?</th>
                 <th class="hidden-xs" width="5%" rowspan="1" colspan="1">Mới?</th>
                 <th rowspan="1" colspan="2">Hành động</th>
