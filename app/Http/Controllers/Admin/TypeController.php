@@ -149,4 +149,34 @@ class TypeController extends Controller
 
         return array($newName, $newPath);
     }
+
+    /**
+     * Search state from database base on some specific constraints
+     *
+     * @param  \Illuminate\Http\Request  $request
+     *  @return \Illuminate\Http\Response
+     */
+    public function search(Request $request){
+        $constraints = [
+            'title' => $request['name']
+        ];
+        $types = $this->doSearchingQuery($constraints);
+
+        return view('admin/type/index', ['type' => $types, 'searchingVals' => $constraints]);
+    }
+
+    private function doSearchingQuery($constraints){
+        $query = DB::table('type')
+                ->select('*');
+        $fields = array_keys($constraints);
+        $index = 0;
+        foreach ($constraints as $constraint) {
+            if ($constraint != null) {
+                $query = $query->where($fields[$index], 'like', '%'.$constraint.'%');
+            }
+
+            $index++;
+        }
+        return $query->paginate(10);
+    }
 }

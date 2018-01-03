@@ -1,28 +1,6 @@
 // Product management
 window.onload = function(){
-    $('.type').each(function(){
-        var type_id = $(this).val();
-        var page = $(this).data('page');
-        var url = window.location.origin;
-        var check = '';
-        $.ajax({
-            url: url + '/hamruouthinh24/admin/trademark/kind/{type_id}',
-            method: 'GET',
-            data: {
-                type_id : type_id
-            },
-            success: function(res){
-                var kinds = res.kinds;
-                $('.kind').html('');
-                $.each(kinds, function(key, value){
-                    $('.kind').append('<option value="' + key + '" >' + value + '</option>');
-                    $(".kind").val(page);
-                });
-                console.log(res.kinds);
-                res.kinds
-            },
-        })
-    })
+    
 
     $('.type').change(function(){
         var type_id = $(this).val();
@@ -45,6 +23,27 @@ window.onload = function(){
             },
         })
     })
-
+    $('.type').each(function(){
+        var type_id = $(this).val();
+        var page = $(this).data('page');
+        var url = window.location.origin;
+        var check = '';
+        $.ajax({
+            url: url + '/hamruouthinh24/admin/trademark/kind/{type_id}',
+            method: 'GET',
+            data: {
+                type_id : type_id
+            },
+            success: function(res){
+                var kinds = res.kinds;
+                $.each(kinds, function(key, value){
+                    $('.kind').append('<option value="' + key + '" >' + value + '</option>');
+                    $(".kind").val(page);
+                });
+                console.log(res.kinds);
+                res.kinds
+            },
+        })
+    })
     
 }

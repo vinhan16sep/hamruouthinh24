@@ -16,11 +16,11 @@
         <div class="col-sm-6"></div>
         <div class="col-sm-6"></div>
       </div>
-      <form method="POST" action="">
+      <form method="POST" action="{{ route('kind.search') }}">
         {{ csrf_field() }}
          @component('admin.layouts.search', ['title' => 'Tìm kiếm'])
           @component('admin.kind.search-panel.two-cols-search-row', ['items' => ['Name'],
-          'oldVals' => [isset($searchingVals) ? $searchingVals['name'] : '']])
+          'oldVals' => [isset($searchingVals) ? $searchingVals['title'] : '']])
           @endcomponent
           <br>
         @endcomponent

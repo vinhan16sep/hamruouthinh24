@@ -160,4 +160,36 @@ class KindController extends Controller
 
         return array($newName, $newPath);
     }
+
+    /**
+     * Search state from database base on some specific constraints
+     *
+     * @param  \Illuminate\Http\Request  $request
+     *  @return \Illuminate\Http\Response
+     */
+    public function search(Request $request){
+        $constraints = [
+            'title' => $request['name']
+        ];
+        $kinds = $this->doSearchingQuery($constraints);
+
+        return view('admin/kind/index', ['kinds' => $kinds, 'searchingVals' => $constraints]);
+    }
+
+    private function doSearchingQuery($constraints){
+        $query = DB::table('kind')
+                ->join('type', 'kind.type_id', '=', 'type.id')
+                ->select('kind.*', 'type.title as type_title')
+                ->where('kind.is_deleted', 0);
+        $fields = array_keys($constraints);
+        $index = 0;
+        foreach ($constraints as $constraint) {
+            if ($constraint != null) {
+                $query = $query->where('kind.'.$fields[$index], 'like', '%'.$constraint.'%');
+            }
+
+            $index++;
+        }
+        return $query->paginate(10);
+    }
 }

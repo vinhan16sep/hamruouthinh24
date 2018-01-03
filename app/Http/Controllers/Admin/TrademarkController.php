@@ -35,7 +35,7 @@ class TrademarkController extends Controller
                     ->join('type', 'product_trademark.type_id', '=', 'type.id')
                     ->join('kind', 'product_trademark.kind_id', '=', 'kind.id')
                     ->select('product_trademark.*', 'type.title as type_title', 'kind.title as kind_title')
-                    ->where('kind.is_deleted', 0)
+                    ->where('product_trademark.is_deleted', 0)
                     ->paginate(10);
                     // print_r($trademarks);die;
         return view('admin/trademark/index', ['trademarks' => $trademarks]);
@@ -125,7 +125,7 @@ class TrademarkController extends Controller
 
         $this->validateInput($request);
         $uniqueSlug = $this->buildUniqueSlug('product_trademark', $request->id, $request->slug);
-        $keys = ['name', 'slug', 'is_active', 'description'];
+        $keys = ['name', 'slug', 'is_active', 'description', 'type_id', 'kind_id'];
         $input = $this->createQueryInput($keys, $request);
         $input['slug'] = $uniqueSlug;
 
@@ -187,12 +187,15 @@ class TrademarkController extends Controller
 
     private function doSearchingQuery($constraints){
         $query = DB::table('product_trademark')
-            ->select('*');
+                ->join('type', 'product_trademark.type_id', '=', 'type.id')
+                ->join('kind', 'product_trademark.kind_id', '=', 'kind.id')
+                ->select('product_trademark.*', 'type.title as type_title', 'kind.title as kind_title')
+                ->where('product_trademark.is_deleted', 0);
         $fields = array_keys($constraints);
         $index = 0;
         foreach ($constraints as $constraint) {
             if ($constraint != null) {
-                $query = $query->where($fields[$index], 'like', '%'.$constraint.'%');
+                $query = $query->where('product_trademark.'.$fields[$index], 'like', '%'.$constraint.'%');
             }
 
             $index++;

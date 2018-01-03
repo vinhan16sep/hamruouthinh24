@@ -160,10 +160,12 @@ Route::prefix('admin')->group(function() {
 
         //Type routes
         Route::resource('type', 'TypeController');
+        Route::post('type/search', 'TypeController@search')->name('type.search');
         Route::post('type/update/{id}', 'TypeController@update')->name('type.update');
 
         //Kind routes
         Route::resource('kind', 'KindController');
+        Route::post('kind/search', 'KindController@search')->name('kind.search');
         Route::post('kind/update/{id}', 'KindController@update')->name('kind.update');
         
         // Product routes
@@ -171,6 +173,9 @@ Route::prefix('admin')->group(function() {
         Route::post('product/search', 'ProductController@search')->name('product.search');
         Route::post('product/store', 'ProductController@store')->name('product.store');
         Route::post('product/update/{id}', 'ProductController@update')->name('product.update');
+        Route::get('product/fetchByType/{type_id}', 'ProductController@fetchByType');
+        Route::get('product/fetchByKind/{kind_id}', 'ProductController@fetchByKind');
+        Route::get('product/fetchByTrademark/{trademark_id}', 'ProductController@fetchByTrademark');
 
         // Order routes
 //        Route::resource('order', 'OrderController');
@@ -193,6 +198,8 @@ Route::prefix('admin')->group(function() {
         Route::post('category/search', 'CategoryController@search')->name('category.search');
         Route::post('category/store', 'CategoryController@store')->name('category.store');
         Route::post('category/update/{id}', 'CategoryController@update')->name('category.update');
+        Route::get('category/fetchByType/{type_id}', 'CategoryController@fetchByType');
+        Route::get('category/fetchByKind/{kind_id}', 'CategoryController@fetchByKind');
         Route::get('category/fetchByTrademark/{trademark_id}', 'CategoryController@fetchByTrademark');
 
         // Blog routes
