@@ -14,7 +14,7 @@
                 </li>
                 <li>
                     <a href="javascript:void(0)" target="_blank">
-                        <i class="fa fa-phone"></i> Hotline: <strong>(0274) 3717 508</strong>
+                        <i class="fa fa-phone"></i> Hotline: <strong>(024) 1234 5678</strong>
                     </a>
                 </li>
             </ul>
@@ -23,7 +23,7 @@
             <ul class="list-inline text-right">
                 <li>
                     <a href="javascript:void(0)" target="_blank">
-                        Đại lý phân phối
+                        Quy định & Chính sách
                     </a>
                 </li>
                 <li>
@@ -41,12 +41,31 @@
 
 <header class="header">
     <section class="container">
-        <div class="logo col-md-2 col-xs-6">
+        <div class="container-fluid">
             <a href="index.html">
-                {{ HTML::image('public/frontend/img/logo.png') }}
+                <div class="logo"></div> <!--image logo-->
             </a>
+
+            <ul class="user_activities list-inline list-unstyled pull-right">
+                <li>
+                    <a href="javascript:void(0);">
+                        <i class="fa fa-search" aria-hidden="false"></i> Tìm kiếm
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <i class="fa fa-user-o" aria-hidden="false"></i> Xin chào, Khách hàng
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <i class="fa fa-shopping-cart" aria-hidden="false"></i> 0
+                    </a>
+                </li>
+            </ul>
         </div>
-        <div class="nav col-md-10 col-xs-6">
+
+        <div class="nav col-md-10 col-xs-6 hidden">
             <div class="user pull-right">
                 <div class="icon pull-left">
                     <ul class="list-inline">
@@ -85,40 +104,41 @@
             </div>
             <br>
             <br>
-            <div class="nav-list pull-right">
-                <ul class="list-inline">
-                    <li>
-                        <a href="{{ url('') }}" target="_self">
-                            Trang chủ
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('gioi-thieu') }}" target="_self">
-                            Giới thiệu
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('san-pham') }}" target="_self">
-                            Sản phẩm
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('tu-van') }}" target="_self">
-                            Tư vấn
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('tin-tuc') }}" target="_self">
-                            Tin tức
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('lien-he') }}" target="_self">
-                            Liên hệ
-                        </a>
-                    </li>
-                </ul>
-            </div>
+
+        </div>
+        <div class="nav_list">
+            <ul class="list-inline">
+                <li>
+                    <a href="{{ url('') }}" target="_self">
+                        Trang chủ
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('san-pham') }}" target="_self">
+                        Sản phẩm
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('tu-van') }}" target="_self">
+                        Tư vấn
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('tin-tuc') }}" target="_self">
+                        Tin tức
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('gioi-thieu') }}" target="_self">
+                        Về chúng tôi
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('lien-he') }}" target="_self">
+                        Liên hệ
+                    </a>
+                </li>
+            </ul>
         </div>
     </section>
 </header>
