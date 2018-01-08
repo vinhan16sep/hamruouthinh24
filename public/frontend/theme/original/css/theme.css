@@ -1,0 +1,97 @@
+/*
+CSS for theme original
+ */
+
+/* HEADER */
+
+.top_header{
+    background: #c1272d;
+}
+
+.header .logo{
+    background-image: url(../img/logo.png);
+}
+
+.fix_header .logo{
+    background-image: url(../img/logo_resize.png);
+}
+
+/* BODY */
+
+.big_cover{
+    background-image: url(../img/big_cover.jpg);
+}
+
+.title_big{
+    color: #c1272d;
+}
+
+.badge{
+    background: #c1272d;
+}
+
+.nav_list{
+    border-top-color: #c1272d;
+}
+
+.nav_list li a:hover{
+    color: #c1272d;
+}
+
+.panel-default > .panel-heading {
+    color: #c1272d;
+    background-color: transparent;
+    border-color: #none;
+}
+
+ul.list-group li:hover{
+    background: #c1272d;
+}
+
+ul.list-group li:hover > a{
+    color: #fff;
+}
+
+span.productName{
+    color: #c1272d;
+}
+
+.row > .item > .inner > .hover{
+    background-color: rgba(193,39,45,.8);
+}
+
+.row > .item > .inner > .hover span.productName{
+    color: #fff;
+}
+
+.container-fluid#tasting_wine{
+    background-image: url(../img/tasting_wine.jpg);
+}
+
+#about .left{
+    background-image: url(../img/big_cover.jpg);
+}
+
+#about .right{
+    background-color: #c1272d;
+}
+
+/* FOOTER */
+
+.subscribe h3{
+    color: #c1272d;
+}
+
+.subscribe .btn-default{
+    background-color: #c1272d;
+    color: #fff;
+}
+
+.footer h3{
+    color: #c1272d;
+}
+
+.footer .copyright{
+    background-color: #c1272d;
+    color: #fff;
+}

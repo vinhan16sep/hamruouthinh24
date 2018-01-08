@@ -13,10 +13,8 @@ a:hover{
 .title_big{
 	text-align: center;
 	padding-bottom: 7px;
-	border-bottom: 2px solid #ddd;
 	width: 40%;
 	margin: 0 auto;
-	color: #b2479e;
 	margin-top: 15px;
 	margin-bottom: 15px;
 	text-transform: uppercase;
@@ -32,34 +30,30 @@ a:hover{
 	margin-bottom: 30px;
 }
 
-p{
-	color: #95989a;
-}
-
 .btn-primary{
-	background-color: #b2479e;
+	background-color: #c1272d;
 	border-color:transparent;
 }
 
 .btn-primary:hover{
-	background-color: #962D82;
+	background-color: #911d22;
 	border-color:transparent;
 }
 
 .btn-primary:focus, .btn-primary.focus {
     color: #fff;
-    background-color: #962D82;
-    border-color: #962D82;
+    background-color: #911d22;
+    border-color: #911d22;
 }
 
 .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
     color: #fff;
-    background-color: #962D82;
-    border-color: #962D82;
+    background-color: #911d22;
+    border-color: #911d22;
 }
 
 .link-primary{
-	color: #b2479e;
+	color: #c1272d;
 }
 
 .form-control:focus{

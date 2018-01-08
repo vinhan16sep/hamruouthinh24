@@ -16,11 +16,13 @@
     <link href="{{ asset("public/frontend/css/lib/font-awesome.min.css") }}" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="{{ asset("public/frontend/css/font_settings.css")}}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset("public/frontend/css/style.css")}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset("public/frontend/css/main.css")}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset("public/frontend/css/reset.css")}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset("public/frontend/css/cart.css")}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset("public/frontend/css/checkout.css")}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset("public/frontend/css/intro.css")}}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset("public/frontend/theme/original/css/theme.css")}}" rel="stylesheet" type="text/css" /> <!--THEME CSS-->
 
     <script src="{{ asset ("public/frontend/js/lib/jquery-1.9.1.min.js") }}"></script>
     <script src="{{ asset ("public/frontend/js/lib/bootstrap.js") }}"></script>

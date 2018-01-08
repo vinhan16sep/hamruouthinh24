@@ -1,20 +1,47 @@
 @font-face{
 	font-family: 'webFont_n';
-	src: url(../fonts/OpenSans-Regular.ttf);
+	src: url(../fonts/Alegreya-Regular.ttf);
 }
 
 @font-face{
 	font-family: 'webFont_b';
-	src: url(../fonts/OpenSans-Bold.ttf);
+	src: url(../fonts/Alegreya-Bold.ttf);
 }
 
 body{
 	font-family: 'webFont_n';
 }
 
-.nav-list{
+
+
+
+h1{font-size:2.25em;}
+h2{font-size:1.875em;}
+h3{font-size:1.5em;}
+h4{font-size:1.125em;}
+p{font-size:1em;}
+
+.nav_list{
 	font-family: 'webFont_b';
 	text-transform: uppercase;
+	font-size: 1.2em;
+}
+
+.fix_header .nav_list{
+	font-size: 1em;
+}
+
+ul.list-group{
+	font-family: 'webFont_b';
+}
+
+.panel-default > .panel-heading{
+	font-family: 'webFont_b';
+	font-size: 1.5em;
+}
+
+span.productName{
+	font-family: 'webFont_b';
 	font-size: 1.25em;
 }
 
@@ -32,15 +59,6 @@ body{
 }
 
 
-h1{font-size:2.25em;}
-h2{font-size:1.875em;}
-h3{font-size:1.5em;}
-h4{font-size:1.125em;}
-p{font-size:1em;}
-
-.panel-default > .panel-heading{
-	font-size: 1.5em;
-}
 
 .title_big{
 	font-family: 'webFont_b';

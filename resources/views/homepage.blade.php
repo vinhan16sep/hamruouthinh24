@@ -1,30 +1,56 @@
 @extends('layouts.frontend-template')
 @section('content')
     <link href="{{ asset("public/frontend/css/style_slide_product.css")}}" rel="stylesheet" type="text/css" />
-    <section class="main_content" ng-controller="HomepageController">
-        <!-- InstanceBeginEditable name="content" -->
+    <link href="{{ asset("public/frontend/css/homepage.css")}}" rel="stylesheet" type="text/css" />
+
+    <section class="big_cover">
+        <div class="content">
+            <h3>save water</h3>
+            <h1>drink wine</h1>
+            <br>
+            <a class="btn btn-primary" href="#main_content" role="button">Khám phá ngay</a>
+        </div>
+    </section>
+    <section class="main_content" ng-controller="HomepageController" id="main_content">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            {{--<ol class="carousel-indicators">--}}
-                {{--<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>--}}
-                {{--<li data-target="#carousel-example-generic" data-slide-to="1"></li>--}}
-                {{--<li data-target="#carousel-example-generic" data-slide-to="2"></li>--}}
-            {{--</ol>--}}
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    {{ HTML::image('public/frontend/img/slide_1.jpg') }}
-                    <div class="carousel-caption">
-                        ...
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <img src="{{ asset('public/frontend/img/blog_01.jpg') }}" alt="ảnh minh họa 1">
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <a href="javascript:void(0);">
+                                <h1>Sed a lacus vel eros mollis ullamcorper id ac sapien</h1>
+                            </a>
+                            <article class="description">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam vel nulla id bibendum. Vestibulum id diam bibendum velit sagittis imperdiet. Fusce in gravida urna. Maecenas lacus justo, iaculis eget velit id, fermentum tristique quam. Fusce viverra, nulla vitae pulvinar tincidunt, ex nibh dignissim diam, quis pharetra nunc nisl eget orci.</p>
+                            </article>
+
+                            <a class="btn btn-primary" href="#" role="button">Khám phá ngay</a>
+                        </div>
                     </div>
                 </div>
                 <div class="item">
-                    {{ HTML::image('public/frontend/img/slide_2.jpg') }}
-                    <div class="carousel-caption">
-                        ...
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <img src="{{ asset('public/frontend/img/blog_02.jpg') }}" alt="ảnh minh họa 1">
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <a href="javascript:void(0);">
+                                <h1>Sed a lacus vel eros mollis ullamcorper id ac sapien</h1>
+                            </a>
+                            <article class="description">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam vel nulla id bibendum. Vestibulum id diam bibendum velit sagittis imperdiet. Fusce in gravida urna. Maecenas lacus justo, iaculis eget velit id, fermentum tristique quam. Fusce viverra, nulla vitae pulvinar tincidunt, ex nibh dignissim diam, quis pharetra nunc nisl eget orci.</p>
+                            </article>
+
+                            <a class="btn btn-primary" href="#" role="button">Khám phá ngay</a>
+                        </div>
                     </div>
                 </div>
+                ...
             </div>
 
             <!-- Controls -->
@@ -38,205 +64,395 @@
             </a>
         </div>
 
-        <div class="banner row">
-            <div class="item col-md-6 col-sm-6 col-xs-12">
-                <a href="javascript:void(0)">
-                    {{ HTML::image('public/frontend/img/banner_1.jpg') }}
-                </a>
-            </div>
-            <div class="item col-md-6 col-sm-6 col-xs-12">
-                <a href="javascript:void(0)">
-                    {{ HTML::image('public/frontend/img/banner_2.jpg') }}
-                </a>
-            </div>
-        </div>
-
         <section class="container">
             <div class="row">
-                <div class="title_big">
-                    Sản phẩm khuyến mãi
-                </div>
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="panel panel-default">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading">Danh mục sản phẩm</div>
 
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="carousel carousel-showmanymoveone slide" id="itemslider_KM">
-                            <div class="slider_controler">
-                                <ul class="list-inline">
-                                    {{--<li>--}}
-                                        {{--<a class="left carousel-control" href="#itemslider_KM" data-slide="prev"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span></a>--}}
-                                    {{--</li>--}}
-                                    {{--<li>--}}
-                                        {{--<a class="right carousel-control" href="#itemslider_KM" data-slide="next"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a><strong></strong>--}}
-                                    {{--</li>--}}
-                                    <li>
-                                        <a href="#">Xem tất cả</a>
+                        <!-- List group -->
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <a href="javascript:void(0);">Rượu</a>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <a href="javascript:void(0);">Rượu vang</a>
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <a href="javascript:void(0);">Vang đỏ</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a href="javascript:void(0);">Vang nổ</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a href="javascript:void(0);">Vang ngọt</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a href="javascript:void(0);">Vang khác</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="javascript:void(0);">Rượu mạnh</a>
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <a href="javascript:void(0);">Chivas</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a href="javascript:void(0);">Whiskey</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a href="javascript:void(0);">Ballentines</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a href="javascript:void(0);">Rượu mạnh khác</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="javascript:void(0);">Rượu pha chế</a>
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <a href="javascript:void(0);">Rượu pha chế I</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a href="javascript:void(0);">Rượu pha chế II</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a href="javascript:void(0);">Rượu pha chế III</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a href="javascript:void(0);">Rượu pha chế khác</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="javascript:void(0);">Rượu khác</a>
                                     </li>
                                 </ul>
-                            </div>
-
-                            <div class="carousel-inner">
-                                <div class="item" ng-repeat="discount in discounts" active-on-first-four-items>
-                                    <div class="product_view col-xs-12 col-sm-6 col-md-3">
-                                        <a href="#"><img src="{{ asset('storage/app') }}/<% discount.image %>" class="img-responsive center-block"></a>
-                                        <a href="#" class="product_quickView" data-toggle="modal" data-target="#product_quickView" title="Xem nhanh" ng-click="open(discount)"><i class="fa fa-search"></i></a>
-                                        <a href="#" class="product_addtoCart" data-toggle="modal" data-target="#product_quickview" title="Thêm vào giỏ hàng" ng-click="addToCart(discount.id)"><i class="fa fa-cart-plus"></i></a>
-                                        <a href="{{ url('san-pham/chi-tiet') }}/<% discount.slug %>" target="_self"><h4><% discount.name %></h4></a>
-                                        <span class="price"><% discount.discount_price | currency:VND:0 | commaToDot | removeUSCurrency  %> vnđ</span> <span class="price_old"><strong><% discount.price | currency:VND:0 | commaToDot | removeUSCurrency  %> vnđ</strong></span>
-                                        <span class="badge_KM">-<% discount.discount_percent %>%</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="javascript:void(0);">Bia</a>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <a href="javascript:void(0);">Bia I</a>
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <a href="javascript:void(0);">Bia I</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a href="javascript:void(0);">Bia II</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a href="javascript:void(0);">Bia III</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a href="javascript:void(0);">Bia khác</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="javascript:void(0);">Bia II</a>
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <a href="javascript:void(0);">Bia I</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a href="javascript:void(0);">Bia II</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a href="javascript:void(0);">Bia III</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a href="javascript:void(0);">Bia khác</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="javascript:void(0);">Bia khác</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="javascript:void(0);">Bánh kẹo</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="javascript:void(0);">Sản phẩm khác</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="catelogy col-md-3">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Danh sách sản phẩm
-                            </div>
-
-                            <ul class="list-group">
-                                <li class="list-group-item" ng-repeat="trademark in menuProduct.trademarks">
-                                    <a href="{{ url('thuong-hieu') }}/<% trademark.slug %>" target="_self">
-                                        <% trademark.name %>
-                                    </a>
-                                    <ul class="list-group">
-                                        <li class="list-group-item" ng-repeat="category in menuProduct.categories" ng-hide="category.trademark_id != trademark.id">
-                                            <a href="{{ url('danh-muc') }}/<% category.slug %>" target="_self">
-                                                <% category.name %>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="productItem_view col-md-9">
-                        <section ng-repeat="trademark in menuProduct.trademarks">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="carousel carousel-showmanymoveone slide" id="itemslider_1">
-                                        <div class="col-md-6">
-                                            <div class="title_mid">
-                                                <h3><% trademark.name %></h3>
-                                            </div>
-                                        </div>
-                                        <div class="slider_controler">
-                                            <ul class="list-inline">
-                                                {{--<li>--}}
-                                                    {{--<a class="left carousel-control" href="#itemslider_1" data-slide="prev"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span></a>--}}
-                                                {{--</li>--}}
-                                                {{--<li>--}}
-                                                    {{--<a class="right carousel-control" href="#itemslider_1" data-slide="next"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a><strong></strong>--}}
-                                                {{--</li>--}}
-                                                <li>
-                                                    <a href="{{ url('thuong-hieu') }}/<% trademark.slug %>" target="_self">
-                                                        Xem tất cả
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="carousel-inner">
-                                            <div class="item active" ng-repeat="product in products" ng-hide="product.trademark_id != trademark.id">
-                                                <div class="product_view col-xs-12 col-sm-6 col-md-3">
-                                                    <a href="#"><img src="{{ asset('storage/app') }}/<% product.image %>" class="img-responsive center-block"></a>
-                                                    <a href="#" class="product_quickView" data-toggle="modal" data-target="#product_quickView" title="Xem nhanh" ng-click="open(product)"><i class="fa fa-search"></i></a>
-                                                    <a href="#" class="product_addtoCart" data-toggle="modal" data-target="#product_quickview" title="Thêm vào giỏ hàng" ng-click="addToCart(product.id)"><i class="fa fa-cart-plus"></i></a>
-                                                    <a href="{{ url('san-pham/chi-tiet') }}/<% product.slug %>" target="_self"><h4><% product.name %></h4></a>
-                                                    <span class="price"><% product.price | currency:VND:0 | commaToDot | removeUSCurrency %> vnđ</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                    </div>
-                </div>
-                <div class="row">
+                <div class="col-md-9 col-sm-9 col-xs-12">
                     <div class="title_big">
-                        Blog Tư vấn
+                        Sản phẩm khuyến mãi
                     </div>
+
                     <div class="row">
-                        <div class="media col-md-6 col-sm-6 col-xs-12" ng-repeat="advise in latestAdvises">
-                            <div class="media-left media-middle">
-                                <a href="#">
-                                    <img src="{{ asset('storage/app') }}/<% advise.image %>" class="media-object" alt="...">
-                                </a>
-                            </div>
-                            <div class="media-body">
-                                <a href="javascript:void(0);">
-                                    <h3 class="media-heading"><% advise.title %></h3>
-                                </a>
-                                <p><% advise.description %></p>
-                                <a href="{{ url('tu-van') }}/<% advise.slug %>" target="_self">Xem thêm</a>
+                        <div class="item col-md-4 col-sm-6 col-xs-12">
+                            <div class="inner">
+                                <div class="mask">
+                                    <img src="{{ asset('public/frontend/img/product/001.png') }}" alt="ảnh rượu 1">
+                                </div>
+
+                                <span class="badge">-30%</span>
+
+                                <span class="productName">Tên sản phẩm rượu</span>
+                                <h4 class="productYear">1968</h4>
+                                <h3 class="productPrice">1.968.000 vnđ</h3>
+                                <br>
+                                <a class="btn btn-primary" href="#" role="button">Thử rượu miễn phí</a>
+
+                                <div class="hover">
+                                    <span class="productName">Tên sản phẩm rượu</span>
+                                    <h4 class="productYear">1968</h4>
+                                    <h3 class="productPrice">1.968.000 vnđ</h3>
+                                    <br>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam vel nulla id bibendum. Vestibulum id diam bibendum velit sagittis imperdiet. Fusce in gravida urna.</p>
+                                    <br>
+                                    <a class="btn btn-primary" href="#" role="button">Thêm vào giỏ hàng</a>
+                                    <br>
+                                    <a class="btn btn-primary" href="#" role="button">Xem chi tiết</a>
+                                    <br>
+                                    <a class="btn btn-primary" href="#" role="button">Thử rượu miên phí</a>
+                                </div>
                             </div>
                         </div>
+
+                        <div class="item col-md-4 col-sm-6 col-xs-12">
+                            <div class="inner">
+                                <div class="mask">
+                                    <img src="{{ asset('public/frontend/img/product/001.png') }}" alt="ảnh rượu 1">
+                                </div>
+                                <span class="productName">Tên sản phẩm rượu</span>
+                                <h4 class="productYear">1968</h4>
+                                <h3 class="productPrice">1.968.000 vnđ</h3>
+                                <br>
+                                <a class="btn btn-primary" href="#" role="button">Thử rượu miễn phí</a>
+
+                                <div class="hover">
+                                    <span class="productName">Tên sản phẩm rượu</span>
+                                    <h4 class="productYear">1968</h4>
+                                    <h3 class="productPrice">1.968.000 vnđ</h3>
+                                    <br>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam vel nulla id bibendum. Vestibulum id diam bibendum velit sagittis imperdiet. Fusce in gravida urna.</p>
+                                    <br>
+                                    <a class="btn btn-primary" href="#" role="button">Thêm vào giỏ hàng</a>
+                                    <br>
+                                    <a class="btn btn-primary" href="#" role="button">Xem chi tiết</a>
+                                    <br>
+                                    <a class="btn btn-primary" href="#" role="button">Thử rượu miên phí</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item col-md-4 col-sm-6 col-xs-12">
+                            <div class="inner">
+                                <div class="mask">
+                                    <img src="{{ asset('public/frontend/img/product/001.png') }}" alt="ảnh rượu 1">
+                                </div>
+                                <span class="productName">Tên sản phẩm rượu</span>
+                                <h4 class="productYear">1968</h4>
+                                <h3 class="productPrice">1.968.000 vnđ</h3>
+                                <br>
+                                <a class="btn btn-primary" href="#" role="button">Thử rượu miễn phí</a>
+
+                                <div class="hover">
+                                    <span class="productName">Tên sản phẩm rượu</span>
+                                    <h4 class="productYear">1968</h4>
+                                    <h3 class="productPrice">1.968.000 vnđ</h3>
+                                    <br>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam vel nulla id bibendum. Vestibulum id diam bibendum velit sagittis imperdiet. Fusce in gravida urna.</p>
+                                    <br>
+                                    <a class="btn btn-primary" href="#" role="button">Thêm vào giỏ hàng</a>
+                                    <br>
+                                    <a class="btn btn-primary" href="#" role="button">Xem chi tiết</a>
+                                    <br>
+                                    <a class="btn btn-primary" href="#" role="button">Thử rượu miên phí</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item col-md-4 col-sm-6 col-xs-12">
+                            <div class="inner">
+                                <div class="mask">
+                                    <img src="{{ asset('public/frontend/img/product/001.png') }}" alt="ảnh rượu 1">
+                                </div>
+                                <span class="productName">Tên sản phẩm rượu</span>
+                                <h4 class="productYear">1968</h4>
+                                <h3 class="productPrice">1.968.000 vnđ</h3>
+                                <br>
+                                <a class="btn btn-primary" href="#" role="button">Thử rượu miễn phí</a>
+
+                                <div class="hover">
+                                    <span class="productName">Tên sản phẩm rượu</span>
+                                    <h4 class="productYear">1968</h4>
+                                    <h3 class="productPrice">1.968.000 vnđ</h3>
+                                    <br>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam vel nulla id bibendum. Vestibulum id diam bibendum velit sagittis imperdiet. Fusce in gravida urna.</p>
+                                    <br>
+                                    <a class="btn btn-primary" href="#" role="button">Thêm vào giỏ hàng</a>
+                                    <br>
+                                    <a class="btn btn-primary" href="#" role="button">Xem chi tiết</a>
+                                    <br>
+                                    <a class="btn btn-primary" href="#" role="button">Thử rượu miên phí</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item col-md-4 col-sm-6 col-xs-12">
+                            <div class="inner">
+                                <div class="mask">
+                                    <img src="{{ asset('public/frontend/img/product/001.png') }}" alt="ảnh rượu 1">
+                                </div>
+                                <span class="productName">Tên sản phẩm rượu</span>
+                                <h4 class="productYear">1968</h4>
+                                <h3 class="productPrice">1.968.000 vnđ</h3>
+                                <br>
+                                <a class="btn btn-primary" href="#" role="button">Thử rượu miễn phí</a>
+
+                                <div class="hover">
+                                    <span class="productName">Tên sản phẩm rượu</span>
+                                    <h4 class="productYear">1968</h4>
+                                    <h3 class="productPrice">1.968.000 vnđ</h3>
+                                    <br>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam vel nulla id bibendum. Vestibulum id diam bibendum velit sagittis imperdiet. Fusce in gravida urna.</p>
+                                    <br>
+                                    <a class="btn btn-primary" href="#" role="button">Thêm vào giỏ hàng</a>
+                                    <br>
+                                    <a class="btn btn-primary" href="#" role="button">Xem chi tiết</a>
+                                    <br>
+                                    <a class="btn btn-primary" href="#" role="button">Thử rượu miên phí</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item col-md-4 col-sm-6 col-xs-12">
+                            <div class="inner">
+                                <div class="mask">
+                                    <img src="{{ asset('public/frontend/img/product/001.png') }}" alt="ảnh rượu 1">
+                                </div>
+                                <span class="productName">Tên sản phẩm rượu</span>
+                                <h4 class="productYear">1968</h4>
+                                <h3 class="productPrice">1.968.000 vnđ</h3>
+                                <br>
+                                <a class="btn btn-primary" href="#" role="button">Thử rượu miễn phí</a>
+
+                                <div class="hover">
+                                    <span class="productName">Tên sản phẩm rượu</span>
+                                    <h4 class="productYear">1968</h4>
+                                    <h3 class="productPrice">1.968.000 vnđ</h3>
+                                    <br>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam vel nulla id bibendum. Vestibulum id diam bibendum velit sagittis imperdiet. Fusce in gravida urna.</p>
+                                    <br>
+                                    <a class="btn btn-primary" href="#" role="button">Thêm vào giỏ hàng</a>
+                                    <br>
+                                    <a class="btn btn-primary" href="#" role="button">Xem chi tiết</a>
+                                    <br>
+                                    <a class="btn btn-primary" href="#" role="button">Thử rượu miên phí</a>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="container-fluid" id="tasting_wine">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="title_big">
+                        Sản phẩm khuyến mãi
+                    </div>
+
+                    <h2>Maecenas pulvinar tristique malesuada</h2>
+                    <p>Vivamus ac tempor quam. Maecenas pulvinar tristique malesuada. Donec euismod nibh et dapibus tempor. Nullam elit nulla, rutrum eget eros sollicitudin, ullamcorper ultrices orci. Suspendisse potenti. Ut porta bibendum nibh eu viverra. Sed vel magna ac ligula finibus fermentum fringilla eu lectus. Sed elit ante, ornare nec dui at, molestie congue arcu. Nam at imperdiet neque, non tempus libero. Praesent dolor odio, mattis vulputate est ut, vulputate sollicitudin metus. Nulla id metus turpis. Phasellus non diam nisi. Duis vitae felis et magna elementum dictum. Pellentesque in enim fringilla, ullamcorper lacus et, imperdiet erat. Quisque sollicitudin ut nisi quis ultrices. Mauris rutrum erat a velit interdum, vitae vulputate leo dictum.</p>
+
+                    <a class="btn btn-primary" href="#" role="button">Đăng ký thử ngay bây giờ</a>
                 </div>
             </div>
         </section>
-        <section class="container-fluid profit">
+
+        <section class="container-fluid" id="news">
             <div class="container">
+                <div class="title_big">
+                    Tin tức
+                </div>
                 <div class="row">
-                    <div class="media col-md-4 col-sm-6 col-xs-12">
-                        <div class="media-left">
-                            <i class="fa fa-3x fa-check-square-o"></i>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Bài viết tư vấn chuyên gia về dưỡng ẩm da</h4>
-                            <p>Integer faucibus consequat quam, et viverra lorem eleifend et.</p>
-                        </div>
-                    </div>
-                    <div class="media col-md-4 col-sm-6 col-xs-12">
-                        <div class="media-left">
-                            <i class="fa fa-3x fa-phone"></i>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Bài viết tư vấn chuyên gia về dưỡng ẩm da</h4>
-                            <p>Etiam ut luctus ipsum. Proin efficitur odio ac augue laoreet, vel feugiat sapien ornare.</p>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="inner">
+                            <img src="{{ asset('public/frontend/img/blog_03.jpg') }}" alt="ảnh mình họa bài viết">
+                            <a href="#">
+                                <h3>Nullam in lacus pharetra, varius nibh ut, imperdiet nisi.</h3>
+                            </a>
+                            <br>
+                            <p>Donec et nulla quam. Pellentesque euismod nunc ac mollis suscipit. Vestibulum posuere fermentum scelerisque. Mauris lacus tortor, porttitor ut laoreet in, maximus vitae urna. In nec lectus rhoncus, blandit dolor in, blandit magna. Cras et justo orci. Sed in lectus vel diam congue pulvinar. Suspendisse at nunc tincidunt, imperdiet sapien eget, lacinia lectus. Quisque eu cursus sapien, eget posuere sapien. Nulla facilisi. Vestibulum enim libero, auctor in augue eu, facilisis laoreet metus.</p>
+                            <br>
+                            <a href="#" class="pull-right">Xem thêm <i class="fa fa-angle-double-right" aria-hidden="false"></i> </a>
                         </div>
                     </div>
-                    <div class="media col-md-4 col-sm-6 col-xs-12">
-                        <div class="media-left">
-                            <i class="fa fa-3x fa-heart-o"></i>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Bài viết tư vấn chuyên gia về dưỡng ẩm da</h4>
-                            <p>Integer faucibus consequat quam, et viverra lorem eleifend et.</p>
-                        </div>
-                    </div>
-                    <div class="media col-md-4 col-sm-6 col-xs-12">
-                        <div class="media-left">
-                            <i class="fa fa-3x fa-comments-o"></i>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Bài viết tư vấn chuyên gia về dưỡng ẩm da</h4>
-                            <p>Integer faucibus ac augue laoreet, vel feugiat sapien ornare.</p>
+
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="inner">
+                            <img src="{{ asset('public/frontend/img/blog_04.jpg') }}" alt="ảnh mình họa bài viết">
+                            <a href="#">
+                                <h3>Nullam in lacus pharetra, varius nibh ut, imperdiet nisi.</h3>
+                            </a>
+                            <br>
+                            <p>Donec et nulla quam. Pellentesque euismod nunc ac mollis suscipit. Vestibulum posuere fermentum scelerisque. Mauris lacus tortor, porttitor ut laoreet in, maximus vitae urna. In nec lectus rhoncus, blandit dolor in, blandit magna. Cras et justo orci. Sed in lectus vel diam congue pulvinar. Suspendisse at nunc tincidunt, imperdiet sapien eget, lacinia lectus. Quisque eu cursus sapien, eget posuere sapien. Nulla facilisi. Vestibulum enim libero, auctor in augue eu, facilisis laoreet metus.</p>
+                            <br>
+                            <a href="#" class="pull-right">Xem thêm <i class="fa fa-angle-double-right" aria-hidden="false"></i> </a>
                         </div>
                     </div>
-                    <div class="media col-md-4 col-sm-6 col-xs-12">
-                        <div class="media-left">
-                            <i class="fa fa-3x fa-home"></i>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Bài viết tư vấn chuyên gia về dưỡng ẩm da</h4>
-                            <p>Integer faucibus consequat efficitur odio ac augue laoreet, vel feugiat sapien ornare.</p>
+
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="inner">
+                            <img src="{{ asset('public/frontend/img/blog_05.jpg') }}" alt="ảnh mình họa bài viết">
+                            <a href="#">
+                                <h3>Nullam in lacus pharetra, varius nibh ut, imperdiet nisi.</h3>
+                            </a>
+                            <br>
+                            <p>Donec et nulla quam. Pellentesque euismod nunc ac mollis suscipit. Vestibulum posuere fermentum scelerisque. Mauris lacus tortor, porttitor ut laoreet in, maximus vitae urna. In nec lectus rhoncus, blandit dolor in, blandit magna. Cras et justo orci. Sed in lectus vel diam congue pulvinar. Suspendisse at nunc tincidunt, imperdiet sapien eget, lacinia lectus. Quisque eu cursus sapien, eget posuere sapien. Nulla facilisi. Vestibulum enim libero, auctor in augue eu, facilisis laoreet metus.</p>
+                            <br>
+                            <a href="#" class="text-right">Xem thêm <i class="fa fa-angle-double-right" aria-hidden="false"></i> </a>
                         </div>
                     </div>
-                    <div class="media col-md-4 col-sm-6 col-xs-12">
-                        <div class="media-left">
-                            <i class="fa fa-3x fa-credit-card"></i>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="container-fluid" id="about">
+            <div class="row">
+                <div class="left col-md-6 col-sm-6 hidden-xs"></div>
+                <div class="right col-md-6 col-sm-6 col-xs-12">
+                    <div class="title_big">
+                        Về chúng tôi
+                    </div>
+
+                    <p>Suspendisse potenti. Cras molestie mi sed iaculis varius. Maecenas fermentum semper sagittis. Sed eu mattis tellus. Mauris dolor ligula, pellentesque id vestibulum nec, consectetur sed sem. Aenean at ante enim. Quisque dapibus ligula ut erat laoreet aliquet. Pellentesque dictum magna ante, venenatis scelerisque risus pretium eget. Nullam et orci vitae felis rutrum tempor. Vestibulum id maximus lacus.</p>
+                    <p>Donec et nulla quam. Pellentesque euismod nunc ac mollis suscipit. Vestibulum posuere fermentum scelerisque. Mauris lacus tortor, porttitor ut laoreet in, maximus vitae urna. In nec lectus rhoncus, blandit dolor in, blandit magna. Cras et justo orci. Sed in lectus vel diam congue pulvinar. Suspendisse at nunc tincidunt, imperdiet sapien eget, lacinia lectus. Quisque eu cursus sapien, eget posuere sapien. Nulla facilisi. Vestibulum enim libero, auctor in augue eu, facilisis laoreet metus.</p>
+
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <i class="fa fa-3x fa-mobile-phone" aria-hidden="false"></i>
+                            <br>
+                            <p>Suspendisse potenti. Cras molestie mi sed iaculis varius. Maecenas fermentum semper sagittis. Sed eu mattis tellus. Mauris dolor ligula, pellentesque id vestibulum nec, consectetur sed sem. Aenean at ante enim. Quisque dapibus ligula ut erat laoreet aliquet. Pellentesque dictum magna ante, venenatis scelerisque risus pretium eget. Nullam et orci vitae felis rutrum tempor. Vestibulum id maximus lacus.</p>
                         </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Bài viết tư vấn chuyên gia về dưỡng ẩm da</h4>
-                            <p>Integer faucibus consequat vel feugiat sapien ornare.</p>
+
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <i class="fa fa-3x fa-mobile-phone" aria-hidden="false"></i>
+                            <br>
+                            <p>Suspendisse potenti. Cras molestie mi sed iaculis varius. Maecenas fermentum semper sagittis. Sed eu mattis tellus. Mauris dolor ligula, pellentesque id vestibulum nec, consectetur sed sem. Aenean at ante enim. Quisque dapibus ligula ut erat laoreet aliquet. Pellentesque dictum magna ante, venenatis scelerisque risus pretium eget. Nullam et orci vitae felis rutrum tempor. Vestibulum id maximus lacus.</p>
+                        </div>
+
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <i class="fa fa-3x fa-mobile-phone" aria-hidden="false"></i>
+                            <br>
+                            <p>Suspendisse potenti. Cras molestie mi sed iaculis varius. Maecenas fermentum semper sagittis. Sed eu mattis tellus. Mauris dolor ligula, pellentesque id vestibulum nec, consectetur sed sem. Aenean at ante enim. Quisque dapibus ligula ut erat laoreet aliquet. Pellentesque dictum magna ante, venenatis scelerisque risus pretium eget. Nullam et orci vitae felis rutrum tempor. Vestibulum id maximus lacus.</p>
                         </div>
                     </div>
                 </div>
