@@ -129,7 +129,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id){
         $product = Product::findOrFail($id);
-        $this->validateInput($request);
+        $this->validateInput($id, $request);
         $uniqueSlug = $this->buildUniqueSlug('product', $request->id, $request->slug);
 
         $path = base_path() . '/' . 'storage/app/products';
@@ -201,10 +201,11 @@ class ProductController extends Controller
         return $query->paginate(10);
     }
 
-    private function validateInput($request) {
+    private function validateInput($id, $request) {
+        // echo 'required|unique:product, id, ' . $id . '|max:255';die;
         $this->validate($request, [
             'name' => 'required|max:255',
-            'slug' => 'required|unique:product|max:255',
+            'slug' => 'required|unique:product,slug, ' . $id . '|max:255',
             'trademark_id' => 'required',
             'price' => 'required|numeric',
             'selling_price' => 'numeric',
