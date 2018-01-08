@@ -149,6 +149,8 @@ Route::prefix('admin')->group(function() {
         Route::get('introduce/{type}', 'IntroduceController@introduce');
         Route::post('introduce/saveIntroduce/{slug}', 'IntroduceController@saveIntroduce')->name('introduce.saveIntroduce');
 
+
+
         //image library
         Route::resource('library', 'LibraryController');
         // Route::post('library/store', 'LibraryController@store')->name('library.store');
@@ -214,5 +216,11 @@ Route::prefix('admin')->group(function() {
         Route::resource('blog-category', 'BlogCategoryController');
         Route::post('blog-category/search', 'BlogCategoryController@search')->name('blog-category.search');
         Route::post('blog-category/store', 'BlogCategoryController@store')->name('blog-category.store');
+
+        //Tasting routes
+        Route::get('tasting/finish', 'TastingController@finish');
+        Route::get('tasting/ajax-finish/{id}', 'TastingController@ajaxFinish');
+        Route::resource('tasting', 'TastingController');
+        
     });
 });
