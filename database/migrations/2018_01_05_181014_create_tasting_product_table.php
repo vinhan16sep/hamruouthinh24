@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTrademarkTable extends Migration
+class CreateTastingProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateTrademarkTable extends Migration
      */
     public function up()
     {
-        Schema::create('trademark', function (Blueprint $table) {
+        Schema::create('tasting_product', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('type_id', 11);
-            $table->integer('kind_id', 11);
-            $table->string('title', 255);
-            $table->string('slug', 255);
-            $table->text('description');
-            $table->tinyInteger('is_deleted')->default(0);
+            $table->integer('tasting_id', 10);
+            $table->integer('product_id', 11);
+            $table->string('product_name', 255);
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateTrademarkTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trademark');
+        Schema::dropIfExists('tasting_product');
     }
 }

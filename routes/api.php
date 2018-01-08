@@ -69,5 +69,9 @@ Route::prefix('v1')->group(function() {
         Route::get('customer_not_complete', 'CustomerApiController@fetchNotCompleteOrder')->name('customer.fetchNotCompleteOrder');
         Route::get('customer_complete', 'CustomerApiController@fetchCompleteOrder')->name('customer.fetchCompleteOrder');
         Route::get('update_info', 'CustomerApiController@updateInfo')->name('customer.updateInfo');
+
+        //tasting routes
+        Route::resource('tasting', 'TastingApiController');
+        Route::get('tasting_save','TastingApiController@save');
     });
 });

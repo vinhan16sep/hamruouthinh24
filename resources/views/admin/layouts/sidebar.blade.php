@@ -122,6 +122,21 @@
             </li>
           </ul>
         </li>
+        <li class="treeview {{(Request::segment(2) == 'tasting')? 'active' : '' }}">
+          <a href="#"><i class="fa fa-link"></i> <span>Quản lý thử rượu</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{(Request::segment(2) == 'tasting' && Request::segment(3) == '')? 'active' : '' }}">
+              <a href="{{ url('admin/tasting') }}">Chờ xử lý</a>
+            </li>
+            <li class="{{(Request::segment(3) == 'finish')? 'active' : '' }}">
+              <a href="{{ url('admin/tasting/finish') }}">Đã hoàn thành</a>
+            </li>
+          </ul>
+        </li>
 {{--        <li><a href="{{ route('user-management.index') }}"><i class="fa fa-link"></i> <span>User management</span></a></li>--}}
       </ul>
       <!-- /.sidebar-menu -->
