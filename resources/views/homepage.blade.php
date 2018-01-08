@@ -8,10 +8,11 @@
             <h3>save water</h3>
             <h1>drink wine</h1>
             <br>
-            <a class="btn btn-primary" href="#main_content" role="button">Khám phá ngay</a>
+            <a class="btn btn-primary" href="#scroll_point" role="button">Khám phá ngay</a>
         </div>
     </section>
     <section class="main_content" ng-controller="HomepageController" id="main_content">
+        <span id="scroll_point"></span>
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
             <!-- Wrapper for slides -->
@@ -22,7 +23,7 @@
                             <img src="{{ asset('public/frontend/img/blog_01.jpg') }}" alt="ảnh minh họa 1">
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12">
-                            <a href="javascript:void(0);">
+                            <a href="javascript:void(0);" class="link-primary">
                                 <h1>Sed a lacus vel eros mollis ullamcorper id ac sapien</h1>
                             </a>
                             <article class="description">
@@ -39,7 +40,7 @@
                             <img src="{{ asset('public/frontend/img/blog_02.jpg') }}" alt="ảnh minh họa 1">
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12">
-                            <a href="javascript:void(0);">
+                            <a href="javascript:void(0);" class="link-primary">
                                 <h1>Sed a lacus vel eros mollis ullamcorper id ac sapien</h1>
                             </a>
                             <article class="description">
@@ -363,13 +364,13 @@
 
         <section class="container-fluid" id="tasting_wine">
             <div class="row">
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="title_big">
+                <div class="left col-md-4 col-sm-6 col-xs-12 col-md-offset-1 col-sm-offset-1">
+                    <div class="title_mid">
                         Sản phẩm khuyến mãi
                     </div>
 
                     <h2>Maecenas pulvinar tristique malesuada</h2>
-                    <p>Vivamus ac tempor quam. Maecenas pulvinar tristique malesuada. Donec euismod nibh et dapibus tempor. Nullam elit nulla, rutrum eget eros sollicitudin, ullamcorper ultrices orci. Suspendisse potenti. Ut porta bibendum nibh eu viverra. Sed vel magna ac ligula finibus fermentum fringilla eu lectus. Sed elit ante, ornare nec dui at, molestie congue arcu. Nam at imperdiet neque, non tempus libero. Praesent dolor odio, mattis vulputate est ut, vulputate sollicitudin metus. Nulla id metus turpis. Phasellus non diam nisi. Duis vitae felis et magna elementum dictum. Pellentesque in enim fringilla, ullamcorper lacus et, imperdiet erat. Quisque sollicitudin ut nisi quis ultrices. Mauris rutrum erat a velit interdum, vitae vulputate leo dictum.</p>
+                    <p>Vivamus ac tempor quam. Maecenas pulvinar tristique malesuada. Donec euismod nibh et dapibus tempor. Nullam elit nulla, rutrum eget eros sollicitudin, ullamcorper ultrices orci. Suspendisse potenti. Ut porta bibendum nibh eu viverra. Sed vel magna ac ligula finibus fermentum fringilla eu lectus. Sed elit ante, ornare nec dui at, molestie congue arcu. Nam at imperdiet neque, non tempus libero. Praesent dolor odio, mattis vulputate est ut, vulputate sollicitudin metus. Nulla id metus turpis. Phasellus non diam nisi. Duis vitae felis et magna elementum dictum. Pellentesque in enim fringilla, ullamcorper lacus et, imperdiet erat.</p>
 
                     <a class="btn btn-primary" href="#" role="button">Đăng ký thử ngay bây giờ</a>
                 </div>
@@ -391,7 +392,7 @@
                             <br>
                             <p>Donec et nulla quam. Pellentesque euismod nunc ac mollis suscipit. Vestibulum posuere fermentum scelerisque. Mauris lacus tortor, porttitor ut laoreet in, maximus vitae urna. In nec lectus rhoncus, blandit dolor in, blandit magna. Cras et justo orci. Sed in lectus vel diam congue pulvinar. Suspendisse at nunc tincidunt, imperdiet sapien eget, lacinia lectus. Quisque eu cursus sapien, eget posuere sapien. Nulla facilisi. Vestibulum enim libero, auctor in augue eu, facilisis laoreet metus.</p>
                             <br>
-                            <a href="#" class="pull-right">Xem thêm <i class="fa fa-angle-double-right" aria-hidden="false"></i> </a>
+                            <a href="#" class="btn btn-primary">Xem thêm <i class="fa fa-angle-double-right" aria-hidden="false"></i> </a>
                         </div>
                     </div>
 
@@ -404,7 +405,7 @@
                             <br>
                             <p>Donec et nulla quam. Pellentesque euismod nunc ac mollis suscipit. Vestibulum posuere fermentum scelerisque. Mauris lacus tortor, porttitor ut laoreet in, maximus vitae urna. In nec lectus rhoncus, blandit dolor in, blandit magna. Cras et justo orci. Sed in lectus vel diam congue pulvinar. Suspendisse at nunc tincidunt, imperdiet sapien eget, lacinia lectus. Quisque eu cursus sapien, eget posuere sapien. Nulla facilisi. Vestibulum enim libero, auctor in augue eu, facilisis laoreet metus.</p>
                             <br>
-                            <a href="#" class="pull-right">Xem thêm <i class="fa fa-angle-double-right" aria-hidden="false"></i> </a>
+                            <a href="#" class="btn btn-primary">Xem thêm <i class="fa fa-angle-double-right" aria-hidden="false"></i> </a>
                         </div>
                     </div>
 
@@ -417,7 +418,7 @@
                             <br>
                             <p>Donec et nulla quam. Pellentesque euismod nunc ac mollis suscipit. Vestibulum posuere fermentum scelerisque. Mauris lacus tortor, porttitor ut laoreet in, maximus vitae urna. In nec lectus rhoncus, blandit dolor in, blandit magna. Cras et justo orci. Sed in lectus vel diam congue pulvinar. Suspendisse at nunc tincidunt, imperdiet sapien eget, lacinia lectus. Quisque eu cursus sapien, eget posuere sapien. Nulla facilisi. Vestibulum enim libero, auctor in augue eu, facilisis laoreet metus.</p>
                             <br>
-                            <a href="#" class="text-right">Xem thêm <i class="fa fa-angle-double-right" aria-hidden="false"></i> </a>
+                            <a href="#" class="btn btn-primary">Xem thêm <i class="fa fa-angle-double-right" aria-hidden="false"></i> </a>
                         </div>
                     </div>
 
@@ -427,8 +428,9 @@
 
         <section class="container-fluid" id="about">
             <div class="row">
-                <div class="left col-md-6 col-sm-6 hidden-xs"></div>
-                <div class="right col-md-6 col-sm-6 col-xs-12">
+
+                <div class="right col-md-6 col-sm-6 col-xs-12 col-md-offset-6 col-sm-offset-6">
+                    <div class="left hidden-xs"></div>
                     <div class="title_big">
                         Về chúng tôi
                     </div>
@@ -438,20 +440,23 @@
 
                     <div class="row">
                         <div class="col-md-4 col-sm-4 col-xs-12">
-                            <i class="fa fa-3x fa-mobile-phone" aria-hidden="false"></i>
+                            <i class="fa fa-3x fa-phone" aria-hidden="false"></i>
                             <br>
+                            <h4>Hỗ trợ qua điện thoại</h4>
                             <p>Suspendisse potenti. Cras molestie mi sed iaculis varius. Maecenas fermentum semper sagittis. Sed eu mattis tellus. Mauris dolor ligula, pellentesque id vestibulum nec, consectetur sed sem. Aenean at ante enim. Quisque dapibus ligula ut erat laoreet aliquet. Pellentesque dictum magna ante, venenatis scelerisque risus pretium eget. Nullam et orci vitae felis rutrum tempor. Vestibulum id maximus lacus.</p>
                         </div>
 
                         <div class="col-md-4 col-sm-4 col-xs-12">
-                            <i class="fa fa-3x fa-mobile-phone" aria-hidden="false"></i>
+                            <i class="fa fa-3x fa-truck" aria-hidden="false"></i>
                             <br>
+                            <h4>Miễn phí giao hàng</h4>
                             <p>Suspendisse potenti. Cras molestie mi sed iaculis varius. Maecenas fermentum semper sagittis. Sed eu mattis tellus. Mauris dolor ligula, pellentesque id vestibulum nec, consectetur sed sem. Aenean at ante enim. Quisque dapibus ligula ut erat laoreet aliquet. Pellentesque dictum magna ante, venenatis scelerisque risus pretium eget. Nullam et orci vitae felis rutrum tempor. Vestibulum id maximus lacus.</p>
                         </div>
 
                         <div class="col-md-4 col-sm-4 col-xs-12">
-                            <i class="fa fa-3x fa-mobile-phone" aria-hidden="false"></i>
+                            <i class="fa fa-3x fa-user-o" aria-hidden="false"></i>
                             <br>
+                            <h4>Hỗ trợ người mua hàng</h4>
                             <p>Suspendisse potenti. Cras molestie mi sed iaculis varius. Maecenas fermentum semper sagittis. Sed eu mattis tellus. Mauris dolor ligula, pellentesque id vestibulum nec, consectetur sed sem. Aenean at ante enim. Quisque dapibus ligula ut erat laoreet aliquet. Pellentesque dictum magna ante, venenatis scelerisque risus pretium eget. Nullam et orci vitae felis rutrum tempor. Vestibulum id maximus lacus.</p>
                         </div>
                     </div>

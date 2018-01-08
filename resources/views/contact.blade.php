@@ -56,4 +56,18 @@
         <!-- InstanceEndEditable -->
     </section>
     <script src="{{ asset ("public/frontend/app/controllers/detail-blog.js") }}"></script>
+    <script>
+        $(window).scroll(function () {
+            //if you hard code, then use console
+            //.log to determine when you want the
+            //nav bar to stick.
+            'use strict';
+            if ($(window).scrollTop() > 100) {
+                $('.main_content').css( 'padding-top' , '280px');
+            }
+            if ($(window).scrollTop() < 100) {
+                $('.main_content').css( 'padding-top' , '0');
+            }
+        });
+    </script>
 @endsection

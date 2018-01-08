@@ -3,8 +3,55 @@
     <link href="{{ asset("public/frontend/css/intro.css")}}" rel="stylesheet" type="text/css" />
     <section class="main_content" ng-controller="IntroduceController">
         <!-- InstanceBeginEditable name="content" -->
+        <section class="container-fluid" id="about">
+            <div class="row">
+
+                <div class="right col-md-6 col-sm-6 col-xs-12 col-md-offset-6 col-sm-offset-6">
+                    <div class="left hidden-xs"></div>
+                    <div class="title_big">
+                        Về chúng tôi
+                    </div>
+
+                    <p>Suspendisse potenti. Cras molestie mi sed iaculis varius. Maecenas fermentum semper sagittis. Sed eu mattis tellus. Mauris dolor ligula, pellentesque id vestibulum nec, consectetur sed sem. Aenean at ante enim. Quisque dapibus ligula ut erat laoreet aliquet. Pellentesque dictum magna ante, venenatis scelerisque risus pretium eget. Nullam et orci vitae felis rutrum tempor. Vestibulum id maximus lacus.</p>
+                    <p>Donec et nulla quam. Pellentesque euismod nunc ac mollis suscipit. Vestibulum posuere fermentum scelerisque. Mauris lacus tortor, porttitor ut laoreet in, maximus vitae urna. In nec lectus rhoncus, blandit dolor in, blandit magna. Cras et justo orci. Sed in lectus vel diam congue pulvinar. Suspendisse at nunc tincidunt, imperdiet sapien eget, lacinia lectus. Quisque eu cursus sapien, eget posuere sapien. Nulla facilisi. Vestibulum enim libero, auctor in augue eu, facilisis laoreet metus.</p>
+
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <i class="fa fa-3x fa-phone" aria-hidden="false"></i>
+                            <br>
+                            <h4>Hỗ trợ qua điện thoại</h4>
+                            <p>Suspendisse potenti. Cras molestie mi sed iaculis varius. Maecenas fermentum semper sagittis. Sed eu mattis tellus. Mauris dolor ligula, pellentesque id vestibulum nec, consectetur sed sem. Aenean at ante enim. Quisque dapibus ligula ut erat laoreet aliquet. Pellentesque dictum magna ante, venenatis scelerisque risus pretium eget. Nullam et orci vitae felis rutrum tempor. Vestibulum id maximus lacus.</p>
+                        </div>
+
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <i class="fa fa-3x fa-truck" aria-hidden="false"></i>
+                            <br>
+                            <h4>Miễn phí giao hàng</h4>
+                            <p>Suspendisse potenti. Cras molestie mi sed iaculis varius. Maecenas fermentum semper sagittis. Sed eu mattis tellus. Mauris dolor ligula, pellentesque id vestibulum nec, consectetur sed sem. Aenean at ante enim. Quisque dapibus ligula ut erat laoreet aliquet. Pellentesque dictum magna ante, venenatis scelerisque risus pretium eget. Nullam et orci vitae felis rutrum tempor. Vestibulum id maximus lacus.</p>
+                        </div>
+
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <i class="fa fa-3x fa-user-o" aria-hidden="false"></i>
+                            <br>
+                            <h4>Hỗ trợ người mua hàng</h4>
+                            <p>Suspendisse potenti. Cras molestie mi sed iaculis varius. Maecenas fermentum semper sagittis. Sed eu mattis tellus. Mauris dolor ligula, pellentesque id vestibulum nec, consectetur sed sem. Aenean at ante enim. Quisque dapibus ligula ut erat laoreet aliquet. Pellentesque dictum magna ante, venenatis scelerisque risus pretium eget. Nullam et orci vitae felis rutrum tempor. Vestibulum id maximus lacus.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <div class="container">
             <div class="row">
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane" id="<% item.slug %>" ng-repeat="item in introduce" active-on-first-item>
+                            <img src="{{ asset('storage/app') }}/<% item.image %>" class="cover" alt="<% item.title %>">
+                            <h3><% item.title %></h3>
+                            <p ng-bind-html="$sce.trustAsHtml(item.content)"></p>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="nav_side col-md-3 col-sm-3 col-xs-12">
                     <h3>Giới thiệu</h3>
                     <ul class="nav nav-pills nav-stacked" role="tablist">
@@ -15,16 +62,6 @@
                         <li role="presentation"><a href="#dieu-khoan" aria-controls="dieu-khoan" role="tab" data-toggle="tab">Điều khoản</a></li>
                         <li role="presentation"><a href="#thu-vien-anh" aria-controls="thu-vien-anh" role="tab" data-toggle="tab">Thư viện hình ảnh</a></li>
                     </ul>
-                </div>
-
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane" id="<% item.slug %>" ng-repeat="item in introduce" active-on-first-item>
-                            <img src="{{ asset('storage/app') }}/<% item.image %>" class="cover" alt="<% item.title %>">
-                            <h3><% item.title %></h3>
-                            <p ng-bind-html="$sce.trustAsHtml(item.content)"></p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

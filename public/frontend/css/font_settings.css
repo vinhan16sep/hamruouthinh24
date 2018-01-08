@@ -12,9 +12,6 @@ body{
 	font-family: 'webFont_n';
 }
 
-
-
-
 h1{font-size:2.25em;}
 h2{font-size:1.875em;}
 h3{font-size:1.5em;}
@@ -45,9 +42,12 @@ span.productName{
 	font-size: 1.25em;
 }
 
+#about .right div[class*="col-"] h4{
+	font-family: 'webFont_b';
+}
+
 .price{
 	font-family: 'webFont_b';
-	color: #b2479e;
 	font-size: 1.25em;
 }
 
@@ -58,23 +58,18 @@ span.productName{
 	padding-left: 5px;
 }
 
-
-
 .title_big{
 	font-family: 'webFont_b';
 	font-size: 1.5em;
+	text-transform: uppercase;
 }
 
-.profit .media-heading{
+.title_mid{
 	font-family: 'webFont_b';
+	font-size: 1em;
 	text-transform: uppercase;
 }
 
 .footer h3{
 	font-family: 'webFont_b';
-}
-
-.product_view .badge_KM{
-	font-family: 'webFont_b';
-	font-size: 1.5em;
 }
