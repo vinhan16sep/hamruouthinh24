@@ -60,7 +60,11 @@ Route::get('/thuong-hieu/{target}', function () {
     return view('list-target-products');
 });
 
-Route::get('/danh-muc/{target}', function () {
+Route::get('/loai-san-pham/{target}', function () {
+    return view('list-target-products');
+});
+
+Route::get('/dong-san-pham/{target}', function () {
     return view('list-target-products');
 });
 

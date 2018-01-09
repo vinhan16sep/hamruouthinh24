@@ -8,7 +8,7 @@
             url: API_URL + 'introduce'
         }).then(function(success){
             $scope.introduce = success.data;
-            console.log($scope.introduce);
+            // console.log($scope.introduce);
         }, function(error){
 
         });

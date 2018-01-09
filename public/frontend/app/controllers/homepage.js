@@ -1,12 +1,12 @@
 (function(){
-    app.controller('HomepageController', function($scope, $http, API_URL, $uibModal, $mdDialog, menuProductFactory, productsFactory){
+    app.controller('HomepageController', function($scope, $http, API_URL, $uibModal, $mdDialog, menuProductFactory, productsFactory, listNewsFactory, $sce){
         $scope.products = [];
         $scope.discounts = [];
         $scope.menuProduct = [];
         $scope.latestAdvises = [];
-
+        $scope.news = [];
+        $scope.$sce = $sce;
         var alert;
-
         // Fetch all products
         productsFactory.products()
             .then(function(success){
@@ -21,6 +21,16 @@
             url: API_URL + 'discount_product'
         }).then(function(success){
             $scope.discounts = success.data;
+        }, function(error){
+
+        });
+
+        // Fetch introduce
+        $http({
+            method: 'GET',
+            url: API_URL + 'introduce'
+        }).then(function(success){
+            $scope.introduce = success.data;
         }, function(error){
 
         });
@@ -56,6 +66,14 @@
                 size: 'lg'
             }).result.then(function(){}, function(res){});
         };
+
+        // Fetch news
+        listNewsFactory.news()
+            .then(function (success) {
+                $scope.news = success.data;
+            }, function (error) {
+
+            });
 
     });
 })();

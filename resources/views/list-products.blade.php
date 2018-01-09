@@ -12,112 +12,18 @@
 
                         <!-- List group -->
                         <ul class="list-group">
-                            <li class="list-group-item">
-                                <a href="javascript:void(0);">Rượu</a>
+                            <li class="list-group-item" ng-repeat="type in menuProduct.type">
+                                <a href="{{ url('loai-san-pham') }}/<% type.slug %>"  target="_self"><% type.title %></a>
                                 <ul class="list-group">
-                                    <li class="list-group-item">
-                                        <a href="javascript:void(0);">Rượu vang</a>
+                                    <li class="list-group-item" ng-repeat="kind in menuProduct.kind" ng-hide="kind.type_id != type.id">
+                                        <a href="{{ url('dong-san-pham') }}/<% kind.slug %>"  target="_self"><% kind.title %></a>
                                         <ul class="list-group">
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Vang đỏ</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Vang nổ</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Vang ngọt</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Vang khác</a>
+                                            <li class="list-group-item" ng-repeat="trademarks in menuProduct.trademarks" ng-hide="trademarks.kind_id != kind.id">
+                                                <a href="{{ url('thuong-hieu') }}/<% trademarks.slug %>" target="_self"><% trademarks.name %></a>
                                             </li>
                                         </ul>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="javascript:void(0);">Rượu mạnh</a>
-                                        <ul class="list-group">
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Chivas</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Whiskey</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Ballentines</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Rượu mạnh khác</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="javascript:void(0);">Rượu pha chế</a>
-                                        <ul class="list-group">
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Rượu pha chế I</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Rượu pha chế II</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Rượu pha chế III</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Rượu pha chế khác</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="javascript:void(0);">Rượu khác</a>
                                     </li>
                                 </ul>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="javascript:void(0);">Bia</a>
-                                <ul class="list-group">
-                                    <li class="list-group-item">
-                                        <a href="javascript:void(0);">Bia I</a>
-                                        <ul class="list-group">
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Bia I</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Bia II</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Bia III</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Bia khác</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="javascript:void(0);">Bia II</a>
-                                        <ul class="list-group">
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Bia I</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Bia II</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Bia III</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Bia khác</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="javascript:void(0);">Bia khác</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="javascript:void(0);">Bánh kẹo</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="javascript:void(0);">Sản phẩm khác</a>
                             </li>
                         </ul>
                     </div>
@@ -200,170 +106,36 @@
                     <img class="cover" src="{{ asset('public/frontend/img/cover/cover_01.jpg') }}" alt="cover">
 
                     <div class="row" id="list-product">
-                        <div class="item col-md-4 col-sm-6 col-xs-12">
+                        <div class="item col-md-4 col-sm-6 col-xs-12" ng-repeat="product in products">
                             <div class="inner">
                                 <div class="mask">
-                                    <img src="{{ asset('public/frontend/img/product/001.png') }}" alt="ảnh rượu 1">
+                                    <img src="{{ asset('stogare/app/type/') }}<% product.image %>" alt="<% product.slug %>">
                                 </div>
 
-                                <span class="badge">-30%</span>
+                                <span class="badge">- <% product.product_percent %>%</span>
 
-                                <span class="productName">Tên sản phẩm rượu</span>
-                                <h4 class="productYear">1968</h4>
-                                <h3 class="productPrice">1.968.000 vnđ</h3>
+                                <span class="productName"><% product.name %></span>
+                                <h4 class="productYear"><% product.year %></h4>
+                                <h3 class="productPrice"><% product.price %> vnđ</h3>
                                 <br>
                                 <a class="btn btn-primary" href="#" role="button">Thử rượu miễn phí</a>
 
                                 <div class="hover">
-                                    <span class="productName">Tên sản phẩm rượu</span>
-                                    <h4 class="productYear">1968</h4>
-                                    <h3 class="productPrice">1.968.000 vnđ</h3>
+                                    <span class="productName"><% product.name %></span>
+                                    <h4 class="productYear"><% product.year %></h4>
+                                    <h3 class="productPrice"><% product.price %> vnđ</h3>
                                     <br>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam vel nulla id bibendum. Vestibulum id diam bibendum velit sagittis imperdiet. Fusce in gravida urna.</p>
+                                    <p ng-bind-html="$sce.trustAsHtml(product.description)"></p>
                                     <br>
-                                    <a class="btn btn-primary" href="#" role="button">Thêm vào giỏ hàng</a>
+                                    <a class="btn btn-primary" href="#" role="button" ng-click="addToCart(product.id)">Thêm vào giỏ hàng</a>
                                     <br>
-                                    <a class="btn btn-primary" href="#" role="button">Xem chi tiết</a>
+                                    <a class="btn btn-primary" href="{{ url('/san-pham/chi-tiet') }}/<% product.id %>" role="button"  target="_self" >Xem chi tiết</a>
                                     <br>
                                     <a class="btn btn-primary" href="#" role="button">Thử rượu miên phí</a>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="item col-md-4 col-sm-6 col-xs-12">
-                            <div class="inner">
-                                <div class="mask">
-                                    <img src="{{ asset('public/frontend/img/product/001.png') }}" alt="ảnh rượu 1">
-                                </div>
-                                <span class="productName">Tên sản phẩm rượu</span>
-                                <h4 class="productYear">1968</h4>
-                                <h3 class="productPrice">1.968.000 vnđ</h3>
-                                <br>
-                                <a class="btn btn-primary" href="#" role="button">Thử rượu miễn phí</a>
-
-                                <div class="hover">
-                                    <span class="productName">Tên sản phẩm rượu</span>
-                                    <h4 class="productYear">1968</h4>
-                                    <h3 class="productPrice">1.968.000 vnđ</h3>
-                                    <br>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam vel nulla id bibendum. Vestibulum id diam bibendum velit sagittis imperdiet. Fusce in gravida urna.</p>
-                                    <br>
-                                    <a class="btn btn-primary" href="#" role="button">Thêm vào giỏ hàng</a>
-                                    <br>
-                                    <a class="btn btn-primary" href="#" role="button">Xem chi tiết</a>
-                                    <br>
-                                    <a class="btn btn-primary" href="#" role="button">Thử rượu miên phí</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item col-md-4 col-sm-6 col-xs-12">
-                            <div class="inner">
-                                <div class="mask">
-                                    <img src="{{ asset('public/frontend/img/product/001.png') }}" alt="ảnh rượu 1">
-                                </div>
-                                <span class="productName">Tên sản phẩm rượu</span>
-                                <h4 class="productYear">1968</h4>
-                                <h3 class="productPrice">1.968.000 vnđ</h3>
-                                <br>
-                                <a class="btn btn-primary" href="#" role="button">Thử rượu miễn phí</a>
-
-                                <div class="hover">
-                                    <span class="productName">Tên sản phẩm rượu</span>
-                                    <h4 class="productYear">1968</h4>
-                                    <h3 class="productPrice">1.968.000 vnđ</h3>
-                                    <br>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam vel nulla id bibendum. Vestibulum id diam bibendum velit sagittis imperdiet. Fusce in gravida urna.</p>
-                                    <br>
-                                    <a class="btn btn-primary" href="#" role="button">Thêm vào giỏ hàng</a>
-                                    <br>
-                                    <a class="btn btn-primary" href="#" role="button">Xem chi tiết</a>
-                                    <br>
-                                    <a class="btn btn-primary" href="#" role="button">Thử rượu miên phí</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item col-md-4 col-sm-6 col-xs-12">
-                            <div class="inner">
-                                <div class="mask">
-                                    <img src="{{ asset('public/frontend/img/product/001.png') }}" alt="ảnh rượu 1">
-                                </div>
-                                <span class="productName">Tên sản phẩm rượu</span>
-                                <h4 class="productYear">1968</h4>
-                                <h3 class="productPrice">1.968.000 vnđ</h3>
-                                <br>
-                                <a class="btn btn-primary" href="#" role="button">Thử rượu miễn phí</a>
-
-                                <div class="hover">
-                                    <span class="productName">Tên sản phẩm rượu</span>
-                                    <h4 class="productYear">1968</h4>
-                                    <h3 class="productPrice">1.968.000 vnđ</h3>
-                                    <br>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam vel nulla id bibendum. Vestibulum id diam bibendum velit sagittis imperdiet. Fusce in gravida urna.</p>
-                                    <br>
-                                    <a class="btn btn-primary" href="#" role="button">Thêm vào giỏ hàng</a>
-                                    <br>
-                                    <a class="btn btn-primary" href="#" role="button">Xem chi tiết</a>
-                                    <br>
-                                    <a class="btn btn-primary" href="#" role="button">Thử rượu miên phí</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item col-md-4 col-sm-6 col-xs-12">
-                            <div class="inner">
-                                <div class="mask">
-                                    <img src="{{ asset('public/frontend/img/product/001.png') }}" alt="ảnh rượu 1">
-                                </div>
-                                <span class="productName">Tên sản phẩm rượu</span>
-                                <h4 class="productYear">1968</h4>
-                                <h3 class="productPrice">1.968.000 vnđ</h3>
-                                <br>
-                                <a class="btn btn-primary" href="#" role="button">Thử rượu miễn phí</a>
-
-                                <div class="hover">
-                                    <span class="productName">Tên sản phẩm rượu</span>
-                                    <h4 class="productYear">1968</h4>
-                                    <h3 class="productPrice">1.968.000 vnđ</h3>
-                                    <br>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam vel nulla id bibendum. Vestibulum id diam bibendum velit sagittis imperdiet. Fusce in gravida urna.</p>
-                                    <br>
-                                    <a class="btn btn-primary" href="#" role="button">Thêm vào giỏ hàng</a>
-                                    <br>
-                                    <a class="btn btn-primary" href="#" role="button">Xem chi tiết</a>
-                                    <br>
-                                    <a class="btn btn-primary" href="#" role="button">Thử rượu miên phí</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item col-md-4 col-sm-6 col-xs-12">
-                            <div class="inner">
-                                <div class="mask">
-                                    <img src="{{ asset('public/frontend/img/product/001.png') }}" alt="ảnh rượu 1">
-                                </div>
-                                <span class="productName">Tên sản phẩm rượu</span>
-                                <h4 class="productYear">1968</h4>
-                                <h3 class="productPrice">1.968.000 vnđ</h3>
-                                <br>
-                                <a class="btn btn-primary" href="#" role="button">Thử rượu miễn phí</a>
-
-                                <div class="hover">
-                                    <span class="productName">Tên sản phẩm rượu</span>
-                                    <h4 class="productYear">1968</h4>
-                                    <h3 class="productPrice">1.968.000 vnđ</h3>
-                                    <br>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam vel nulla id bibendum. Vestibulum id diam bibendum velit sagittis imperdiet. Fusce in gravida urna.</p>
-                                    <br>
-                                    <a class="btn btn-primary" href="#" role="button">Thêm vào giỏ hàng</a>
-                                    <br>
-                                    <a class="btn btn-primary" href="#" role="button">Xem chi tiết</a>
-                                    <br>
-                                    <a class="btn btn-primary" href="#" role="button">Thử rượu miên phí</a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class="row" ng-if="isEmpty(products)">
                         <div class="col-md-12 col-sm-12 col-xs-12">
