@@ -53,7 +53,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:void(0);">
+                    <a href="" data-toggle="modal" data-target="#user_login">
                         <i class="fa fa-user-o" aria-hidden="false"></i> Xin chào, Khách hàng
                     </a>
                 </li>

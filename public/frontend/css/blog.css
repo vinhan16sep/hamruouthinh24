@@ -1,7 +1,9 @@
+.main_content{
+	margin-top: 50px;
+}
+
 .nav_side h3{
-	color: #b2479b;
 	padding-bottom: 7px;
-	border-bottom: 2px solid #b2479b;
 }
 
 .nav_side ul li{
@@ -14,6 +16,35 @@
 	color: #333;
 }
 
-.nav_side ul li a:hover{
-	color: #b2479b;
+.container .row .inner{
+	padding: 15px;
+	background-color: #fff;
+}
+
+.container .row .inner img{
+	width: 100%;
+}
+
+.container .row .inner > a:first-of-type{
+	color: #c1272d;
+}
+
+.container .row .inner h3{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	line-height: 1.25em;
+	max-height: 4.5em;
+	-webkit-line-clamp:3;
+	-webkit-box-orient: vertical;
+}
+
+.container .row .inner p{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	line-height: 1.25em;
+	max-height: 5em;
+	-webkit-line-clamp:4;
+	-webkit-box-orient: vertical;
 }

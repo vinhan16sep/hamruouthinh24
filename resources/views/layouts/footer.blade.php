@@ -61,7 +61,7 @@
           <div class="input-group">
               <input type="text" class="form-control" placeholder="Email của khách hàng">
               <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Đăng ký</button>
+                <button class="btn btn-primary" type="button">Đăng ký</button>
               </span>
           </div><!-- /input-group -->
 
@@ -88,10 +88,10 @@
   <section class="container-fluid copyright">
     <section class="container">
       <div class="col-md-6 col-sm-6 col-xs-12">
-        Copyright 2018 Hầm rượu Thịnh 24. All Rights Reversed.
+        Copyright 2018 hamruouthinh24. All Rights Reversed.
       </div>
       <div class="col-md-6 col-sm-6 col-xs-12 text-right">
-        {{ HTML::image('public/frontend/img/payment-method.png') }}
+
       </div>
     </section>
   </section>

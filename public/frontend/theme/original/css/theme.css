@@ -2,7 +2,9 @@
 CSS for theme original
  */
 
-/* HEADER */
+/*
+---------- HEADER ----------
+*/
 
 .top_header{
     background: #c1272d;
@@ -16,7 +18,17 @@ CSS for theme original
     background-image: url(../img/logo_resize.png);
 }
 
-/* BODY */
+.fix_header{
+    background: #c1272d;
+}
+
+.fix_header .nav_list a, .fix_header .nav_list a:hover{
+    color: #fff;
+}
+
+/*
+---------- BODY ----------
+*/
 
 .big_cover{
     background-image: url(../img/big_cover.jpg);
@@ -68,6 +80,14 @@ span.productName{
     background-image: url(../img/tasting_wine.jpg);
 }
 
+#news .row .inner a{
+    color: #c1272d;
+}
+
+#news .row .inner a.btn{
+    color: #fff;
+}
+
 #about .left{
     background-image: url(../img/big_cover.jpg);
 }
@@ -76,7 +96,22 @@ span.productName{
     background-color: #c1272d;
 }
 
-/* FOOTER */
+.nav_side h3{
+    color: #c1272d;
+    border-bottom: 2px solid #c1272d;
+}
+
+.nav-pills a{
+    color: #c1272d;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
+    background-color: #c1272d;
+}
+
+/*
+---------- FOOTER ----------
+*/
 
 .subscribe h3{
     color: #c1272d;
@@ -87,6 +122,10 @@ span.productName{
     color: #fff;
 }
 
+.footer{
+    background-color: #fff;
+}
+
 .footer h3{
     color: #c1272d;
 }
@@ -94,4 +133,17 @@ span.productName{
 .footer .copyright{
     background-color: #c1272d;
     color: #fff;
+}
+
+/*
+---------- TEMPLATE ----------
+*/
+
+.modal .modal-header{
+    background-color: #c1272d;
+    color: #fff;
+}
+
+.price{
+    color: #c1272d;
 }
