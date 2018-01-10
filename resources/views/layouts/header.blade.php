@@ -53,8 +53,14 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" data-toggle="modal" data-target="#user_login">
-                        <i class="fa fa-user-o" aria-hidden="false"></i> Xin chào, Khách hàng
+                    <a href="javascript:void(0);">
+                        <a href="#" data-toggle="modal" data-target="#user_login">
+                            <i class="fa fa-user-o" aria-hidden="false"></i> Đăng nhập
+                        </a>
+                        hoặc
+                        <a href="#" data-toggle="modal" data-target="#user_register">
+                            Đăng ký
+                        </a>
                     </a>
                 </li>
                 <li>
@@ -65,47 +71,6 @@
             </ul>
         </div>
 
-        <div class="nav col-md-10 col-xs-6 hidden">
-            <div class="user pull-right">
-                <div class="icon pull-left">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="wishlist.html">
-                                <i class="fa fa-2x fa-heart-o"></i> <span class="badge">0</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ url('xem-gio-hang') }}" target="_self">
-                                <i class="fa fa-2x fa-shopping-cart"></i> <span class="badge" ng-bind="countAddedProducts"></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="login pull-left">
-                    @if (Auth::guest())
-                        <div class="dropdown login_dropdown">
-                            <a href="" data-toggle="modal" data-target="#user_login"> <strong>Đăng nhập</strong> </a>
-                            hoặc
-                            <a href="" data-toggle="modal" data-target="#user_register"> <strong>Đăng ký</strong> </a>
-                        </div>
-                    @else
-                        Xin chào, <a href="{{ url('thong-tin-ca-nhan') }}" target="_self"><strong>{{ Auth::user()->name }}</strong></a>
-                        <br>
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Thoát
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    @endif
-                </div>
-            </div>
-            <br>
-            <br>
-
-        </div>
         <div class="nav_list">
             <ul class="list-inline">
                 <li>

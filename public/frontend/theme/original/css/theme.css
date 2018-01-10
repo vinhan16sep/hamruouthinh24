@@ -109,6 +109,27 @@ span.productName{
     background-color: #c1272d;
 }
 
+h2.productName{
+    color: #c1272d;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+    border:1px solid #c1272d ;
+    border-bottom-color: transparent;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #c1272d;
+}
+
+.nav-tabs>li>a:hover {
+    border-color: #eee #eee #c1272d;
+}
+
+.comments_posts_list .media .media-body .media-heading{
+    color: #c1272d;
+}
+
 /*
 ---------- FOOTER ----------
 */
