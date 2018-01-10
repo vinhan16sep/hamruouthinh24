@@ -24,7 +24,7 @@
                                 <label for="type" class="col-md-2 control-label">Loại sản phẩm</label>
 
                                 <div class="col-md-4">
-                                    <select name="type_id"  class="form-control type" autofocus>
+                                    <select name="type_id"  class="form-control type" required>
                                         <option value="">---------------------Chọn loại sản phẩm---------------------</option>
                                         @foreach($type as $value)
                                             <option value="{{ $value->id }}">{{ $value->title }}</option>
@@ -37,7 +37,7 @@
                                 <label for="kind" class="col-md-2 control-label">Loại sản phẩm</label>
 
                                 <div class="col-md-4">
-                                    <select name="kind_id"  class="form-control kind">
+                                    <select name="kind_id"  class="form-control kind" required>
                                         <option class="kind_option" value="">-------------------Chọn loại sản phẩm trước -------------------</option>
                                     </select>
                                 </div>
@@ -47,7 +47,7 @@
                                 <label for="trademark" class="col-md-2 control-label">Thương hiệu sản phẩm</label>
 
                                 <div class="col-md-4">
-                                    <select name="trademark_id"  class="form-control trademark">
+                                    <select name="trademark_id"  class="form-control trademark" required>
                                         <option class="trademark_option" value="">-------------------Chọn loại sản phẩm trước -------------------</option>
                                     </select>
                                 </div>
@@ -101,13 +101,13 @@
                                     <input type="file" id="image" name="image" required >
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('concentration') ? ' has-error' : '' }}">
-                                <label for="concentration" class="col-md-2 control-label">Nộng độ</label>
+                            <div class="form-group{{ $errors->has('concentrations') ? ' has-error' : '' }}">
+                                <label for="concentrations" class="col-md-2 control-label">Nộng độ</label>
                                 <div class="col-md-8">
-                                    <input id="concentration" type="text" class="form-control" name="concentration" value="{{ old('concentration') }}" required>
-                                    @if ($errors->has('concentration'))
+                                    <input id="concentrations" type="text" class="form-control" name="concentrations" value="{{ old('concentrations') }}">
+                                    @if ($errors->has('concentrations'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('concentration') }}</strong>
+                                        <strong>{{ $errors->first('concentrations') }}</strong>
                                     </span>
                                     @endif
                                 </div>
@@ -169,13 +169,13 @@
                             </div>
                             <div class="form-group{{ $errors->has('origin') ? ' has-error' : '' }}">
                                 <label for="origin" class="col-md-2 control-label">Xuất xứ</label>
-                                <div class="col-md-8">
-                                    <input id="origin" type="text" class="form-control" name="origin" value="{{ old('origin') }}">
-                                    @if ($errors->has('origin'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('origin') }}</strong>
-                                    </span>
-                                    @endif
+                                <div class="col-md-4">
+                                    <select name="origin_id"  class="form-contro" autofocus>
+                                        <option value="">-----------------------Chọn quốc gia-----------------------</option>
+                                        @foreach($origin as $value)
+                                            <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">

@@ -68,29 +68,11 @@
                                 </li>
                                 <li class="list-group-item">
                                     <label>Xuất xứ</label>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="optionsRadios" id="options1" value="option1">
-                                            Mỹ
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="optionsRadios" id="options2" value="option2">
-                                            Argentina
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="optionsRadios" id="options3" value="option3">
-                                            Chile
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="optionsRadios" id="options4" value="option4">
-                                            Khác
-                                        </label>
+                                    <div class="radio">
+                                        <select name="origin" ng-model="origin">
+                                            <option value="">Select</option>
+                                            <option ng-repeat="origin in origin" value="<% origin.id %>" > <% origin.name %> </option>
+                                        </select>
                                     </div>
                                 </li>
                             </ul>
@@ -109,7 +91,7 @@
                         <div class="item col-md-4 col-sm-6 col-xs-12" ng-repeat="product in products">
                             <div class="inner">
                                 <div class="mask">
-                                    <img src="{{ asset('stogare/app/type/') }}<% product.image %>" alt="<% product.slug %>">
+                                    <img src="{{ asset('storage/app') }}/<% product.image %>" alt="<% product.slug %>">
                                 </div>
 
                                 <span class="badge">- <% product.product_percent %>%</span>

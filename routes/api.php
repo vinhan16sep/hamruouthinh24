@@ -73,5 +73,9 @@ Route::prefix('v1')->group(function() {
         //tasting routes
         Route::resource('tasting', 'TastingApiController');
         Route::get('tasting_save','TastingApiController@save');
+
+        //origin routes
+        Route::resource('origin', 'OriginApiController');
+        Route::get('origin', 'OriginApiController@index')->name('origin.index');
     });
 });

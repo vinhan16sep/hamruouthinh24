@@ -47,8 +47,8 @@ class ProductApiController extends Controller
         $slug = Input::get('slug');
 
         $result = DB::table('product')
-            ->select('product.*', 'product_category.slug as category_slug')
-            ->join('product_category', 'product.category_id', '=', 'product_category.id')
+            ->select('product.*', 'product_trademark.slug as trademark_slug')
+            ->join('product_trademark', 'product.trademark_id', '=', 'product_trademark.id')
             ->where('product.slug', '=', $slug)
             ->where('product.is_deleted', '=', 0)
             ->get();
@@ -83,7 +83,7 @@ class ProductApiController extends Controller
         $query = DB::table('product');
 
         if($target == 'thuong-hieu'){
-            $query->select('product.*')
+            $query->select('product.*', 'product_trademark.slug as trademark_slug')
                 ->join('product_trademark', 'product.trademark_id', '=', 'product_trademark.id')
                 ->where('product_trademark.slug', '=', $subTarget);
         }elseif($target == 'loai-san-pham'){
@@ -208,6 +208,9 @@ class ProductApiController extends Controller
                 default:
                     break;
             }
+        }
+        if(isset($post['origin'])){
+            $query->where('product.origin_id', $post['origin']);
         }
         $query->where('product.is_deleted', '=', 0);
 

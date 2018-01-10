@@ -12,15 +12,23 @@
                         </div>
 
                         <ul class="list-group">
-                            <li class="list-group-item" ng-repeat="trademark in menuProduct.trademarks">
-                                <a href="{{ url('thuong-hieu') }}/<% trademark.slug %>" target="_self">
-                                    <% trademark.name %>
+                            <li class="list-group-item" ng-repeat="type in menuProduct.type">
+                                <a href="{{ url('loai-san-pham') }}/<% type.slug %>" target="_self">
+                                    <% type.title %>
                                 </a>
                                 <ul class="list-group">
-                                    <li class="list-group-item" ng-repeat="category in menuProduct.categories" ng-hide="category.trademark_id != trademark.id">
-                                        <a href="{{ url('danh-muc') }}/<% category.slug %>" target="_self">
-                                            <% category.name %>
-                                        </a>
+                                    <li class="list-group-item" ng-repeat="type in menuProduct.type">
+                                        <a href="{{ url('loai-san-pham') }}/<% type.slug %>"  target="_self"><% type.title %></a>
+                                        <ul class="list-group">
+                                            <li class="list-group-item" ng-repeat="kind in menuProduct.kind" ng-hide="kind.type_id != type.id">
+                                                <a href="{{ url('dong-san-pham') }}/<% kind.slug %>"  target="_self"><% kind.title %></a>
+                                                <ul class="list-group">
+                                                    <li class="list-group-item" ng-repeat="trademarks in menuProduct.trademarks" ng-hide="trademarks.kind_id != kind.id">
+                                                        <a href="{{ url('thuong-hieu') }}/<% trademarks.slug %>" target="_self"><% trademarks.name %></a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
                                     </li>
                                 </ul>
                             </li>
@@ -115,7 +123,7 @@
                                                     {{--<a class="right carousel-control" href="#itemslider_1" data-slide="next"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a><strong></strong>--}}
                                                 {{--</li>--}}
                                                 <li>
-                                                    <a href="{{ url('danh-muc') }}/<% detail.category_slug %>" target="_self">
+                                                    <a href="{{ url('thuong-hieu') }}/<% detail.category_slug %>" target="_self">
                                                         Xem tất cả
                                                     </a>
                                                 </li>

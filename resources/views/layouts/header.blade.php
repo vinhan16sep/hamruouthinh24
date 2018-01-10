@@ -58,8 +58,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:void(0);">
-                        <i class="fa fa-shopping-cart" aria-hidden="false"></i> 0
+                    <a href="{{ url('xem-gio-hang') }}" target="_self">
+                        <i class="fa fa-shopping-cart" aria-hidden="false"></i> <span class="badge" ng-bind="countAddedProducts"></span>
                     </a>
                 </li>
             </ul>
@@ -76,7 +76,7 @@
                         </li>
                         <li>
                             <a href="{{ url('xem-gio-hang') }}" target="_self">
-                                <i class="fa fa-2x fa-shopping-cart"></i> <span class="badge" ng-bind="countAddedProducts"></span>
+                                {{--<i class="fa fa-2x fa-shopping-cart"></i> <span class="badge" ng-bind="countAddedProducts"></span>--}}
                             </a>
                         </li>
                     </ul>

@@ -93,7 +93,7 @@
                               <br>
                               <strong>Thương hiệu sản phẩm:</strong> {{ $item->trademark_title }}
                               <br>
-                              <strong>Nồng độ:</strong> {{ $item->concentration }}
+                              <strong>Nồng độ:</strong> {{ $item->concentrations }}
                               <br>
                               <strong>Dung tích:</strong> {{ $item->capacity }}
                               <br>
@@ -105,7 +105,7 @@
                               <br>
                               <strong>Thể tích:</strong> {{ $item->volume }}
                               <br>
-                              <strong>Xuất xứ:</strong> {{ $item->origin }}
+                              <strong>Xuất xứ:</strong> {{ $item->origin_title }}
                           </div>
                           <div class="col-md-7">
                               <table style="width: 100%">

@@ -101,7 +101,7 @@
                         <div class="item col-md-4 col-sm-6 col-xs-12" ng-repeat="discount in discounts">
                             <div class="inner">
                                 <div class="mask">
-                                    <img src="{{ asset('stogare/app/type/') }}<% discount.image %>" alt="<% discount.slug %>">
+                                    <img src="{{ asset('storage/app/') }}/<% discount.image %>" alt="<% discount.slug %>">
                                 </div>
 
                                 <span class="badge">- <% discount.discount_percent %>%</span>
@@ -121,7 +121,7 @@
                                     <br>
                                     <a class="btn btn-primary" href="#" role="button" ng-click="addToCart(discount.id)">Thêm vào giỏ hàng</a>
                                     <br>
-                                    <a class="btn btn-primary" href="{{ url('/san-pham/chi-tiet') }}/<% discount.id %>" role="button"  target="_self" >Xem chi tiết</a>
+                                    <a class="btn btn-primary" href="{{ url('/san-pham/chi-tiet') }}/<% discount.slug %>" role="button"  target="_self" >Xem chi tiết</a>
                                     <br>
                                     <a class="btn btn-primary" href="#" role="button">Thử rượu miên phí</a>
                                 </div>

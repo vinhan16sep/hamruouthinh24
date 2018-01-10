@@ -12,15 +12,16 @@
                         </div>
 
                         <ul class="list-group">
-                            <li class="list-group-item" ng-repeat="trademark in menuProduct.trademarks">
-                                <a href="{{ url('thuong-hieu') }}/<% trademark.slug %>" target="_self">
-                                    <% trademark.name %>
-                                </a>
+                            <li class="list-group-item" ng-repeat="type in menuProduct.type">
+                                <a href="{{ url('loai-san-pham') }}/<% type.slug %>"  target="_self"><% type.title %></a>
                                 <ul class="list-group">
-                                    <li class="list-group-item" ng-repeat="category in menuProduct.categories" ng-hide="category.trademark_id != trademark.id">
-                                        <a href="{{ url('danh-muc') }}/<% category.slug %>" target="_self">
-                                            <% category.name %>
-                                        </a>
+                                    <li class="list-group-item" ng-repeat="kind in menuProduct.kind" ng-hide="kind.type_id != type.id">
+                                        <a href="{{ url('dong-san-pham') }}/<% kind.slug %>"  target="_self"><% kind.title %></a>
+                                        <ul class="list-group">
+                                            <li class="list-group-item" ng-repeat="trademarks in menuProduct.trademarks" ng-hide="trademarks.kind_id != kind.id">
+                                                <a href="{{ url('thuong-hieu') }}/<% trademarks.slug %>" target="_self"><% trademarks.name %></a>
+                                            </li>
+                                        </ul>
                                     </li>
                                 </ul>
                             </li>
@@ -83,7 +84,7 @@
                     <div class="row">
                         <div class="product_view col-md-4 col-sm-6 col-xs-12" ng-repeat="product in targetProducts">
                             <a href="#"><img src="{{ asset('storage/app') }}/<% product.image %>" class="img-responsive center-block"></a>
-                            <a href="#" class="product_quickView" data-toggle="modal" data-target="#product_quickView" title="Xem nhanh" ng-click="openTarget(product)"><i class="fa fa-search"></i></a>
+                            <a href="" class="product_quickView" data-toggle="modal" data-target="#product_quickView" title="Xem nhanh" ng-click="openTarget(product)"><i class="fa fa-search"></i></a>
                             <a href="#" class="product_addtoCart" data-toggle="modal" data-target="#product_quickview" title="Thêm vào giỏ hàng" ng-click="addToCart(product.id)"><i class="fa fa-cart-plus"></i></a>
                             <a href="{{ url('san-pham/chi-tiet') }}/<% product.slug %>" target="_self"><h4><% product.name %></h4></a>
                             <span class="price"><% product.price | currency:VND:0 | commaToDot | removeUSCurrency  %> vnđ</span>

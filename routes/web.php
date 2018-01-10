@@ -225,6 +225,10 @@ Route::prefix('admin')->group(function() {
         Route::get('tasting/finish', 'TastingController@finish');
         Route::get('tasting/ajax-finish/{id}', 'TastingController@ajaxFinish');
         Route::resource('tasting', 'TastingController');
+
+        //Origin routes
+        Route::resource('origin', 'OriginController');
+        Route::post('origin/update/{id}', 'OriginController@update')->name('origin.update');
         
     });
 });

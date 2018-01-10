@@ -86,10 +86,12 @@
                 url: API_URL + 'search',
                 params: {
                     name: $scope.name,
-                    price: $scope.price
+                    price: $scope.price,
+                    origin: $scope.origin
                 }
             }).then(function(success){
                 $scope.products = success.data;
+                console.log($scope.products);
             }, function(error){
 
             });
@@ -111,5 +113,14 @@
 
             });
         };
+
+        $http({
+            method: 'GET',
+            url: API_URL + 'origin'
+        }).then(function(success){
+            $scope.origin = success.data;
+        }, function(error){
+
+        });
     });
 })();

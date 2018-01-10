@@ -31,8 +31,8 @@
                     method: 'GET',
                     url: API_URL + 'target_products',
                     params: {
-                        target: 'danh-muc',
-                        subTarget: $scope.detail.category_slug
+                        target: 'thuong-hieu',
+                        subTarget: $scope.detail.trademark_slug
                     }
                 }).then(
                     function(success){
