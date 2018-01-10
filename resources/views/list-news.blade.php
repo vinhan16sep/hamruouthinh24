@@ -17,7 +17,7 @@
                                 <br>
                                 <p>Donec et nulla quam. Pellentesque euismod nunc ac mollis suscipit. Vestibulum posuere fermentum scelerisque. Mauris lacus tortor, porttitor ut laoreet in, maximus vitae urna. In nec lectus rhoncus, blandit dolor in, blandit magna. Cras et justo orci. Sed in lectus vel diam congue pulvinar. Suspendisse at nunc tincidunt, imperdiet sapien eget, lacinia lectus. Quisque eu cursus sapien, eget posuere sapien. Nulla facilisi. Vestibulum enim libero, auctor in augue eu, facilisis laoreet metus.</p>
                                 <br>
-                                <a href="#" class="btn btn-primary">Xem thêm <i class="fa fa-angle-double-right" aria-hidden="false"></i> </a>
+                                <a href="{{ url('tin-tuc') }}/tin-tuc" target="_self" class="btn btn-primary">Xem thêm <i class="fa fa-angle-double-right" aria-hidden="false"></i> </a>
                             </div>
                         </div>
 

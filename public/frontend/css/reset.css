@@ -2,8 +2,8 @@ a:hover{
 	text-decoration: none;
 }
 
-.w-100{
-	width: 100%;
+textarea{
+	resize: none;
 }
 
 .w-thumbnail{
@@ -64,4 +64,9 @@ a:hover{
 .form-group .row{
 	margin-left: -15px;
 	margin-right: -15px;
+}
+
+.media img {
+	width: 150px;
+	border: 1px solid transparent;
 }
