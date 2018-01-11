@@ -53,9 +53,25 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" data-toggle="modal" data-target="#user_login">
-                        <i class="fa fa-user-o" aria-hidden="false"></i> Xin chào, Khách hàng
-                    </a>
+                    <div class="login">
+                        @if (Auth::guest())
+                            <div class="dropdown login_dropdown">
+                                <a href="" data-toggle="modal" data-target="#user_login"> <strong>Đăng nhập</strong> </a>
+                                hoặc
+                                <a href="" data-toggle="modal" data-target="#user_register"> <strong>Đăng ký</strong> </a>
+                            </div>
+                        @else
+                            Xin chào, <a href="{{ url('thong-tin-ca-nhan') }}" target="_self"><strong>{{ Auth::user()->name }}</strong></a>
+                            <br>
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Thoát
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        @endif
+                    </div>
                 </li>
                 <li>
                     <a href="{{ url('xem-gio-hang') }}" target="_self">
@@ -64,6 +80,7 @@
                 </li>
             </ul>
         </div>
+
 
         <div class="nav col-md-10 col-xs-6 hidden">
             <div class="user pull-right">

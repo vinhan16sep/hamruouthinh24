@@ -30,7 +30,9 @@ class TastingController extends Controller
         $tasting = DB::table('tasting')
                         ->join('tasting_product', 'tasting.id', '=', 'tasting_product.tasting_id')
                         ->where('status',0)
+                        ->select('tasting.*', 'tasting_product.product_name')
                         ->paginate(10);
+                        // print_r($tasting);die;
         return view('admin/tasting/index', ['tasting' => $tasting]);
     }
 

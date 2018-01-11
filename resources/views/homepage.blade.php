@@ -123,7 +123,7 @@
                                     <br>
                                     <a class="btn btn-primary" href="{{ url('/san-pham/chi-tiet') }}/<% discount.slug %>" role="button"  target="_self" >Xem chi tiết</a>
                                     <br>
-                                    <a class="btn btn-primary" href="#" role="button">Thử rượu miên phí</a>
+                                    <a class="btn btn-primary" href="#" role="button" ng-click="addToTasting(discount.id)">Thử rượu miên phí</a>
                                 </div>
                             </div>
                         </div>

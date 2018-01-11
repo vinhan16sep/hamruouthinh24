@@ -87,12 +87,25 @@ Route::get('xem-gio-hang', function(){
     return view('show-cart');
 });
 
+Route::get('thu-ruou', function(){
+    return view('show-tasting');
+});
+
+
 Route::get('xac-nhan-thong-tin-ca-nhan', function(){
     return view('cart-personal-information');
 });
 
+Route::get('xac-nhan-thong-tin-thu-ruou', function(){
+    return view('tasting-personal-information');
+});
+
 Route::get('xac-nhan-don-hang', function(){
     return view('cart-confirm-order');
+});
+
+Route::get('xac-nhan-thu-ruou', function(){
+    return view('tasting-confirm-order');
 });
 
 /**
