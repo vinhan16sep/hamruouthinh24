@@ -28,12 +28,14 @@ class TastingController extends Controller
     public function index()
     {
         $tasting = DB::table('tasting')
-                        ->join('tasting_product', 'tasting.id', '=', 'tasting_product.tasting_id')
+                        // ->join('tasting_product', 'tasting.id', '=', 'tasting_product.tasting_id')
                         ->where('status',0)
-                        ->select('tasting.*', 'tasting_product.product_name')
+                        ->select('tasting.*')
                         ->paginate(10);
-                        // print_r($tasting);die;
-        return view('admin/tasting/index', ['tasting' => $tasting]);
+            $result = $this->buildTastingList($tasting);
+        
+            // print_r($result);die;
+        return view('admin/tasting/index', ['tasting' => $result]);
     }
 
     /**
@@ -105,10 +107,10 @@ class TastingController extends Controller
     public function finish()
     {
         $tasting = DB::table('tasting')
-                        ->join('tasting_product', 'tasting.id', '=', 'tasting_product.tasting_id')
                         ->where('status',1)
                         ->paginate(10);
-        return view('admin/tasting/index', ['tasting' => $tasting]);
+        $result = $this->buildTastingList($tasting);
+        return view('admin/tasting/index', ['tasting' => $result]);
     }
 
     public function ajaxFinish()
@@ -131,5 +133,33 @@ class TastingController extends Controller
         }
 
         return response()->json(['isExist' => $isExist, 'status' => '200']);
+    }
+
+    private function buildTastingList($tastings){
+        $result = [];
+        foreach($tastings as $key_tasting => $tasting){
+            $result[$key_tasting] = $tasting;
+            $result[$key_tasting]->product_info = $this->fetchProductsInTasting($tasting->id);
+
+            // foreach($result[$key_tasting]->product_info as $key => $product){
+            //     $result[$key_tasting]->product_info[$key]->detail = $this->fetchProductById($product->product_id);
+            // }
+        }
+        return $result;
+    }
+
+    private function fetchProductsInTasting($id){
+        $result = DB::table('tasting_product')
+            ->select('*')
+            ->where('tasting_id', '=', $id)
+            ->get();
+        return $result;
+    }
+    private function fetchProductById($id){
+        $result = DB::table('product')
+            ->where('id', '=', $id)
+            ->limit(1)
+            ->get();
+        return $result;
     }
 }
