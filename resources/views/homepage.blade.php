@@ -97,7 +97,6 @@
                     </div>
 
                     <div class="row">
-
                         <div class="item col-md-4 col-sm-6 col-xs-12" ng-repeat="discount in discounts">
                             <div class="inner">
                                 <div class="mask">
@@ -127,7 +126,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
 

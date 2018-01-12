@@ -46,6 +46,18 @@ span.productName{
 	font-family: 'webFont_b';
 }
 
+h2.productName{
+	font-family: 'webFont_b';
+}
+
+ul.nav-tabs li a{
+	font-family: 'webFont_b';
+}
+
+.comments_posts_list .media .media-body .media-heading{
+	font-family: 'webFont_b';
+}
+
 .price{
 	font-family: 'webFont_b';
 	font-size: 1.25em;

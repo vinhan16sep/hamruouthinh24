@@ -80,8 +80,6 @@
                 </li>
             </ul>
         </div>
-
-
         <div class="nav col-md-10 col-xs-6 hidden">
             <div class="user pull-right">
                 <div class="icon pull-left">

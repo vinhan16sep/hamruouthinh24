@@ -48,3 +48,39 @@
 	-webkit-line-clamp:4;
 	-webkit-box-orient: vertical;
 }
+
+.container > .row > .content{
+	padding: 15px;
+	background-color: #fff;
+}
+
+article > p{
+	padding-left:30px;
+	padding-right:30px;
+}
+
+article > img{
+	width: 100%;
+	margin: 15px 0;
+}
+
+article > iframe{
+	width: 100%;
+	min-height: 500px;
+	margin: 15px 0;
+}
+
+.comments_post{
+	margin-bottom: 50px;
+}
+
+.comments_post h3{
+	width: 100%;
+	padding-top: 30px;
+	padding-bottom: 15px;
+	border-top: 2px solid #333;
+}
+
+.comments_posts_list .media .media-left > img{
+	width: 64px;
+}

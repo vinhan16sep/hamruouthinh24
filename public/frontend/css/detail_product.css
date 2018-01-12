@@ -12,10 +12,6 @@
 	width: 70px;
 }
 
-.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
-	color: #b2479e;
-}
-
 .nav > li > a{
 	color: #333;
 }
