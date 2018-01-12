@@ -46,6 +46,9 @@ class LoginController extends Controller
             if(isset($request->type) && $request->type == 'cartLogin'){
                 return view('show-cart');
             }
+            if(isset($request->type) && $request->type == 'tastingLogin'){
+                return view('show-tasting');
+            }
             return redirect()->intended(route('homepage.index'));
         }
 

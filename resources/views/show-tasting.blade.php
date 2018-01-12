@@ -48,7 +48,7 @@
         <div class="modal fade" id="checkLogIn" tabindex="-1" role="dialog" aria-labelledby="checkLogInLabel">
             <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
                 {{ csrf_field() }}
-                {{ Form::hidden('type', 'cartLogin') }}
+                {{ Form::hidden('type', 'tastingLogin') }}
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
