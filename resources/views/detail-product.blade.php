@@ -32,12 +32,6 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="list-group-item">
-                                <a href="javascript:void(0);">Bánh kẹo</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="javascript:void(0);">Sản phẩm khác</a>
-                            </li>
                         </ul>
                     </div>
                 </div>

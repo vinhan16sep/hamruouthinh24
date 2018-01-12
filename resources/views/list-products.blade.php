@@ -111,7 +111,7 @@
                                     <br>
                                     <a class="btn btn-primary" href="#" role="button" ng-click="addToCart(product.id)">Thêm vào giỏ hàng</a>
                                     <br>
-                                    <a class="btn btn-primary" href="{{ url('/san-pham/chi-tiet') }}/<% product.id %>" role="button"  target="_self" >Xem chi tiết</a>
+                                    <a class="btn btn-primary" href="{{ url('/san-pham/chi-tiet') }}/<% product.slug %>" role="button"  target="_self" >Xem chi tiết</a>
                                     <br>
                                     <a class="btn btn-primary" href="#" role="button">Thử rượu miên phí</a>
                                 </div>
