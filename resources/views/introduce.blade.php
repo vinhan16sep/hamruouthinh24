@@ -4,17 +4,15 @@
     <section class="main_content" ng-controller="IntroduceController">
         <!-- InstanceBeginEditable name="content" -->
         <section class="container-fluid" id="about">
-            <div class="row">
+            <div class="row" ng-repeat="introduce in introduce">
 
-                <div class="right col-md-6 col-sm-6 col-xs-12 col-md-offset-6 col-sm-offset-6">
+                <div class="right col-md-6 col-sm-6 col-xs-12 col-md-offset-6 col-sm-offset-6" ng-if="introduce.slug == 've-chung-toi' ">
                     <div class="left hidden-xs"></div>
                     <div class="title_big">
                         Về chúng tôi
                     </div>
 
-                    <p>Suspendisse potenti. Cras molestie mi sed iaculis varius. Maecenas fermentum semper sagittis. Sed eu mattis tellus. Mauris dolor ligula, pellentesque id vestibulum nec, consectetur sed sem. Aenean at ante enim. Quisque dapibus ligula ut erat laoreet aliquet. Pellentesque dictum magna ante, venenatis scelerisque risus pretium eget. Nullam et orci vitae felis rutrum tempor. Vestibulum id maximus lacus.</p>
-                    <p>Donec et nulla quam. Pellentesque euismod nunc ac mollis suscipit. Vestibulum posuere fermentum scelerisque. Mauris lacus tortor, porttitor ut laoreet in, maximus vitae urna. In nec lectus rhoncus, blandit dolor in, blandit magna. Cras et justo orci. Sed in lectus vel diam congue pulvinar. Suspendisse at nunc tincidunt, imperdiet sapien eget, lacinia lectus. Quisque eu cursus sapien, eget posuere sapien. Nulla facilisi. Vestibulum enim libero, auctor in augue eu, facilisis laoreet metus.</p>
-
+                    <p ng-bind-html="$sce.trustAsHtml(introduce.content)"></p>
                     <div class="row">
                         <div class="col-md-4 col-sm-4 col-xs-12">
                             <i class="fa fa-3x fa-phone" aria-hidden="false"></i>

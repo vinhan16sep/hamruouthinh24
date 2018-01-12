@@ -12,104 +12,23 @@
 
                         <!-- List group -->
                         <ul class="list-group">
-                            <li class="list-group-item">
-                                <a href="javascript:void(0);">Rượu</a>
+                            <li class="list-group-item" ng-repeat="type in menuProduct.type">
+                                <a href="{{ url('loai-san-pham') }}/<% type.slug %>" target="_self">
+                                    <% type.title %>
+                                </a>
                                 <ul class="list-group">
-                                    <li class="list-group-item">
-                                        <a href="javascript:void(0);">Rượu vang</a>
+                                    <li class="list-group-item" ng-repeat="type in menuProduct.type">
+                                        <a href="{{ url('loai-san-pham') }}/<% type.slug %>"  target="_self"><% type.title %></a>
                                         <ul class="list-group">
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Vang đỏ</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Vang nổ</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Vang ngọt</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Vang khác</a>
+                                            <li class="list-group-item" ng-repeat="kind in menuProduct.kind" ng-hide="kind.type_id != type.id">
+                                                <a href="{{ url('dong-san-pham') }}/<% kind.slug %>"  target="_self"><% kind.title %></a>
+                                                <ul class="list-group">
+                                                    <li class="list-group-item" ng-repeat="trademarks in menuProduct.trademarks" ng-hide="trademarks.kind_id != kind.id">
+                                                        <a href="{{ url('thuong-hieu') }}/<% trademarks.slug %>" target="_self"><% trademarks.name %></a>
+                                                    </li>
+                                                </ul>
                                             </li>
                                         </ul>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="javascript:void(0);">Rượu mạnh</a>
-                                        <ul class="list-group">
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Chivas</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Whiskey</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Ballentines</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Rượu mạnh khác</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="javascript:void(0);">Rượu pha chế</a>
-                                        <ul class="list-group">
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Rượu pha chế I</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Rượu pha chế II</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Rượu pha chế III</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Rượu pha chế khác</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="javascript:void(0);">Rượu khác</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="javascript:void(0);">Bia</a>
-                                <ul class="list-group">
-                                    <li class="list-group-item">
-                                        <a href="javascript:void(0);">Bia I</a>
-                                        <ul class="list-group">
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Bia I</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Bia II</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Bia III</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Bia khác</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="javascript:void(0);">Bia II</a>
-                                        <ul class="list-group">
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Bia I</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Bia II</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Bia III</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="javascript:void(0);">Bia khác</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="javascript:void(0);">Bia khác</a>
                                     </li>
                                 </ul>
                             </li>
@@ -201,8 +120,34 @@
                                 <div role="tabpanel" class="tab-pane active" id="detail">
                                     <article>
                                         <p>Quisque interdum rhoncus ullamcorper. Maecenas velit odio, maximus nec pulvinar in, fringilla et augue. Nunc dictum mauris eu dapibus congue. Fusce rutrum eget massa nec sagittis. Proin quam nisl, ornare vitae nisl sed, egestas accumsan purus. Aliquam diam turpis, euismod sit amet luctus eu, congue a velit. Pellentesque commodo odio tincidunt, finibus ex eget, maximus eros. Suspendisse eleifend dolor vitae suscipit blandit. Etiam ullamcorper dolor vitae ante maximus, ac rhoncus nulla vehicula. Duis quis libero lacus.</p>
-
-                                        <img src="{{ asset('public/frontend/img/cover/cover_01.jpg') }}" alt="preview">
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="carousel carousel-showmanymoveone slide" id="itemslider_1">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="title_mid">
+                                                <h3>Sản phẩm liên quan</h3>
+                                            </div>
+                                        </div>
+                                        <div class="slider_controler">
+                                            <ul class="list-inline">
+                                                {{--<li>--}}
+                                                    {{--<a class="left carousel-control" href="#itemslider_1" data-slide="prev"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span></a>--}}
+                                                {{--</li>--}}
+                                                {{--<li>--}}
+                                                    {{--<a class="right carousel-control" href="#itemslider_1" data-slide="next"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a><strong></strong>--}}
+                                                {{--</li>--}}
+                                                <li>
+                                                    <a href="{{ url('thuong-hieu') }}/<% detail.category_slug %>" target="_self">
+                                                        Xem tất cả
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
 
                                         <p>Fusce ultricies ligula et blandit tempor. Nam eu lectus orci. Phasellus a diam varius, gravida libero vitae, tempor velit. Mauris ultrices rhoncus risus, at pharetra massa dapibus ut. Aenean convallis quam et ornare cursus. Mauris tempor vestibulum egestas. Ut pretium libero in lacus finibus malesuada. Donec sit amet lobortis erat. Phasellus ut elementum lacus. Fusce aliquam ante ut quam pharetra volutpat. Proin nulla ex, congue at egestas eget, pharetra id odio.</p>
 

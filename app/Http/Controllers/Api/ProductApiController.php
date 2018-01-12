@@ -47,8 +47,8 @@ class ProductApiController extends Controller
         $slug = Input::get('slug');
 
         $result = DB::table('product')
-            ->select('product.*', 'product_category.slug as category_slug')
-            ->join('product_category', 'product.category_id', '=', 'product_category.id')
+            ->select('product.*', 'product_trademark.slug as trademark_slug')
+            ->join('product_trademark', 'product.trademark_id', '=', 'product_trademark.id')
             ->where('product.slug', '=', $slug)
             ->where('product.is_deleted', '=', 0)
             ->get();
@@ -83,13 +83,17 @@ class ProductApiController extends Controller
         $query = DB::table('product');
 
         if($target == 'thuong-hieu'){
-            $query->select('product.*')
+            $query->select('product.*', 'product_trademark.slug as trademark_slug')
                 ->join('product_trademark', 'product.trademark_id', '=', 'product_trademark.id')
                 ->where('product_trademark.slug', '=', $subTarget);
-        }elseif($target == 'danh-muc'){
+        }elseif($target == 'loai-san-pham'){
             $query->select('product.*')
-                ->join('product_category', 'product.category_id', '=', 'product_category.id')
-                ->where('product_category.slug', '=', $subTarget);
+                ->join('type', 'product.type_id', '=', 'type.id')
+                ->where('type.slug', '=', $subTarget);
+        }elseif($target == 'dong-san-pham'){
+            $query->select('product.*')
+                ->join('kind', 'product.kind_id', '=', 'kind.id')
+                ->where('kind.slug', '=', $subTarget);
         }else{
             return response()->json(null, 400);
         }
@@ -116,8 +120,12 @@ class ProductApiController extends Controller
             $query = DB::table('product_trademark')
                 ->select('*')
                 ->where('slug', '=', $subTarget);
+        }elseif($target == 'dong-san-pham'){
+            $query = DB::table('kind')
+                ->select('*')
+                ->where('slug', '=', $subTarget);
         }else{
-            $query = DB::table('product_category')
+            $query = DB::table('type')
                 ->select('*')
                 ->where('slug', '=', $subTarget);
         }
@@ -126,26 +134,38 @@ class ProductApiController extends Controller
     }
 
     public function fetchMenuProduct(){
+        $type = DB::table('type')
+            ->select('*')
+            ->where('is_active', '=', 1)
+            ->where('is_deleted', '=', 0)
+            ->get();
+
+        $kind = DB::table('kind')
+            ->select('*')
+            ->where('is_active', '=', 1)
+            ->where('is_deleted', '=', 0)
+            ->get();
+
         $trademarks = DB::table('product_trademark')
             ->select('*')
             ->where('is_active', '=', 1)
             ->where('is_deleted', '=', 0)
             ->get();
 
-        $categories = DB::table('product_category')
-            ->select('*')
-            ->where('is_active', '=', 1)
-            ->where('is_deleted', '=', 0)
-            ->get();
+        // $categories = DB::table('product_category')
+        //     ->select('*')
+        //     ->where('is_active', '=', 1)
+        //     ->where('is_deleted', '=', 0)
+        //     ->get();
 
         if(!$trademarks){
             return response()->json('No item found', 404);
         }
 
         $menuProduct = [
-            'trademarks' => $trademarks ? $trademarks : [],
-            'categories' => $categories ? $categories : [],
-
+            'type' => $type ? $type : [],
+            'kind' => $kind ? $kind : [],
+            'trademarks' => $trademarks ? $trademarks : []
         ];
 
         return response()->json($menuProduct, 200);
@@ -188,6 +208,9 @@ class ProductApiController extends Controller
                 default:
                     break;
             }
+        }
+        if(isset($post['origin'])){
+            $query->where('product.origin_id', $post['origin']);
         }
         $query->where('product.is_deleted', '=', 0);
 

@@ -1,6 +1,6 @@
 (function(){
     app.controller('MainController', function($rootScope, $scope, $http, API_URL){
-        // Cookies.remove('cartProducts', {path: '/mmm'});
+        // Cookies.remove('tastingProducts', {path: '/'});
         $scope.storedProducts = (Cookies.get('cartProducts') != undefined) ? Cookies.get('cartProducts') : [];
         $rootScope.countAddedProducts = 0;
         if(angular.isArray(Cookies.get('cartProducts')) === true){
@@ -10,6 +10,18 @@
                 $rootScope.countAddedProducts = JSON.parse(Cookies.get('cartProducts')).length;
             }else{
                 $rootScope.countAddedProducts = 0;
+            }
+        }
+
+        $scope.tastingProducts = (Cookies.get('tastingProducts') != undefined) ? Cookies.get('tastingProducts') : [];
+        $rootScope.counttastingProducts = 0;
+        if(angular.isArray(Cookies.get('tastingProducts')) === true){
+            $rootScope.counttastingProducts = Cookies.get('tastingProducts').length;
+        }else{
+            if(Cookies.get('tastingProducts') != undefined && Cookies.get('tastingProducts').length > 0){
+                $rootScope.counttastingProducts = JSON.parse(Cookies.get('tastingProducts')).length;
+            }else{
+                $rootScope.counttastingProducts = 0;
             }
         }
 
@@ -68,10 +80,71 @@
 
                 $scope.storedProducts = Cookies.get('cartProducts');
                 $rootScope.countAddedProducts = JSON.parse(Cookies.get('cartProducts')).length;
-
+                // console.log(storedProducts);
             }, function(error){
 
             });
         };
+        $scope.addToTasting = function(id){
+            $http({
+                method: 'GET',
+                url: API_URL + 'check_tasting_exist',
+                params: {
+                    id: id
+                }
+            }).then(function successCallback(response) {
+                var isError = false;
+                if(response.data.message === 'out_of_stock'){
+                    alert = $mdDialog.alert({
+                        title: 'Attention',
+                        textContent: 'This is an example of how easy dialogs can be!',
+                        ok: 'Close'
+                    });
+                    $mdDialog
+                        .show( alert )
+                        .finally(function() {
+                            alert = undefined;
+                        });
+                    isError = true;
+                }
+                var arrayProduct = {
+                    id: response.data.id,
+                    name: response.data.result.name,
+                    image: response.data.result.image
+                };
+
+                var tastingProducts = $scope.tastingProducts;
+
+                if(!isError){
+                    var isExist = false;
+                    if(tastingProducts.length > 0){
+                        tastingProducts = JSON.parse(tastingProducts);
+                        for(var index = 0; index < tastingProducts.length; index++){
+                            if(tastingProducts[index].id == response.data.id){
+                                isExist = true;
+                            }
+                        }
+                        if(!isExist){
+                            tastingProducts.push(arrayProduct);
+                        }
+                    }else{
+                        tastingProducts.push(arrayProduct);
+                    }
+
+                    Cookies.set('tastingProducts', tastingProducts, { expires: 1, path: '/' });
+                }
+
+                $scope.tastingProducts = Cookies.get('tastingProducts');
+                $rootScope.counttastingProducts = JSON.parse(Cookies.get('tastingProducts')).length;
+                console.log(tastingProducts);
+                if($rootScope.counttastingProducts >= 6){
+                    alert('Không thể thử quá 6 loại rượu');
+                }
+
+                
+            }, function errorCallback(arrayProduct) {
+                
+            });
+        }
     });
 })();

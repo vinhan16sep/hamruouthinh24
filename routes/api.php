@@ -62,6 +62,13 @@ Route::prefix('v1')->group(function() {
         Route::get('auto_fill_personal_info', 'CartApiController@fetchLoggedInfo')->name('cart.fetchLoggedInfo');
 
         /**
+         * Tasting API
+         */
+        Route::resource('tasting', 'TastingApiController');
+        Route::get('check_tasting_exist', 'TastingApiController@checkTastingExist')->name('tasting.check_tasting_exist');
+        Route::get('checkout_tasting', 'TastingApiController@checkout')->name('tasting.checkout_tasting');
+
+        /**
          * Customer API
          */
         Route::resource('customer', 'CustomerApiController');
@@ -70,8 +77,8 @@ Route::prefix('v1')->group(function() {
         Route::get('customer_complete', 'CustomerApiController@fetchCompleteOrder')->name('customer.fetchCompleteOrder');
         Route::get('update_info', 'CustomerApiController@updateInfo')->name('customer.updateInfo');
 
-        //tasting routes
-        Route::resource('tasting', 'TastingApiController');
-        Route::get('tasting_save','TastingApiController@save');
+        //origin routes
+        Route::resource('origin', 'OriginApiController');
+        Route::get('origin', 'OriginApiController@index')->name('origin.index');
     });
 });

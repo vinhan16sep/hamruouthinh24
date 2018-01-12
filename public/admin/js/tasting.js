@@ -17,6 +17,6 @@ window.onload = function(){
                 }
             },
         });
-        return false;
+        return true;
     });
 }

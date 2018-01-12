@@ -70,7 +70,7 @@
                         <a href="{{ route('product.edit', ['id' => $item->id]) }}" class="btn btn-warning col-sm-3 col-xs-5 btn-margin">
                         Sửa
                         </a>
-{{--                        @if ($user->username != Auth::user()->username)--}}
+                        {{--@if ($user->username != Auth::user()->username)--}}
                          <button type="submit" class="btn btn-danger col-sm-3 col-xs-5 btn-margin">
                           Xoá
                         </button>
@@ -87,13 +87,13 @@
                               <br> -->
                               {{ HTML::image('storage/app/'.$item->image, '', array('width' => 100)) }}
                               <br />
-                              <strong>Loại sản phẩm:</strong> {{ $item->type_title }}
+                              <strong>Loại sản phẩm:</strong> {{ (!empty($type_collection[$item->type_id]))? $type_collection[$item->type_id] : '' }}
                               <br>
-                              <strong>Dòng sản phẩm:</strong> {{ $item->kind_title }}
+                              <strong>Dòng sản phẩm:</strong> {{ (!empty($kind_collection[$item->kind_id]))? $kind_collection[$item->kind_id] : '' }}
                               <br>
-                              <strong>Thương hiệu sản phẩm:</strong> {{ $item->trademark_title }}
+                              <strong>Thương hiệu sản phẩm:</strong> {{ (!empty($trademark_collection[$item->trademark_id]))? $trademark_collection[$item->trademark_id] : '' }}
                               <br>
-                              <strong>Nồng độ:</strong> {{ $item->concentration }}
+                              <strong>Nồng độ:</strong> {{ $item->concentrations }}
                               <br>
                               <strong>Dung tích:</strong> {{ $item->capacity }}
                               <br>
@@ -105,7 +105,7 @@
                               <br>
                               <strong>Thể tích:</strong> {{ $item->volume }}
                               <br>
-                              <strong>Xuất xứ:</strong> {{ $item->origin }}
+                              <strong>Xuất xứ:</strong> {{ (!empty($origin_collection[$item->origin_id]))? $origin_collection[$item->origin_id] : '' }}
                           </div>
                           <div class="col-md-7">
                               <table style="width: 100%">

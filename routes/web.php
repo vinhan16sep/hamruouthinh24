@@ -60,7 +60,11 @@ Route::get('/thuong-hieu/{target}', function () {
     return view('list-target-products');
 });
 
-Route::get('/danh-muc/{target}', function () {
+Route::get('/loai-san-pham/{target}', function () {
+    return view('list-target-products');
+});
+
+Route::get('/dong-san-pham/{target}', function () {
     return view('list-target-products');
 });
 
@@ -83,12 +87,25 @@ Route::get('xem-gio-hang', function(){
     return view('show-cart');
 });
 
+Route::get('thu-ruou', function(){
+    return view('show-tasting');
+});
+
+
 Route::get('xac-nhan-thong-tin-ca-nhan', function(){
     return view('cart-personal-information');
 });
 
+Route::get('xac-nhan-thong-tin-thu-ruou', function(){
+    return view('tasting-personal-information');
+});
+
 Route::get('xac-nhan-don-hang', function(){
     return view('cart-confirm-order');
+});
+
+Route::get('xac-nhan-thu-ruou', function(){
+    return view('tasting-confirm-order');
 });
 
 /**
@@ -221,6 +238,10 @@ Route::prefix('admin')->group(function() {
         Route::get('tasting/finish', 'TastingController@finish');
         Route::get('tasting/ajax-finish/{id}', 'TastingController@ajaxFinish');
         Route::resource('tasting', 'TastingController');
+
+        //Origin routes
+        Route::resource('origin', 'OriginController');
+        Route::post('origin/update/{id}', 'OriginController@update')->name('origin.update');
         
     });
 });

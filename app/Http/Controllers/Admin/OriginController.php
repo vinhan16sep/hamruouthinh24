@@ -7,33 +7,23 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
-use App\Tasting;
 use File;
+use App\Origin;
 
-class TastingController extends Controller
+class OriginController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct(){
         $this->middleware('auth:admin');
     }
     public function index()
     {
-        $tasting = DB::table('tasting')
-                        ->join('tasting_product', 'tasting.id', '=', 'tasting_product.tasting_id')
-                        ->where('status',0)
-                        ->select('tasting.*', 'tasting_product.product_name')
-                        ->paginate(10);
-                        // print_r($tasting);die;
-        return view('admin/tasting/index', ['tasting' => $tasting]);
+        $origin = DB::table('origin')->where('is_deleted', 0)->get();
+        return view('admin/origin/index', ['origin' => $origin]);
     }
 
     /**
@@ -43,7 +33,7 @@ class TastingController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/origin/create');
     }
 
     /**
@@ -54,7 +44,11 @@ class TastingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validateInput($request);
+        $keys = ['name'];
+        $input = $this->createQueryInput($keys, $request);
+        Origin::create($input);
+        return redirect()->intended('admin/origin');
     }
 
     /**
@@ -76,7 +70,8 @@ class TastingController extends Controller
      */
     public function edit($id)
     {
-        //
+        $origin = Origin::find($id);
+        return view('admin/origin/edit', ['origin' => $origin]);
     }
 
     /**
@@ -88,7 +83,13 @@ class TastingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $origin = Origin::findOrFail($id);
+        $this->validateInput($request);
+        $keys = ['name'];
+        $input = $this->createQueryInput($keys, $request);
+        Origin::where('id', $id)
+            ->update($input);
+        return redirect()->intended('admin/origin');
     }
 
     /**
@@ -99,37 +100,13 @@ class TastingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Origin::where('id', $id)->update(['is_deleted' => 1]);
+        return redirect()->intended('admin/origin');
     }
 
-    public function finish()
-    {
-        $tasting = DB::table('tasting')
-                        ->join('tasting_product', 'tasting.id', '=', 'tasting_product.tasting_id')
-                        ->where('status',1)
-                        ->paginate(10);
-        return view('admin/tasting/index', ['tasting' => $tasting]);
-    }
-
-    public function ajaxFinish()
-    {
-        $id = Input::get("id");
-        $isExist = false;
-        $tasting = DB::table('tasting')
-                    ->select('*')
-                    ->where('id', '=', $id)
-                    ->get();
-        if(!$tasting){
-            return response()->json(['id' => $id, 'status' => '404']);
-        }
-
-        $update = DB::table('tasting')
-            ->where('id', $id)
-            ->update(['status' => 1]);
-        if($update){
-            $isExist = true;
-        }
-
-        return response()->json(['isExist' => $isExist, 'status' => '200']);
+    private function validateInput($request) {
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
     }
 }

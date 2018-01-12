@@ -24,7 +24,7 @@
                                 <label for="type" class="col-md-2 control-label">Loại sản phẩm</label>
 
                                 <div class="col-md-4">
-                                    <select name="type_id"  class="form-control type" data-page="{{ $product->kind_id }}" >
+                                    <select name="type_id"  class="form-control type" data-page="{{ $product->kind_id }}" required>
                                         <option value="">---------------------Chọn loại sản phẩm---------------------</option>
                                         @foreach($type as $value)
                                             <option value="{{ $value->id }}" {{ ($value->id == $product->type_id)? 'selected' : ''}} >{{ $value->title }}</option>
@@ -37,7 +37,7 @@
                                 <label for="kind" class="col-md-2 control-label">Loại sản phẩm</label>
 
                                 <div class="col-md-4">
-                                    <select name="kind_id"  class="form-control kind"  data-page="{{ $product->trademark_id }}" data-id="{{ $product->kind_id }}" >
+                                    <select name="kind_id"  class="form-control kind"  data-page="{{ $product->trademark_id }}" data-id="{{ $product->kind_id }}" required>
                                         <option class="kind_option" value="">-------------------Chọn loại sản phẩm trước -------------------</option>
                                     </select>
                                 </div>
@@ -47,7 +47,7 @@
                                 <label for="trademark" class="col-md-2 control-label">Thương hiệu sản phẩm</label>
 
                                 <div class="col-md-4">
-                                    <select name="trademark_id"  class="form-control trademark">
+                                    <select name="trademark_id"  class="form-control trademark" required>
                                         <option class="trademark_option" value="">-------------------Chọn loại sản phẩm trước -------------------</option>
                                     </select>
                                 </div>
@@ -109,6 +109,17 @@
                                     <input type="file" id="image" name="image">
                                 </div>
                             </div>
+                            <div class="form-group{{ $errors->has('concentrations') ? ' has-error' : '' }}">
+                                <label for="concentrations" class="col-md-2 control-label">Nộng độ</label>
+                                <div class="col-md-8">
+                                    <input id="concentrations" type="text" class="form-control" name="concentrations" value="{{ $product->concentrations }}">
+                                    @if ($errors->has('concentrations'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('concentrations') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
                             <div class="form-group{{ $errors->has('capacity') ? ' has-error' : '' }}">
                                 <label for="capacity" class="col-md-2 control-label">Dung tích</label>
                                 <div class="col-md-8">
@@ -166,13 +177,13 @@
                             </div>
                             <div class="form-group{{ $errors->has('origin') ? ' has-error' : '' }}">
                                 <label for="origin" class="col-md-2 control-label">Xuất xứ</label>
-                                <div class="col-md-8">
-                                    <input id="origin" type="text" class="form-control" name="origin" value="{{ $product->origin }}">
-                                    @if ($errors->has('origin'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('origin') }}</strong>
-                                    </span>
-                                    @endif
+                                <div class="col-md-4">
+                                    <select name="origin_id"  class="form-control" autofocus>
+                                        <option value="">-----------------------Chọn quốc gia-----------------------</option>
+                                        @foreach($origin as $value)
+                                            <option value="{{ $value->id }}" {{ ($value->id == $product->origin_id)? 'selected' : ''}} >{{ $value->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">

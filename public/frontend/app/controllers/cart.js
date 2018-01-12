@@ -1,8 +1,8 @@
 (function(){
     app.controller('CartController', function($rootScope, $scope, $http, $location, $uibModal, $timeout, $window, API_URL, $cookieStore){
-        if($rootScope.countAddedProducts == 0){
-            window.location = '/hamruouthinh24';
-        }
+        // if($rootScope.countAddedProducts == 0){
+        //     window.location = '/hamruouthinh24';
+        // }
         $scope.fetchedProducts = (Cookies.get('cartProducts').length > 0) ? JSON.parse(Cookies.get('cartProducts')) : [];
         $scope.storedProducts = Cookies.get('cartProducts');
         $rootScope.countAddedProducts = JSON.parse(Cookies.get('cartProducts')).length;
@@ -71,7 +71,6 @@
             window.location = '/hamruouthinh24' + '/xac-nhan-don-hang';
         };
         $scope.customerInfo = $cookieStore.get('personalInfo');
-        console.log($scope.customerInfo);
 
         $scope.getTotalOrderCost = function(){
             var total = 0;
