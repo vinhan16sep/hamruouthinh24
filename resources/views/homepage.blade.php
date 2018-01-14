@@ -107,14 +107,14 @@
 
                                 <span class="productName"><% discount.name %></span>
                                 <h4 class="productYear"><% discount.year %></h4>
-                                <h3 class="productPrice"><% discount.price %> vnđ</h3>
+                                <h3 class="productPrice"><% discount.price | currency:VND:0 | commaToDot | removeUSCurrency  %> vnđ</h3>
                                 <br>
                                 <a class="btn btn-primary" href="#" role="button">Thử rượu miễn phí</a>
 
                                 <div class="hover">
                                     <span class="productName"><% discount.name %></span>
                                     <h4 class="productYear"><% discount.year %></h4>
-                                    <h3 class="productPrice"><% discount.price %> vnđ</h3>
+                                    <h3 class="productPrice"><% discount.price | currency:VND:0 | commaToDot | removeUSCurrency  %> vnđ</h3>
                                     <br>
                                     <p ng-bind-html="$sce.trustAsHtml(discount.description)"></p>
                                     <br>

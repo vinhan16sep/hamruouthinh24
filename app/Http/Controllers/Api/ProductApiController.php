@@ -47,8 +47,9 @@ class ProductApiController extends Controller
         $slug = Input::get('slug');
 
         $result = DB::table('product')
-            ->select('product.*', 'product_trademark.slug as trademark_slug')
+            ->select('product.*', 'product_trademark.slug as trademark_slug', 'origin.name as origin_title')
             ->join('product_trademark', 'product.trademark_id', '=', 'product_trademark.id')
+            ->join('origin', 'origin.id', '=', 'product.origin_id')
             ->where('product.slug', '=', $slug)
             ->where('product.is_deleted', '=', 0)
             ->get();

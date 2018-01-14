@@ -48,10 +48,17 @@ Route::prefix('v1')->group(function() {
         Route::get('advises', 'BlogApiController@fetchAllAdvises')->name('blog.fetchAllAdvises');
         Route::get('latest_advises', 'BlogApiController@fetchLatestAdvises')->name('blog.fetchLatestAdvises');
         Route::get('news', 'BlogApiController@fetchAllNews')->name('blog.fetchAllNews');
+        Route::get('latest_news', 'BlogApiController@fetchLatestNews')->name('blog.fetchLatestNews');
         Route::get('category', 'BlogApiController@fetchCategoryByType')->name('blog.fetchCategoryByType');
         Route::get('blog_category', 'BlogApiController@fetchBlogByCategory')->name('blog.fetchCafetchBlogByCategorytegoryByType');
         Route::get('detail', 'BlogApiController@detail')->name('blog.detail');
 
+        /**
+         * Comment API
+         */
+        Route::resource('comment', 'CommentApiController');
+        Route::get('add_blog_comment', 'CommentApiController@addCommentBlog')->name('comment.addCommentBlog');
+        Route::get('get_blog_comment', 'CommentApiController@getBlogComment')->name('comment.getBlogComment');
         /**
          * Cart API
          */
