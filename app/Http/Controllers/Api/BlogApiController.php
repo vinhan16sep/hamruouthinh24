@@ -58,6 +58,21 @@ class BlogApiController extends Controller
         return response()->json($result, 200);
     }
 
+    public function fetchLatestNews(){
+        $result = DB::table('blog')
+            ->select('*')
+            ->where('type', '=', 1)
+            ->where('is_deleted', '=', 0)
+            ->orderBy('id', 'desc')
+            ->limit(4)
+            ->get();
+
+        if(!$result){
+            return response()->json('No item found', 404);
+        }
+        return response()->json($result, 200);
+    }
+
     public function detail(){
         $slug = Input::get('slug');
 
@@ -103,4 +118,6 @@ class BlogApiController extends Controller
         }
         return response()->json($result, 200);
     }
+
+    
 }

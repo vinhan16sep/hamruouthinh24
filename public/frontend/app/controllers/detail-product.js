@@ -25,7 +25,6 @@
         }).then(
             function(success){
                 $scope.detail = success.data[0];
-                console.log($scope.detail);
 
                 $http({
                     method: 'GET',

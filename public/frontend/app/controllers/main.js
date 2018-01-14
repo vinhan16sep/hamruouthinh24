@@ -137,14 +137,16 @@
                 $scope.tastingProducts = Cookies.get('tastingProducts');
                 $rootScope.counttastingProducts = JSON.parse(Cookies.get('tastingProducts')).length;
                 console.log(tastingProducts);
-                if($rootScope.counttastingProducts >= 6){
-                    alert('Không thể thử quá 6 loại rượu');
-                }
+                // if($rootScope.counttastingProducts >= 6){
+                //     alert('Không thể thử quá 6 loại rượu');
+                // }
 
                 
             }, function errorCallback(arrayProduct) {
                 
             });
         }
+
+        
     });
 })();
