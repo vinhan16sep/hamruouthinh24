@@ -47,8 +47,8 @@ class ProductApiController extends Controller
         $slug = Input::get('slug');
 
         $result = DB::table('product')
-            ->select('product.*', 'product_trademark.slug as trademark_slug', 'origin.name as origin_title')
-            ->join('product_trademark', 'product.trademark_id', '=', 'product_trademark.id')
+            ->select('product.*', 'origin.name as origin_title')
+            // ->join('product_trademark', 'product.trademark_id', '=', 'product_trademark.id')
             ->join('origin', 'origin.id', '=', 'product.origin_id')
             ->where('product.slug', '=', $slug)
             ->where('product.is_deleted', '=', 0)
@@ -217,6 +217,23 @@ class ProductApiController extends Controller
 
         $result = $query->get();
 
+        return response()->json($result, 200);
+    }
+
+    public function fetchTrademarkProduct()
+    {
+        $trademark_id = Input::get('trademark_id');
+        $id = Input::get('id');
+
+        $result = DB::table('product')
+            ->where('product.trademark_id', '=', $trademark_id)
+            ->where('product.id', '!=', $id)
+            ->where('product.is_deleted', '=', 0)
+            ->get();
+
+        if(!$result){
+            return response()->json('No item found', 404);
+        }
         return response()->json($result, 200);
     }
 }

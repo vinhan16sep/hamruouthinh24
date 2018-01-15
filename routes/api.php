@@ -40,6 +40,7 @@ Route::prefix('v1')->group(function() {
         Route::get('detail_product', 'ProductApiController@detail')->name('product.detail');
         Route::get('search', 'ProductApiController@search')->name('product.search');
         Route::get('target_search', 'ProductApiController@targetSearch')->name('product.targetSearch');
+        Route::get('relate_products', 'ProductApiController@fetchTrademarkProduct')->name('product.fetchTrademarkProduct');
 
         /**
          * Blog API

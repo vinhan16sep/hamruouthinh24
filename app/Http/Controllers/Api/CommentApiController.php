@@ -74,6 +74,7 @@ class CommentApiController extends Controller
 
     public function addProductComment(Request $request)
     {
+        // dd($request);die;
     	$keys = ['product_id','author','email','title', 'rating', 'content'];
     	$input = $this->createQueryInput($keys, $request);
     	ProductComment::create($input);
@@ -82,7 +83,7 @@ class CommentApiController extends Controller
 
     public function getProductComment(Request $request)
     {
-        $page = 10;
+        $page = 5;
         $id = $request->input('id');
         $result = DB::table('product_comment')
                 ->where('product_id', $id)
@@ -90,7 +91,7 @@ class CommentApiController extends Controller
                 ->where('is_approved', '=', 0)
                 ->orderBy('id', 'desc')
                 // ->get();
-                ->paginate(10);
+                ->paginate($page);
         $count = DB::table('product_comment')
                 ->where('product_id', $id)
                 ->count();

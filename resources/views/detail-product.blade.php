@@ -199,7 +199,7 @@
 
                         </div>
                     </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-md-12 col-sm-12 col-xs-12" ng-if="productTrademarks">
                         <div class="row">
                             <div class="title_big">
                                 <h3>Sản phẩm liên quan</h3>
@@ -228,7 +228,7 @@
                                     </div>
 
                                     <div class="carousel-inner">
-                                        <div class="item active" ng-repeat="product in targetProducts" ng-if="product.id != detail.id">
+                                        <div class="item active" ng-repeat="product in productTrademarks">
                                             <div class="product_view col-xs-12 col-sm-6 col-md-3">
                                                 <img src="{{ asset('storage/app') }}/<% product.image %>" class="img-responsive center-block">
 
