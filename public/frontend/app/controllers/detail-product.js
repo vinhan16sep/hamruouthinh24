@@ -7,6 +7,8 @@
         var page = 1;
         $urlSplit = $location.path().split("/");
 
+
+
         // Build menu product
         menuProductFactory.menuProduct()
             .then(function(success){
@@ -26,7 +28,29 @@
             function(success){
                 $scope.detail = success.data[0];
                 product_id = $scope.detail.id;
-                // console.log(success);
+                trademark_id = $scope.detail.trademark_id;
+                console.log($scope.detail.trademark_id);
+
+                if(trademark_id != null){
+                    $http({
+                        method: 'GET',
+                        url: API_URL + 'relate_products',
+                        params: {
+                            id: product_id,
+                            trademark_id: trademark_id
+                        }
+                    }).then(
+                        function(success){
+                            $scope.productTrademarks = success.data;
+                            // console.log(success.data);
+                        }, function(error){
+
+                    });
+                }else{
+                    $scope.productTrademarks = null;
+                }
+                
+
                 $http({
                     method: 'GET',
                     url: API_URL + 'target_products',
@@ -39,7 +63,8 @@
                         $scope.targetProducts = success.data.targetProducts;
                     }, function(error){
 
-                    });
+                });
+
                 $http({
                     method: 'GET',
                     url: API_URL + 'get_product_comment',
@@ -134,7 +159,7 @@
                 if(page >= check_page){
                     $('.see-more').hide();
                 }
-                console.log(success.data.total);
+                // console.log(success.data.total);
                 $.each(comment, function (index, value) {
                     var bindComment = '<div class="media first-comment" ng-repeat="comments in blogComments">';
                     bindComment += '<div class="media-left">';

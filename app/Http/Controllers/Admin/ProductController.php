@@ -35,18 +35,6 @@ class ProductController extends Controller
      */
     public function index(){
         $products = DB::table('product')->where('product.is_deleted', '=', 0)->paginate(10);
-        
-
-        // $products = DB::table('product')
-        //     ->join('type', 'type.id', '=', 'product.type_id')
-        //     ->join('kind', 'kind.id', '=', 'product.kind_id')
-        //     ->join('product_trademark', 'product_trademark.id', '=', 'product.trademark_id')
-        //     ->join('origin', 'origin.id', '=', 'product.origin_id')
-        //     ->select('product.*', 'type.title as type_title', 'kind.title as kind_title', 'product_trademark.name as trademark_title', 'origin.name as origin_title')
-        //     ->where('product.is_deleted', '=', 0)
-        //     ->paginate(10);
-        // echo '<pre>';
-        // print_r($products);die;
         return view('admin/product/index', [
             'products' => $products,
             'type_collection' => $this->fetchAllType(),
