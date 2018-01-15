@@ -13,20 +13,13 @@
                         <!-- List group -->
                         <ul class="list-group">
                             <li class="list-group-item" ng-repeat="type in menuProduct.type">
-                                <a href="{{ url('loai-san-pham') }}/<% type.slug %>" target="_self">
-                                    <% type.title %>
-                                </a>
+                                <a href="{{ url('loai-san-pham') }}/<% type.slug %>"  target="_self"><% type.title %></a>
                                 <ul class="list-group">
-                                    <li class="list-group-item" ng-repeat="type in menuProduct.type">
-                                        <a href="{{ url('loai-san-pham') }}/<% type.slug %>"  target="_self"><% type.title %></a>
+                                    <li class="list-group-item" ng-repeat="kind in menuProduct.kind" ng-hide="kind.type_id != type.id">
+                                        <a href="{{ url('dong-san-pham') }}/<% kind.slug %>"  target="_self"><% kind.title %></a>
                                         <ul class="list-group">
-                                            <li class="list-group-item" ng-repeat="kind in menuProduct.kind" ng-hide="kind.type_id != type.id">
-                                                <a href="{{ url('dong-san-pham') }}/<% kind.slug %>"  target="_self"><% kind.title %></a>
-                                                <ul class="list-group">
-                                                    <li class="list-group-item" ng-repeat="trademarks in menuProduct.trademarks" ng-hide="trademarks.kind_id != kind.id">
-                                                        <a href="{{ url('thuong-hieu') }}/<% trademarks.slug %>" target="_self"><% trademarks.name %></a>
-                                                    </li>
-                                                </ul>
+                                            <li class="list-group-item" ng-repeat="trademarks in menuProduct.trademarks" ng-hide="trademarks.kind_id != kind.id">
+                                                <a href="{{ url('thuong-hieu') }}/<% trademarks.slug %>" target="_self"><% trademarks.name %></a>
                                             </li>
                                         </ul>
                                     </li>
@@ -147,37 +140,61 @@
                                         </div>
                                     </div>
                                 </div>--}}
-                                <div role="tabpanel" class="tab-pane" id="comment">
-                                    <div class="form-group">
-                                        <label for="inputName">Họ tên</label>
-                                        <input type="text" class="form-control" id="inputName" placeholder="VD: Nguyễn Văn An">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail">Email</label>
-                                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail">Đánh giá của bạn</label>
-                                        <div class="rating">
-                                            <span><i class="fa fa-star-o"></i></span>
-                                            <span><i class="fa fa-star-o"></i></span>
-                                            <span><i class="fa fa-star-o"></i></span>
-                                            <span><i class="fa fa-star-o"></i></span>
-                                            <span><i class="fa fa-star-o"></i></span>
+                                <form role="form" name="comment" ng-submit="save(detail.id)">
+                                    <div role="tabpanel" class="tab-pane" id="comment">
+                                        <div class="form-group">
+                                            <label for="inputName">Họ tên</label>
+                                            <input type="text" class="form-control" id="inputAuthor" placeholder="VD: Nguyễn Văn An" name="author" ng-model="author" ng-required="true">
+                                            <span class="help-block" ng-show="comment.author.$error.required">Họ tên không được trống</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputEmail">Email</label>
+                                            <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email" ng-model="email" ng-required="true">
+                                            <span class="help-block" ng-show="comment.email.$error.required">Email không được trống</span>
+                                            <span class="help-block" ng-show="comment.email.$error.email">Định dạng email không đúng</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputRating">Đánh giá của bạn</label>
+                                            <div class="rating">
+                                                <select name="rating" ng-model="rating">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                                {{--<span><i class="fa fa-star-o"></i></span>
+                                                <span><i class="fa fa-star-o"></i></span>
+                                                <span><i class="fa fa-star-o"></i></span>
+                                                <span><i class="fa fa-star-o"></i></span>
+                                                <span><i class="fa fa-star-o"></i></span>--}}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputMessage">Nội dung</label>
+                                            <textarea class="form-control" id="inputMessage" placeholder="Viết cho chúng tôi cảm nhận của bạn" rows="4" name="content" ng-model="content"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-primary" type="submit" id="sendComment" ng-disabled="comment.$invalid">Gửi đánh giá</button>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="inputTitle">Tiêu đề</label>
-                                        <input type="text" class="form-control" id="inputTitle" placeholder="Tiêu đề">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputMessage">Nội dung</label>
-                                        <textarea class="form-control" id="inputMessage" placeholder="Viết cho chúng tôi cảm nhận của bạn" rows="4"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <button class="btn btn-primary" type="submit" id="sendComment">Gửi đánh giá</button>
-                                    </div>
+                                </form>
+
+                                <div class="comments_posts_list">
+
+                                    <table class="table list-comment">
+                                        <div class="media first-comment" ng-repeat="comments in productComments">
+                                            <div class="media-left">
+                                                <img class="media-object" src="{{ asset('public/frontend/img/users_ava.png') }}" alt="users_ava">
+                                            </div>
+                                            <div class="media-body">
+                                                <h4 class="media-heading"><% comments.author %></h4>
+                                                <p ng-bind-html="$sce.trustAsHtml(comments.content)"></p>
+                                            </div>
+                                        </div>
+                                    </table>
                                 </div>
+                                <div class="btn btn-primary see-more" ng-click="seeMore(detail.id)">Xem thêm ...</div>
                             </div>
 
                         </div>

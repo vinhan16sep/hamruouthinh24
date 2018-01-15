@@ -59,6 +59,8 @@ Route::prefix('v1')->group(function() {
         Route::resource('comment', 'CommentApiController');
         Route::get('add_blog_comment', 'CommentApiController@addCommentBlog')->name('comment.addCommentBlog');
         Route::get('get_blog_comment', 'CommentApiController@getBlogComment')->name('comment.getBlogComment');
+        Route::get('add_product_comment', 'CommentApiController@addProductComment')->name('comment.addProductComment');
+        Route::get('get_product_comment', 'CommentApiController@getProductComment')->name('comment.getProductComment');
         /**
          * Cart API
          */

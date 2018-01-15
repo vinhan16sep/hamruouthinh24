@@ -5,6 +5,7 @@
         $scope.news = [];
         var comment;
         var type = '';
+        var page = 1;
         $urlSplit = $location.path().split("/");
         if(($urlSplit[2] == 'tu-van' || $urlSplit[2] == 'tin-tuc') && $urlSplit.length >= 4){
             var slug = $urlSplit[3];
@@ -37,8 +38,7 @@
                 }
             }).then(
                 function(res){
-                    $scope.blogComments = res.data.data;
-                    console.log(res.data.data);
+                    $scope.blogComments = res.data.result.data;
                 }, function(error){
 
             });
@@ -105,21 +105,60 @@
                 // $("#sendComment").prop('disabled', false);
                 $('#inputMessage').val('');
                 $scope.comment = success.data;
-                var bindComment = '<div class="media first-comment" ng-repeat="comments in blogComments">';
-                bindComment += '<div class="media-left">';
-                bindComment += '<img class="media-object" src="'+url+'public/frontend/img/users_ava.png" alt="users_ava">';
-                bindComment += '</div>';
-                bindComment += '<div class="media-body">';
-                bindComment += '<h4 class="media-heading">'+$scope.author+'</h4>';
-                bindComment += '<p>'+$scope.content+'</p>';
-                bindComment += '</div>';
-                bindComment += '</div>';
-                $('.first-comment:first-child').before(bindComment);
+                // var bindComment = '<div class="media first-comment" ng-repeat="comments in blogComments">';
+                // bindComment += '<div class="media-left">';
+                // bindComment += '<img class="media-object" src="'+url+'public/frontend/img/users_ava.png" alt="users_ava">';
+                // bindComment += '</div>';
+                // bindComment += '<div class="media-body">';
+                // bindComment += '<h4 class="media-heading">'+$scope.author+'</h4>';
+                // bindComment += '<p>'+$scope.content+'</p>';
+                // bindComment += '</div>';
+                // bindComment += '</div>';
+                // if($('.first-comment:first-child').length != 0){
+                //     $('.first-comment:first-child').before(bindComment);
+                // }else{
+                //     $(bindComment).appendTo('.list-comment');
+                // }
+                location.reload();
                 // console.log(blog_id);
             }, function(error){
 
             });
         };
+
+        $scope.seeMore =function(id){
+            page++;
+            var url = 'http://localhost/hamruouthinh24/';
+            $http({
+                method: 'GET',
+                url: API_URL + 'get_blog_comment',
+                params: {
+                    id: id,
+                    page: page
+                }
+            }).then(function(success){
+                var comment =success.data.result.data;
+                var check_page = success.data.total;
+                if(page >= check_page){
+                    $('.see-more').hide();
+                }
+                console.log(success.data.total);
+                $.each(comment, function (index, value) {
+                    var bindComment = '<div class="media first-comment" ng-repeat="comments in blogComments">';
+                    bindComment += '<div class="media-left">';
+                    bindComment += '<img class="media-object" src="'+url+'public/frontend/img/users_ava.png" alt="users_ava">';
+                    bindComment += '</div>';
+                    bindComment += '<div class="media-body">';
+                    bindComment += '<h4 class="media-heading">'+value.author+'</h4>';
+                    bindComment += '<p>'+value.content+'</p>';
+                    bindComment += '</div>';
+                    bindComment += '</div>';
+                    $(bindComment).appendTo('.list-comment');
+                });
+            }, function(error){
+
+            });
+        }
 
         
 

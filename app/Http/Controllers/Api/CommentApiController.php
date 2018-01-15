@@ -11,6 +11,7 @@ use DateTime;
 use Response;
 use App\Blog;
 use App\BlogComment;
+use App\ProductComment;
 
 class CommentApiController extends Controller
 {
@@ -51,8 +52,10 @@ class CommentApiController extends Controller
     	BlogComment::create($input);
     	return 'ok';
     }
+
     public function getBlogComment(Request $request)
     {
+        $page = 10;
     	$id = $request->input('id');
     	$result = DB::table('blog_comment')
     			->where('blog_id', $id)
@@ -60,7 +63,38 @@ class CommentApiController extends Controller
     			->where('is_approved', '=', 0)
     			->orderBy('id', 'desc')
     			// ->get();
-    			->paginate(10);
-    	return response()->json($result, 200);
+    			->paginate($page);
+                // print_r($result);die;
+        $count = DB::table('blog_comment')
+                ->where('blog_id', $id)
+                ->count();
+        $total = ceil($count / $page);
+    	return response()->json(['result' => $result, 'total' => $total], 200);
+    }
+
+    public function addProductComment(Request $request)
+    {
+    	$keys = ['product_id','author','email','title', 'rating', 'content'];
+    	$input = $this->createQueryInput($keys, $request);
+    	ProductComment::create($input);
+    	return 'ok';
+    }
+
+    public function getProductComment(Request $request)
+    {
+        $page = 10;
+        $id = $request->input('id');
+        $result = DB::table('product_comment')
+                ->where('product_id', $id)
+                ->where('is_deleted', '=', 0)
+                ->where('is_approved', '=', 0)
+                ->orderBy('id', 'desc')
+                // ->get();
+                ->paginate(10);
+        $count = DB::table('product_comment')
+                ->where('product_id', $id)
+                ->count();
+        $total = ceil($count / $page);
+        return response()->json(['result' => $result, 'total' => $total], 200);
     }
 }
