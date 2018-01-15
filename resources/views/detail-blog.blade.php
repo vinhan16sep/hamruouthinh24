@@ -40,14 +40,13 @@
                                     <span class="help-block" ng-show="comment.content.$error.required">Nội dung không được trống</span>
                                 </div>
                                 <div class="form-group">
-                                    <button class="btn btn-primary" type="submit" id="sendComment" ng-disabled="comment.$invalid" >Gửi đánh giá</button>
+                                    <button class="btn btn-primary" type="submit" id="sendComment" ng-disabled="comment.$invalid">Gửi đánh giá</button>
                                 </div>
                             </div>
                         </form>
 
                         <div class="comments_posts_list">
-
-                            <table class="table">
+                            <table class="table list-comment">
                                     <div class="media first-comment" ng-repeat="comments in blogComments">
                                         <div class="media-left">
                                             <img class="media-object" src="{{ asset('public/frontend/img/users_ava.png') }}" alt="users_ava">
@@ -58,7 +57,9 @@
                                         </div>
                                     </div>
                             </table>
+
                         </div>
+                        <div class="btn btn-primary see-more" ng-click="seeMore(selected.id)">Xem thêm ...</div>
                     </div>
 
                 </div>
