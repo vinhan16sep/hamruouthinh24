@@ -243,5 +243,10 @@ Route::prefix('admin')->group(function() {
         Route::resource('origin', 'OriginController');
         Route::post('origin/update/{id}', 'OriginController@update')->name('origin.update');
         
+        //Product Comment router
+        Route::get('comment/product/{id}', 'CommentController@fetchProductComment')->name('comment.fetchProductComment');
+        Route::post('comment_product/delete/{id}/{product_id}', 'CommentController@deleteProductComment')->name('comment.deleteProductComment');
+        Route::get('comment/blog/{id}', 'CommentController@fetchBlogComment')->name('comment.fetchBlogComment');
+        Route::post('comment_blog/delete/{id}/{blog_id}', 'CommentController@deleteBlogComment')->name('comment.deleteBlogComment');
     });
 });
