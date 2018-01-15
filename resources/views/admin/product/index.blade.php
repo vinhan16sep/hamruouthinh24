@@ -31,12 +31,12 @@
           <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
             <thead>
               <tr role="row">
-                <th width="20%" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">Tên sản phẩm</th>
-                <th width="20%" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Giá thành</th>
+                <th width="15%" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">Tên sản phẩm</th>
+                <th width="15%" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Giá thành</th>
                 <th width="10%" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Khuyến mại</th>
                 <th width="5%" class="hidden-xs" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Đặc biệt?</th>
                 <th width="5%" class="hidden-xs" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Mới?</th>
-                <th  width="30%" tabindex="0" aria-controls="example2" rowspan="1" colspan="2" aria-label="Action: activate to sort column ascending">Hành động</th>
+                <th  width="40%" tabindex="0" aria-controls="example2" rowspan="1" colspan="2" aria-label="Action: activate to sort column ascending">Hành động</th>
               </tr>
             </thead>
             <tbody>
@@ -63,18 +63,21 @@
                   @endif
                   <td>
                     <form class="row" method="POST" action="{{ route('product.destroy', ['id' => $item->id]) }}" onsubmit = "return confirm('Chắc chắn xoá?')">
-                        <button class="btn btn-primary collapsed col-sm-3 col-xs-5 btn-margin" type="button" data-toggle="collapse" href="#{{ $item->id }}" aria-expanded="true" aria-controls="messageContent">Chi tiết</button>
+                        <button class="btn btn-primary collapsed col-sm-2 col-xs-5 btn-margin" type="button" data-toggle="collapse" href="#{{ $item->id }}" aria-expanded="true" aria-controls="messageContent">Chi tiết</button>
 
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <a href="{{ route('product.edit', ['id' => $item->id]) }}" class="btn btn-warning col-sm-3 col-xs-5 btn-margin">
+                        <a href="{{ route('product.edit', ['id' => $item->id]) }}" class="btn btn-warning col-sm-2 col-xs-5 btn-margin">
                         Sửa
                         </a>
                         {{--@if ($user->username != Auth::user()->username)--}}
-                         <button type="submit" class="btn btn-danger col-sm-3 col-xs-5 btn-margin">
+                         <button type="submit" class="btn btn-danger col-sm-2 col-xs-5 btn-margin">
                           Xoá
                         </button>
                         {{--@endif--}}
+                        <a href="{{ route('comment.fetchProductComment', ['id' => $item->id]) }}" class="btn btn-warning col-sm-2 col-xs-5 btn-margin">
+                        Bình luận
+                        </a>
                     </form>
                   </td>
               </tr>
