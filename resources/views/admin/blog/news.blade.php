@@ -52,6 +52,9 @@
                                                     Xoá
                                                 </button>
                                                 {{--@endif--}}
+                                                <a href="{{ route('comment.fetchBlogComment', ['id' => $item->id]) }}" class="btn btn-warning col-sm-2 col-xs-5 btn-margin">
+                                                Bình luận
+                                                </a>
                                             </form>
                                         </td>
                                     </tr>
