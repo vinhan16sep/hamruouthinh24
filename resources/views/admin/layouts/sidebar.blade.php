@@ -75,9 +75,9 @@
             <li class="{{(Request::segment(2) == 'trademark')? 'active' : '' }}">
               <a href="{{ url('admin/trademark') }}">Thương hiệu</a>
             </li>
-            <li class="{{(Request::segment(2) == 'category')? 'active' : '' }}">
+            {{--<li class="{{(Request::segment(2) == 'category')? 'active' : '' }}">
               <a href="{{ url('admin/category') }}">Danh mục</a>
-            </li>
+            </li>--}}
             <li class="{{(Request::segment(2) == 'product')? 'active' : '' }}">
               <a href="{{ url('admin/product') }}">Sản phẩm</a>
             </li>
