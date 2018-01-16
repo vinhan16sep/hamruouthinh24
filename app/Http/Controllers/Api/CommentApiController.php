@@ -95,7 +95,25 @@ class CommentApiController extends Controller
         $count = DB::table('product_comment')
                 ->where('product_id', $id)
                 ->count();
-        $total = ceil($count / $page);
-        return response()->json(['result' => $result, 'total' => $total], 200);
+        
+        
+
+        $rating = DB::table('product_comment')
+                ->select('rating')
+                ->where('product_id', $id)
+                ->get();
+        $totalRating = 0;
+        foreach ($rating as $key => $value) {
+            $totalRating = $totalRating + $value->rating;
+        }
+        
+        if($count != 0){
+            $total = ceil($count / $page);
+            $averageRating = round($totalRating/$count);
+        }else{
+            $total = 0;
+            $averageRating = 0;
+        }
+        return response()->json(['result' => $result, 'total' => $total, 'averageRating' => $averageRating, 'count' => $count], 200);
     }
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('hamruouthinh24App', ['ng', 'ngRoute', 'ngResource', 'ngMaterial', 'ui.bootstrap', 'ngCookies'], function($interpolateProvider, $locationProvider){
+var app = angular.module('hamruouthinh24App', ['ng', 'ngRoute', 'ngResource', 'ngMaterial', 'ui.bootstrap', 'ngCookies', 'jkAngularRatingStars'], function($interpolateProvider, $locationProvider){
     $interpolateProvider.startSymbol('<%');
     $interpolateProvider.endSymbol('%>');
 
