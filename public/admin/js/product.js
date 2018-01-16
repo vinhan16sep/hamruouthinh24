@@ -11,11 +11,11 @@ window.onload = function(){
         $("#discount_price").prop('disabled', true);
     }
 
-    if($('#is_gift').is(':checked')){
-        $("#gift").prop('disabled', false);
-    }else{
-        $("#gift").prop('disabled', true);
-    }
+    // if($('#is_gift').is(':checked')){
+    //     $("#gift").prop('disabled', false);
+    // }else{
+    //     $("#gift").prop('disabled', true);
+    // }
 
     // enable 2 discount fields when is_discount checked, disable again when is_discount uncheck
     $('#is_discount').change(function(){
