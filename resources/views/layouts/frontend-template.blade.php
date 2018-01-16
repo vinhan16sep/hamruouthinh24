@@ -14,6 +14,7 @@
     <link href="{{ asset("public/frontend/css/lib/bootstrap.min.css") }}" rel="stylesheet" type="text/css" />
     <!-- Font Awesome -->
     <link href="{{ asset("public/frontend/css/lib/font-awesome.min.css") }}" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Theme style -->
     <link href="{{ asset("public/frontend/css/font_settings.css")}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset("public/frontend/css/main.css")}}" rel="stylesheet" type="text/css" />
@@ -38,12 +39,31 @@
     <script src="{{ asset ("public/frontend/js/script.js") }}"></script>
     <script src="{{ asset ("public/frontend/js/lib/js.cookie.js") }}"></script>
     <!-- Angularjs -->
+    <link rel="stylesheet" href="{{ asset ("public/frontend/rating/jk-rating-stars.min.css") }}" />
+    <script src="{{ asset ("public/frontend/rating/jk-rating-stars.min.js") }}"></script>
 
     <script src="{{ asset ("public/frontend/app/app.js") }}"></script>
     <script src="{{ asset ("public/frontend/app/controllers/main.js") }}"></script>
 
+
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+    <style type="text/css">
+        /* Styles go here */
+
+        .my-custom-stars .button .material-icons {
+          font-size: 50px; 
+        }
+
+        .my-custom-stars .star-button.star-on .material-icons {
+          color: #003399; 
+        }
+
+        .my-custom-stars .star-button.star-off .material-icons {
+          color: #99ccff; 
+        }
+    </style>
 </head>
 
 <body ng-app="hamruouthinh24App" ng-controller="MainController">

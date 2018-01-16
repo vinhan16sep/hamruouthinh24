@@ -41,6 +41,7 @@
                         <h2 class="productPrice">
                             <span class="price"><% detail.price | currency:VND:0 | commaToDot | removeUSCurrency  %> vnđ</span>
                         </h2>
+                        <jk-rating-stars rating="secondRate" read-only="readOnly" ></jk-rating-stars> <strong>Tổng số đánh giá:  <span style="color: blue"> <% count %></span></strong>
 
                         <div class="info">
                             <table class="table">
@@ -156,13 +157,8 @@
                                         <div class="form-group">
                                             <label for="inputRating">Đánh giá của bạn</label>
                                             <div class="rating">
-                                                <select name="rating" ng-model="rating">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                </select>
+                                                <jk-rating-stars rating="rating"></jk-rating-stars>
+                                                <input type="hidden" name="rating" ng-value="rating" ng-model="rating">
                                                 {{--<span><i class="fa fa-star-o"></i></span>
                                                 <span><i class="fa fa-star-o"></i></span>
                                                 <span><i class="fa fa-star-o"></i></span>

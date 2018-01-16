@@ -7,6 +7,15 @@
         var page = 1;
         $urlSplit = $location.path().split("/");
 
+        //rating
+        $scope.count = 0;
+        $scope.rating = 5;
+        $scope.secondRate = 0;
+        $scope.readOnly = true;
+        $scope.onItemRating = function(rating){
+          alert('On Rating: ' + rating);
+        };
+
 
 
         // Build menu product
@@ -29,7 +38,6 @@
                 $scope.detail = success.data[0];
                 product_id = $scope.detail.id;
                 trademark_id = $scope.detail.trademark_id;
-                console.log($scope.detail.trademark_id);
 
                 if(trademark_id != null){
                     $http({
@@ -75,8 +83,9 @@
                     function(res){
                         $scope.productComments = res.data.result.data;
                         var check_page = res.data.total;
-                        
-                        if(page >= check_page){
+                        $scope.secondRate = res.data.averageRating;
+                        $scope.count = res.data.count;
+                        if(page >= check_page || count == 0){
                             $('.see-more').hide();
                         }
                     }, function(error){
@@ -120,6 +129,7 @@
                     content: $scope.content
                 }
             }).then(function(success){
+
                 // $("#sendComment").prop('disabled', false);
                 $('#inputMessage').val('');
                 $scope.comment = success.data;
@@ -176,6 +186,8 @@
 
             });
         }
+
+        
 
     });
 })();
