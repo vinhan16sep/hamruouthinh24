@@ -59,14 +59,16 @@ class BlogApiController extends Controller
     }
 
     public function fetchLatestNews(){
+        $category_id = Input::get('category_id');
         $result = DB::table('blog')
             ->select('*')
             ->where('type', '=', 1)
             ->where('is_deleted', '=', 0)
+            ->where('category_id', $category_id)
             ->orderBy('id', 'desc')
             ->limit(4)
             ->get();
-
+        // print_r($result);die;
         if(!$result){
             return response()->json('No item found', 404);
         }
@@ -112,7 +114,6 @@ class BlogApiController extends Controller
             ->where('blog_category.slug', '=', $category)
             ->where('blog.is_deleted', '=', 0)
             ->get();
-
         if(!$result){
             return response()->json('No item found', 404);
         }

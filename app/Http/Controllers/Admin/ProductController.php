@@ -34,7 +34,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $products = DB::table('product')->where('product.is_deleted', '=', 0)->paginate(10);
+        $products = DB::table('product')->where('product.is_deleted', '=', 0)->orderBy('id','desc')->paginate(10);
         return view('admin/product/index', [
             'products' => $products,
             'type_collection' => $this->fetchAllType(),
@@ -76,12 +76,11 @@ class ProductController extends Controller
 
         // Upload image
         $path = $request->file('image')->store('products/' . $newFolderPath[0]);
-        $keys = ['name','type_id', 'kind_id', 'trademark_id', 'is_special', 'is_new', 'capacity', 'material', 'year', 'producer', 'volume', 'origin_id', 'price', 'selling_price', 'content', 'is_discount', 'discount_percent', 'discount_price', 'is_gift', 'gift', 'description', 'concentrations'];
+        $keys = ['name','type_id', 'kind_id', 'trademark_id', 'is_special', 'is_new', 'capacity', 'material', 'year', 'producer', 'volume', 'origin_id', 'price', 'selling_price', 'content', 'is_discount', 'discount_percent', 'discount_price', 'is_gift', 'gift', 'description', 'concentrations', 'quantity'];
         // $keys = ['name'];
         $input = $this->createQueryInput($keys, $request);
         $input['image'] = $path;
         $input['slug'] = $uniqueSlug;
-        // print_r($input);die;
 
         // Not implement yet
         Product::create($input);
@@ -210,8 +209,6 @@ class ProductController extends Controller
             'name' => 'required|max:255',
             'slug' => 'required|unique:product,slug, ' . $id . '|max:255',
             'type_id' => 'required',
-            'kind_id' => 'required',
-            'trademark_id' => 'required',
             'price' => 'required|numeric',
             'selling_price' => 'numeric',
             'discount_percent' => 'numeric',

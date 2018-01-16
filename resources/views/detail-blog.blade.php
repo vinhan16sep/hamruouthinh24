@@ -67,7 +67,7 @@
                 <div class="nav_side col-md-3 col-sm-3 col-xs-12">
                     <div class="panel panel-default">
                         <!-- Default panel contents -->
-                        <div class="panel-heading">Danh mục <% title %></div>
+                        <div class="panel-heading">Bài viết <% title %></div>
                             <ul class="list-group">
                                 <li class="list-group-item" ng-repeat="advise in advises" ng-hide="<% advise.slug == slug %>" ng-if="type == 0">
                                     <a href="{{ url('/tu-van') }}/<% advise.slug %>" target="_self"><% advise.title %></a>

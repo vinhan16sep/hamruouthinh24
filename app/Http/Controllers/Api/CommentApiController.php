@@ -69,7 +69,7 @@ class CommentApiController extends Controller
                 ->where('blog_id', $id)
                 ->count();
         $total = ceil($count / $page);
-    	return response()->json(['result' => $result, 'total' => $total], 200);
+    	return response()->json(['result' => $result, 'total' => $total, 'count' => $count], 200);
     }
 
     public function addProductComment(Request $request)

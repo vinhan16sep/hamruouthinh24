@@ -78,6 +78,11 @@
                         <i class="fa fa-shopping-cart" aria-hidden="false"></i> <span class="badge" ng-bind="countAddedProducts"></span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ url('thu-ruou') }}" target="_self">
+                        <i class="fa fa-glass" aria-hidden="true"></i> <span class="badge"></span>
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="nav col-md-10 col-xs-6 hidden">

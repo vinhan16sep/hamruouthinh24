@@ -34,10 +34,10 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('kind') ? ' has-error' : '' }}">
-                                <label for="kind" class="col-md-2 control-label">Loại sản phẩm</label>
+                                <label for="kind" class="col-md-2 control-label">Dòng sản phẩm</label>
 
                                 <div class="col-md-4">
-                                    <select name="kind_id"  class="form-control kind" required>
+                                    <select name="kind_id"  class="form-control kind">
                                         <option class="kind_option" value="">-------------------Chọn loại sản phẩm trước -------------------</option>
                                     </select>
                                 </div>
@@ -47,7 +47,7 @@
                                 <label for="trademark" class="col-md-2 control-label">Thương hiệu sản phẩm</label>
 
                                 <div class="col-md-4">
-                                    <select name="trademark_id"  class="form-control trademark" required>
+                                    <select name="trademark_id"  class="form-control trademark">
                                         <option class="trademark_option" value="">-------------------Chọn loại sản phẩm trước -------------------</option>
                                     </select>
                                 </div>
@@ -101,6 +101,19 @@
                                     <input type="file" id="image" name="image" required >
                                 </div>
                             </div>
+
+                            <div class="form-group{{ $errors->has('quantity') ? ' has-error' : '' }}">
+                                <label for="quantity" class="col-md-2 control-label">Số lượng</label>
+                                <div class="col-md-8">
+                                    <input id="quantity" type="number" class="form-control" name="quantity" value="{{ old('quantity') }}">
+                                    @if ($errors->has('quantity'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('quantity') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
                             <div class="form-group{{ $errors->has('concentrations') ? ' has-error' : '' }}">
                                 <label for="concentrations" class="col-md-2 control-label">Nộng độ</label>
                                 <div class="col-md-8">
@@ -170,7 +183,7 @@
                             <div class="form-group{{ $errors->has('origin') ? ' has-error' : '' }}">
                                 <label for="origin" class="col-md-2 control-label">Xuất xứ</label>
                                 <div class="col-md-4">
-                                    <select name="origin_id"  class="form-contro" autofocus>
+                                    <select name="origin_id"  class="form-control">
                                         <option value="">-----------------------Chọn quốc gia-----------------------</option>
                                         @foreach($origin as $value)
                                             <option value="{{ $value->id }}">{{ $value->name }}</option>
@@ -263,8 +276,7 @@
                                 <label for="gift" class="col-md-2 control-label">Nội dung quà tặng</label>
 
                                 <div class="col-md-8">
-                                    <textarea id="gift" rows="10" class="form-control tinymce" name="gift" value="{{ old('gift') }}" disabled></textarea>
-
+                                    <textarea id="gift" rows="10" class="form-control tinymce" name="gift" value="{{ old('gift') }}"></textarea>
                                     @if ($errors->has('gift'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('gift') }}</strong>

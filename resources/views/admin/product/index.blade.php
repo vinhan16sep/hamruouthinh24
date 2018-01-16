@@ -94,7 +94,17 @@
                               <br>
                               <strong>Dòng sản phẩm:</strong> {{ (!empty($kind_collection[$item->kind_id]))? $kind_collection[$item->kind_id] : '' }}
                               <br>
+                              <strong>Hàng còn:</strong> {{ $item->quantity }}
+                              <br>
                               <strong>Thương hiệu sản phẩm:</strong> {{ (!empty($trademark_collection[$item->trademark_id]))? $trademark_collection[$item->trademark_id] : '' }}
+                              <br>
+                              @if($item->is_discount == 1)
+                              <strong>Khuyến mại(%):</strong> {{ $item->discount_percent }}%
+                              <br>
+                              <strong>Giá khuyến mại:</strong> {{ $item->discount_price }} vnd
+                              <br>
+                              @endif
+                              <strong>Quà tặng:</strong> {!! $item->gift !!}
                               <br>
                               <strong>Nồng độ:</strong> {{ $item->concentrations }}
                               <br>

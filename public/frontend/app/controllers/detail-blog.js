@@ -3,9 +3,11 @@
         $scope.$sce = $sce;
         $scope.selected = [];
         $scope.news = [];
+
         var comment;
         var type = '';
         var page = 1;
+        $scope.count = 0;
         $urlSplit = $location.path().split("/");
         if(($urlSplit[2] == 'tu-van' || $urlSplit[2] == 'tin-tuc') && $urlSplit.length >= 4){
             var slug = $urlSplit[3];
@@ -28,7 +30,7 @@
             }
         }).then(function(success){
             $scope.selected = success.data[0];
-            // console.log($scope.selected);
+            category_id = $scope.selected.category_id;
             blog_id = $scope.selected.id;
             $http({
                 method: 'GET',
@@ -39,24 +41,34 @@
             }).then(
                 function(res){
                     $scope.blogComments = res.data.result.data;
+                    var check_page = res.data.total;
+                    $scope.count = res.data.count;
+                    if(page >= check_page || count == 0){
+                        $('.see-more').hide();
+                    }
                 }, function(error){
 
             });
+
+            $http({
+                method: 'GET',
+                url: API_URL + 'latest_news',
+                params: {
+                    type: type,
+                    category_id : category_id
+                }
+            }).then(function(success){
+                $scope.news = success.data;
+                // console.log($scope.category_id);
+            }, function(error){
+
+            });
+
         }, function(error){
 
         });
 
-        $http({
-            method: 'GET',
-            url: API_URL + 'latest_news',
-            params: {
-                type: type
-            }
-        }).then(function(success){
-            $scope.news = success.data;
-        }, function(error){
-
-        });
+        
 
         $http({
             method: 'GET',
@@ -77,10 +89,11 @@
             method: 'GET',
             url: API_URL + 'category',
             params: {
-                type: type
+                type: type,
             }
         }).then(function(success){
             $scope.categories = success.data;
+            // console.log(success.data);
         }, function(error){
 
         });
