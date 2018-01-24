@@ -13,6 +13,7 @@ use App\Type;
 use App\Kind;
 use Response;
 use File;
+use Validator;
 use Illuminate\Support\Facades\Cookie;
 
 class ProductController extends Controller
@@ -35,6 +36,7 @@ class ProductController extends Controller
      */
     public function index(){
         $products = DB::table('product')->where('product.is_deleted', '=', 0)->orderBy('id','desc')->paginate(10);
+//        print_r($products);die;
         return view('admin/product/index', [
             'products' => $products,
             'type_collection' => $this->fetchAllType(),
@@ -75,11 +77,16 @@ class ProductController extends Controller
         File::makeDirectory($newFolderPath[1], 0777, true, true);
 
         // Upload image
-        $path = $request->file('image')->store('products/' . $newFolderPath[0]);
+        $upload = [];
+        foreach ($request->file('image') as $key => $file) {
+            $upload[$key] = $file->store('products/' . $newFolderPath[0]);
+        }
+        dd($upload);
+        $image_json = json_encode($upload);
         $keys = ['name','type_id', 'kind_id', 'trademark_id', 'is_special', 'is_new', 'capacity', 'material', 'year', 'producer', 'volume', 'origin_id', 'price', 'selling_price', 'content', 'is_discount', 'discount_percent', 'discount_price', 'is_gift', 'gift', 'description', 'concentrations', 'quantity'];
         // $keys = ['name'];
         $input = $this->createQueryInput($keys, $request);
-        $input['image'] = $path;
+        $input['image'] = $image_json;
         $input['slug'] = $uniqueSlug;
 
         // Not implement yet
@@ -332,4 +339,37 @@ class ProductController extends Controller
         }
         return $origin_collection;
     }
+
+    public function multiple_upload($upload) {
+        // getting all of the post data
+        $files = Input::file('image');
+
+        // Making counting of uploaded images
+        $file_count = count($files);
+
+        // start count how many uploaded
+        $uploadcount = 0;
+
+        $list_image = [];
+        foreach($files as $file) {
+            $rules = array('file' => 'required');
+
+            //'required|mimes:png,gif,jpeg,txt,pdf,doc'
+
+            $validator = Validator::make(array('file'=> $file), $rules);
+
+            if($validator->passes()){
+                $destinationPath = $upload;
+                $filename = $file->getClientOriginalName();
+                $upload_success = $file->move($destinationPath, $filename);
+                $uploadcount ++;
+                $list_image[] = $filename;
+            }
+
+        }
+    }
+
+
+
+
 }

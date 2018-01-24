@@ -88,7 +88,8 @@
                           <div class="col-md-5">
                               <!-- <strong>Hình ảnh:</strong>
                               <br> -->
-                              {{ HTML::image('storage/app/'.$item->image, '', array('width' => 100)) }}
+                              <?php $image = json_decode($item->image);?>
+                              {{ HTML::image('storage/app/'.$image[0], '', array('width' => 100)) }}
                               <br />
                               <strong>Loại sản phẩm:</strong> {{ (!empty($type_collection[$item->type_id]))? $type_collection[$item->type_id] : '' }}
                               <br>

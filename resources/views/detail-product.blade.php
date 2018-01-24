@@ -29,11 +29,14 @@
                     </div>
                 </div>
                 <div class="product_detail col-md-9 col-sm-12 col-xs-12">
-                    <div class="preview col-md-5 col-sm-5 col-xs-12">
-                        <a class="preview" href="{{ asset('storage/app') }}/<% detail.image %>">
-                            <img src="{{ asset('storage/app') }}/<% detail.image %>" class="w-100" alt="preview">
-                        </a>
+                    <a class="preview" href="{{ asset('storage/app') }}/<% detail.image[0] %>">
+                        <img src="{{ asset('storage/app') }}/<% detail.image[0] %>" class="w-100" alt="preview">
+                    </a>
 
+                    <div class="preview col-md-5 col-sm-5 col-xs-12" ng-repeat="image in detail.image" ng-hide="$index == 0">
+                        <a class="preview" href="{{ asset('storage/app') }}/<% image %>">
+                            <img src="{{ asset('storage/app') }}/<% image %>" class="w-100" alt="preview">
+                        </a>
                     </div>
                     <div class="infomation col-lg-7 col-md-7 col-sm-7 col-xs-12">
                         <h2 class="productName"><% detail.name %></h2>

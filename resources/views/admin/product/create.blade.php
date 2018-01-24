@@ -98,7 +98,7 @@
                             <div class="form-group">
                                 <label for="avatar" class="col-md-2 control-label" >Hình ảnh</label>
                                 <div class="col-md-8">
-                                    <input type="file" id="image" name="image" required >
+                                    <input type="file" id="image" name="image[]" required multiple>
                                 </div>
                             </div>
 

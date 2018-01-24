@@ -69,6 +69,7 @@ class LibraryController extends Controller
 			$this->multiple_upload($upload);
 		}
 
+
         return redirect()->intended('admin/library');
     }
 
