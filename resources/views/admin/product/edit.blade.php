@@ -106,7 +106,7 @@
                             <div class="form-group">
                                 <label for="avatar" class="col-md-2 control-label" >Hình ảnh</label>
                                 <div class="col-md-6">
-                                    <input type="file" id="image" name="image">
+                                    <input type="file" id="image" name="image[]" multiple>
                                 </div>
                             </div>
                             <div class="form-group{{ $errors->has('concentrations') ? ' has-error' : '' }}">

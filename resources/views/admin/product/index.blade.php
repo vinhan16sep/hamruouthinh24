@@ -89,7 +89,9 @@
                               <!-- <strong>Hình ảnh:</strong>
                               <br> -->
                               <?php $image = json_decode($item->image);?>
-                              {{ HTML::image('storage/app/'.$image[0], '', array('width' => 100)) }}
+                              @foreach($image as $value)
+                              {{ HTML::image('storage/app/'.$value, '', array('width' => 100)) }}
+                               @endforeach
                               <br />
                               <strong>Loại sản phẩm:</strong> {{ (!empty($type_collection[$item->type_id]))? $type_collection[$item->type_id] : '' }}
                               <br>

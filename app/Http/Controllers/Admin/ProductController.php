@@ -81,7 +81,6 @@ class ProductController extends Controller
         foreach ($request->file('image') as $key => $file) {
             $upload[$key] = $file->store('products/' . $newFolderPath[0]);
         }
-        dd($upload);
         $image_json = json_encode($upload);
         $keys = ['name','type_id', 'kind_id', 'trademark_id', 'is_special', 'is_new', 'capacity', 'material', 'year', 'producer', 'volume', 'origin_id', 'price', 'selling_price', 'content', 'is_discount', 'discount_percent', 'discount_price', 'is_gift', 'gift', 'description', 'concentrations', 'quantity'];
         // $keys = ['name'];
@@ -139,7 +138,11 @@ class ProductController extends Controller
     public function update(Request $request, $id){
         $product = Product::findOrFail($id);
         $this->validateInput($id, $request);
-        $uniqueSlug = $this->buildUniqueSlug('product', $request->id, $request->slug);
+        $uniqueSlug = $request->slug;
+        if($product['slug'] != $request->slug){
+            $uniqueSlug = $this->buildUniqueSlug('product', $request->id, $request->slug);
+        }
+
 
         $path = base_path() . '/' . 'storage/app/products';
         if($request->slug != $product->slug){
@@ -149,11 +152,15 @@ class ProductController extends Controller
         $keys = ['name','type_id', 'kind_id', 'trademark_id', 'is_special', 'is_new', 'capacity', 'material', 'year', 'producer', 'volume', 'origin_id', 'price', 'selling_price', 'content', 'is_discount', 'discount_percent', 'discount_price', 'is_gift', 'gift', 'description', 'concentrations'];
         $input = $this->createQueryInput($keys, $request);
         $input['slug'] = $uniqueSlug;
-
         // Upload image
         if($request->file('image')){
-            $path = $request->file('image')->store('products/' . $uniqueSlug);
-            $input['image'] = $path;
+//            $path = $request->file('image')->store('products/' . $uniqueSlug);
+            $upload = [];
+            foreach ($request->file('image') as $key => $file) {
+                $upload[$key] = $file->store('products/' . $uniqueSlug);
+            }
+            $image_json = json_encode($upload);
+            $input['image'] = $image_json;
         }else{
             $oldImageString = explode('/', $product->image);
             $input['image'] = implode('/', [$oldImageString[0], $uniqueSlug, $oldImageString[2]]);
@@ -214,7 +221,9 @@ class ProductController extends Controller
         // echo 'required|unique:product, id, ' . $id . '|max:255';die;
         $this->validate($request, [
             'name' => 'required|max:255',
-            'slug' => 'required|unique:product,slug, ' . $id . '|max:255',
+            //khi chỉnh sửa bản ghi hệ thống sẽ coi title va slug đã tồn tại, nên tự động -1 vào cuối -> không được check chính nó
+//            'slug' => 'required|unique:product,slug, ' . $id . '|max:255',
+            'slug' => 'required|max:255',
             'type_id' => 'required',
             'price' => 'required|numeric',
             'selling_price' => 'numeric',

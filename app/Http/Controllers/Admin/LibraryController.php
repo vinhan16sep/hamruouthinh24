@@ -65,7 +65,7 @@ class LibraryController extends Controller
 				$data2['image'] = $item;
 				DB::table('image')->insert($data2);
 			}
-			
+
 			$this->multiple_upload($upload);
 		}
 

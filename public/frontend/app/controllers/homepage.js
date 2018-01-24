@@ -21,6 +21,7 @@
             url: API_URL + 'discount_product'
         }).then(function(success){
             $scope.discounts = success.data;
+            console.log($scope.discounts);
         }, function(error){
 
         });
