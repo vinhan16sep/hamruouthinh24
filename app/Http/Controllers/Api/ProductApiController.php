@@ -27,6 +27,7 @@ class ProductApiController extends Controller
      */
     public function index(){
         $products = Product::all();
+        print_r($products);die;
 
         return response()->json($products, 200);
     }
@@ -53,7 +54,7 @@ class ProductApiController extends Controller
             ->where('product.slug', '=', $slug)
             ->where('product.is_deleted', '=', 0)
             ->get();
-
+        $result[0]->image = json_decode($result[0]->image);
         if(!$result){
             return response()->json('No item found', 404);
         }

@@ -36,6 +36,7 @@
         }).then(
             function(success){
                 $scope.detail = success.data[0];
+                console.log($scope.detail);
                 product_id = $scope.detail.id;
                 trademark_id = $scope.detail.trademark_id;
 
