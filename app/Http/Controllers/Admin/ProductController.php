@@ -81,7 +81,6 @@ class ProductController extends Controller
         foreach ($request->file('image') as $key => $file) {
             $upload[$key] = $file->store('products/' . $newFolderPath[0]);
         }
-        dd($upload);
         $image_json = json_encode($upload);
         $keys = ['name','type_id', 'kind_id', 'trademark_id', 'is_special', 'is_new', 'capacity', 'material', 'year', 'producer', 'volume', 'origin_id', 'price', 'selling_price', 'content', 'is_discount', 'discount_percent', 'discount_price', 'is_gift', 'gift', 'description', 'concentrations', 'quantity'];
         // $keys = ['name'];

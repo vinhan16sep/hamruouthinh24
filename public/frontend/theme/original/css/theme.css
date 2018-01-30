@@ -46,6 +46,28 @@ CSS for theme original
     border-top-color: #c1272d;
 }
 
+.nav_product > ul > li a{
+    color: #c1272d;
+}
+
+.nav_product ul > li.active > a, .nav_product ul > li.active:hover > a{
+    color: #fff;
+}
+
+.nav_product > ul > li.active, .nav_product > ul > li.active:hover{
+    background-color: #c1272d;
+}
+
+.nav_expand > .left{
+    background-image: url("../img/blog_01.jpg");
+}
+
+
+.nav>li>a:focus, .nav>li>a:hover{
+    color: #fff !important;
+    background-color: #c1272d;
+}
+
 .nav_list li a:hover{
     color: #c1272d;
 }

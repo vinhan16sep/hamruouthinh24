@@ -130,7 +130,7 @@
             <ul class="list-inline">
                 <li>
                     <a href="{{ url('') }}" target="_self">
-                        Trang chủ
+                        <i class="fa fa-home" aria-hidden="true"></i>
                     </a>
                 </li>
                 <li>

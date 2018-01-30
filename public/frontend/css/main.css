@@ -389,3 +389,9 @@ img.paragraph{
 	width: 500px;
 	margin: 15px auto;
 }
+
+#requestQuotationBtn{
+	position: fixed;
+	top: 50%;
+	right: 0;
+}

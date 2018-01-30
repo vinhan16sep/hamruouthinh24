@@ -1,5 +1,6 @@
 @extends('layouts.frontend-template')
 @section('content')
+    <link href="{{ asset("public/frontend/css/flexslider.css")}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset("public/frontend/css/store.css")}}" rel="stylesheet" type="text/css" />
     <section class="main_content" ng-controller="DetailProductController">
         <!-- InstanceBeginEditable name="content" -->
@@ -29,7 +30,7 @@
                     </div>
                 </div>
                 <div class="product_detail col-md-9 col-sm-12 col-xs-12">
-                    <a class="preview" href="{{ asset('storage/app') }}/<% detail.image[0] %>">
+                    <!--<a class="preview" href="{{ asset('storage/app') }}/<% detail.image[0] %>">
                         <img src="{{ asset('storage/app') }}/<% detail.image[0] %>" class="w-100" alt="preview">
                     </a>
 
@@ -37,69 +38,109 @@
                         <a class="preview" href="{{ asset('storage/app') }}/<% image %>">
                             <img src="{{ asset('storage/app') }}/<% image %>" class="w-100" alt="preview">
                         </a>
-                    </div>
-                    <div class="infomation col-lg-7 col-md-7 col-sm-7 col-xs-12">
-                        <h2 class="productName"><% detail.name %></h2>
+                    </div>-->
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div id="slider" class="flexslider">
+                                <ul class="slides">
 
-                        <h2 class="productPrice">
-                            <span class="price"><% detail.price | currency:VND:0 | commaToDot | removeUSCurrency  %> vnđ</span>
-                        </h2>
-                        <jk-rating-stars rating="secondRate" read-only="readOnly" ></jk-rating-stars> <strong>Tổng số đánh giá:  <span style="color: blue"> <% count %></span></strong>
+                                    <li ng-repeat="image in detail.image">
+                                        <img src="{{ asset('storage/app') }}/<% image %>" class="w-100" alt="preview">
+                                    </li>
 
-                        <div class="info">
-                            <table class="table">
-                                <tr>
-                                    <td>Nồng độ cồn</td>
-                                    <td><% detail.concentrations %></td>
-                                </tr>
-                                <tr>
-                                    <td>Dung tích</td>
-                                    <td><% detail.capacity %></td>
-                                </tr>
-                                <tr>
-                                    <td>Nguyên liệu</td>
-                                    <td><% detail.material %></td>
-                                </tr>
-                                <tr>
-                                    <td>Niên vụ</td>
-                                    <td><% detail.year %></td>
-                                </tr>
-                                <tr>
-                                    <td>Nhà sản xuất</td>
-                                    <td><% detail.producer %></td>
-                                </tr>
-                                <tr>
-                                    <td>Thể tích</td>
-                                    <td><% detail.volume %></td>
-                                </tr>
-                                <tr>
-                                    <td>Xuất xứ</td>
-                                    <td><% detail.origin_title %></td>
-                                </tr>
+                                </ul>
+                            </div>
+                            <div id="carousel" class="flexslider">
+                                <ul class="slides">
+                                    <li ng-repeat="image in detail.image">
+                                        <img src="{{ asset('storage/app') }}/<% image %>" class="w-100" alt="preview">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
 
-                                <tr>
-                                    <td colspan="2">
-                                        <p ng-bind-html="$sce.trustAsHtml(detail.description)"></p>
-                                    </td>
-                                </tr>
+                        <div class="infomation col-md-6 col-sm-6 col-xs-12">
+                            <h2 class="productName"><% detail.name %></h2>
 
-                                <tr>
-                                    <td colspan="2">
-                                        Chia sẻ qua <a href="javascript:void(0);" class="btn btn-primary" role="button"><i class="fa fa-facebook-f" aria-hidden="true"></i> </a>
-                                    </td>
-                                </tr>
+                            <h2 class="productPrice">
+                                <span class="price"><% detail.price | currency:VND:0 | commaToDot | removeUSCurrency  %> vnđ</span>
+                            </h2>
+                            <jk-rating-stars rating="secondRate" read-only="readOnly" ></jk-rating-stars> <strong>Tổng số đánh giá:  <span style="color: blue"> <% count %></span></strong>
 
-                                <tr>
-                                    <td colspan="2">
-                                        <button class="btn btn-primary" type="submit"  ng-click="addToCart(detail.id)">Thêm vào giỏ hàng</button>
-                                        <a href="javascript:void(0);" class="btn btn-primary" role="button" ng-click="addToTasting(detail.id)">Đăng ký thử ruọu</a>
-                                    </td>
-                                </tr>
+                            <div class="info">
+                                <table class="table">
+                                    <tr>
+                                        <td>Nồng độ cồn</td>
+                                        <td><% detail.concentrations %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dung tích</td>
+                                        <td><% detail.capacity %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nguyên liệu</td>
+                                        <td><% detail.material %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Niên vụ</td>
+                                        <td><% detail.year %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nhà sản xuất</td>
+                                        <td><% detail.producer %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Thể tích</td>
+                                        <td><% detail.volume %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Xuất xứ</td>
+                                        <td><% detail.origin_title %></td>
+                                    </tr>
 
-                            </table>
+                                    <tr>
+                                        <td colspan="2">
+                                            <p ng-bind-html="$sce.trustAsHtml(detail.description)"></p>
+                                        </td>
+                                    </tr>
 
+                                    <tr>
+                                        <td colspan="2">
+                                            Chia sẻ qua <a href="javascript:void(0);" class="btn btn-primary" role="button"><i class="fa fa-facebook-f" aria-hidden="true"></i> </a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td colspan="2">
+                                            <button class="btn btn-primary" type="submit"  ng-click="addToCart(detail.id)">Thêm vào giỏ hàng</button>
+                                            <a href="javascript:void(0);" class="btn btn-primary" role="button" ng-click="addToTasting(detail.id)">Đăng ký thử ruọu</a>
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+                            </div>
                         </div>
                     </div>
+
+
+                    <!--<div id="slider" class="flexslider">
+                        <ul class="slides">
+
+                            <li><img src="{{ asset('public/frontend/img/cover/cover_01.jpg') }}" class="w-100" alt="preview"></li>
+                            <li><img src="{{ asset('public/frontend/img/cover/cover_02.jpg') }}" class="w-100" alt="preview"></li>
+                            <li><img src="{{ asset('public/frontend/img/cover/cover_03.jpg') }}" class="w-100" alt="preview"></li>
+                        </ul>
+                    </div>
+                    <div id="carousel" class="flexslider">
+                        <ul class="slides">
+                            <li><img src="{{ asset('public/frontend/img/cover/cover_01.jpg') }}" class="w-100" alt="preview"></li>
+                            <li><img src="{{ asset('public/frontend/img/cover/cover_02.jpg') }}" class="w-100" alt="preview"></li>
+                            <li><img src="{{ asset('public/frontend/img/cover/cover_03.jpg') }}" class="w-100" alt="preview"></li>
+                        </ul>
+                    </div>-->
+
+
                     <div class="detail_info col-md-12 col-sm-12 col-xs-12">
                         <div>
                             <!-- Nav tabs -->
@@ -255,4 +296,32 @@
     </section>
     <script src="{{ asset ("public/frontend/app/controllers/detail-product.js") }}"></script>
     <script src="{{ asset ("public/frontend/app/controllers/modal.js") }}"></script>
+    <script src="{{ asset ("public/frontend/js/jquery.flexslider.js") }}"></script>
+    <script type="text/javascript">
+        $(function(){
+            SyntaxHighlighter.all();
+        });
+        $(window).load(function(){
+            $('#carousel').flexslider({
+                animation: "slide",
+                controlNav: false,
+                animationLoop: false,
+                slideshow: false,
+                itemWidth: 210,
+                itemMargin: 5,
+                asNavFor: '#slider'
+            });
+
+            $('#slider').flexslider({
+                animation: "slide",
+                controlNav: false,
+                animationLoop: false,
+                slideshow: false,
+                sync: "#carousel",
+                start: function(slider){
+                    $('body').removeClass('loading');
+                }
+            });
+        });
+    </script>
 @endsection

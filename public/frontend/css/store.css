@@ -6,39 +6,105 @@
 	background: none;
 }
 
-.panel-default:first-of-type{
-	text-align: center;
-	text-transform: uppercase;
+.nav_product{
+	background-color: #fff;
 }
 
-ul.list-group li{
+.nav_product{
 	position: relative;
+	padding: 10px 10px 5px 10px;
+	border-radius: 7px;
 }
 
-ul.list-group > li > ul{
-	position: absolute;
-	top:0;
-	left: 101%;
-	z-index: 998;
+.nav_product > ul{
+	margin-bottom: 0;
+}
 
-	width: 250px;
+.nav_product > ul > li{
+	padding: 10px 20px;
+	border-radius: 7px;
+}
+
+.nav_product > ul > li:hover{
+	background-color: #eaeaea;
+}
+
+.nav_expand{
+	width: 100%;
+	min-height: 200px;
+	background-color: #fff;
+	border-radius: 7px;
+
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	z-index: 999;
+
+	box-shadow: 3px 3px 5px rgba(0,0,0,.3);
+
 	display: none;
 }
 
-ul.list-group > li > ul > li > ul{
-	position: absolute;
-	top:0;
-	left: 101%;
-	z-index: 998;
+.nav_product  ul  li:hover  .nav_expand{
+	display: block !important;
+}
 
-	width: 250px;
-	display: none;
+.nav_expand > .left, .nav_expand > .right{
+	float: left;
+}
+
+.nav_expand > .left{
+	width: 30%;
+	min-height: 200px;
+
+	border-bottom-left-radius: 7px;
+	border-top-left-radius: 7px;
+
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.nav_expand > .right{
+	width: 70%;
+	padding: 15px;
+}
+
+.nav_expand ul > li{
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 
-ul.list-group > li:hover > ul{
-	display: block;
-}
+/*ul.list-group li{*/
+	/*position: relative;*/
+/*}*/
+
+/*ul.list-group > li > ul{*/
+	/*position: absolute;*/
+	/*top:0;*/
+	/*left: 101%;*/
+	/*z-index: 998;*/
+
+	/*width: 250px;*/
+	/*display: none;*/
+/*}*/
+
+/*ul.list-group > li > ul > li > ul{*/
+	/*position: absolute;*/
+	/*top:0;*/
+	/*left: 101%;*/
+	/*z-index: 998;*/
+
+	/*width: 250px;*/
+	/*display: none;*/
+/*}*/
+
+
+/*ul.list-group > li:hover > ul{*/
+	/*display: block;*/
+/*}*/
 
 .panel-default {
 	border-color: transparent;
@@ -131,6 +197,24 @@ span.productName{
 
 }
 
+/*
+
+DETAIL PRODUCT
+
+ */
+
+.product_detail{
+	background-color: #fff;
+	padding: 15px;
+}
+
+#slider.flexslider{
+	background: none;
+	border: none;
+}
+
+
+
 .product_detail img{
 	width: 100%;
 }
@@ -161,3 +245,4 @@ article > img{
 	width: 100%;
 	margin: 15px 0;
 }
+
