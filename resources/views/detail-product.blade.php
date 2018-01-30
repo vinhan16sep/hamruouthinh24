@@ -6,12 +6,35 @@
         <!-- InstanceBeginEditable name="content" -->
         <div class="container">
             <div class="row">
-                <div class="catelogy col-md-3 col-sm-12 col-xs-12">
+                <div class="nav_product">
+                    <ul class="list-inline list-unstyled">
+                        <span class="panel-heading">Danh mục sản phẩm</span>
+                        <li class="" ng-repeat="type in menuProduct.type">
+                            <a href="{{ url('loai-san-pham') }}/<% type.slug %>"  target="_self"><% type.title %></a>
+                            <div class="nav_expand">
+                                <div class="left hidden-sm hidden-xs"></div>
+                                <div class="right">
+                                    <div class="type" ng-repeat="kind in menuProduct.kind" ng-hide="kind.type_id != type.id">
+                                        <label >
+                                            <a href="{{ url('dong-san-pham') }}/<% kind.slug %>"  target="_self"><% kind.title %></a>
+                                        </label>
+                                        <ul class="list-unstyled list-inline">
+                                            <li ng-repeat="trademarks in menuProduct.trademarks" ng-hide="trademarks.kind_id != kind.id">
+                                                <a href="{{ url('thuong-hieu') }}/<% trademarks.slug %>" target="_self"><% trademarks.name %></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!--<div class="catelogy col-md-3 col-sm-12 col-xs-12">
                     <div class="panel panel-default">
-                        <!-- Default panel contents -->
+
                         <div class="panel-heading">Danh mục sản phẩm</div>
 
-                        <!-- List group -->
                         <ul class="list-group">
                             <li class="list-group-item" ng-repeat="type in menuProduct.type">
                                 <a href="{{ url('loai-san-pham') }}/<% type.slug %>"  target="_self"><% type.title %></a>
@@ -28,8 +51,9 @@
                             </li>
                         </ul>
                     </div>
-                </div>
-                <div class="product_detail col-md-9 col-sm-12 col-xs-12">
+                </div>-->
+
+                <div class="product_detail container-fluid">
                     <!--<a class="preview" href="{{ asset('storage/app') }}/<% detail.image[0] %>">
                         <img src="{{ asset('storage/app') }}/<% detail.image[0] %>" class="w-100" alt="preview">
                     </a>
@@ -145,8 +169,16 @@
                         <div>
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#detail" aria-controls="detail" role="tab" data-toggle="tab">Thông tin chi tiết</a></li>
-                                <li role="presentation"><a href="#comment" aria-controls="comment" role="tab" data-toggle="tab">Đánh giá sản phẩm</a></li>
+                                <li role="presentation" class="active">
+                                    <a href="#detail" aria-controls="detail" role="tab" data-toggle="tab">
+                                        Thông tin chi tiết
+                                    </a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#comment" aria-controls="comment" role="tab" data-toggle="tab">
+                                        Đánh giá sản phẩm
+                                    </a>
+                                </li>
                             </ul>
 
                             <!-- Tab panes -->
@@ -155,6 +187,61 @@
                                     <article>
                                         <p ng-bind-html="$sce.trustAsHtml(detail.content)"></p>
                                     </article>
+                                </div>
+                            </div>
+
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="comment">
+                                    <form role="form" name="comment" ng-submit="save(detail.id)">
+                                        <div role="tabpanel" class="tab-pane" id="comment">
+                                            <div class="form-group">
+                                                <label for="inputName">Họ tên</label>
+                                                <input type="text" class="form-control" id="inputAuthor" placeholder="VD: Nguyễn Văn An" name="author" ng-model="author" ng-required="true">
+                                                <span class="help-block" ng-show="comment.author.$error.required">Họ tên không được trống</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail">Email</label>
+                                                <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email" ng-model="email" ng-required="true">
+                                                <span class="help-block" ng-show="comment.email.$error.required">Email không được trống</span>
+                                                <span class="help-block" ng-show="comment.email.$error.email">Định dạng email không đúng</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputRating">Đánh giá của bạn</label>
+                                                <div class="rating">
+                                                    <jk-rating-stars rating="rating"></jk-rating-stars>
+                                                    <input type="hidden" name="rating" ng-value="rating" ng-model="rating">
+                                                    {{--<span><i class="fa fa-star-o"></i></span>
+                                                    <span><i class="fa fa-star-o"></i></span>
+                                                    <span><i class="fa fa-star-o"></i></span>
+                                                    <span><i class="fa fa-star-o"></i></span>
+                                                    <span><i class="fa fa-star-o"></i></span>--}}
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputMessage">Nội dung</label>
+                                                <textarea class="form-control" id="inputMessage" placeholder="Viết cho chúng tôi cảm nhận của bạn" rows="4" name="content" ng-model="content"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <button class="btn btn-primary" type="submit" id="sendComment" ng-disabled="comment.$invalid">Gửi đánh giá</button>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    <div class="comments_posts_list">
+
+                                        <table class="table list-comment">
+                                            <div class="media first-comment" ng-repeat="comments in productComments">
+                                                <div class="media-left">
+                                                    <img class="media-object" src="{{ asset('public/frontend/img/users_ava.png') }}" alt="users_ava">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading"><% comments.author %></h4>
+                                                    <p ng-bind-html="$sce.trustAsHtml(comments.content)"></p>
+                                                </div>
+                                            </div>
+                                        </table>
+                                    </div>
+                                    <div class="btn btn-primary see-more" ng-click="seeMore(detail.id)">Xem thêm ...</div>
                                 </div>
                             </div>
                         </div>
@@ -185,56 +272,7 @@
                                         </div>
                                     </div>
                                 </div>--}}
-                                <form role="form" name="comment" ng-submit="save(detail.id)">
-                                    <div role="tabpanel" class="tab-pane" id="comment">
-                                        <div class="form-group">
-                                            <label for="inputName">Họ tên</label>
-                                            <input type="text" class="form-control" id="inputAuthor" placeholder="VD: Nguyễn Văn An" name="author" ng-model="author" ng-required="true">
-                                            <span class="help-block" ng-show="comment.author.$error.required">Họ tên không được trống</span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputEmail">Email</label>
-                                            <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email" ng-model="email" ng-required="true">
-                                            <span class="help-block" ng-show="comment.email.$error.required">Email không được trống</span>
-                                            <span class="help-block" ng-show="comment.email.$error.email">Định dạng email không đúng</span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputRating">Đánh giá của bạn</label>
-                                            <div class="rating">
-                                                <jk-rating-stars rating="rating"></jk-rating-stars>
-                                                <input type="hidden" name="rating" ng-value="rating" ng-model="rating">
-                                                {{--<span><i class="fa fa-star-o"></i></span>
-                                                <span><i class="fa fa-star-o"></i></span>
-                                                <span><i class="fa fa-star-o"></i></span>
-                                                <span><i class="fa fa-star-o"></i></span>
-                                                <span><i class="fa fa-star-o"></i></span>--}}
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputMessage">Nội dung</label>
-                                            <textarea class="form-control" id="inputMessage" placeholder="Viết cho chúng tôi cảm nhận của bạn" rows="4" name="content" ng-model="content"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <button class="btn btn-primary" type="submit" id="sendComment" ng-disabled="comment.$invalid">Gửi đánh giá</button>
-                                        </div>
-                                    </div>
-                                </form>
 
-                                <div class="comments_posts_list">
-
-                                    <table class="table list-comment">
-                                        <div class="media first-comment" ng-repeat="comments in productComments">
-                                            <div class="media-left">
-                                                <img class="media-object" src="{{ asset('public/frontend/img/users_ava.png') }}" alt="users_ava">
-                                            </div>
-                                            <div class="media-body">
-                                                <h4 class="media-heading"><% comments.author %></h4>
-                                                <p ng-bind-html="$sce.trustAsHtml(comments.content)"></p>
-                                            </div>
-                                        </div>
-                                    </table>
-                                </div>
-                                <div class="btn btn-primary see-more" ng-click="seeMore(detail.id)">Xem thêm ...</div>
                             </div>
 
                         </div>
@@ -322,6 +360,20 @@
                     $('body').removeClass('loading');
                 }
             });
+        });
+    </script>
+    <script>
+        $(window).scroll(function () {
+            //if you hard code, then use console
+            //.log to determine when you want the
+            //nav bar to stick.
+            'use strict';
+            if ($(window).scrollTop() > 100) {
+                $('.main_content').css( 'margin-top' , '280px');
+            }
+            if ($(window).scrollTop() < 100) {
+                $('.main_content').css( 'margin-top' , '50px');
+            }
         });
     </script>
 @endsection
