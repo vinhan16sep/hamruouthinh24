@@ -37,7 +37,14 @@ class ProductApiController extends Controller
             ->select('*')
             ->where('is_deleted', '=', 0)
             ->get();
-
+        foreach ($result as $key => $value) {
+            $result[$key]->image = json_decode($value->image);
+        }
+        
+        // print_r($result);die;
+        if(!$result){
+            return response()->json('No item found', 404);
+        }
         if(!$result){
             return response()->json('No item found', 404);
         }

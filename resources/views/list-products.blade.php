@@ -118,11 +118,11 @@
                         <div class="item col-md-4 col-sm-6 col-xs-12" ng-repeat="product in products">
                             <div class="inner">
                                 <div class="mask">
-                                    <img src="{{ asset('storage/app') }}/<% product.image %>" alt="<% product.slug %>">
+                                    <img src="{{ asset('storage/app') }}/<% product.image[0] %>" alt="<% product.slug %>">
 
                                 </div>
 
-                                <span class="badge">- <% product.product_percent %>%</span>
+                                <span class="badge" ng-if="product.product_percent != 0">- <% product.product_percent %>%</span>
 
                                 <span class="productName"><% product.name %></span>
                                 <h4 class="productYear"><% product.year %></h4>

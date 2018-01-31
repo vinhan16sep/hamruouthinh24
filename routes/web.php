@@ -195,6 +195,7 @@ Route::prefix('admin')->group(function() {
         Route::get('product/fetchByType/{type_id}', 'ProductController@fetchByType');
         Route::get('product/fetchByKind/{kind_id}', 'ProductController@fetchByKind');
         Route::get('product/fetchByTrademark/{trademark_id}', 'ProductController@fetchByTrademark');
+        Route::post('product/deleteImage', 'ProductController@delete_image');
 
         // Order routes
 //        Route::resource('order', 'OrderController');

@@ -89,7 +89,13 @@
                               <!-- <strong>Hình ảnh:</strong>
                               <br> -->
                               <?php $image = json_decode($item->image);?>
-                              {{ HTML::image('storage/app/'.$image[0], '', array('width' => 100)) }}
+                              @if(is_array($image) == true)
+                                @foreach ($image as $val)
+                                  {{ HTML::image('storage/app/'.$val, '', array('width' => 100)) }}
+                                @endforeach
+                              @else
+                                {{ HTML::image('storage/app/'.$item->image, '', array('width' => 100)) }}
+                              @endif
                               <br />
                               <strong>Loại sản phẩm:</strong> {{ (!empty($type_collection[$item->type_id]))? $type_collection[$item->type_id] : '' }}
                               <br>
