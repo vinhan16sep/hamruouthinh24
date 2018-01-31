@@ -259,7 +259,7 @@
                                     <div class="carousel-inner">
                                         <div class="item active" ng-repeat="product in productTrademarks">
                                             <div class="product_view col-xs-12 col-sm-6 col-md-3">
-                                                <img src="{{ asset('storage/app') }}/<% product.image %>" class="img-responsive center-block">
+                                                <img src="{{ asset('storage/app') }}/<% product.image[0] %>" class="img-responsive center-block">
 
                                                 <a href="#" class="product_quickView" data-toggle="modal" data-target="#product_quickView" title="Xem nhanh" ng-click="open(product)">
                                                     <i class="fa fa-search"></i>

@@ -238,7 +238,9 @@ class ProductApiController extends Controller
             ->where('product.id', '!=', $id)
             ->where('product.is_deleted', '=', 0)
             ->get();
-
+        foreach ($result as $key => $value) {
+            $result[$key]->image = json_decode($value->image);
+        }
         if(!$result){
             return response()->json('No item found', 404);
         }
