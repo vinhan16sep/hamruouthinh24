@@ -2,8 +2,21 @@
 	margin-top: 50px;
 }
 
+.main_content .nav_product{
+	margin-bottom: 15px;
+}
+
+.cover{
+	width: 100%;
+}
+
 .category .filter ul li.list-group-item:hover{
 	background: none;
+}
+
+.category .input-group,
+.category select{
+	width: 100%;
 }
 
 .nav_product{
@@ -187,8 +200,6 @@ DETAIL PRODUCT
 	background: none;
 	border: none;
 }
-
-
 
 .product_detail img{
 	width: 100%;

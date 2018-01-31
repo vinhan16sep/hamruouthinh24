@@ -5,129 +5,31 @@
         <!-- InstanceBeginEditable name="content" -->
         <div class="container">
             <div class="container-fluid">
-                <div class="row">
-                    <img class="cover" src="{{ asset('public/frontend/img/cover/cover_01.jpg') }}" alt="cover">
+                <img class="cover" src="{{ asset('public/frontend/img/cover/cover_01.jpg') }}" alt="cover">
+
+                <div class="nav_product">
+                    <ul class="list-inline list-unstyled">
+                        <span class="panel-heading">Danh mục sản phẩm</span>
+                        <li class="" ng-repeat="type in menuProduct.type">
+                            <a href="{{ url('loai-san-pham') }}/<% type.slug %>"  target="_self"><% type.title %></a>
+                            <div class="nav_expand">
+                                <div class="left hidden-sm hidden-xs"></div>
+                                <div class="right">
+                                    <div class="type" ng-repeat="kind in menuProduct.kind" ng-hide="kind.type_id != type.id">
+                                        <label >
+                                            <a href="{{ url('dong-san-pham') }}/<% kind.slug %>"  target="_self"><% kind.title %></a>
+                                        </label>
+                                        <ul class="list-unstyled list-inline">
+                                            <li ng-repeat="trademarks in menuProduct.trademarks" ng-hide="trademarks.kind_id != kind.id">
+                                                <a href="{{ url('thuong-hieu') }}/<% trademarks.slug %>" target="_self"><% trademarks.name %></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-
-                <div class="row">
-                    <!--<div class="nav_product">
-                        <ul class="nav nav-pills nav-justified">
-                            <li class="panel-heading">Danh mục sản phẩm</li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-glass" aria-hidden="true"></i> Drink
-                                </a>
-                                <div class="nav_expand">
-                                    abc
-                                </div>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-beer" aria-hidden="true"></i> Beer
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-cutlery" aria-hidden="true"></i> Food
-                                </a>
-                            </li>
-                        </ul>
-                    </div>-->
-
-                    <div class="nav_product">
-                        <ul class="list-inline list-unstyled">
-                            <span class="panel-heading">Danh mục sản phẩm</span>
-                            <li class="" ng-repeat="type in menuProduct.type">
-                                <a href="{{ url('loai-san-pham') }}/<% type.slug %>"  target="_self"><% type.title %></a>
-                                <div class="nav_expand">
-                                    <div class="left hidden-sm hidden-xs"></div>
-                                    <div class="right">
-                                        <div class="type" ng-repeat="kind in menuProduct.kind" ng-hide="kind.type_id != type.id">
-                                            <label >
-                                                <a href="{{ url('dong-san-pham') }}/<% kind.slug %>"  target="_self"><% kind.title %></a>
-                                            </label>
-                                            <ul class="list-unstyled list-inline">
-                                                <li ng-repeat="trademarks in menuProduct.trademarks" ng-hide="trademarks.kind_id != kind.id">
-                                                    <a href="{{ url('thuong-hieu') }}/<% trademarks.slug %>" target="_self"><% trademarks.name %></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!--<div class="nav_product">
-                        <ul class="list-unstyled list-inline">
-                            <span class="panel-heading">Danh mục sản phẩm</span>
-                            <li class="active">
-                                <a href="#">
-                                    <i class="fa fa-glass" aria-hidden="true"></i> Drink
-                                </a>
-                                <div class="nav_expand">
-                                    <div class="left hidden-sm hidden-xs"></div>
-                                    <div class="right">
-                                        <?php for($i = 0; $i < 8; $i ++){ ?>
-                                        <label>
-                                            <a href="javascript:void(0);">
-                                                Level ruou cap 2
-                                            </a>
-                                        </label>
-
-                                        <ul class="list-unstyled list-inline">
-
-                                            <li>
-                                                <a href="javascript:void(0);">
-                                                    Level ruou cap 3
-                                                </a>
-                                            </li>
-
-                                        </ul>
-                                        <?php } ?>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-beer" aria-hidden="true"></i> Beer
-                                </a>
-                                <div class="nav_expand">
-                                    <div class="left hidden-sm hidden-xs"></div>
-                                    <div class="right">
-                                        <label>
-                                            <a href="javascript:void(0);">
-                                                Level ruou cap 2
-                                            </a>
-                                        </label>
-
-                                        <ul class="list-unstyled list-inline">
-                                            <?php for($i = 0; $i < 4; $i ++){ ?>
-                                            <li>
-                                                <a href="javascript:void(0);">
-                                                    Level ruou cap 3
-                                                </a>
-                                            </li>
-                                            <?php } ?>
-                                        </ul>
-
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-cutlery" aria-hidden="true"></i> Food
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-coffee" aria-hidden="true"></i> Others
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>-->
-            </div>
 
             <div class="row">
                 <div class="category col-md-3 col-sm-3 col-xs-12">
@@ -217,6 +119,7 @@
                             <div class="inner">
                                 <div class="mask">
                                     <img src="{{ asset('storage/app') }}/<% product.image %>" alt="<% product.slug %>">
+
                                 </div>
 
                                 <span class="badge">- <% product.product_percent %>%</span>

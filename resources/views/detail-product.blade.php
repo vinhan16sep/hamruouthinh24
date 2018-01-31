@@ -147,24 +147,6 @@
                         </div>
                     </div>
 
-
-                    <!--<div id="slider" class="flexslider">
-                        <ul class="slides">
-
-                            <li><img src="{{ asset('public/frontend/img/cover/cover_01.jpg') }}" class="w-100" alt="preview"></li>
-                            <li><img src="{{ asset('public/frontend/img/cover/cover_02.jpg') }}" class="w-100" alt="preview"></li>
-                            <li><img src="{{ asset('public/frontend/img/cover/cover_03.jpg') }}" class="w-100" alt="preview"></li>
-                        </ul>
-                    </div>
-                    <div id="carousel" class="flexslider">
-                        <ul class="slides">
-                            <li><img src="{{ asset('public/frontend/img/cover/cover_01.jpg') }}" class="w-100" alt="preview"></li>
-                            <li><img src="{{ asset('public/frontend/img/cover/cover_02.jpg') }}" class="w-100" alt="preview"></li>
-                            <li><img src="{{ asset('public/frontend/img/cover/cover_03.jpg') }}" class="w-100" alt="preview"></li>
-                        </ul>
-                    </div>-->
-
-
                     <div class="detail_info col-md-12 col-sm-12 col-xs-12">
                         <div>
                             <!-- Nav tabs -->
@@ -188,9 +170,7 @@
                                         <p ng-bind-html="$sce.trustAsHtml(detail.content)"></p>
                                     </article>
                                 </div>
-                            </div>
 
-                            <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active" id="comment">
                                     <form role="form" name="comment" ng-submit="save(detail.id)">
                                         <div role="tabpanel" class="tab-pane" id="comment">
@@ -244,39 +224,10 @@
                                     <div class="btn btn-primary see-more" ng-click="seeMore(detail.id)">Xem thêm ...</div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                {{--<div class="carousel carousel-showmanymoveone slide" id="itemslider_1">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="title_mid">
-                                                <h3>Sản phẩm liên quan</h3>
-                                            </div>
-                                        </div>
-                                        <div class="slider_controler">
-                                            <ul class="list-inline"  ng-repeat="targetProduct in targetProducts">
-                                                <li>
-                                                    
-                                                    <a class="left carousel-control" href="#itemslider_1" data-slide="prev">
-                                                        <span class="glyphicon glyphicon-menu-left" aria-hidden="true"><% targetProduct.name %></span>
-                                                    </a>
-                                                </li>
-                                                
-                                            </ul>
-                                            <a href="{{ url('thuong-hieu') }}/<% detail.category_slug %>" target="_self">
-                                                Xem tất cả
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>--}}
-
-                            </div>
 
                         </div>
                     </div>
+
                     <div class="col-md-12 col-sm-12 col-xs-12" ng-if="productTrademarks">
                         <div class="row">
                             <div class="title_big">
@@ -335,6 +286,7 @@
     <script src="{{ asset ("public/frontend/app/controllers/detail-product.js") }}"></script>
     <script src="{{ asset ("public/frontend/app/controllers/modal.js") }}"></script>
     <script src="{{ asset ("public/frontend/js/jquery.flexslider.js") }}"></script>
+
     <script type="text/javascript">
         $(function(){
             SyntaxHighlighter.all();

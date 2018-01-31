@@ -50,8 +50,9 @@ CSS for theme original
     color: #c1272d;
 }
 
-.nav_product ul > li.active > a, .nav_product ul > li.active:hover > a{
-    color: #fff;
+.nav_product ul > li.active > a,
+.nav_product ul > li.active:hover > a{
+    color: #c1272d;
 }
 
 .nav_product > ul > li.active, .nav_product > ul > li.active:hover{
@@ -64,7 +65,7 @@ CSS for theme original
 
 
 .nav>li>a:focus, .nav>li>a:hover{
-    color: #fff !important;
+    color: #fff;
     background-color: #c1272d;
 }
 
