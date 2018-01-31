@@ -26,6 +26,7 @@
             productsFactory.products()
                 .then(function (success) {
                     $scope.products = success.data;
+                    console.log(success.data);
                 }, function (error) {
 
                 });

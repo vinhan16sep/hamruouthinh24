@@ -96,3 +96,8 @@
     </section>
   </section>
 </footer>
+
+<button type="button" id="requestQuotationBtn" class="btn btn-primary" data-toggle="modal" data-target="#requestQuotation">
+    <i class="fa fa-2x fa-question-circle-o" aria-hidden="true"></i>
+</button>
+
