@@ -80,7 +80,7 @@
                 </li>
                 <li>
                     <a href="{{ url('thu-ruou') }}" target="_self">
-                        <i class="fa fa-glass" aria-hidden="true"></i> <span class="badge"></span>
+                        <i class="fa fa-glass" aria-hidden="true"></i> <span class="badge" ng-bind="counttastingProducts"></span>
                     </a>
                 </li>
             </ul>

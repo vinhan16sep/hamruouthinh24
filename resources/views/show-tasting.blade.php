@@ -25,7 +25,7 @@
                                 <tr ng-repeat="product in fetchedTasting" id="cartItem<% product.id %>">
                                     <td><% $index + 1 %></td>
                                     <td><% product.name %></td>
-                                    <td><img src="{{ asset('storage/app') }}/<% product.image %>"></td>
+                                    <td><img src="{{ asset('storage/app') }}/<% product.image[0] %>"></td>
                                     <td><button class="btn btn-danger" type="button" ng-click="removeFromTasting($index)"><i class="fa fa-ban"></i> Xóa sản phẩm</button></td>
                                 </tr>
                                 <tr ng-if="isEmpty(fetchedProducts)">

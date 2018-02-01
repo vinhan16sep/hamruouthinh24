@@ -5,28 +5,31 @@
         <!-- InstanceBeginEditable name="content" -->
         <div class="container">
             <div class="row">
-                <div class="catelogy col-md-3">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Danh sách sản phẩm
-                        </div>
-
-                        <ul class="list-group">
-                            <li class="list-group-item" ng-repeat="type in menuProduct.type">
-                                <a href="{{ url('loai-san-pham') }}/<% type.slug %>"  target="_self"><% type.title %></a>
-                                <ul class="list-group">
-                                    <li class="list-group-item" ng-repeat="kind in menuProduct.kind" ng-hide="kind.type_id != type.id">
-                                        <a href="{{ url('dong-san-pham') }}/<% kind.slug %>"  target="_self"><% kind.title %></a>
-                                        <ul class="list-group">
-                                            <li class="list-group-item" ng-repeat="trademarks in menuProduct.trademarks" ng-hide="trademarks.kind_id != kind.id">
+                <div class="nav_product">
+                    <ul class="list-inline list-unstyled">
+                        <span class="panel-heading">Danh mục sản phẩm</span>
+                        <li class="" ng-repeat="type in menuProduct.type">
+                            <a href="{{ url('loai-san-pham') }}/<% type.slug %>"  target="_self"><% type.title %></a>
+                            <div class="nav_expand">
+                                <div class="left hidden-sm hidden-xs"></div>
+                                <div class="right">
+                                    <div class="type" ng-repeat="kind in menuProduct.kind" ng-hide="kind.type_id != type.id">
+                                        <label >
+                                            <a href="{{ url('dong-san-pham') }}/<% kind.slug %>"  target="_self"><% kind.title %></a>
+                                        </label>
+                                        <ul class="list-unstyled list-inline">
+                                            <li ng-repeat="trademarks in menuProduct.trademarks" ng-hide="trademarks.kind_id != kind.id">
                                                 <a href="{{ url('thuong-hieu') }}/<% trademarks.slug %>" target="_self"><% trademarks.name %></a>
                                             </li>
                                         </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="catelogy col-md-3">
+                    
                     <div class="panel panel-default filter">
                         <div class="panel-heading">
                             Tìm kiếm sản phẩm
@@ -65,6 +68,15 @@
                                         @endif
                                     </div>
                                 </li>
+                                <li class="list-group-item">
+                                    <label>Xuất xứ</label>
+                                    <div class="radio">
+                                        <select name="origin" ng-model="origin">
+                                            <option value="">Select</option>
+                                            <option ng-repeat="origin in origin" value="<% origin.id %>" > <% origin.name %> </option>
+                                        </select>
+                                    </div>
+                                </li>
                             </ul>
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="submit">Tìm kiếm</button>
@@ -83,7 +95,7 @@
 
                     <div class="row">
                         <div class="product_view col-md-4 col-sm-6 col-xs-12" ng-repeat="product in targetProducts">
-                            <a href="#"><img src="{{ asset('storage/app') }}/<% product.image %>" class="img-responsive center-block"></a>
+                            <a href="#"><img src="{{ asset('storage/app') }}/<% product.image[0] %>" class="img-responsive center-block"></a>
                             <a href="" class="product_quickView" data-toggle="modal" data-target="#product_quickView" title="Xem nhanh" ng-click="openTarget(product)"><i class="fa fa-search"></i></a>
                             <a href="#" class="product_addtoCart" data-toggle="modal" data-target="#product_quickview" title="Thêm vào giỏ hàng" ng-click="addToCart(product.id)"><i class="fa fa-cart-plus"></i></a>
                             <a href="{{ url('san-pham/chi-tiet') }}/<% product.slug %>" target="_self"><h4><% product.name %></h4></a>

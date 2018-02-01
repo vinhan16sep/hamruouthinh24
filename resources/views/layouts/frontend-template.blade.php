@@ -44,6 +44,7 @@
 
     <script src="{{ asset ("public/frontend/app/app.js") }}"></script>
     <script src="{{ asset ("public/frontend/app/controllers/main.js") }}"></script>
+    <script src="{{ asset ("public/frontend/app/controllers/subscribe.js") }}"></script>
 
 
 

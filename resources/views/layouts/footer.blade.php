@@ -54,17 +54,19 @@
           </li>
         </ul>
       </div>
-      <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="col-md-4 col-sm-6 col-xs-12" ng-controller="SubscribeController">
           <h3>Đăng ký nhận thông báo</h3>
           <p>Integer faucibus consequat quam, et efficitur odio ac augue laoreet, vel feugiat sapien ornare.</p>
 
-          <div class="input-group">
-              <input type="text" class="form-control" placeholder="Email của khách hàng">
-              <span class="input-group-btn">
-                <button class="btn btn-primary" type="button">Đăng ký</button>
-              </span>
-          </div><!-- /input-group -->
-
+          <form>
+            <div class="input-group">
+                <input type="email" class="form-control" placeholder="Email của khách hàng" ng-model="user.email" id="subs_email">
+                <span class="input-group-btn">
+                  <input type="submit" ng-click="send(user)" class="btn btn-primary" value="Đăng ký" />
+                </span>
+              
+            </div><!-- /input-group -->
+          </form>
           <ul class="list-inline list-unstyled">
               <li>
                   <a href="javascript:void(0);" target="_blank">

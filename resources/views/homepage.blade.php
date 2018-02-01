@@ -17,41 +17,23 @@
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
-                <div class="item active">
+                <div class="item" ng-repeat="advise in advises" active-on-first-four-items>
                     <div class="row">
                         <div class="col-md-8 col-sm-8 col-xs-12">
-                            <img src="{{ asset('public/frontend/img/blog_01.jpg') }}" alt="ảnh minh họa 1">
+                            <img src="{{ asset('storage/app') }}/<% advise.image %>" alt="<% advise.slug %>">
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12">
-                            <a href="javascript:void(0);" class="link-primary">
-                                <h1>Sed a lacus vel eros mollis ullamcorper id ac sapien</h1>
+                            <a href="{{ url('/tu-van') }}/<% advise.slug %>" class="link-primary" target="_self">
+                                <h1><% advise.title %></h1>
                             </a>
                             <article class="description">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam vel nulla id bibendum. Vestibulum id diam bibendum velit sagittis imperdiet. Fusce in gravida urna. Maecenas lacus justo, iaculis eget velit id, fermentum tristique quam. Fusce viverra, nulla vitae pulvinar tincidunt, ex nibh dignissim diam, quis pharetra nunc nisl eget orci.</p>
+                                <p ng-bind-html="$sce.trustAsHtml(advise.description)"></p>
                             </article>
 
-                            <a class="btn btn-primary" href="#" role="button">Khám phá ngay</a>
+                            <a class="btn btn-primary" href="{{ url('/tu-van') }}/<% advise.slug %>" role="button" target="_self">Khám phá ngay</a>
                         </div>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="row">
-                        <div class="col-md-8 col-sm-8 col-xs-12">
-                            <img src="{{ asset('public/frontend/img/blog_02.jpg') }}" alt="ảnh minh họa 1">
-                        </div>
-                        <div class="col-md-4 col-sm-4 col-xs-12">
-                            <a href="javascript:void(0);" class="link-primary">
-                                <h1>Sed a lacus vel eros mollis ullamcorper id ac sapien</h1>
-                            </a>
-                            <article class="description">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam vel nulla id bibendum. Vestibulum id diam bibendum velit sagittis imperdiet. Fusce in gravida urna. Maecenas lacus justo, iaculis eget velit id, fermentum tristique quam. Fusce viverra, nulla vitae pulvinar tincidunt, ex nibh dignissim diam, quis pharetra nunc nisl eget orci.</p>
-                            </article>
-
-                            <a class="btn btn-primary" href="#" role="button">Khám phá ngay</a>
-                        </div>
-                    </div>
-                </div>
-                ...
             </div>
 
             <!-- Controls -->
@@ -100,7 +82,7 @@
                         <div class="item col-md-4 col-sm-6 col-xs-12" ng-repeat="discount in discounts">
                             <div class="inner">
                                 <div class="mask">
-                                    <img src="{{ asset('storage/app/') }}/<% discount.image %>" alt="<% discount.slug %>">
+                                    <img src="{{ asset('storage/app/') }}/<% discount.image[0] %>" alt="<% discount.slug %>">
                                 </div>
 
                                 <span class="badge">- <% discount.discount_percent %>%</span>

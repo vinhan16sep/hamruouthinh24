@@ -91,7 +91,7 @@ var app = angular.module('hamruouthinh24App', ['ng', 'ngRoute', 'ngResource', 'n
     })
     .directive('activeOnFirstFourItems', function(){
         return function(scope, element) {
-            if (scope.$index === 0 || scope.$index === 1 || scope.$index === 2 || scope.$index === 3) {
+            if (scope.$index === 0) {
                 element.addClass('active');
             }
         };
