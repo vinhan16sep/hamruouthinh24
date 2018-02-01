@@ -90,5 +90,9 @@ Route::prefix('v1')->group(function() {
         //origin routes
         Route::resource('origin', 'OriginApiController');
         Route::get('origin', 'OriginApiController@index')->name('origin.index');
+
+        //subscrie routes
+        Route::resource('subscrie', 'SubscribeApiController');
+        Route::get('subscrie', 'SubscribeApiController@save')->name('subscrie.save');
     });
 });

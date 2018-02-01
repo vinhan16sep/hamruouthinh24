@@ -171,9 +171,9 @@
                                     </article>
                                 </div>
 
-                                <div role="tabpanel" class="tab-pane active" id="comment">
+                                <div role="tabpanel" class="tab-pane" id="comment">
                                     <form role="form" name="comment" ng-submit="save(detail.id)">
-                                        <div role="tabpanel" class="tab-pane" id="comment">
+                                        <div role="tabpanel" class="tab-pane">
                                             <div class="form-group">
                                                 <label for="inputName">Họ tên</label>
                                                 <input type="text" class="form-control" id="inputAuthor" placeholder="VD: Nguyễn Văn An" name="author" ng-model="author" ng-required="true">
@@ -211,7 +211,7 @@
 
                                         <table class="table list-comment">
                                             <div class="media first-comment" ng-repeat="comments in productComments">
-                                                <div class="media-left">
+                                                <div class="media-left" style="width: 10%">
                                                     <img class="media-object" src="{{ asset('public/frontend/img/users_ava.png') }}" alt="users_ava">
                                                 </div>
                                                 <div class="media-body">

@@ -74,7 +74,9 @@ class ProductApiController extends Controller
             ->where('is_discount', '=', 1)
             ->where('is_deleted', '=', 0)
             ->get();
-
+        foreach ($result as $key => $value) {
+            $result[$key]->image = json_decode($value->image);
+        }
         if(!$result){
             return response()->json('No item found', 404);
         }
@@ -90,7 +92,7 @@ class ProductApiController extends Controller
         $target = Input::get('target');
         $subTarget = Input::get('subTarget');
         $query = DB::table('product');
-
+        $result = [];
         if($target == 'thuong-hieu'){
             $query->select('product.*', 'product_trademark.slug as trademark_slug')
                 ->join('product_trademark', 'product.trademark_id', '=', 'product_trademark.id')
@@ -110,6 +112,9 @@ class ProductApiController extends Controller
         $result['targetProducts'] = $query->where('product.is_deleted', '=', 0)->get();
         $result['type'] = $target;
         $result['target'] = $this->fetchTarget($target, $subTarget);
+        foreach ($result['targetProducts'] as $key => $value) {
+            $result['targetProducts'][$key]->image = json_decode($value->image);
+        }
         if(!$result){
             return response()->json($result, 404);
         }

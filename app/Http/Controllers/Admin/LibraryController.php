@@ -100,10 +100,12 @@ class LibraryController extends Controller
 
 	public function destroy($id){
 		$library = Library::find($id);
-		$images = Library::find($id)->images;
-		if($images){
-			return redirect()->intended('admin/library');
-		}
+
+		// $images = DB::table('image')->where('library_id', $id)->get();
+		// if($images){
+		// 	return redirect()->intended('admin/library');
+		// }
+
 		$slug = $library->slug;
 		$upload = base_path() . '/' . 'storage/app/library/'.$slug;
 		

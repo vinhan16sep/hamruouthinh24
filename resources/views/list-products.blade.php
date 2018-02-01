@@ -122,7 +122,7 @@
 
                                 </div>
 
-                                <span class="badge" ng-if="product.product_percent != 0">- <% product.product_percent %>%</span>
+                                <span class="badge" ng-if="product.discount_percent != null">- <% product.discount_percent %>%</span>
 
                                 <span class="productName"><% product.name %></span>
                                 <h4 class="productYear"><% product.year %></h4>
@@ -141,7 +141,7 @@
                                     <br>
                                     <a class="btn btn-primary" href="{{ url('/san-pham/chi-tiet') }}/<% product.slug %>" role="button"  target="_self" >Xem chi tiết</a>
                                     <br>
-                                    <a class="btn btn-primary" href="#" role="button">Thử rượu miên phí</a>
+                                    <a class="btn btn-primary" href="#" role="button" ng-click="addToTasting(product.id)">Thử rượu miên phí</a>
                                 </div>
                             </div>
                         </div>

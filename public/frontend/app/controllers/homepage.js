@@ -1,5 +1,5 @@
 (function(){
-    app.controller('HomepageController', function($scope, $http, API_URL, $uibModal, $mdDialog, menuProductFactory, productsFactory, listNewsFactory, $sce){
+    app.controller('HomepageController', function($scope, $http, API_URL, $uibModal, $mdDialog, menuProductFactory, productsFactory, listNewsFactory, listAdvisesFactory, $sce){
         $scope.products = [];
         $scope.discounts = [];
         $scope.menuProduct = [];
@@ -69,11 +69,20 @@
 
         // Fetch news
         listNewsFactory.news()
-            .then(function (success) {
-                $scope.news = success.data;
-            }, function (error) {
+        .then(function (success) {
+            $scope.news = success.data;
+        }, function (error) {
 
-            });
+        });
+
+        // Fetch news
+        listAdvisesFactory.advises()
+        .then(function (success) {
+            $scope.advises = success.data;
+            console.log($scope.advises);
+        }, function (error) {
+
+        });
 
     });
 })();
