@@ -70,7 +70,7 @@
             $scope.selected = item;
             $uibModal.open({
                 animation: true,
-                templateUrl: '/mmm/san-pham/detail-product-modal',
+                templateUrl: '/hamruouthinh24/san-pham/detail-product-modal',
                 controller: 'ModalController',
                 resolve: {
                     items: function(){

@@ -8,7 +8,7 @@
                     <div class="panel-heading">Chỉnh sửa sản phẩm <strong style="color:red">{{ $product->name }}</strong></div>
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('product.update', ['id' => $product->id]) }}" enctype="multipart/form-data">
-                            {{ csrf_field() }}
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="col-md-2 control-label">Tên sản phẩm</label>
                                 <div class="col-md-8">
@@ -34,10 +34,10 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('kind') ? ' has-error' : '' }}">
-                                <label for="kind" class="col-md-2 control-label">Loại sản phẩm</label>
+                                <label for="kind" class="col-md-2 control-label">Dòng sản phẩm</label>
 
                                 <div class="col-md-4">
-                                    <select name="kind_id"  class="form-control kind"  data-page="{{ $product->trademark_id }}" data-id="{{ $product->kind_id }}" required>
+                                    <select name="kind_id"  class="form-control kind"  data-page="{{ $product->trademark_id }}" data-id="{{ $product->kind_id }}" >
                                         <option class="kind_option" value="">-------------------Chọn loại sản phẩm trước -------------------</option>
                                     </select>
                                 </div>
@@ -47,7 +47,7 @@
                                 <label for="trademark" class="col-md-2 control-label">Thương hiệu sản phẩm</label>
 
                                 <div class="col-md-4">
-                                    <select name="trademark_id"  class="form-control trademark" required>
+                                    <select name="trademark_id"  class="form-control trademark">
                                         <option class="trademark_option" value="">-------------------Chọn loại sản phẩm trước -------------------</option>
                                     </select>
                                 </div>
@@ -99,14 +99,26 @@
                             <div class="form-group">
                                 <label for="avatar" class="col-md-2 control-label" >Hình ảnh đang sử dụng</label>
                                 <div class="col-md-6">
-                                    {{ HTML::image('storage/app/'.$product->image, '', array('width' => 150)) }}
+                                    <?php $image = json_decode($product->image);?>
+                                    @if(is_array($image) == true)
+                                        @foreach ($image as $val)
+                                        <div style="position: relative; width: 150px; float: left; margin-right: 5%;">
+                                            <button type="button" class="close remove-image" aria-label="Close" style="position: absolute; top: -10px; right: 5px; background: red; border-radius: 50%; padding: 0 7px 3px" title="Xóa" data-image="{{$val}}" data-id="{{$product->id}}">
+                                                <span aria-hidden="true" style="cursor: pointer;">&times;</span>
+                                            </button>
+                                                {{ HTML::image('storage/app/'.$val, '', array('width' => 150, 'style' => 'padding-right: 10%')) }}
+                                        </div>
+                                        @endforeach
+                                    @else
+                                        {{ HTML::image('storage/app/'.$product->image, '', array('width' => 150)) }}
+                                    @endif
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="avatar" class="col-md-2 control-label" >Hình ảnh</label>
                                 <div class="col-md-6">
-                                    <input type="file" id="image" name="image">
+                                    <input type="file" id="image" name="image[]" multiple>
                                 </div>
                             </div>
                             <div class="form-group{{ $errors->has('concentrations') ? ' has-error' : '' }}">
@@ -251,11 +263,11 @@
                                 <div class="col-md-1 control-label"><strong>VNĐ</strong></div>
                             </div>
                             <input type="hidden" name="is_gift" value="0">
-                            <div class="form-group{{ $errors->has('is_gift') ? ' has-error' : '' }}">
+                            {{--<div class="form-group{{ $errors->has('is_gift') ? ' has-error' : '' }}">
                                 <label for="is_gift" class="col-md-2 control-label">Quà tặng khuyến mại?</label>
                                 <div class="col-md-8">
                                     <input id="is_gift" type="checkbox" class="minimal" name="is_gift" value="1"
-                                           @if(old('is_gift') == 1)
+                                           @if($product->is_discount == 1)
                                            checked
                                             @endif
                                     >
@@ -265,12 +277,12 @@
                                     </span>
                                     @endif
                                 </div>
-                            </div>
+                            </div>--}}
                             <div class="form-group{{ $errors->has('gift') ? ' has-error' : '' }}">
                                 <label for="gift" class="col-md-2 control-label">Nội dung quà tặng</label>
 
                                 <div class="col-md-8">
-                                    <textarea id="gift" rows="10" class="form-control tinymce" name="gift" value="{{ old('gift') }}" disabled>{{ $product->gift }}</textarea>
+                                    <textarea id="gift" rows="10" class="form-control tinymce" name="gift" value="{{ old('gift') }}">{{ $product->gift }}</textarea>
 
                                     @if ($errors->has('gift'))
                                         <span class="help-block">

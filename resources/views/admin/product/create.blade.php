@@ -257,7 +257,7 @@
                             </div>
 
                             <input type="hidden" name="is_gift" value="0">
-                            <div class="form-group{{ $errors->has('is_gift') ? ' has-error' : '' }}">
+                            {{--<div class="form-group{{ $errors->has('is_gift') ? ' has-error' : '' }}">
                                 <label for="is_gift" class="col-md-2 control-label">Quà tặng khuyến mại?</label>
                                 <div class="col-md-8">
                                     <input id="is_gift" type="checkbox" class="minimal" name="is_gift" value="1"
@@ -271,7 +271,7 @@
                                     </span>
                                     @endif
                                 </div>
-                            </div>
+                            </div>--}}
                             <div class="form-group{{ $errors->has('gift') ? ' has-error' : '' }}">
                                 <label for="gift" class="col-md-2 control-label">Nội dung quà tặng</label>
 

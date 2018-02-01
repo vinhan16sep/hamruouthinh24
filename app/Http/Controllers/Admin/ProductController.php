@@ -77,11 +77,14 @@ class ProductController extends Controller
         File::makeDirectory($newFolderPath[1], 0777, true, true);
 
         // Upload image
-        $upload = [];
+        $upload = array();
         foreach ($request->file('image') as $key => $file) {
-            $upload[$key] = $file->store('products/' . $newFolderPath[0]);
+            $url_image = $file->store('products/' . $newFolderPath[0]);
+            $upload[$key] = $url_image;
         }
+        // $upload = array_values($upload);
         $image_json = json_encode($upload);
+        // var_dump($image_json);die;
         $keys = ['name','type_id', 'kind_id', 'trademark_id', 'is_special', 'is_new', 'capacity', 'material', 'year', 'producer', 'volume', 'origin_id', 'price', 'selling_price', 'content', 'is_discount', 'discount_percent', 'discount_price', 'is_gift', 'gift', 'description', 'concentrations', 'quantity'];
         // $keys = ['name'];
         $input = $this->createQueryInput($keys, $request);
@@ -116,7 +119,7 @@ class ProductController extends Controller
         $type = DB::table('type')->get();
         $origin = DB::table('origin')->get();
         // Redirect to product list if updating product wasn't existed
-        if ($product == null || count($product) == 0) {
+        if ($product == null) {
             return redirect()->intended('admin/product');
         }
         return view('admin/product/edit', [
@@ -149,13 +152,17 @@ class ProductController extends Controller
         $input = $this->createQueryInput($keys, $request);
         $input['slug'] = $uniqueSlug;
 
+        $upload = [];
+        $upload = json_decode($product->image);
+        
         // Upload image
         if($request->file('image')){
-            $path = $request->file('image')->store('products/' . $uniqueSlug);
-            $input['image'] = $path;
-        }else{
-            $oldImageString = explode('/', $product->image);
-            $input['image'] = implode('/', [$oldImageString[0], $uniqueSlug, $oldImageString[2]]);
+            foreach ($request->file('image') as $key => $file) {
+                $upload[] = $file->store('products/' . $uniqueSlug);
+            }
+            // print_r($upload);die;
+            $image_json = json_encode($upload);
+            $input['image'] = $image_json;
         }
 
         Product::where('id', $id)
@@ -366,6 +373,29 @@ class ProductController extends Controller
             }
 
         }
+    }
+
+    public function delete_image(Request $request){
+        $image = $request->image;
+        $id = $request->id;
+        $product = Product::findOrFail($id);
+
+
+        $upload = [];
+        $upload = json_decode($product->image);
+        $key = array_search($image, $upload);
+        unset($upload[$key]);
+        $newUpload = [];
+        foreach ($upload as $key => $value) {
+            $newUpload[] = $value;
+        }
+        
+        $image_json = json_encode($newUpload);
+        DB::table('product')
+            ->where('id', $id)
+            ->update(['image' => $image_json]);
+        return response()->json(['image_json' => $image_json, 'status' => '200']); 
+        
     }
 
 

@@ -1,5 +1,6 @@
 // Product management
 window.onload = function(){
+    var url = window.location.origin;
     // is_discount unchecked by default
     // so we need to disable 2 discount fields too
     // but enable in edit mode, and discount checkbox checked before
@@ -35,7 +36,7 @@ window.onload = function(){
     // $('#trademark_id').change(function(){
     //     $('#category_id').html('');
 
-    //     var url = window.location.origin;
+    //     
 
     //     $.ajax({
     //         url: url + '/mmm/admin/category/fetchByTrademark/{trademark_id}',
@@ -61,7 +62,7 @@ window.onload = function(){
     $('.type').each(function(){
         var type_id = $(this).val();
         var page = $(this).data('page');
-        var url = window.location.origin;
+        
         var check = '';
         $.ajax({
             url: url + '/hamruouthinh24/admin/product/fetchByType/{type_id}',
@@ -85,7 +86,7 @@ window.onload = function(){
 
     $('.type').change(function(){
         var type_id = $(this).val();
-        var url = window.location.origin;
+        
         $.ajax({
             url: url + '/hamruouthinh24/admin/product/fetchByType/{type_id}',
             method: 'GET',
@@ -107,7 +108,7 @@ window.onload = function(){
 
     $('.kind').change(function(){
         var kind_id = $(this).val();
-        var url = window.location.origin;
+        
         $.ajax({
             url: url + '/hamruouthinh24/admin/product/fetchByKind/{kind_id}',
             method: 'GET',
@@ -132,7 +133,7 @@ window.onload = function(){
         var kind_id = $(this).data('id');
         
         var page = $(this).data('page');
-        var url = window.location.origin;
+        
         var check = '';
         $.ajax({
             url: url + '/hamruouthinh24/admin/product/fetchByKind/{kind_id}',
@@ -152,5 +153,23 @@ window.onload = function(){
         })
 
     })
+
+    $('.remove-image').click(function(){
+        var check = $(this);
+        var image = $(this).data('image');
+        var id = $(this).data('id');
+        var token = $('#token').val();
+        $.ajax({
+            url: url + '/hamruouthinh24/admin/product/deleteImage',
+            method: 'POST',
+            data: {
+                image : image, id : id, _token : token
+            },
+            success: function(res){
+                check.parent('div').fadeOut();
+                console.log(res.image_json);
+            },
+        })
+    });
 
 }
