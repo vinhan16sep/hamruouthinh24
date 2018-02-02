@@ -88,9 +88,9 @@ class SubscribeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id){
+        DB::table('subscribe')->where('id', $id)->delete();
+        return redirect()->intended('admin/subscribe');
     }
 
     public function sendMail(){
