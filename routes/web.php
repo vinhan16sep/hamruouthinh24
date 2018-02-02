@@ -249,5 +249,10 @@ Route::prefix('admin')->group(function() {
         Route::post('comment_product/delete/{id}/{product_id}', 'CommentController@deleteProductComment')->name('comment.deleteProductComment');
         Route::get('comment/blog/{id}', 'CommentController@fetchBlogComment')->name('comment.fetchBlogComment');
         Route::post('comment_blog/delete/{id}/{blog_id}', 'CommentController@deleteBlogComment')->name('comment.deleteBlogComment');
+
+        //subscrie routes
+        Route::resource('subscribe', 'SubscribeController');
+        Route::get('subscrie/send/{email}', 'SubscribeController@sendMail')->name('subscrie.sendMail');
+        Route::post('subscrie/sendAll', 'SubscribeController@sendAll')->name('subscrie.sendAll');
     });
 });
