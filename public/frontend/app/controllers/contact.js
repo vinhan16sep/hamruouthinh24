@@ -1,6 +1,9 @@
 (function(){
 	app.controller('ContactController', function($scope, $http, API_URL, $location, $sce){
 		$scope.$sce = $sce;
+        $('.btn-contact').click(function(){
+            $('.btn-contact').prop('disabled', true);
+        });
 		$scope.send = function(contact) {
             console.log(contact);
             $http({
@@ -10,12 +13,8 @@
                     name : contact.name, email: contact.email, phone : contact.phone, reason : contact.reason, content : contact.content
                 }
             }).then(function(success){
-                // if(success.data.message == 'success'){
-                //     alert('Đăng ký thành công!');
-                //     $('#subs_email').val('');
-                // }else{
-                //     alert('Đăng ký thất bại. Email này đã tồn tại!');
-                // }
+                alert('Đăng ký thành công!');
+                $('.btn-contact').prop('disabled', false);
             }, function(error){
 
             });

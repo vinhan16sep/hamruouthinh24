@@ -98,5 +98,9 @@ Route::prefix('v1')->group(function() {
         //contact routes
         Route::resource('contact', 'ContactApiController');
         Route::get('sendmail', 'ContactApiController@sendMail')->name('subscrie.contact');
+
+        //contact routes
+        Route::resource('quotation', 'QuotationApiController');
+        Route::get('sendMailQuotation', 'QuotationApiController@sendMail');
     });
 });
