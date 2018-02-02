@@ -45,7 +45,7 @@
                             <br>
                             <textarea class="form-control" rows="4" placeholder="Tin nhắn..." ng-model="contact.content"></textarea>
                             <br>
-                            <input type="submit" ng-click="send(contact)" class="btn btn-default" value="Gửi đi" />
+                            <input type="submit" ng-click="send(contact)" class="btn btn-default btn-contact" value="Gửi đi" />
                         </div>
                     </form>
                 </div>

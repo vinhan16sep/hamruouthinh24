@@ -1,21 +1,21 @@
 <html>
-@if($name)
+@if(isset($name))
 Họ tên: {{ $name }} <br>
 @endif
 
-@if($email)
+@if(isset($email))
 Email: {{ $email }} <br>
 @endif
 
-@if($phone)
+@if(isset($phone))
 Phone: {{ $phone }} <br>
 @endif
 
-@if($reason)
+@if(isset($reason))
 Vấn đề cần tư vấn: {{ $reason }} <br>
 @endif
 
-@if($content)
+@if(isset($content))
 Nội dung: {{ $content }} <br>
 @endif
 </html>
