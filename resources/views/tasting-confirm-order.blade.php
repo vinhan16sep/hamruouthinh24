@@ -14,26 +14,55 @@
                         <br>
                         {{--<h3><strong><% successMessage2 %></strong></h3>--}}
                     </div>
-                    <div class="col-md-6 col-sm-12 col-xs-12">
-                        <h3><strong>Thông tin khách hàng</strong></h3>
+                    <div class="container-fluid">
 
-                        <h5><strong>Họ tên (*)</strong></h5>
-                        <% customerInfo.name %>
-                        <h5><strong>Email</strong></h5>
-                        <% customerInfo.email %>
-                        <h5><strong>Điện thoại</strong></h5>
-                        <% customerInfo.phone %>
-                        <h5><strong>Địa chỉ thử rượu</strong></h5>
-                        <% customerInfo.address %>
-                        <br>
-                        <% customerInfo.district %>
-                        <br>
-                        <% customerInfo.city %>
-                        <h5><strong>Thời gian thử rượu</strong></h5>
-                        <% customerInfo.time %>
-                        <br>
-                        <h5><strong>Ghi chú</strong></h5>
-                        <% customerInfo.content %>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <td colspan="2">
+                                        <h3><strong>Thông tin khách hàng</strong></h3>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><h5><strong>Họ tên (*)</strong></h5></td>
+                                    <td><% customerInfo.name %></td>
+                                </tr>
+                                <tr>
+                                    <td><h5><strong>Email</strong></h5></td>
+                                    <td><% customerInfo.email %></td>
+                                </tr>
+                                <tr>
+                                    <td><h5><strong>Điện thoại</strong></h5></td>
+                                    <td><% customerInfo.phone %></td>
+                                </tr>
+                                <tr>
+                                    <td><h5><strong>Địa chỉ thử rượu</strong></h5></td>
+                                    <td>
+                                        <% customerInfo.address %>
+                                        <br>
+                                        <% customerInfo.district %>
+                                        <br>
+                                        <% customerInfo.city %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><h5><strong>Thời gian thử rượu</strong></h5></td>
+                                    <td><% customerInfo.time %></td>
+                                </tr>
+                                <tr>
+                                    <td><h5><strong>Ghi chú</strong></h5></td>
+                                    <td><% customerInfo.content %></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+
+
+
+
                         <br>
                         <br>
                         <br>

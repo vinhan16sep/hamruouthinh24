@@ -33,27 +33,6 @@
 
             <div class="row">
                 <div class="category col-md-3 col-sm-3 col-xs-12">
-                    <!--<div class="panel panel-default">
-
-                        <div class="panel-heading">Danh mục sản phẩm</div>
-
-
-                        <ul class="list-group">
-                            <li class="list-group-item" ng-repeat="type in menuProduct.type">
-                                <a href="{{ url('loai-san-pham') }}/<% type.slug %>"  target="_self"><% type.title %></a>
-                                <ul class="list-group">
-                                    <li class="list-group-item" ng-repeat="kind in menuProduct.kind" ng-hide="kind.type_id != type.id">
-                                        <a href="{{ url('dong-san-pham') }}/<% kind.slug %>"  target="_self"><% kind.title %></a>
-                                        <ul class="list-group">
-                                            <li class="list-group-item" ng-repeat="trademarks in menuProduct.trademarks" ng-hide="trademarks.kind_id != kind.id">
-                                                <a href="{{ url('thuong-hieu') }}/<% trademarks.slug %>" target="_self"><% trademarks.name %></a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>-->
 
                     <div class="panel panel-default filter">
                         <div class="panel-heading">
@@ -119,7 +98,6 @@
                             <div class="inner">
                                 <div class="mask">
                                     <img src="{{ asset('storage/app') }}/<% product.image[0] %>" alt="<% product.slug %>">
-
                                 </div>
 
                                 <span class="badge" ng-if="product.discount_percent != null">- <% product.discount_percent %>%</span>
@@ -128,7 +106,7 @@
                                 <h4 class="productYear"><% product.year %></h4>
                                 <h3 class="productPrice"><% product.price %> vnđ</h3>
                                 <br>
-                                <a class="btn btn-primary" href="#" role="button">Thử rượu miễn phí</a>
+                                <a class="btn btn-primary" href="#" role="button">Đăng ký thử rượu</a>
 
                                 <div class="hover">
                                     <span class="productName"><% product.name %></span>
@@ -141,7 +119,7 @@
                                     <br>
                                     <a class="btn btn-primary" href="{{ url('/san-pham/chi-tiet') }}/<% product.slug %>" role="button"  target="_self" >Xem chi tiết</a>
                                     <br>
-                                    <a class="btn btn-primary" href="#" role="button" ng-click="addToTasting(product.id)">Thử rượu miên phí</a>
+                                    <a class="btn btn-primary" href="#" role="button" ng-click="addToTasting(product.id)">Đăng ký thử rượu</a>
                                 </div>
                             </div>
                         </div>

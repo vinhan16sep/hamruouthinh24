@@ -187,72 +187,6 @@ header .container .container-fluid{
 	overflow: hidden;
 }
 
-.product_view .product_quickView{
-	width: 40px;
-	height: 40px;
-	background: #b2479e;
-	color: #fff;
-	border-radius: 50%;
-	padding-left: 13px;
-	padding-top: 9px;
-	
-	
-	position: absolute;
-	top: 50%;
-	right: 0;
-	margin-top: -20px;
-	opacity: 0;
-	
-	transition: all ease .5s;
-}
-
-.product_view:hover .product_quickView{
-	right: 25px;
-	opacity: 1;
-	
-	transition: all ease .5s;
-}
-
-.product_view .product_addtoCart{
-	width: 40px;
-	height: 40px;
-	background: #b2479e;
-	color: #fff;
-	border-radius: 50%;
-	padding-left: 13px;
-	padding-top: 9px;
-	
-	
-	position: absolute;
-	top: 35%;
-	right: 0;
-	margin-top: -20px;
-	opacity: 0;
-	
-	transition: all ease .5s;
-}
-
-.product_view:hover .product_addtoCart{
-	right: 25px;
-	opacity: 1;
-	
-	transition: all ease .5s;
-}
-
-.product_view .badge_KM{
-	width: 70px;
-	height: 70px;
-	background: #b2479e;
-	color: #fff;
-	border-radius: 50%;
-	padding-left: 13px;
-	padding-top: 20px;
-	
-	position: absolute;
-	top: 10px;
-	right: 20px;
-}
-
 .product_view a{
 	color: #95989A;
 }
@@ -268,8 +202,6 @@ header .container .container-fluid{
 .breadcrumb a{
 	color: #b2479e;
 }
-
-
 
 .title_mid h3{
 	margin-top: 0;

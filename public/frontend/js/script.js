@@ -102,10 +102,10 @@ $(window).scroll(function () {
     //.log to determine when you want the
     //nav bar to stick.
     'use strict';
-    if ($(window).scrollTop() > 100) {
+    if ($(window).scrollTop() > 150) {
         $('.header').addClass('fix_header');
     }
-    if ($(window).scrollTop() < 100) {
+    if ($(window).scrollTop() < 150) {
         $('.header').removeClass('fix_header');
     }
 });

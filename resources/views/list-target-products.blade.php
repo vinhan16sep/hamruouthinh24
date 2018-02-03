@@ -4,7 +4,9 @@
     <section class="main_content" ng-controller="ProductController">
         <!-- InstanceBeginEditable name="content" -->
         <div class="container">
-            <div class="row">
+            <div class="container-fluid">
+                <img class="cover" src="{{ asset('public/frontend/img/cover/cover_01.jpg') }}" alt="cover">
+
                 <div class="nav_product">
                     <ul class="list-inline list-unstyled">
                         <span class="panel-heading">Danh mục sản phẩm</span>
@@ -28,7 +30,9 @@
                         </li>
                     </ul>
                 </div>
-                <div class="catelogy col-md-3">
+
+            <div class="row">
+                <div class="category col-md-3 col-sm-3 col-xs-12">
                     
                     <div class="panel panel-default filter">
                         <div class="panel-heading">
@@ -78,28 +82,60 @@
                                     </div>
                                 </li>
                             </ul>
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="submit">Tìm kiếm</button>
-                            </span>
+                            <div class="panel-footer">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fa fa-search" aria-hidden="true"></i> Tìm kiếm
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
                 <div class="productItem_view col-md-9">
-                    <img class="cover" src="{{ asset('storage/app') }}/<% coverImage %>" alt="cover" ng-if="coverImage">
-                    <img class="cover" src="{{ asset('public/frontend/img/trademark_cover.jpg') }}" alt="cover" ng-if="!coverImage && currentTarget == 'thuong-hieu'">
-                    <img class="cover" src="{{ asset('public/frontend/img/category_cover.jpg') }}" alt="cover" ng-if="!coverImage && currentTarget == 'danh-muc'">
-                    <ol class="breadcrumb">
-                        <li><a href="#">Trang chủ</a></li>
-                        <li class="active">Sản phẩm</li>
-                    </ol>
+                    {{--<img class="cover" src="{{ asset('storage/app') }}/<% coverImage %>" alt="cover" ng-if="coverImage">--}}
 
-                    <div class="row">
+
+                    {{--
+                    <div class="row" id="list-product">
                         <div class="product_view col-md-4 col-sm-6 col-xs-12" ng-repeat="product in targetProducts">
                             <a href="#"><img src="{{ asset('storage/app') }}/<% product.image[0] %>" class="img-responsive center-block"></a>
                             <a href="" class="product_quickView" data-toggle="modal" data-target="#product_quickView" title="Xem nhanh" ng-click="openTarget(product)"><i class="fa fa-search"></i></a>
                             <a href="#" class="product_addtoCart" data-toggle="modal" data-target="#product_quickview" title="Thêm vào giỏ hàng" ng-click="addToCart(product.id)"><i class="fa fa-cart-plus"></i></a>
                             <a href="{{ url('san-pham/chi-tiet') }}/<% product.slug %>" target="_self"><h4><% product.name %></h4></a>
                             <span class="price"><% product.price | currency:VND:0 | commaToDot | removeUSCurrency  %> vnđ</span>
+                        </div>
+                    </div>
+
+                    --}}
+
+                    <div class="row" id="list-product">
+                        <div class="item col-md-4 col-sm-6 col-xs-12" ng-repeat="product in targetProducts">
+                            <div class="inner">
+                                <div class="mask">
+                                    <img src="{{ asset('storage/app') }}/<% product.image[0] %>" alt="<% product.slug %>">
+                                </div>
+
+                                <span class="badge" ng-if="product.discount_percent != null">- <% product.discount_percent %>%</span>
+
+                                <span class="productName"><% product.name %></span>
+                                <h4 class="productYear"><% product.year %></h4>
+                                <h3 class="productPrice"><% product.price %> vnđ</h3>
+                                <br>
+                                <a class="btn btn-primary" href="#" role="button">Đăng ký thử rượu</a>
+
+                                <div class="hover">
+                                    <span class="productName"><% product.name %></span>
+                                    <h4 class="productYear"><% product.year %></h4>
+                                    <h3 class="productPrice"><% product.price %> vnđ</h3>
+                                    <br>
+                                    <p ng-bind-html="$sce.trustAsHtml(product.description)"></p>
+                                    <br>
+                                    <a class="btn btn-primary" href="#" role="button" ng-click="addToCart(product.id)">Thêm vào giỏ hàng</a>
+                                    <br>
+                                    <a class="btn btn-primary" href="{{ url('/san-pham/chi-tiet') }}/<% product.slug %>" role="button"  target="_self" >Xem chi tiết</a>
+                                    <br>
+                                    <a class="btn btn-primary" href="#" role="button" ng-click="addToTasting(product.id)">Đăng ký thử rượu</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row" ng-if="isEmpty(targetProducts)">
@@ -114,4 +150,18 @@
     </section>
     <script src="{{ asset ("public/frontend/app/controllers/product.js") }}"></script>
     <script src="{{ asset ("public/frontend/app/controllers/modal.js") }}"></script>
+    <script>
+        $(window).scroll(function () {
+            //if you hard code, then use console
+            //.log to determine when you want the
+            //nav bar to stick.
+            'use strict';
+            if ($(window).scrollTop() > 100) {
+                $('.main_content').css( 'margin-top' , '280px');
+            }
+            if ($(window).scrollTop() < 100) {
+                $('.main_content').css( 'margin-top' , '50px');
+            }
+        });
+    </script>
 @endsection
