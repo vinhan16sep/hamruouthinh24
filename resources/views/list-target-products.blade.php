@@ -8,12 +8,16 @@
                 <img class="cover" src="{{ asset('public/frontend/img/cover/cover_01.jpg') }}" alt="cover">
 
                 <div class="nav_product">
-                    <ul class="list-inline list-unstyled">
+                    <ul class="list-unstyled">
                         <span class="panel-heading">Danh mục sản phẩm</span>
-                        <li class="" ng-repeat="type in menuProduct.type">
+                        <li class="nav_product_hover" ng-repeat="type in menuProduct.type">
                             <a href="{{ url('loai-san-pham') }}/<% type.slug %>"  target="_self"><% type.title %></a>
                             <div class="nav_expand">
-                                <div class="left hidden-sm hidden-xs"></div>
+                                <div class="left hidden-sm hidden-xs">
+                                    <div class="mask">
+                                        <img src="{{ asset('storage/app/type') }}/<% type.image %>" alt="image of product category">
+                                    </div>
+                                </div>
                                 <div class="right">
                                     <div class="type" ng-repeat="kind in menuProduct.kind" ng-hide="kind.type_id != type.id">
                                         <label >
@@ -156,10 +160,10 @@
             //.log to determine when you want the
             //nav bar to stick.
             'use strict';
-            if ($(window).scrollTop() > 100) {
+            if ($(window).scrollTop() > 150) {
                 $('.main_content').css( 'margin-top' , '280px');
             }
-            if ($(window).scrollTop() < 100) {
+            if ($(window).scrollTop() < 150) {
                 $('.main_content').css( 'margin-top' , '50px');
             }
         });

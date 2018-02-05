@@ -261,7 +261,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">
-                    Đăng ký nhận báo
+                    Đăng ký nhận báo giá
                 </h4>
             </div>
             <div class="modal-body">
@@ -319,7 +319,16 @@
                             @endif
                         </div>
                     </div>
-                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+
+                    <div class="form-group">
+                        <label for="message" class="col-md-4 control-label">Tin nhắn</label>
+
+                        <div class="col-md-6">
+                            <textarea class="form-control" placeholder="Xin chào, chúng tôi muốn nhận báo giá về rượu ..." value="Xin chào, chúng tôi muốn nhận báo giá về rượu ..."></textarea>
+                        </div>
+                    </div>
+
+                    {{--<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                         <label for="password" class="col-md-4 control-label">Password</label>
 
                         <div class="col-md-6">
@@ -346,12 +355,12 @@
                                 Đăng ký
                             </button>
                         </div>
-                    </div>
+                    </div>--}}
                 </form>
             </div>
             <div class="modal-footer">
-                {{--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--}}
-                {{--<button type="button" class="btn btn-primary">Save changes</button>--}}
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary">Gửi tin nhắn</button>
             </div>
         </div>
     </div>

@@ -51,7 +51,7 @@
                     }).then(
                         function(success){
                             $scope.productTrademarks = success.data;
-                            // console.log(success.data);
+                            console.log(success.data);
                         }, function(error){
 
                     });

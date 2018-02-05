@@ -126,7 +126,7 @@
                     <h2>Maecenas pulvinar tristique malesuada</h2>
                     <p>Vivamus ac tempor quam. Maecenas pulvinar tristique malesuada. Donec euismod nibh et dapibus tempor. Nullam elit nulla, rutrum eget eros sollicitudin, ullamcorper ultrices orci. Suspendisse potenti. Ut porta bibendum nibh eu viverra. Sed vel magna ac ligula finibus fermentum fringilla eu lectus. Sed elit ante, ornare nec dui at, molestie congue arcu. Nam at imperdiet neque, non tempus libero. Praesent dolor odio, mattis vulputate est ut, vulputate sollicitudin metus. Nulla id metus turpis. Phasellus non diam nisi. Duis vitae felis et magna elementum dictum. Pellentesque in enim fringilla, ullamcorper lacus et, imperdiet erat.</p>
 
-                    <a class="btn btn-primary" href="#" role="button">Đăng ký thử ngay bây giờ</a>
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#tastingWine_UG">Huong dan dang kys thu ruou</a>
                 </div>
             </div>
         </section>
@@ -194,6 +194,49 @@
         </section>
         <!-- InstanceEndEditable -->
     </section>
+
+    <div class="modal fade" id="tastingWine_UG" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Huong dan dang ky thu ruou</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="cover">
+                        <img src="{{ asset('public/frontend/img/cover/cover_02.jpg') }}" alt="cover">
+                    </div>
+                    <article>
+                        <ol>
+                            <li>
+                                <h3>Buoc 1:</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam pretium sapien, et gravida nisl vehicula a. Fusce nec augue eu velit tempus finibus in id diam. Vivamus pellentesque orci molestie justo dapibus, id posuere lectus placerat. Cras ut eros rutrum magna accumsan bibendum. Quisque laoreet, elit sit amet imperdiet euismod, lacus mauris consectetur orci, eget aliquam odio ante a massa. Vestibulum convallis egestas dignissim. Donec sit amet iaculis odio.</p>
+                                <p>Morbi vel maximus ex. Vivamus sit amet cursus orci. Aliquam cursus bibendum lacus, quis congue justo. In volutpat, magna sit amet porta gravida, ante erat sodales eros, eget malesuada magna est vitae magna. Phasellus laoreet pharetra scelerisque. Nunc ex mauris, cursus eu ex a, mollis tempus nisi. Integer eleifend justo quam, a imperdiet urna pretium at. Sed porta nulla ut odio volutpat auctor. Maecenas et metus lacus. Integer metus sem, iaculis vel suscipit vel, aliquam at justo. Quisque quis condimentum nibh. Suspendisse hendrerit consequat ipsum, in malesuada urna vestibulum nec. Ut maximus, mi ut sodales lacinia, mauris eros varius lorem, et convallis felis diam eu sapien. Donec sollicitudin, nisl a blandit euismod, risus mauris tristique lectus, sed dignissim quam risus sit amet massa.</p>
+                            </li>
+                            <li>
+                                <h3>Buoc 2:</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam pretium sapien, et gravida nisl vehicula a. Fusce nec augue eu velit tempus finibus in id diam. Vivamus pellentesque orci molestie justo dapibus, id posuere lectus placerat. Cras ut eros rutrum magna accumsan bibendum. Quisque laoreet, elit sit amet imperdiet euismod, lacus mauris consectetur orci, eget aliquam odio ante a massa. Vestibulum convallis egestas dignissim. Donec sit amet iaculis odio.</p>
+                                <p>Morbi vel maximus ex. Vivamus sit amet cursus orci. Aliquam cursus bibendum lacus, quis congue justo. In volutpat, magna sit amet porta gravida, ante erat sodales eros, eget malesuada magna est vitae magna. Phasellus laoreet pharetra scelerisque. Nunc ex mauris, cursus eu ex a, mollis tempus nisi. Integer eleifend justo quam, a imperdiet urna pretium at. Sed porta nulla ut odio volutpat auctor. Maecenas et metus lacus. Integer metus sem, iaculis vel suscipit vel, aliquam at justo. Quisque quis condimentum nibh. Suspendisse hendrerit consequat ipsum, in malesuada urna vestibulum nec. Ut maximus, mi ut sodales lacinia, mauris eros varius lorem, et convallis felis diam eu sapien. Donec sollicitudin, nisl a blandit euismod, risus mauris tristique lectus, sed dignissim quam risus sit amet massa.</p>
+                            </li>
+                            <li>
+                                <h3>Buoc 3:</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam pretium sapien, et gravida nisl vehicula a. Fusce nec augue eu velit tempus finibus in id diam. Vivamus pellentesque orci molestie justo dapibus, id posuere lectus placerat. Cras ut eros rutrum magna accumsan bibendum. Quisque laoreet, elit sit amet imperdiet euismod, lacus mauris consectetur orci, eget aliquam odio ante a massa. Vestibulum convallis egestas dignissim. Donec sit amet iaculis odio.</p>
+                                <p>Morbi vel maximus ex. Vivamus sit amet cursus orci. Aliquam cursus bibendum lacus, quis congue justo. In volutpat, magna sit amet porta gravida, ante erat sodales eros, eget malesuada magna est vitae magna. Phasellus laoreet pharetra scelerisque. Nunc ex mauris, cursus eu ex a, mollis tempus nisi. Integer eleifend justo quam, a imperdiet urna pretium at. Sed porta nulla ut odio volutpat auctor. Maecenas et metus lacus. Integer metus sem, iaculis vel suscipit vel, aliquam at justo. Quisque quis condimentum nibh. Suspendisse hendrerit consequat ipsum, in malesuada urna vestibulum nec. Ut maximus, mi ut sodales lacinia, mauris eros varius lorem, et convallis felis diam eu sapien. Donec sollicitudin, nisl a blandit euismod, risus mauris tristique lectus, sed dignissim quam risus sit amet massa.</p>
+                            </li>
+                        </ol>
+                    </article>
+
+                    <a href="{{ url('san-pham') }}" target="_self" role="button" class="btn btn-primary">
+                        Sản phẩm
+                    </a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="{{ asset ("public/frontend/app/controllers/homepage.js") }}"></script>
     <script src="{{ asset ("public/frontend/app/controllers/modal.js") }}"></script>
 @endsection

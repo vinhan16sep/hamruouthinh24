@@ -42,7 +42,7 @@
 <header class="header">
     <section class="container">
         <div class="container-fluid">
-            <a href="index.html">
+            <a href="{{ url('') }}" target="_self">
                 <div class="logo"></div> <!--image logo-->
             </a>
 
@@ -57,7 +57,7 @@
                         @if (Auth::guest())
                             <div class="dropdown login_dropdown">
                                 <a href="" data-toggle="modal" data-target="#user_login"> <strong>Đăng nhập</strong> </a>
-                                hoặc
+                                <span> hoặc </span>
                                 <a href="" data-toggle="modal" data-target="#user_register"> <strong>Đăng ký</strong> </a>
                             </div>
                         @else
