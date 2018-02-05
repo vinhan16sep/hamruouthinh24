@@ -87,10 +87,10 @@
     <script>
         $(window).scroll(function () {
             'use strict';
-            if ($(window).scrollTop() > 100) {
+            if ($(window).scrollTop() > 150) {
                 $('.main_content').css( 'margin-top' , '280px');
             }
-            if ($(window).scrollTop() < 100) {
+            if ($(window).scrollTop() < 150) {
                 $('.main_content').css( 'margin-top' , '50px');
             }
         });

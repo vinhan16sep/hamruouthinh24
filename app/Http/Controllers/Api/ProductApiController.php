@@ -27,7 +27,6 @@ class ProductApiController extends Controller
      */
     public function index(){
         $products = Product::all();
-        print_r($products);die;
 
         return response()->json($products, 200);
     }

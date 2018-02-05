@@ -16,7 +16,8 @@ body{
 	padding-bottom: 5px;
 }
 
-.top_header a, .top_header ul li{
+.top_header a,
+.top_header ul li{
 	color: #fff;
 }
 
@@ -58,11 +59,15 @@ header .container .container-fluid{
 }
 
 .header .user_activities a{
-	color: #e2e2e2;
+	color: #aaa;
 }
 
 .header .user_activities a:hover{
 	color: #6d6d6d;
+}
+
+.header .user_activities .login span{
+	color: #aaa;
 }
 
 .logo img{
@@ -154,6 +159,12 @@ header .container .container-fluid{
 	margin-top: 7px;
 	padding-top: 0px;
 	border-top-color: transparent;
+}
+
+.fix_header .user_activities a,
+.fix_header .user_activities a:hover,
+.fix_header .user_activities .login span{
+	color: #fff;
 }
 
 /*
@@ -326,4 +337,23 @@ img.paragraph{
 	position: fixed;
 	top: 50%;
 	right: 0;
+}
+
+.scrollup {
+	padding: 6px 12px;
+	position: fixed;
+	z-index: 999;
+	bottom: 5px;
+	right: 5px;
+	display: none;
+	text-align: center;
+	background: #c1272d;
+
+	color: #fff;
+	border-radius: 4px;
+	border: 2px solid #fff;
+}
+
+.scrollup:hover{
+	cursor: pointer;
 }

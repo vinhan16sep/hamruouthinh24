@@ -36,11 +36,12 @@
 .nav_product > ul > li{
 	padding: 10px 20px;
 	border-radius: 7px;
+	display: inline-block;
 }
 
-.nav_product > ul > li:hover{
-	background-color: #eaeaea;
-}
+/*.nav_product > ul > li:hover{*/
+	/*background-color: #eaeaea;*/
+/*}*/
 
 .nav_expand{
 	width: 100%;
@@ -59,11 +60,12 @@
 	display: none;
 }
 
-.nav_product  ul  li:hover  .nav_expand{
+.nav_product .nav_product_hover:hover .nav_expand{
 	display: block !important;
 }
 
-.nav_expand > .left, .nav_expand > .right{
+.nav_expand > .left,
+.nav_expand > .right{
 	float: left;
 }
 
@@ -77,6 +79,21 @@
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
+}
+
+
+.nav_expand .left .mask{
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+	border-bottom-left-radius: 7px;
+	border-top-left-radius: 7px;
+}
+
+.nav_expand .left .mask img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 .nav_expand > .right{

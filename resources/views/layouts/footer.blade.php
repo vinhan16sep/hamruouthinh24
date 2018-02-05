@@ -100,6 +100,10 @@
 </footer>
 
 <button type="button" id="requestQuotationBtn" class="btn btn-primary" data-toggle="modal" data-target="#requestQuotation">
-    <i class="fa fa-2x fa-question-circle-o" aria-hidden="true"></i>
+    <i class="fa fa-2x fa-dollar" aria-hidden="true" title="Đăng ký nhận báo giá"></i>
 </button>
+
+<div class="scrollup">
+    <i class="fa fa-chevron-up fa-2x"></i>
+</div>
 
