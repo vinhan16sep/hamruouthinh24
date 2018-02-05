@@ -28,7 +28,7 @@
                                 <tr ng-repeat="product in fetchedProducts" id="cartItem<% product.id %>">
                                     <td><% $index + 1 %></td>
                                     <td><% product.name %></td>
-                                    <td><img src="{{ asset('storage/app') }}/<% product.image %>"></td>
+                                    <td><img src="{{ asset('storage/app') }}/<% product.image[0] %>"></td>
                                     <td><% product.cost | currency:VND:0 | commaToDot | removeUSCurrency %> VNĐ</td>
                                     <td>
                                         <input class="form-control" type="number" min="1" ng-model="inputQuantity" ng-change="calculatePrice(inputQuantity, $index)" ng-value="product.quantity">
