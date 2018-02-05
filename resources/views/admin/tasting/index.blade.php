@@ -66,7 +66,14 @@
                                                         <br>
                                                         <strong>Số điện thoại:</strong> {{ $value->customer_phone }}
                                                         <br>
-                                                        <strong>Địa chỉ:</strong> {{ $value->customer_address }} - {{ $value->customer_district }} - {{ $value->customer_city }}
+                                                        <strong>Địa chỉ:</strong>
+                                                        @if($value->is_store == 1)
+                                                        Tại cửa hàng
+                                                        @else
+                                                        {{ $value->customer_address }} - {{ $value->customer_district }} - {{ $value->customer_city }}
+                                                        @endif
+                                                        <br>
+                                                        <strong>Số người thử rượu: </strong> {{ $value->people }} người
                                                         <br>
                                                         <strong>Nội dung:</strong> {{ $value->customer_content }}
                                                         <br>

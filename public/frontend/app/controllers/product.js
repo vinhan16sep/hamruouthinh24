@@ -104,7 +104,8 @@
                     name: $scope.name,
                     price: $scope.price,
                     target: $scope.currentTarget,
-                    subTarget: $scope.currentSubTarget
+                    subTarget: $scope.currentSubTarget,
+                    origin: $scope.origin
                 }
             }).then(function(success){
                 $scope.targetProducts = success.data;
@@ -117,7 +118,7 @@
             method: 'GET',
             url: API_URL + 'origin'
         }).then(function(success){
-            $scope.origin = success.data;
+            $scope.origins = success.data;
         }, function(error){
 
         });

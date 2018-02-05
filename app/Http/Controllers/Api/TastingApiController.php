@@ -47,7 +47,6 @@ class TastingApiController extends Controller
         // Build Personal information
         $inputPersonalInfo = json_decode(Input::get('personalInfo'));
         $personalInfo = $this->buildPersonalInfoArray($inputPersonalInfo);
-        // print_r($personalInfo);die;
         $result = false;
         DB::beginTransaction();
         try {
@@ -57,14 +56,15 @@ class TastingApiController extends Controller
                 $inputTasting = json_decode(Input::get('tastingInfo1'), true);
                 
                 $tastingInfo = $this->buildTastingInfoArray($tastingId, $inputTasting['product']);
-                // print_r($tastingInfo);die;
+                
                 $result = DB::table('tasting_product')->insert($tastingInfo);
             }
+
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
         }
-
+        
         if($result){
             return response()->json(['message' => 'success'], 200);
         }else{
@@ -84,7 +84,7 @@ class TastingApiController extends Controller
         return $output;
     }
     protected function buildPersonalInfoArray($inputpersonalInfo){
-        return $output = [
+        $output = [
             'customer_id' => $inputpersonalInfo->id,
             'customer_name' => $inputpersonalInfo->name,
             'customer_email' => $inputpersonalInfo->email,
@@ -92,9 +92,16 @@ class TastingApiController extends Controller
             'customer_address' => $inputpersonalInfo->address,
             'customer_district' => $inputpersonalInfo->district,
             'customer_city' => $inputpersonalInfo->city,
+            'people' => $inputpersonalInfo->people,
             'customer_content' => (!empty($inputpersonalInfo->content)) ? $inputpersonalInfo->content : '',
             'time' => (!empty($inputpersonalInfo->time)) ? $inputpersonalInfo->time : ''
         ];
+        if($inputpersonalInfo->store == true){
+            $output['is_store'] = 1;
+        }else{
+            $output['is_store'] = 0;
+        }
+        return $output;
     }
     
 }
