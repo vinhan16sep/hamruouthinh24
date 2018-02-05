@@ -80,8 +80,8 @@
                                     <label>Xuất xứ</label>
                                     <div class="radio">
                                         <select name="origin" ng-model="origin">
-                                            <option value="">Select</option>
-                                            <option ng-repeat="origin in origin" value="<% origin.id %>" > <% origin.name %> </option>
+                                            <option value="">Chọn quốc gia</option>
+                                            <option ng-repeat="origin in origins" value="<% origin.id%>"><% origin.name%></option>
                                         </select>
                                     </div>
                                 </li>

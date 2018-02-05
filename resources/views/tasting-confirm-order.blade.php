@@ -38,14 +38,19 @@
                                     <td><% customerInfo.phone %></td>
                                 </tr>
                                 <tr>
+                                    <td><h5><strong>Số người thử rượu</strong></h5></td>
+                                    <td><% customerInfo.people %></td>
+                                </tr>
+                                <tr>
                                     <td><h5><strong>Địa chỉ thử rượu</strong></h5></td>
-                                    <td>
+                                    <td ng-if="customerInfo.store == 0">
                                         <% customerInfo.address %>
                                         <br>
                                         <% customerInfo.district %>
                                         <br>
                                         <% customerInfo.city %>
                                     </td>
+                                    <td ng-if="customerInfo.store == 1">Tại cửa hàng</td>
                                 </tr>
                                 <tr>
                                     <td><h5><strong>Thời gian thử rượu</strong></h5></td>

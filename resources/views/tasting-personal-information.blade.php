@@ -42,23 +42,35 @@
                                 Bắt buộc và chỉ cho phép nhập số!
                             </span>
                         </div>
+
                         <div class="form-group">
-                            <label for="inputAdress">Địa chỉ giao hàng</label>
-                            <input type="text" class="form-control" name="inputAdress" placeholder="Số nhà (ngõ / ngách), Phố / Phường" ng-model="customerInfo.address" required>
+                            <label for="inputAmountOfPeople">Số người thử rượu</label>
+                            <input type="number" class="form-control" name="inputAmountOfPeople" ng-model="customerInfo.people" >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputStore">Thử rượu tại cửa hàng</label>
+                            <br>
+                            <input type="checkbox" name="inputStore" value="1" ng-model="customerInfo.store" id="inputStore">
+                        </div>
+
+                        <div class="form-group" id="inputAdress">
+                            <label for="inputAdress">Địa chỉ thử rượu</label>
+                            <input type="text" class="form-control bnt-disabled" name="inputAdress" placeholder="Số nhà (ngõ / ngách), Phố / Phường" ng-model="customerInfo.address">
                             <div role="alert">
                                 <span class="error" style="color:red" ng-show="(customerInfo.inputAdress.$dirty || submitted) && customerInfo.inputAdress.$error.required">
                                     Bắt buộc nhập!
                                 </span>
                             </div>
                             <br>
-                            <input type="text" class="form-control" name="inputDistrict" placeholder="Quận" ng-model="customerInfo.district" required>
+                            <input type="text" class="form-control bnt-disabled" name="inputDistrict" placeholder="Quận" ng-model="customerInfo.district">
                             <div role="alert">
                                 <span class="error" style="color:red" ng-show="(customerInfo.inputDistrict.$dirty || submitted) && customerInfo.inputDistrict.$error.required">
                                     Bắt buộc nhập!
                                 </span>
                             </div>
                             <br>
-                            <input type="text" class="form-control" name="inputCity" placeholder="Thành phố" ng-model="customerInfo.city" required>
+                            <input type="text" class="form-control bnt-disabled" name="inputCity" placeholder="Thành phố" ng-model="customerInfo.city">
                             <div role="alert">
                                 <span class="error" style="color:red" ng-show="(customerInfo.inputCity.$dirty || submitted) && customerInfo.inputCity.$error.required">
                                     Bắt buộc nhập!
@@ -103,5 +115,14 @@
             // autoclose: true,
             format: 'yyyy:mm:dd'
         });
+
+        $('#inputStore').click(function(){
+            if($(this).prop("checked") == true){
+                $(".bnt-disabled").prop('disabled', true);
+            }
+            else if($(this).prop("checked") == false){
+                $(".bnt-disabled").prop('disabled', false);
+            }
+        })
 </script>
 @endsection

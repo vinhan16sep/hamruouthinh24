@@ -31,7 +31,7 @@ class CartApiController extends Controller
             ->where('is_deleted', '=', 0)
             ->limit(1)
             ->get();
-
+        $exist[0]->image = json_decode($exist[0]->image);
         if(empty($exist)){
             return response()->json(['id' => $id, 'message' => 'not_found'], 404);
         }

@@ -12,7 +12,6 @@
         $scope.customerId = 0;
         $scope.hideButton = false;
         $scope.orderCode = '';
-
         $scope.calculatePrice = function(inputQuantity, index){
             var target = angular.copy($scope.fetchedProducts[index]);
 

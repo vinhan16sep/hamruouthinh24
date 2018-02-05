@@ -94,5 +94,13 @@ Route::prefix('v1')->group(function() {
         //subscrie routes
         Route::resource('subscrie', 'SubscribeApiController');
         Route::get('subscrie', 'SubscribeApiController@save')->name('subscrie.save');
+
+        //contact routes
+        Route::resource('contact', 'ContactApiController');
+        Route::get('sendmail', 'ContactApiController@sendMail')->name('subscrie.contact');
+
+        //contact routes
+        Route::resource('quotation', 'QuotationApiController');
+        Route::get('sendMailQuotation', 'QuotationApiController@sendMail');
     });
 });

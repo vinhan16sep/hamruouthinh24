@@ -193,9 +193,12 @@ class ProductApiController extends Controller
             if($post['target'] == 'thuong-hieu'){
                 $query->join('product_trademark', 'product.trademark_id', '=', 'product_trademark.id')
                     ->where('product_trademark.slug', '=', $post['subTarget']);
-            }elseif($post['target'] == 'danh-muc'){
-                $query->join('product_category', 'product.category_id', '=', 'product_category.id')
-                    ->where('product_category.slug', '=', $post['subTarget']);
+            }elseif($post['target'] == 'dong-san-pham'){
+                $query->join('kind', 'product.kind_id', '=', 'kind.id')
+                    ->where('kind.slug', '=', $post['subTarget']);
+            }elseif($post['target'] == 'loai-san-pham'){
+                $query->join('type', 'product.type_id', '=', 'type.id')
+                    ->where('type.slug', '=', $post['subTarget']);
             }
         }
         if(isset($post['name'])){
@@ -228,6 +231,9 @@ class ProductApiController extends Controller
         $query->where('product.is_deleted', '=', 0);
 
         $result = $query->get();
+        foreach ($result as $key => $value) {
+            $result[$key]->image = json_decode($value->image);
+        }
 
         return response()->json($result, 200);
     }
