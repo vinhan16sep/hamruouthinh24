@@ -13,48 +13,50 @@
     </section>
     <section class="main_content" ng-controller="HomepageController" id="main_content">
         <span id="scroll_point"></span>
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <section class="container">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-                <div class="item" ng-repeat="advise in advises" active-on-first-four-items>
-                    <div class="row">
-                        <div class="col-md-8 col-sm-8 col-xs-12">
-                            <img src="{{ asset('storage/app') }}/<% advise.image %>" alt="<% advise.slug %>">
-                        </div>
-                        <div class="col-md-4 col-sm-4 col-xs-12">
-                            <a href="{{ url('/tu-van') }}/<% advise.slug %>" class="link-primary" target="_self">
-                                <h1><% advise.title %></h1>
-                            </a>
-                            <article class="description">
-                                <p ng-bind-html="$sce.trustAsHtml(advise.description)"></p>
-                            </article>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    <div class="item" ng-repeat="advise in advises" active-on-first-four-items>
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                <img src="{{ asset('storage/app') }}/<% advise.image %>" alt="<% advise.slug %>">
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <a href="{{ url('/tu-van') }}/<% advise.slug %>" class="link-primary" target="_self">
+                                    <h1><% advise.title %></h1>
+                                </a>
+                                <article class="description">
+                                    <p ng-bind-html="$sce.trustAsHtml(advise.description)"></p>
+                                </article>
 
-                            <a class="btn btn-primary" href="{{ url('/tu-van') }}/<% advise.slug %>" role="button" target="_self">Khám phá ngay</a>
+                                <a class="btn btn-primary" href="{{ url('/tu-van') }}/<% advise.slug %>" role="button" target="_self">Khám phá ngay</a>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
 
-            <!-- Controls -->
-            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-
-        <section class="container">
+        </section>
+        <section class="container" id="product_list">
             <div class="row">
-                <div class="col-md-3 col-sm-3 col-xs-12">
+                <!--<div class="col-md-3 col-sm-3 col-xs-12">
                     <div class="panel panel-default">
-                        <!-- Default panel contents -->
+
                         <div class="panel-heading">Danh mục sản phẩm</div>
 
-                        <!-- List group -->
+
                         <ul class="list-group">
                             <li class="list-group-item" ng-repeat="type in menuProduct.type">
                                 <a href="{{ url('loai-san-pham') }}/<% type.slug %>"  target="_self"><% type.title %></a>
@@ -71,15 +73,15 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div>-->
 
-                <div class="col-md-9 col-sm-9 col-xs-12">
+                <div class="container-fluid">
                     <div class="title_big">
                         Sản phẩm khuyến mãi
                     </div>
 
                     <div class="row">
-                        <div class="item col-md-4 col-sm-6 col-xs-12" ng-repeat="discount in discounts">
+                        <div class="item col-md-3 col-sm-6 col-xs-12" ng-repeat="discount in discounts">
                             <div class="inner">
                                 <div class="mask">
                                     <img src="{{ asset('storage/app/') }}/<% discount.image[0] %>" alt="<% discount.slug %>">
@@ -98,7 +100,7 @@
                                     <h4 class="productYear"><% discount.year %></h4>
                                     <h3 class="productPrice"><% discount.price | currency:VND:0 | commaToDot | removeUSCurrency  %> vnđ</h3>
                                     <br>
-                                    <p ng-bind-html="$sce.trustAsHtml(discount.description)"></p>
+                                    <!--<p ng-bind-html="$sce.trustAsHtml(discount.description)"></p>-->
                                     <br>
                                     <a class="btn btn-primary" href="#" role="button" ng-click="addToCart(discount.id)">Thêm vào giỏ hàng</a>
                                     <br>
@@ -118,7 +120,7 @@
             <div class="row">
                 <div class="left col-md-4 col-sm-6 col-xs-12 col-md-offset-1 col-sm-offset-1">
                     <div class="title_mid">
-                        Sản phẩm khuyến mãi
+                        Đăng ký thử rượu
                     </div>
 
                     <h2>Maecenas pulvinar tristique malesuada</h2>
@@ -137,7 +139,9 @@
                 <div class="row">
                     <div class="col-md-4 col-sm-4 col-xs-12" ng-repeat="new in news">
                         <div class="inner">
-                            <img src="{{ asset('storage/app') }}/<% new.image %>" alt="ảnh mình họa bài viết">
+                            <div class="mask">
+                                <img src="{{ asset('storage/app') }}/<% new.image %>" alt="ảnh mình họa bài viết">
+                            </div>
                             <a href="#">
                                 <h3><% new.title %></h3>
                             </a>

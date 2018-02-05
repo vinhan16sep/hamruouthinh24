@@ -81,6 +81,9 @@
             <li class="{{(Request::segment(2) == 'product')? 'active' : '' }}">
               <a href="{{ url('admin/product') }}">Sản phẩm</a>
             </li>
+            <li class="{{(Request::segment(2) == 'product')? 'active' : '' }}">
+              <a href="{{ url('admin/origin') }}">Xuất xứ</a>
+            </li>
           </ul>
         </li>
         <li class="treeview {{(Request::segment(2) == 'order')? 'active' : '' }}">

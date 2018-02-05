@@ -10,7 +10,10 @@
 
                         <div class="col-md-4 col-sm-4 col-xs-12" ng-repeat="advise in advises">
                             <div class="inner">
-                                <img src="{{ asset('starage/app') }}/<% advise.image %>" alt="ảnh mình họa bài viết">
+                                <div class="mask">
+                                    <img src="{{ asset('storage/app') }}/<% advise.image %>" alt="ảnh mình họa bài viết">
+                                </div>
+
                                 <a href="#">
                                     <h3><% advise.title %></h3>
                                 </a>
@@ -47,10 +50,10 @@
             //.log to determine when you want the
             //nav bar to stick.
             'use strict';
-            if ($(window).scrollTop() > 100) {
+            if ($(window).scrollTop() > 150) {
                 $('.main_content').css( 'margin-top' , '280px');
             }
-            if ($(window).scrollTop() < 100) {
+            if ($(window).scrollTop() < 150) {
                 $('.main_content').css( 'margin-top' , '50px');
             }
         });

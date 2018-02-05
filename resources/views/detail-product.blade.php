@@ -69,7 +69,9 @@
                                 <ul class="slides">
 
                                     <li ng-repeat="image in detail.image">
-                                        <img src="{{ asset('storage/app') }}/<% image %>" class="w-100" alt="preview">
+                                        <div class="mask">
+                                            <img src="{{ asset('storage/app') }}/<% image %>" class="w-100" alt="preview">
+                                        </div>
                                     </li>
 
                                 </ul>
@@ -77,7 +79,9 @@
                             <div id="carousel" class="flexslider">
                                 <ul class="slides">
                                     <li ng-repeat="image in detail.image">
-                                        <img src="{{ asset('storage/app') }}/<% image %>" class="w-100" alt="preview">
+                                        <div class="mask">
+                                            <img src="{{ asset('storage/app') }}/<% image %>" class="w-100" alt="preview">
+                                        </div>
                                     </li>
                                 </ul>
                             </div>
@@ -235,33 +239,15 @@
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="carousel carousel-showmanymoveone slide" id="itemslider_1">
-                                    <div class="row">
-                                        <div class="col-md-6">
-
-                                        </div>
-                                        <div class="slider_controler">
-                                            <ul class="list-inline">
-                                                <li>
-                                                    <a class="left carousel-control" href="#itemslider_1" data-slide="prev"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span></a>
-                                                </li>
-                                                <li>
-                                                    <a class="right carousel-control" href="#itemslider_1" data-slide="next"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a><strong></strong>
-                                                </li>
-                                                <li>
-                                                    <a href="{{ url('thuong-hieu') }}/<% detail.trademark_slug %>" target="_self">
-                                                        Xem tất cả
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
 
                                     <div class="carousel-inner">
                                         <div class="item active" ng-repeat="product in productTrademarks">
                                             <div class="product_view col-xs-12 col-sm-6 col-md-3">
-                                                <img src="{{ asset('storage/app') }}/<% product.image[0] %>" class="img-responsive center-block">
+                                                <div class="mask">
+                                                    <img src="{{ asset('storage/app') }}/<% product.image[0] %>" class="img-responsive center-block">
+                                                </div>
 
-                                                <a href="#" class="product_quickView" data-toggle="modal" data-target="#product_quickView" title="Xem nhanh" ng-click="open(product)">
+                                                <a href="{{ url('san-pham/chi-tiet') }}/<% product.slug %>" class="product_quickView" title="Xem nhanh" target="_self">
                                                     <i class="fa fa-search"></i>
                                                 </a>
 
@@ -269,9 +255,19 @@
                                                     <i class="fa fa-cart-plus"></i>
                                                 </a>
                                                 <a href="{{ url('san-pham/chi-tiet') }}/<% product.slug %>"  target="_self"><h4><% product.name %></h4></a>
-                                                <span class="price"><% product.price | currency:VND:0 | commaToDot | removeUSCurrency %> vnđ</span>
+                                                <p class="price"><% product.price | currency:VND:0 | commaToDot | removeUSCurrency %> vnđ</p>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="slider_controler">
+                                        <ul class="list-inline">
+                                            <!--<li>
+                                                <a class="left carousel-control" href="#itemslider_1" data-slide="prev"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span></a>
+                                            </li>
+                                            <li>
+                                                <a class="right carousel-control" href="#itemslider_1" data-slide="next"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a><strong></strong>
+                                            </li>-->
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
