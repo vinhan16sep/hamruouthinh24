@@ -22,9 +22,9 @@ class QuotationApiController extends Controller{
     	$name = Input::get('name');
         $email = Input::get('email');
         $phone = Input::get('phone');
-        $data = array('name' => $name, 'email' => $email, 'phone' => $phone);
-        print_r($data);
-        Mail::send('admin/subscribe/mailfb', array('email' => 'hamruouthinh24@gmail.com'), function($message) use ($data){
+        $content = Input::get('content');
+        $data = array('name' => $name, 'email' => $email, 'phone' => $phone, 'content' => $content);
+        Mail::send('admin/subscribe/mailfb', $data, function($message) use ($data){
         	
             $message->to($data['email'], 'Visitor')->subject('Báo giá sản phẩm - Hầm Rượu Thịnh 24');
         });

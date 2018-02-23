@@ -54,7 +54,7 @@
                                 </tr>
                                 <tr>
                                     <td><h5><strong>Thời gian thử rượu</strong></h5></td>
-                                    <td><% customerInfo.time %></td>
+                                    <td><% customerInfo.hour %>h : <% customerInfo.minute %> / <% customerInfo.time %></td>
                                 </tr>
                                 <tr>
                                     <td><h5><strong>Ghi chú</strong></h5></td>
