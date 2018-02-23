@@ -18,34 +18,40 @@
                             <label for="inputFirstName">Họ tên (*)</label>
                             <input type="text" class="form-control" name="inputName" placeholder="VD: Nguyễn" ng-model="customerInfo.name" required>
                             <div role="alert">
-                                <span class="error" style="color:red" ng-show="(customerInfo.inputName.$dirty || submitted) && customerInfo.inputName.$error.required">
+                                {{-- <% guestInfo.inputName.$submitted || guestInfo.inputName.$valid %> --}}
+                                <span class="error" style="color:red" ng-show="guestInfo.inputName.$error.required">
                                     Bắt buộc nhập!
                                 </span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail">Email</label>
+                            <label for="inputEmail">Email (*)</label>
                             <input type="email" class="form-control" name="inputEmail" placeholder="Email" ng-model="customerInfo.email" required>
                             <div role="alert">
-                                <span class="error" style="color:red" ng-show="(customerInfo.inputEmail.$dirty || submitted) && customerInfo.inputEmail.$error.required">
+                                <span class="error" style="color:red" ng-show="guestInfo.inputEmail.$error.required">
                                     Bắt buộc nhập!
                                 </span>
-                                <span class="error" style="color:red" ng-show="(customerInfo.inputEmail.$dirty || submitted) && customerInfo.inputEmail.$error.email">
+                                <span class="error" style="color:red" ng-show="guestInfo.inputEmail.$error.email">
                                     Sai định dạng email!
                                 </span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputPhoneNumer">Điện thoại</label>
-                            <input type="text" class="form-control" name="inputPhoneNumer" placeholder="VD: 0912345678" ng-model="customerInfo.phone" numbers-only="" required>
-                            <span class="error" style="color:red" ng-show="((customerInfo.inputPhoneNumer.$dirty || submitted) && customerInfo.inputName.$dirty || submitted) && customerInfo.inputPhoneNumer.$error.required">
+                            <label for="inputPhoneNumer">Điện thoại (*)</label>
+                            <input type="text" class="form-control" name="inputPhoneNumer" placeholder="VD: 0912345678" ng-model="customerInfo.phone" numbers-only="" required >
+                            <span class="error" style="color:red" ng-show="guestInfo.inputPhoneNumer.$error.required">
                                 Bắt buộc và chỉ cho phép nhập số!
                             </span>
                         </div>
 
                         <div class="form-group">
-                            <label for="inputAmountOfPeople">Số người thử rượu</label>
-                            <input type="number" class="form-control" name="inputAmountOfPeople" ng-model="customerInfo.people" >
+                            <label for="inputAmountOfPeople">Số người thử rượu (*)</label>
+                            <input type="number" class="form-control" name="inputAmountOfPeople" ng-model="customerInfo.people" min="1">
+                            <div role="alert">
+                                <span class="error" style="color:red" ng-show="guestInfo.inputAmountOfPeople.$error.min">
+                                    Số người thử rượu ít nhất là một
+                                </span>
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -78,8 +84,28 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputAdress">Thời gian thư rượu</label>
+                            <label for="inputAdress">Thời gian thử rượu (*): </label><br>
+                            <strong>Ngày</strong>
                             <input type="text" class="form-control" name="inputTime" placeholder="" ng-model="customerInfo.time" id="dob">
+                            <div role="alert">
+                                <span class="error" style="color:red" ng-show="guestInfo.inputTime.$error.required">
+                                    Bắt buộc nhập!
+                                </span>
+                            </div>
+                            <br>
+                            <strong>Giờ</strong>
+                            <select class="form-control" name="inputHour" ng-model="customerInfo.hour">
+                                @for ($i = 0; $i <= 23; $i++)
+                                <option value="{{ $i }}" >{{ $i }} giờ</option>
+                                @endfor
+                            </select>
+                            <br>
+                            <strong>Phút</strong>
+                            <select class="form-control" name="inputMinute" ng-model="customerInfo.minute">
+                                @for ($i = 0; $i <= 59; $i++)
+                                <option value="{{ $i }}" >{{ $i }} phút</option>
+                                @endfor
+                            </select>
                         </div>
                         <small>Những thông tin (*) là bắt buộc</small>
                         <br>
@@ -92,7 +118,7 @@
 
                         <div class="form-group">
                             <label for="inputNote">Ghi chú</label>
-                            <textarea class="form-control" id="inputNote" rows="3" ng-model="customerInfo.content" placeholder="Thời gian thử rượu (Giờ : Phút : Giây)"></textarea>
+                            <textarea class="form-control" id="inputNote" rows="3" ng-model="customerInfo.content" placeholder="Nội dung ghi chú"></textarea>
                         </div>
 
                         <br>
@@ -100,7 +126,7 @@
                         <a class="btn btn-default pull-left" href="{{ url('xem-gio-hang') }}" role="button" target="_self">
                             <i class="fa fa-arrow-left"></i> Quay lại
                         </a>
-                        <button type="submit" class="btn btn-primary pull-right">
+                        <button type="submit" class="btn btn-primary pull-right" name="btn_tasting" ng-disabled="guestInfo.inputName.$invalid || guestInfo.inputEmail.$invalid || guestInfo.inputPhoneNumer.$invalid || guestInfo.inputAmountOfPeople.$invalid" >
                             Tiếp tục đăng ký thử rượu <i class="fa fa-arrow-right"></i>
                         </button>
                     </form>
@@ -113,8 +139,17 @@
     <script>
         $('#dob').datepicker({
             // autoclose: true,
-            format: 'yyyy:mm:dd'
+            format: 'yyyy-mm-dd'
         });
+
+        $('#inputStore').each(function(){
+            if($(this).prop("checked") == true){
+                $(".bnt-disabled").prop('disabled', true);
+            }
+            else if($(this).prop("checked") == false){
+                $(".bnt-disabled").prop('disabled', false);
+            }
+        })
 
         $('#inputStore').click(function(){
             if($(this).prop("checked") == true){

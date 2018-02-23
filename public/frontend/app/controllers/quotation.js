@@ -10,7 +10,7 @@
                 method: 'GET',
                 url: API_URL + 'sendMailQuotation',
                 params: {
-                    name : quotation.name, email: quotation.email, phone : quotation.phone
+                    name : quotation.name, email: quotation.email, phone : quotation.phone, content : quotation.content
                 }
             }).then(function(success){
                 alert('Đăng ký thành công!');

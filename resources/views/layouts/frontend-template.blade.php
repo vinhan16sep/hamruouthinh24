@@ -181,14 +181,14 @@
                         </div>
                     </div>
                     <div class="form-group{{ $errors->has('dob') ? ' has-error' : '' }}">
-                        <label for="dob" class="col-md-4 control-label">Ngày sinh</label>
+                        <label for="birthday" class="col-md-4 control-label">Ngày sinh</label>
 
                         <div class="col-md-6">
-                            <input id="dob" type="text" class="form-control" name="dob" value="{{ old('dob') }}" required readonly>
+                            <input id="birthday" type="text" class="form-control" name="birthday" value="{{ old('birthday') }}" required readonly>
 
-                            @if ($errors->has('dob'))
+                            @if ($errors->has('birthday'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('dob') }}</strong>
+                                    <strong>{{ $errors->first('birthday') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -309,7 +309,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="message" class="col-md-4 control-label">Tin nhắn</label>
+                        <label for="message" class="col-md-4 control-label" value="{{ old('email') }}" ng-model="quotation.content">Tin nhắn</label>
 
                         <div class="col-md-6">
                             <textarea class="form-control" placeholder="Xin chào, chúng tôi muốn nhận báo giá về rượu ..." value="Xin chào, chúng tôi muốn nhận báo giá về rượu ..."></textarea>
@@ -346,14 +346,14 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-primary">Gửi tin nhắn</button>
+                <button type="button" class="btn btn-primary btn-quotation" ng-click="send(quotation)">Gửi tin nhắn</button>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-        $('#dob').datepicker({
+        $('#birthday').datepicker({
             autoclose: true,
             format: 'dd/mm/yyyy'
         });

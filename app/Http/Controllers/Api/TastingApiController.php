@@ -94,7 +94,7 @@ class TastingApiController extends Controller
             'customer_city' => $inputpersonalInfo->city,
             'people' => $inputpersonalInfo->people,
             'customer_content' => (!empty($inputpersonalInfo->content)) ? $inputpersonalInfo->content : '',
-            'time' => (!empty($inputpersonalInfo->time)) ? $inputpersonalInfo->time : ''
+            'time' => (!empty($inputpersonalInfo->time)) ? $inputpersonalInfo->time.' '.$inputpersonalInfo->hour.':'.$inputpersonalInfo->minute.':00' : ''
         ];
         if($inputpersonalInfo->store == true){
             $output['is_store'] = 1;
