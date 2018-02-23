@@ -21,7 +21,7 @@
                 }
             }).then(function(response){
                 console.log(response.data.message);
-                window.location = '/mmm/thong-tin-ca-nhan';
+                window.location = '/hamruouthinh24/thong-tin-ca-nhan';
             }, function(error){
 
             });
