@@ -18,7 +18,7 @@
                             <label for="inputFirstName">Họ tên (*)</label>
                             <input type="text" class="form-control" name="inputName" placeholder="VD: Nguyễn" ng-model="customerInfo.name" required>
                             <div role="alert">
-                                <span class="error" style="color:red" ng-show="(customerInfo.inputName.$dirty || submitted) && customerInfo.inputName.$error.required">
+                                <span class="error" style="color:red" ng-show="guestInfo.inputName.$error.required">
                                     Bắt buộc nhập!
                                 </span>
                             </div>
@@ -27,10 +27,10 @@
                             <label for="inputEmail">Email</label>
                             <input type="email" class="form-control" name="inputEmail" placeholder="Email" ng-model="customerInfo.email" required>
                             <div role="alert">
-                                <span class="error" style="color:red" ng-show="(customerInfo.inputEmail.$dirty || submitted) && customerInfo.inputEmail.$error.required">
+                                <span class="error" style="color:red" ng-show="guestInfo.inputEmail.$error.required">
                                     Bắt buộc nhập!
                                 </span>
-                                <span class="error" style="color:red" ng-show="(customerInfo.inputEmail.$dirty || submitted) && customerInfo.inputEmail.$error.email">
+                                <span class="error" style="color:red" ng-show="guestInfo.inputEmail.$error.email">
                                     Sai định dạng email!
                                 </span>
                             </div>
@@ -38,7 +38,7 @@
                         <div class="form-group">
                             <label for="inputPhoneNumer">Điện thoại</label>
                             <input type="text" class="form-control" name="inputPhoneNumer" placeholder="VD: 0912345678" ng-model="customerInfo.phone" numbers-only="" required>
-                            <span class="error" style="color:red" ng-show="((customerInfo.inputPhoneNumer.$dirty || submitted) && customerInfo.inputName.$dirty || submitted) && customerInfo.inputPhoneNumer.$error.required">
+                            <span class="error" style="color:red" ng-show="guestInfo.inputPhoneNumer.$error.required">
                                 Bắt buộc và chỉ cho phép nhập số!
                             </span>
                         </div>
@@ -137,7 +137,7 @@
                         <a class="btn btn-default pull-left" href="{{ url('xem-gio-hang') }}" role="button" target="_self">
                             <i class="fa fa-arrow-left"></i> Quay lại
                         </a>
-                        <button type="submit" class="btn btn-primary pull-right">
+                        <button type="submit" class="btn btn-primary pull-right"  ng-disabled="guestInfo.inputName.$invalid || guestInfo.inputEmail.$invalid || guestInfo.inputPhoneNumer.$invalid" >
                             Tiếp tục mua hàng <i class="fa fa-arrow-right"></i>
                         </button>
                     </form>
