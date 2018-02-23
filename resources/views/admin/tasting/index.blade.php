@@ -33,7 +33,7 @@
                                     <tr role="row" class="odd" id="row_{{ $value->id }}">
                                         <td class="sorting_1">{{ $value->customer_name }}</td>
                                         <?php 
-                                            $time = date("d-m-Y", strtotime($value->time));
+                                            $time = date("d-m-Y H:i:s", strtotime($value->time));
                                         ?>
                                         <td class="sorting_1">{{ $time }}</td>
                                         <td>
