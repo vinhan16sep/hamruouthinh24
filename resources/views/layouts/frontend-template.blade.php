@@ -352,6 +352,14 @@
     </div>
 </div>
 
+<div id="before-send" style="display: none;">
+    <div class="modal fade" role="dialog" style="display: block; opacity: .5; background-color: rgba(0,0,0,.65);">
+        <div class="modal-dialog" style="color:#fff; text-align:center; padding-top:300px;">
+            <i class="fa fa-2x fa-spinner fa-spin" aria-hidden="true"></i>
+        </div>
+    </div>
+</div>
+
 <script>
         $('#birthday').datepicker({
             autoclose: true,
