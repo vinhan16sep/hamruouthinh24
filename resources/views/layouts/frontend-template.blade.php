@@ -37,6 +37,7 @@
 
     <script src="{{ asset ("public/frontend/js/lib/ui-bootstrap-tpls-2.5.0.min.js") }}"></script>
     <script src="{{ asset ("public/frontend/js/script.js") }}"></script>
+    <script src="{{ asset ("public/frontend/js/nav_responsive.js") }}"></script>
     <script src="{{ asset ("public/frontend/js/lib/js.cookie.js") }}"></script>
     <!-- Angularjs -->
     <link rel="stylesheet" href="{{ asset ("public/frontend/rating/jk-rating-stars.min.css") }}" />

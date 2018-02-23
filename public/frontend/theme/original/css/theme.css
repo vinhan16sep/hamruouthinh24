@@ -63,10 +63,9 @@ CSS for theme original
 
 }
 
-
 .nav>li>a:focus, .nav>li>a:hover{
     color: #fff;
-    background-color: #c1272d;
+    /*background-color: #c1272d;*/
 }
 
 .nav_list li a:hover{

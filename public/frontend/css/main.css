@@ -122,6 +122,8 @@ header .container .container-fluid{
 	padding-top: 15px;
 	border-top-width: 2px;
 	border-top-style: solid;
+
+	position: relative;
 }
 
 .nav_list li{
@@ -130,6 +132,58 @@ header .container .container-fluid{
 
 .nav_list a{
 	color: #333;
+}
+
+.nav_list ul.nav > li{
+	display: inline-block;
+}
+
+/*
+====== RESPONSIVE NAV ======
+ */
+@media (max-width: 768px){
+	.nav_list button{
+		display: block;
+		width: 100%;
+		min-height: 20px;
+		padding: 7px 15px;
+
+		text-align: center;
+	}
+
+	.nav_list ul.nav{
+
+	}
+
+	.nav_list ul.nav > li{
+		display: list-item;
+	}
+
+	.nav_list ul.nav ul{
+		list-style: none;
+		padding-left: 0;
+	}
+
+	.nav_list ul.nav .extended_nav > .row > .col-xs-6{
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+}
+
+/*
+====== END RESPONSIVE NAV ======
+ */
+
+#search_box{
+	width: 100%;
+	padding: 15px;
+
+	background: #fff;
+
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 998;
 }
 
 .fix_header{
@@ -163,8 +217,13 @@ header .container .container-fluid{
 
 .fix_header .user_activities a,
 .fix_header .user_activities a:hover,
-.fix_header .user_activities .login span{
+.fix_header .user_activities .login span,
+.fix_header .nav_list button{
 	color: #fff;
+}
+
+.fix_header .nav_list .extended_nav .btn{
+	background: transparent;
 }
 
 /*
