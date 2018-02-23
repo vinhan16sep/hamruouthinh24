@@ -5,7 +5,7 @@
             $('.btn-contact').prop('disabled', true);
         });
 		$scope.send = function(contact) {
-            console.log(contact);
+            $("#before-send").show();
             $http({
                 method: 'GET',
                 url: API_URL + 'sendmail',
@@ -14,6 +14,7 @@
                 }
             }).then(function(success){
                 alert('Đăng ký thành công!');
+                $("#before-send").hide();
                 $('.btn-contact').prop('disabled', false);
             }, function(error){
 
