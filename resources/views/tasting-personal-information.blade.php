@@ -57,7 +57,7 @@
                         <div class="form-group">
                             <label for="inputStore">Thử rượu tại cửa hàng</label>
                             <br>
-                            <input type="checkbox" name="inputStore" value="1" ng-model="customerInfo.store" id="inputStore">
+                            <input type="checkbox" name="inputStore" value="1" ng-model="customerInfo.store" id="inputStore"><span id="address" style="display: none;">&nbsp&nbsp Địa chỉ cửa hàng</span>
                         </div>
 
                         <div class="form-group" id="inputAdress">
@@ -154,9 +154,11 @@
         $('#inputStore').click(function(){
             if($(this).prop("checked") == true){
                 $(".bnt-disabled").prop('disabled', true);
+                $('#address').fadeIn();
             }
             else if($(this).prop("checked") == false){
                 $(".bnt-disabled").prop('disabled', false);
+                $('#address').fadeOut();
             }
         })
 </script>
