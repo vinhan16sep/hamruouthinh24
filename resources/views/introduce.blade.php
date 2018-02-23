@@ -43,7 +43,7 @@
                 <div class="col-md-9 col-sm-9 col-xs-12">
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane" id="<% item.slug %>" ng-repeat="item in introduce" active-on-first-item>
-                            <img src="{{ asset('storage/app') }}/<% item.image %>" class="cover" alt="<% item.title %>">
+                            {{--<img src="{{ asset('storage/app') }}/<% item.image %>" class="cover" alt="<% item.title %>">--}}
                             <h3><% item.title %></h3>
                             <p ng-bind-html="$sce.trustAsHtml(item.content)"></p>
                         </div>
@@ -60,6 +60,17 @@
                         <li role="presentation"><a href="#dieu-khoan" aria-controls="dieu-khoan" role="tab" data-toggle="tab">Điều khoản</a></li>
                         <li role="presentation"><a href="#thu-vien-anh" aria-controls="thu-vien-anh" role="tab" data-toggle="tab">Thư viện hình ảnh</a></li>
                     </ul>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="item col-md-4 col-sm-6 col-xs-12">
+                            <div class="mask">
+                                <a class="preview" href="{{ asset ("public/frontend/img/blog_02.jpg") }}">
+                                    <img src="{{ asset ("public/frontend/img/blog_02.jpg") }}" alt="anh minh hoa">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

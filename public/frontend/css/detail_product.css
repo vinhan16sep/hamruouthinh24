@@ -80,10 +80,10 @@
   margin: 0 auto;
 }
 @media screen and (max-width: 992px){
-.slider_controler img {
-  padding-top: 70px;
-  margin: 0 auto;
-}
+    .slider_controler img {
+      padding-top: 70px;
+      margin: 0 auto;
+    }
 }
 
 .carousel-showmanymoveone .carousel-control {

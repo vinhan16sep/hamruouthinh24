@@ -84,3 +84,15 @@
 #about .right .title_big{
 	color: #fff;
 }
+
+.mask{
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+}
+
+.mask > a > img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
