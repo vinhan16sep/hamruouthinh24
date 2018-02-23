@@ -9,6 +9,7 @@
                     <div class="col-sm-6"></div>
                     <div class="col-sm-6"></div>
                 </div>
+                <a href="{{ route('export.pending') }}" class="btn btn-success"><i class="fa fa-file-excel-o"></i> Xuất Excel</a>
                 <form method="POST" action="{{ route('order.search') }}">
                 {{ csrf_field() }}
                 @component('admin.layouts.search', ['title' => 'Tìm kiếm'])

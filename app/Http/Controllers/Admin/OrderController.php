@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Response;
 use File;
+use Maatwebsite\Excel\Facades\Excel;
 
 class OrderController extends Controller
 {
@@ -308,5 +309,152 @@ class OrderController extends Controller
 //            'department_id' => 'required',
 //            'division_id' => 'required'
         ]);
+    }
+
+    public function excelPending(){
+
+        $exportPending = $this->queryExcel(0);
+        $newExportPending = array();
+        $newExportOngoing = array();
+        $newExportComplete = array();
+        $newExportCancel = array();
+        $error = array(
+                    'Tên sản phẩm' => 'Tên sản phẩm',
+                    'Số lượng mua' => 'Số lượng mua',
+                    'Số lượng hàng còn' => 'Số lượng hàng còn',
+                    'Code thanh toán' => 'Code thanh toán',
+                    'Tên khách hàng' => 'Tên khách hàng',
+                    'Email khách hàng' => 'Email khách hàng',
+                    'Số điện thoại' => 'Số điện thoại',
+                    'Phố' => 'Phố',
+                    'Quận' => 'Quận',
+                    'Thành phố' => 'Thành phố',
+                    'Lời nhắn' => 'Lời nhắn',
+                    'Phương thức thanh toán' => 'Phương thức thanh toán'
+                );
+
+        if ($exportPending) {
+            foreach ($exportPending as $key => $value) {
+                $newExportPending[$key + 1] = array(
+                    'Tên sản phẩm' => $value->product_name,
+                    'Số lượng mua' => $value->product_quantity,
+                    'Số lượng hàng còn' => $value->product_total_cost,
+                    'Code thanh toán' => $value->unique_code,
+                    'Tên khách hàng' => $value->customer_name,
+                    'Email khách hàng' => $value->customer_email,
+                    'Số điện thoại' => $value->customer_phone,
+                    'Phố' => $value->customer_address,
+                    'Quận' => $value->customer_district,
+                    'Thành phố' => $value->customer_city,
+                    'Lời nhắn' => $value->customer_content,
+                    'Phương thức thanh toán' => $value->payment_method
+                );
+            }
+        }
+
+        $exportOngoing = $this->queryExcel(1);
+        if ($exportOngoing) {
+            foreach ($exportOngoing as $key => $value) {
+                $newExportOngoing[$key + 1] = array(
+                    'Tên sản phẩm' => $value->product_name,
+                    'Số lượng mua' => $value->product_quantity,
+                    'Số lượng hàng còn' => $value->product_total_cost,
+                    'Code thanh toán' => $value->unique_code,
+                    'Tên khách hàng' => $value->customer_name,
+                    'Email khách hàng' => $value->customer_email,
+                    'Số điện thoại' => $value->customer_phone,
+                    'Phố' => $value->customer_address,
+                    'Quận' => $value->customer_district,
+                    'Thành phố' => $value->customer_city,
+                    'Lời nhắn' => $value->customer_content,
+                    'Phương thức thanh toán' => $value->payment_method
+                );
+            }
+        }
+
+        $exportComplete = $this->queryExcel(2);
+        if ($exportComplete) {
+            foreach ($exportComplete as $key => $value) {
+                $newExportComplete[$key + 1] = array(
+                    'Tên sản phẩm' => $value->product_name,
+                    'Số lượng mua' => $value->product_quantity,
+                    'Số lượng hàng còn' => $value->product_total_cost,
+                    'Code thanh toán' => $value->unique_code,
+                    'Tên khách hàng' => $value->customer_name,
+                    'Email khách hàng' => $value->customer_email,
+                    'Số điện thoại' => $value->customer_phone,
+                    'Phố' => $value->customer_address,
+                    'Quận' => $value->customer_district,
+                    'Thành phố' => $value->customer_city,
+                    'Lời nhắn' => $value->customer_content,
+                    'Phương thức thanh toán' => $value->payment_method
+                );
+            }
+        }
+
+        $exportCancel = $this->queryExcel(99);
+        if ($exportCancel) {
+            foreach ($exportCancel as $key => $value) {
+                $newExportCancel[$key + 1] = array(
+                    'Tên sản phẩm' => $value->product_name,
+                    'Số lượng mua' => $value->product_quantity,
+                    'Số lượng hàng còn' => $value->product_total_cost,
+                    'Code thanh toán' => $value->unique_code,
+                    'Tên khách hàng' => $value->customer_name,
+                    'Email khách hàng' => $value->customer_email,
+                    'Số điện thoại' => $value->customer_phone,
+                    'Phố' => $value->customer_address,
+                    'Quận' => $value->customer_district,
+                    'Thành phố' => $value->customer_city,
+                    'Lời nhắn' => $value->customer_content,
+                    'Phương thức thanh toán' => $value->payment_method
+                );
+            }
+        }
+        
+        
+        Excel::create('Order_'.date('d-m-Y'), function($excel) use($newExportPending, $newExportOngoing, $newExportComplete, $newExportCancel, $error){
+            $excel->sheet('Chờ xác nhận', function($sheet) use($newExportPending){
+                $sheet->fromArray($newExportPending);
+            });
+            
+            if($newExportOngoing != null){
+                $excel->sheet('Đã xác nhận', function($sheet) use($newExportOngoing){
+                    $sheet->fromArray($newExportOngoing);
+                });
+            }else{
+                $excel->sheet('Đã xác nhận', function($sheet) use($error){
+                    $sheet->fromArray($error);
+                });
+            }
+
+            if($newExportComplete != null){
+                $excel->sheet('Đã hoàn thành', function($sheet) use($newExportComplete){
+                    $sheet->fromArray($newExportComplete);
+                });
+            }else{
+                $excel->sheet('Đã hoàn thành', function($sheet) use($error){
+                    $sheet->fromArray($error);
+                });
+            }
+
+            if($newExportCancel != null){
+                $excel->sheet('Đã bỏ qua', function($sheet) use($newExportCancel){
+                    $sheet->fromArray($newExportCancel);
+                });
+            }else{
+                $excel->sheet('Đã bỏ qua', function($sheet) use($error){
+                    $sheet->fromArray($error);
+                });
+            }
+        })->export('xls');
+    }
+
+    protected function queryExcel($status){
+        $query = DB::table('order_product')
+                ->join('order', 'order.id', '=', 'order_product.order_id')
+                ->select('order_product.product_name', 'order_product.product_quantity', 'order_product.product_total_cost', 'order.unique_code', 'order.customer_name', 'order.customer_email', 'order.customer_phone', 'order.customer_address', 'order.customer_district', 'order.customer_city', 'order.customer_content', 'order.payment_method')
+                ->where('order.status', $status)->get()->toArray();
+        return $query;
     }
 }
