@@ -14,6 +14,10 @@ CSS for theme original
     background-image: url(../img/logo.png);
 }
 
+.header .nav_list a:hover{
+    background-color: transparent;
+}
+
 .fix_header .logo{
     background-image: url(../img/logo_resize.png);
 }
@@ -58,11 +62,6 @@ CSS for theme original
 .nav_product > ul > li.active, .nav_product > ul > li.active:hover{
     background-color: #c1272d;
 }
-
-.nav_expand > .left{
-
-}
-
 
 .nav>li>a:focus, .nav>li>a:hover{
     color: #fff;

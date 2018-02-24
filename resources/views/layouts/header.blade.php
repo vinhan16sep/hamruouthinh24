@@ -46,9 +46,9 @@
                 <div class="logo"></div> <!--image logo-->
             </a>
 
-            <ul class="user_activities list-inline list-unstyled pull-right">
+            <ul class="user_activities list-inline list-unstyled pull-right hidden-xs hidden-sm">
                 <li>
-                    <a href="javascript:void(0);">
+                    <a href="javascript:void(0);" id="search_btn">
                         <i class="fa fa-search" aria-hidden="false"></i> Tìm kiếm
                     </a>
                 </li>
@@ -127,10 +127,23 @@
 
         </div>
         <div class="nav_list">
-            <ul class="list-inline">
+            <div class="row">
+                <div class="hidden-lg hidden-md col-xs-6">
+                    <button class="mobile_nav_btn hidden-md" id="expand_btn">
+                        <i class="fa fa-bars"></i> Menu
+                    </button>
+                </div>
+                <div class="hidden-lg hidden-md col-xs-6">
+                    <button class="mobile_nav_btn hidden-md" id="search_btn">
+                        <i class="fa fa-search"></i> Tìm kiếm
+                    </button>
+                </div>
+            </div>
+            <ul class="nav">
                 <li>
                     <a href="{{ url('') }}" target="_self">
-                        <i class="fa fa-home" aria-hidden="true"></i>
+                        <i class="fa fa-home hidden-xs" aria-hidden="true"></i>
+                        <span class="visible-xs">Trang chủ</span>
                     </a>
                 </li>
                 <li>
@@ -158,7 +171,40 @@
                         Liên hệ
                     </a>
                 </li>
+                <div class="extended_nav visible-xs visible-sm" style="border-top: 1px solid grey; padding-top: 15px;">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <button class="btn" data-toggle="modal" data-target="#user_login">
+                                <i class="fa fa-sign-in" aria-hidden="true"></i> Đăng nhập
+                            </button>
+                        </div>
+                        <div class="col-xs-6">
+                            <button class="btn" data-toggle="modal" data-target="#user_register">
+                                <i class="fa fa-user-plus" aria-hidden="true"></i> Đăng ký
+                            </button>
+                        </div>
+                        <div class="col-xs-6">
+                            <a class="btn" href="{{ url('xem-gio-hang') }}" target="_self" role="button">
+                                <i class="fa fa-shopping-cart" aria-hidden="false"></i> Giỏ hàng <span class="badge" ng-bind="countAddedProducts"></span>
+                            </a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a class="btn" href="{{ url('thu-ruou') }}" target="_self" role="button">
+                                <i class="fa fa-glass" aria-hidden="true"></i> Danh sách <span class="badge" ng-bind="counttastingProducts"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </ul>
+
+            <div id="search_box">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Tìm kiếm...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Tìm kiếm!</button>
+                    </span>
+                </div><!-- /input-group -->
+            </div>
         </div>
     </section>
 </header>
