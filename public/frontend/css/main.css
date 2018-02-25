@@ -136,6 +136,33 @@ header .container .container-fluid{
 
 .nav_list ul.nav > li{
 	display: inline-block;
+
+	position: relative;
+}
+
+.nav_list ul.nav >li >ul{
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 999;
+
+	width: 200%;
+	padding: 15px;
+	background-color: #fff;
+	box-shadow: 3px 3px 5px rgba(0,0,0,.3);
+
+	text-align: left;
+
+	display: none;
+}
+
+.nav_list ul.nav >li:hover >ul{
+	display: block;
+}
+
+.nav_list ul.nav > li > ul > li{
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 /*
