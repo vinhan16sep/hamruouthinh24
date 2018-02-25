@@ -30,7 +30,7 @@
                     |
                 </li>
                 <li>
-                    <a href="javascript:void(0)" target="_blank">
+                    <a href="{{ url('/tin-tuc/danh-muc/tuyen-dung') }}" target="_blank">
                         Tuyển dụng
                     </a>
                 </li>
@@ -206,10 +206,12 @@
 
             <div id="search_box">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Tìm kiếm...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Tìm kiếm!</button>
-                    </span>
+                    <form action="{{ url('tim-kiem') }}" method="get">
+                        <input type="text" class="form-control" placeholder="Tìm kiếm..." name="search">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">Tìm kiếm!</button>
+                        </span>
+                    </form>
                 </div><!-- /input-group -->
             </div>
         </div>

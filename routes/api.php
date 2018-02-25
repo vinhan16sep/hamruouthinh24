@@ -110,5 +110,9 @@ Route::prefix('v1')->group(function() {
         //contact routes
         Route::resource('quotation', 'QuotationApiController');
         Route::get('sendMailQuotation', 'QuotationApiController@sendMail');
+
+        //search routes
+        Route::get('searchAllBlog', 'SearchApiController@searchAllBlog');
+        Route::get('searchAllProduct', 'SearchApiController@searchAllProduct');
     });
 });
