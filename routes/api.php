@@ -28,6 +28,14 @@ Route::prefix('v1')->group(function() {
          */
         Route::resource('introduce', 'IntroduceApiController');
         Route::get('introduce', 'IntroduceApiController@fetchAllIntroduce')->name('introduce.fetchAllIntroduce');
+
+        /**
+         * Library API
+         */
+        Route::resource('library', 'LibraryApiController');
+        Route::get('library', 'LibraryApiController@fetchAllLibrary')->name('library.fetchAllLibrary');
+        Route::get('library_detail', 'LibraryApiController@detail')->name('library.detail');
+
         /**
          * Product API
          */
