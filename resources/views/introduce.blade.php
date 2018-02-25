@@ -58,7 +58,7 @@
                         <li role="presentation"><a href="#su-menh" aria-controls="su-menh" role="tab" data-toggle="tab">Sứ mệnh</a></li>
                         <li role="presentation"><a href="#chung-nhan" aria-controls="chung-nhan" role="tab" data-toggle="tab">Chứng nhận</a></li>
                         <li role="presentation"><a href="#dieu-khoan" aria-controls="dieu-khoan" role="tab" data-toggle="tab">Điều khoản</a></li>
-                        <li role="presentation"><a href="#thu-vien-anh" aria-controls="thu-vien-anh" role="tab" data-toggle="tab">Thư viện hình ảnh</a></li>
+                        <li role="presentation"><a href="{{ url('/thu-vien-anh') }}" role="tab" target="_self">Thư viện hình ảnh</a></li>
                     </ul>
                 </div>
                 <div class="container-fluid">

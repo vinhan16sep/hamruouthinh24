@@ -46,6 +46,17 @@ Route::get('/gioi-thieu', function () {
 });
 
 /**
+ * Lirary routes
+ */
+Route::get('/thu-vien-anh', function () {
+    return view('list-library');
+});
+
+Route::get('/thu-vien-anh/{detail}', function () {
+    return view('detail-library');
+});
+
+/**
  * Frontend product routes
  */
 Route::get('/san-pham', function () {

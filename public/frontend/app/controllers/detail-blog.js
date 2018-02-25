@@ -59,7 +59,6 @@
                 }
             }).then(function(success){
                 $scope.news = success.data;
-                // console.log($scope.category_id);
             }, function(error){
 
             });
@@ -93,7 +92,6 @@
             }
         }).then(function(success){
             $scope.categories = success.data;
-            // console.log(success.data);
         }, function(error){
 
         });
