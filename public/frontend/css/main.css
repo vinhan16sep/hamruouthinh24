@@ -195,6 +195,24 @@ header .container .container-fluid{
 		margin-top: 5px;
 		margin-bottom: 5px;
 	}
+
+	.nav_list ul.nav >li >ul{
+		width: 100%;
+		position: static;
+		box-shadow: none;
+	}
+
+	.nav_list ul.nav >li:hover >ul{
+		display: none;
+	}
+
+	.nav_list ul.nav >li >ul>li{
+		text-align: center;
+	}
+
+	.nav_list ul.nav >li >ul>li>a{
+		color: #333;
+	}
 }
 
 /*

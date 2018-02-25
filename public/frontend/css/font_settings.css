@@ -94,3 +94,11 @@ ul.nav-tabs li a{
 p{
 	text-align: justify;
 }
+
+@media (max-width: 970px){
+	.nav_list ul.nav >li >ul>li{
+		font-size: 1em;
+		font-family: webFont_n;
+	}
+}
+

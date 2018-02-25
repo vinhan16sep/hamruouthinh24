@@ -152,10 +152,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" target="_self">
+                    <a href="" target="_self" class="ul_expand">
                         Blog
                     </a>
-                    <ul class="list-unstyled">
+                    <ul class="list-unstyled ul_dropdown">
                         <li>
                             <a href="{{ url('tu-van') }}" target="_self">
                                 Tư vấn
