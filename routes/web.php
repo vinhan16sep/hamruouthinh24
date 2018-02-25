@@ -153,6 +153,13 @@ Route::get('/lien-he', function () {
     return view('contact');
 });
 
+/**
+ * Search route
+ */
+Route::get('tim-kiem', function () {
+    return view('search');
+});
+
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index');

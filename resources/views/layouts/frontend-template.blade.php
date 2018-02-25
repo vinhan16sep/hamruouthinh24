@@ -48,6 +48,7 @@
     <script src="{{ asset ("public/frontend/app/controllers/subscribe.js") }}"></script>
     <script src="{{ asset ("public/frontend/app/controllers/quotation.js") }}"></script>
     <script src="{{ asset ("public/frontend/app/controllers/library.js") }}"></script>
+    <script src="{{ asset ("public/frontend/app/controllers/search.js") }}"></script>
 
 
 
