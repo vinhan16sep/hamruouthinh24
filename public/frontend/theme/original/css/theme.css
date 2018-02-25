@@ -63,6 +63,10 @@ CSS for theme original
     background-color: #c1272d;
 }
 
+.nav_expand {
+    border-top:5px solid #c1272d;
+}
+
 .nav>li>a:focus, .nav>li>a:hover{
     color: #fff;
     background-color: #c1272d;

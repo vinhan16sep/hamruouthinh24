@@ -9,9 +9,10 @@
 
                 <div class="nav_product">
                     <ul class="list-unstyled">
-                        <span class="panel-heading">Danh mục sản phẩm</span>
+                        <span class="hidden-xs panel-heading">Danh mục sản phẩm</span>
+                        <span class="visible-xs"><i class="fa fa-bars" aria-hidden="true"></i> Danh mục sản phẩm</span>
                         <li class="nav_product_hover" ng-repeat="type in menuProduct.type">
-                            <a href="{{ url('loai-san-pham') }}/<% type.slug %>"  target="_self"><% type.title %></a>
+                            <a href=""> <% type.title %> </a>
                             <div class="nav_expand">
                                 <div class="left hidden-sm hidden-xs">
                                     <div class="mask">
@@ -20,6 +21,7 @@
                                 </div>
                                 <div class="right">
                                     <div class="type" ng-repeat="kind in menuProduct.kind" ng-hide="kind.type_id != type.id">
+                                        {{--<a href="{{ url('loai-san-pham') }}/<% type.slug %>"  target="_self"><% type.title %></a>--}}
                                         <label >
                                             <a href="{{ url('dong-san-pham') }}/<% kind.slug %>"  target="_self"><% kind.title %></a>
                                         </label>
@@ -94,7 +96,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="productItem_view col-md-9">
+                <div class="productItem_view col-md-9 col-sm-9 col-xs-12">
                     {{--<img class="cover" src="{{ asset('public/frontend/img/cover/cover_01.jpg') }}" alt="cover">--}}
 
                     <div class="row" id="list-product">
@@ -140,6 +142,7 @@
     </section>
     <script src="{{ asset ("public/frontend/app/controllers/product.js") }}"></script>
     <script src="{{ asset ("public/frontend/app/controllers/modal.js") }}"></script>
+    <script src="{{ asset ("public/frontend/js/nav_product.js") }}"></script>
     <script>
         $(window).scroll(function () {
             //if you hard code, then use console
