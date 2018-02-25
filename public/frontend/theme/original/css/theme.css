@@ -67,6 +67,14 @@ CSS for theme original
     border-top:5px solid #c1272d;
 }
 
+.nav_list ul.nav >li >ul>li{
+    border-bottom: 1px solid #333;
+}
+
+.nav_list ul.nav >li >ul>li:last-of-type{
+    border-bottom: transparent;
+}
+
 .nav>li>a:focus, .nav>li>a:hover{
     color: #fff;
     background-color: #c1272d;

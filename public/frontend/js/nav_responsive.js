@@ -17,6 +17,18 @@ $(document).ready(function() {
                 nav_check = 1;
             }
         });
+
+        var ul_drop = 1;
+        $('.nav_list li a.ul_expand').click(function(){
+            if (ul_drop === 1){
+                $('ul.ul_dropdown').slideDown();
+                ul_drop = 0;
+            } else {
+                $('ul.ul_dropdown').slideUp();
+                ul_drop = 1;
+            }
+        })
+
     } else {
         $('ul.nav').show();
     }

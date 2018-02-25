@@ -152,14 +152,21 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('tu-van') }}" target="_self">
-                        Tư vấn
+                    <a href="" target="_self" class="ul_expand">
+                        Blog
                     </a>
-                </li>
-                <li>
-                    <a href="{{ url('tin-tuc') }}" target="_self">
-                        Tin tức
-                    </a>
+                    <ul class="list-unstyled ul_dropdown">
+                        <li>
+                            <a href="{{ url('tu-van') }}" target="_self">
+                                Tư vấn
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('tin-tuc') }}" target="_self">
+                                Tin tức
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     <a href="{{ url('gioi-thieu') }}" target="_self">
