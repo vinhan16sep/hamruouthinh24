@@ -205,14 +205,12 @@
             </ul>
 
             <div id="search_box">
-                <div class="input-group">
-                    <form action="{{ url('tim-kiem') }}" method="get">
-                        <input type="text" class="form-control" placeholder="Tìm kiếm..." name="search">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="submit">Tìm kiếm!</button>
-                        </span>
-                    </form>
-                </div><!-- /input-group -->
+                <form class="input-group" action="{{ url('tim-kiem') }}" method="get">
+                    <input type="text" class="form-control" placeholder="Tìm kiếm..." name="search">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Tìm kiếm!</button>
+                    </span>
+                </form>
             </div>
         </div>
     </section>
