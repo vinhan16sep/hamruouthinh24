@@ -286,32 +286,33 @@
     <script src="{{ asset ("public/frontend/app/controllers/detail-product.js") }}"></script>
     <script src="{{ asset ("public/frontend/app/controllers/modal.js") }}"></script>
     <script src="{{ asset ("public/frontend/js/jquery.flexslider.js") }}"></script>
-
     <script type="text/javascript">
         $(function(){
             SyntaxHighlighter.all();
         });
         $(window).load(function(){
-            $('#carousel').flexslider({
-                animation: "slide",
-                controlNav: false,
-                animationLoop: false,
-                slideshow: false,
-                itemWidth: 210,
-                itemMargin: 5,
-                asNavFor: '#slider'
-            });
+            setTimeout(function(){
+                $('#carousel').flexslider({
+                    animation: "slide",
+                    controlNav: false,
+                    animationLoop: false,
+                    slideshow: false,
+                    itemWidth: 210,
+                    itemMargin: 5,
+                    asNavFor: '#slider'
+                });
 
-            $('#slider').flexslider({
-                animation: "slide",
-                controlNav: false,
-                animationLoop: false,
-                slideshow: false,
-                sync: "#carousel",
-                start: function(slider){
-                    $('body').removeClass('loading');
-                }
-            });
+                $('#slider').flexslider({
+                    animation: "slide",
+                    controlNav: false,
+                    animationLoop: false,
+                    slideshow: false,
+                    sync: "#carousel",
+                    start: function(slider){
+                        $('body').removeClass('loading');
+                    }
+                });
+            }, 1000);
         });
     </script>
     <script>
