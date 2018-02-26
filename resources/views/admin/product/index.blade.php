@@ -126,6 +126,8 @@
                               <strong>Thể tích:</strong> {{ $item->volume }}
                               <br>
                               <strong>Xuất xứ:</strong> {{ (!empty($origin_collection[$item->origin_id]))? $origin_collection[$item->origin_id] : '' }}
+                              <br>
+                              <strong>Đánh giá:</strong> {{ ($item->rating)? $item->rating : 0 }} điểm / 5 điểm ({{ $item->count }} lượt đánh giá)
                           </div>
                           <div class="col-md-7">
                               <table style="width: 100%">

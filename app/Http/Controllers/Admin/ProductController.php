@@ -35,8 +35,33 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $products = DB::table('product')->where('product.is_deleted', '=', 0)->orderBy('id','desc')->paginate(10);
-//        print_r($products);die;
+        $products = DB::table('product')->where('is_deleted', '=', 0)->orderBy('id','desc')->paginate(10);
+        $averageRating = 0;
+        foreach ($products as $key => $value) {
+            // echo $value->id.'<br>';
+            $count = DB::table('product_comment')
+                ->where('product_id', $value->id)
+                ->where('is_deleted', '=', 0)   
+                ->count();
+            
+            $rating = DB::table('product_comment')
+                ->select('rating')
+                ->where('product_id', $value->id)
+                ->get();
+            $totalRating = 0;
+            foreach ($rating as $k => $val) {
+                $totalRating = $totalRating + $val->rating;
+            }
+            
+            if($count != 0){
+                $averageRating = $totalRating/$count;
+            }else{
+                $averageRating = 0;
+            }
+            $products[$key]->rating = $averageRating;
+            $products[$key]->count = $count;
+        }
+       // print_r($products);die;
         return view('admin/product/index', [
             'products' => $products,
             'type_collection' => $this->fetchAllType(),
