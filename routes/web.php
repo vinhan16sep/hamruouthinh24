@@ -160,6 +160,20 @@ Route::get('tim-kiem', function () {
     return view('search');
 });
 
+/**
+ * 404 route
+ */
+Route::get('404', function () {
+    return view('404');
+});
+
+/**
+ * Terms route
+ */
+Route::get('dieu-khoan', function () {
+    return view('terms');
+});
+
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index');

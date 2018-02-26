@@ -22,7 +22,7 @@
         <div class="secondary_nav col-md-6">
             <ul class="list-inline text-right">
                 <li>
-                    <a href="javascript:void(0)" target="_blank">
+                    <a href="{{ url('/dieu-khoan') }}" target="_blank">
                         Quy định & Chính sách
                     </a>
                 </li>
