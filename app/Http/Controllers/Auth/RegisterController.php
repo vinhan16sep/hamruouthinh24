@@ -65,7 +65,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $dob = Carbon::createFromFormat('d/m/Y', $data['dob'])->toDateString();
+        $dob = Carbon::createFromFormat('d/m/Y', $data['birthday'])->toDateString();
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
