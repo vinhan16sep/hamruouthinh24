@@ -237,6 +237,7 @@ Route::prefix('admin')->group(function() {
         Route::get('order/complete/{id}', 'OrderController@complete')->name('order.complete');
         Route::get('order/cancel/{id}', 'OrderController@cancel')->name('order.cancel');
         Route::get('order/rollback/{id}', 'OrderController@rollback')->name('order.rollback');
+        Route::get('export-pending', 'OrderController@excelPending')->name('export.pending');
 
         // Product Trademark routes
         Route::resource('trademark', 'TrademarkController');
