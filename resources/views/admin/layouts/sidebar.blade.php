@@ -59,7 +59,7 @@
             </li>
           </ul>
         </li>
-        <li class="treeview {{(Request::segment(2) == 'trademark' || Request::segment(2) == 'category' || Request::segment(2) == 'product' || Request::segment(2) == 'type' || Request::segment(2) == 'kind')? 'active' : '' }}">
+        <li class="treeview {{(Request::segment(2) == 'trademark' || Request::segment(2) == 'category' || Request::segment(2) == 'product' || Request::segment(2) == 'type' || Request::segment(2) == 'kind' || Request::segment(2) == 'origin')? 'active' : '' }}">
           <a href="#"><i class="fa fa-link"></i> <span>Quản lý sản phẩm</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -81,7 +81,7 @@
             <li class="{{(Request::segment(2) == 'product')? 'active' : '' }}">
               <a href="{{ url('admin/product') }}">Sản phẩm</a>
             </li>
-            <li class="{{(Request::segment(2) == 'product')? 'active' : '' }}">
+            <li class="{{(Request::segment(2) == 'origin')? 'active' : '' }}">
               <a href="{{ url('admin/origin') }}">Xuất xứ</a>
             </li>
           </ul>
@@ -139,6 +139,13 @@
               <a href="{{ url('admin/tasting/finish') }}">Đã hoàn thành</a>
             </li>
           </ul>
+        </li>
+
+        <li class="treeview {{(Request::segment(2) == 'subscribe')? 'active' : '' }}">
+          <a href="{{ url('admin/subscribe') }}"><i class="fa fa-link"></i> <span>Subscribe</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
         </li>
 {{--        <li><a href="{{ route('user-management.index') }}"><i class="fa fa-link"></i> <span>User management</span></a></li>--}}
       </ul>
