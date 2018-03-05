@@ -321,7 +321,7 @@ class OrderController extends Controller
         $error = array(
                     'Tên sản phẩm' => 'Tên sản phẩm',
                     'Số lượng mua' => 'Số lượng mua',
-                    'Số lượng hàng còn' => 'Số lượng hàng còn',
+                    'Tổng giá tiền' => 'Tổng giá tiền',
                     'Code thanh toán' => 'Code thanh toán',
                     'Tên khách hàng' => 'Tên khách hàng',
                     'Email khách hàng' => 'Email khách hàng',
@@ -335,10 +335,16 @@ class OrderController extends Controller
 
         if ($exportPending) {
             foreach ($exportPending as $key => $value) {
+                $payment_method = null;
+                if($value->payment_method == 1){
+                    $payment_method = 'Thanh toán khi giao hàng (COD)';
+                }else{
+                    $payment_method = 'Chuyển khoản ';
+                }
                 $newExportPending[$key + 1] = array(
                     'Tên sản phẩm' => $value->product_name,
                     'Số lượng mua' => $value->product_quantity,
-                    'Số lượng hàng còn' => $value->product_total_cost,
+                    'Tổng giá tiền' => $value->price * $value->product_quantity.' VND',
                     'Code thanh toán' => $value->unique_code,
                     'Tên khách hàng' => $value->customer_name,
                     'Email khách hàng' => $value->customer_email,
@@ -347,7 +353,7 @@ class OrderController extends Controller
                     'Quận' => $value->customer_district,
                     'Thành phố' => $value->customer_city,
                     'Lời nhắn' => $value->customer_content,
-                    'Phương thức thanh toán' => $value->payment_method
+                    'Phương thức thanh toán' => $payment_method
                 );
             }
         }
@@ -355,10 +361,16 @@ class OrderController extends Controller
         $exportOngoing = $this->queryExcel(1);
         if ($exportOngoing) {
             foreach ($exportOngoing as $key => $value) {
+                $payment_method = null;
+                if($value->payment_method == 1){
+                    $payment_method = 'Thanh toán khi giao hàng (COD)';
+                }else{
+                    $payment_method = 'Chuyển khoản ';
+                }
                 $newExportOngoing[$key + 1] = array(
                     'Tên sản phẩm' => $value->product_name,
                     'Số lượng mua' => $value->product_quantity,
-                    'Số lượng hàng còn' => $value->product_total_cost,
+                    'Tổng giá tiền' => $value->price * $value->product_quantity.' VND',
                     'Code thanh toán' => $value->unique_code,
                     'Tên khách hàng' => $value->customer_name,
                     'Email khách hàng' => $value->customer_email,
@@ -367,7 +379,7 @@ class OrderController extends Controller
                     'Quận' => $value->customer_district,
                     'Thành phố' => $value->customer_city,
                     'Lời nhắn' => $value->customer_content,
-                    'Phương thức thanh toán' => $value->payment_method
+                    'Phương thức thanh toán' => $payment_method
                 );
             }
         }
@@ -375,10 +387,16 @@ class OrderController extends Controller
         $exportComplete = $this->queryExcel(2);
         if ($exportComplete) {
             foreach ($exportComplete as $key => $value) {
+                $payment_method = null;
+                if($value->payment_method == 1){
+                    $payment_method = 'Thanh toán khi giao hàng (COD)';
+                }else{
+                    $payment_method = 'Chuyển khoản ';
+                }
                 $newExportComplete[$key + 1] = array(
                     'Tên sản phẩm' => $value->product_name,
                     'Số lượng mua' => $value->product_quantity,
-                    'Số lượng hàng còn' => $value->product_total_cost,
+                    'Tổng giá tiền' => $value->price * $value->product_quantity.' VND',
                     'Code thanh toán' => $value->unique_code,
                     'Tên khách hàng' => $value->customer_name,
                     'Email khách hàng' => $value->customer_email,
@@ -387,7 +405,7 @@ class OrderController extends Controller
                     'Quận' => $value->customer_district,
                     'Thành phố' => $value->customer_city,
                     'Lời nhắn' => $value->customer_content,
-                    'Phương thức thanh toán' => $value->payment_method
+                    'Phương thức thanh toán' => $payment_method
                 );
             }
         }
@@ -395,10 +413,16 @@ class OrderController extends Controller
         $exportCancel = $this->queryExcel(99);
         if ($exportCancel) {
             foreach ($exportCancel as $key => $value) {
+                $payment_method = null;
+                if($value->payment_method == 1){
+                    $payment_method = 'Thanh toán khi giao hàng (COD)';
+                }else{
+                    $payment_method = 'Chuyển khoản ';
+                }
                 $newExportCancel[$key + 1] = array(
                     'Tên sản phẩm' => $value->product_name,
                     'Số lượng mua' => $value->product_quantity,
-                    'Số lượng hàng còn' => $value->product_total_cost,
+                    'Tổng giá tiền' => $value->price * $value->product_quantity.' VND',
                     'Code thanh toán' => $value->unique_code,
                     'Tên khách hàng' => $value->customer_name,
                     'Email khách hàng' => $value->customer_email,
@@ -407,7 +431,7 @@ class OrderController extends Controller
                     'Quận' => $value->customer_district,
                     'Thành phố' => $value->customer_city,
                     'Lời nhắn' => $value->customer_content,
-                    'Phương thức thanh toán' => $value->payment_method
+                    'Phương thức thanh toán' => $payment_method
                 );
             }
         }
@@ -453,7 +477,8 @@ class OrderController extends Controller
     protected function queryExcel($status){
         $query = DB::table('order_product')
                 ->join('order', 'order.id', '=', 'order_product.order_id')
-                ->select('order_product.product_name', 'order_product.product_quantity', 'order_product.product_total_cost', 'order.unique_code', 'order.customer_name', 'order.customer_email', 'order.customer_phone', 'order.customer_address', 'order.customer_district', 'order.customer_city', 'order.customer_content', 'order.payment_method')
+                ->join('product', 'order_product.product_id', '=', 'product.id' )
+                ->select('order_product.product_name', 'order_product.product_quantity', 'order_product.product_total_cost', 'order.unique_code', 'order.customer_name', 'order.customer_email', 'order.customer_phone', 'order.customer_address', 'order.customer_district', 'order.customer_city', 'order.customer_content', 'order.payment_method', 'product.price')
                 ->where('order.status', $status)->get()->toArray();
         return $query;
     }
