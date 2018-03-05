@@ -103,14 +103,14 @@ class SubscribeController extends Controller
     }
 
     function sendAll(Request $request){
-        Mail::send('admin/subscribe/mailfb', request()->all(), function($message){
-            $ids = request()->input('ids');
-            $emails = DB::table('subscribe')
-                        ->whereIn('id', $ids)
-                        ->get();
-            foreach ($emails as $value) {
+        $ids = request()->input('ids');
+        $emails = DB::table('subscribe')
+                    ->whereIn('id', $ids)
+                    ->get();
+        foreach ($emails as $value) {
+            Mail::send('admin/subscribe/mailfb', request()->all(), function($message) use($value){
                 $message->to($value->email, 'Visitor')->subject('Visitor Feedback!');
-            }
-        });
+            });
+        }
     }
 }
