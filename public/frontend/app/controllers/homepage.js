@@ -79,7 +79,6 @@
         listAdvisesFactory.advises()
         .then(function (success) {
             $scope.advises = success.data;
-            console.log($scope.advises);
         }, function (error) {
 
         });

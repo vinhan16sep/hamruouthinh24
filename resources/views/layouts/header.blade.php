@@ -129,12 +129,12 @@
         <div class="nav_list">
             <div class="row">
                 <div class="hidden-lg hidden-md col-xs-6">
-                    <button class="mobile_nav_btn hidden-md" id="expand_btn">
+                    <button class="mobile_nav_btn hidden-md color_sub_menu" id="expand_btn">
                         <i class="fa fa-bars"></i> Menu
                     </button>
                 </div>
                 <div class="hidden-lg hidden-md col-xs-6">
-                    <button class="mobile_nav_btn hidden-md" id="search_btn">
+                    <button class="mobile_nav_btn hidden-md color_sub_menu" id="search_btn">
                         <i class="fa fa-search"></i> Tìm kiếm
                     </button>
                 </div>
@@ -157,12 +157,12 @@
                     </a>
                     <ul class="list-unstyled ul_dropdown">
                         <li>
-                            <a href="{{ url('tu-van') }}" target="_self">
+                            <a href="{{ url('tu-van') }}" class="color_sub_menu" target="_self">
                                 Tư vấn
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('tin-tuc') }}" target="_self">
+                            <a href="{{ url('tin-tuc') }}" class="color_sub_menu" target="_self">
                                 Tin tức
                             </a>
                         </li>
@@ -208,7 +208,7 @@
                 <form class="input-group" action="{{ url('tim-kiem') }}" method="get">
                     <input type="text" class="form-control" placeholder="Tìm kiếm..." name="search">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit">Tìm kiếm!</button>
+                        <button class="btn btn-default color_sub_menu" type="submit">Tìm kiếm!</button>
                     </span>
                 </form>
             </div>

@@ -202,3 +202,7 @@ h2.productName{
 .price{
     color: #c1272d;
 }
+
+.color_sub_menu{
+    color: #c1272d !important;
+}
