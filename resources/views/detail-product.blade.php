@@ -74,7 +74,7 @@
 
                                     <li ng-repeat="image in detail.image">
                                         <div class="mask">
-                                            <img src="{{ asset('storage/app') }}/<% image %>" class="w-100" alt="preview">
+                                            <img src="{{ asset('storage/app/products/') }}/<% detail.slug %>/<% image %>" class="w-100" alt="preview">
                                         </div>
                                     </li>
 
@@ -84,7 +84,7 @@
                                 <ul class="slides">
                                     <li ng-repeat="image in detail.image">
                                         <div class="mask">
-                                            <img src="{{ asset('storage/app') }}/<% image %>" class="w-100" alt="preview">
+                                            <img src="{{ asset('storage/app/products/') }}/<% detail.slug %>/<% image %>" class="w-100" alt="preview">
                                         </div>
                                     </li>
                                 </ul>
@@ -248,7 +248,7 @@
                                         <div class="item active" ng-repeat="product in productTrademarks">
                                             <div class="product_view col-xs-12 col-sm-6 col-md-3">
                                                 <div class="mask">
-                                                    <img src="{{ asset('storage/app') }}/<% product.image[0] %>" class="img-responsive center-block">
+                                                    <img src="{{ asset('storage/app/products/') }}/<% product.slug %>/<% product.image[0] %>" class="img-responsive center-block">
                                                 </div>
 
                                                 <a href="{{ url('san-pham/chi-tiet') }}/<% product.slug %>" class="product_quickView" title="Xem nhanh" target="_self">

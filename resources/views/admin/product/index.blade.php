@@ -91,7 +91,7 @@
                               <?php $image = json_decode($item->image);?>
                               @if(is_array($image) == true)
                                 @foreach ($image as $val)
-                                  {{ HTML::image('storage/app/'.$val, '', array('width' => 100)) }}
+                                  {{ HTML::image('storage/app/products/'.$item->slug.'/'.$val, '', array('width' => 100)) }}
                                 @endforeach
                               @else
                                 {{ HTML::image('storage/app/'.$item->image, '', array('width' => 100)) }}

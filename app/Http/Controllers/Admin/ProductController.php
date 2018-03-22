@@ -101,14 +101,14 @@ class ProductController extends Controller
         $newFolderPath = $this->buildNewFolderPath($path, $uniqueSlug);
         File::makeDirectory($newFolderPath[1], 0777, true, true);
 
-        // Upload image
-        $upload = array();
-        foreach ($request->file('image') as $key => $file) {
-            $url_image = $file->store('products/' . $newFolderPath[0]);
-            $upload[$key] = $url_image;
+        $files = $request->file('image');
+        foreach ($files as $key => $file) {
+            $fileName[$key] = $file->hashName();
+            $file->store('products/' . $newFolderPath[0]);
         }
-        // $upload = array_values($upload);
-        $image_json = json_encode($upload);
+
+        $image_json = json_encode($fileName);
+
         // var_dump($image_json);die;
         $keys = ['name','type_id', 'kind_id', 'trademark_id', 'is_special', 'is_new', 'capacity', 'material', 'year', 'producer', 'volume', 'origin_id', 'price', 'selling_price', 'content', 'is_discount', 'discount_percent', 'discount_price', 'is_gift', 'gift', 'description', 'concentrations', 'quantity'];
         // $keys = ['name'];
@@ -177,16 +177,17 @@ class ProductController extends Controller
         $input = $this->createQueryInput($keys, $request);
         $input['slug'] = $uniqueSlug;
 
-        $upload = [];
-        $upload = json_decode($product->image);
+        $fileName = [];
+        $fileName = json_decode($product->image);
         
         // Upload image
         if($request->file('image')){
             foreach ($request->file('image') as $key => $file) {
-                $upload[] = $file->store('products/' . $uniqueSlug);
+                $fileName[] = $file->hashName();
+                $file->store('products/' . $uniqueSlug);
             }
             // print_r($upload);die;
-            $image_json = json_encode($upload);
+            $image_json = json_encode($fileName);
             $input['image'] = $image_json;
         }
 
@@ -403,6 +404,7 @@ class ProductController extends Controller
     public function delete_image(Request $request){
         $image = $request->image;
         $id = $request->id;
+        $path = base_path() . '/storage/app/products/';
         $product = Product::findOrFail($id);
 
 
@@ -416,9 +418,13 @@ class ProductController extends Controller
         }
         
         $image_json = json_encode($newUpload);
-        DB::table('product')
+        $result = DB::table('product')
             ->where('id', $id)
             ->update(['image' => $image_json]);
+        if($result){
+            File::delete($path.$product->slug.'/'.$image);
+            $success = true;
+        }
         return response()->json(['image_json' => $image_json, 'status' => '200']); 
         
     }

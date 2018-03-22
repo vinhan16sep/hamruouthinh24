@@ -52,6 +52,7 @@
                 var arrayProduct = {
                     id: response.data.id,
                     name: response.data.result.name,
+                    slug: response.data.result.slug,
                     image: response.data.result.image,
                     quantity: 1,
                     cost: cost,
@@ -110,7 +111,9 @@
                 var arrayProduct = {
                     id: response.data.id,
                     name: response.data.result.name,
+                    slug: response.data.result.slug,
                     image: response.data.result.image
+
                 };
 
                 var tastingProducts = $scope.tastingProducts;
