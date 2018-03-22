@@ -106,7 +106,7 @@
                                             <button type="button" class="close remove-image" aria-label="Close" style="position: absolute; top: -10px; right: 5px; background: red; border-radius: 50%; padding: 0 7px 3px" title="Xóa" data-image="{{$val}}" data-id="{{$product->id}}">
                                                 <span aria-hidden="true" style="cursor: pointer;">&times;</span>
                                             </button>
-                                                {{ HTML::image('storage/app/'.$val, '', array('width' => 150, 'style' => 'padding-right: 10%')) }}
+                                                {{ HTML::image('storage/app/products/'.$product->slug.'/'.$val, '', array('width' => 100)) }}
                                         </div>
                                         @endforeach
                                     @else

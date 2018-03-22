@@ -17,7 +17,7 @@ class Controller extends BaseController
     ];
 
     protected function buildUniqueSlug($table, $id, $slug){
-        $slugCount = count(DB::table($table)->select('*')->whereRaw("slug REGEXP '^{$slug}(-[0-9]+)?$' and 'id' != '{$id}'")->get());
+        $slugCount = count(DB::table($table)->select('*')->whereRaw("slug REGEXP '^{$slug}(-[0-9]+)?$'")->where('id', '<>', $id)->get());
         return ($slugCount > 0) ? "{$slug}-{$slugCount}" : $slug;
     }
 

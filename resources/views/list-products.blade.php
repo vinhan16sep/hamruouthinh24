@@ -103,7 +103,7 @@
                         <div class="item col-md-4 col-sm-6 col-xs-12" ng-repeat="product in products">
                             <div class="inner">
                                 <div class="mask">
-                                    <img src="{{ asset('storage/app') }}/<% product.image[0] %>" alt="<% product.slug %>">
+                                    <img src="{{ asset('storage/app/products/') }}/<%product.slug%>/<% product.image[0] %>" alt="<% product.slug %>">
                                 </div>
 
                                 <span class="badge" ng-if="product.discount_percent != null">- <% product.discount_percent %>%</span>
