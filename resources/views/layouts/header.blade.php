@@ -61,6 +61,7 @@
                                 <a href="" data-toggle="modal" data-target="#user_register"> <strong>Đăng ký</strong> </a>
                             </div>
                         @else
+                            <span hidden id="user_id">{{ Auth::user()->id }}</span>
                             Xin chào, <a href="{{ url('thong-tin-ca-nhan') }}" target="_self"><strong>{{ Auth::user()->name }}</strong></a>
                             <br>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form1').submit();">

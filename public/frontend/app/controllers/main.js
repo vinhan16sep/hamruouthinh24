@@ -1,6 +1,7 @@
 (function(){
     app.controller('MainController', function($rootScope, $scope, $http, API_URL){
         // Cookies.remove('tastingProducts', {path: '/'});
+        // 
         $scope.storedProducts = (Cookies.get('cartProducts') != undefined) ? Cookies.get('cartProducts') : [];
         $rootScope.countAddedProducts = 0;
         if(angular.isArray(Cookies.get('cartProducts')) === true){
@@ -148,7 +149,10 @@
             }, function errorCallback(arrayProduct) {
                 
             });
-        }
+        }       
+        $scope.login = function(){
+            alert('Bạn phải đăng nhập');
+        };
 
         
     });

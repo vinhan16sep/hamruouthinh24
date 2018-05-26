@@ -111,6 +111,39 @@
                             </table>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="title_mid">
+                            <h3><i class="fa fa-file-text-o"></i> Sản phẩm yêu thích</h3>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <td>STT</td>
+                                    <td>Sản phẩm</td>
+                                    <td>Tên sản phẩm</td>
+                                    <td>Nồng độ cồn</td>
+                                    <td>Nhà sản xuất</td>
+                                    <td>Xuất xứ</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="likeproduct in showlikeproduct" ng-show="notCompleteOrdersMessage == 'Success'">
+                                    <td><% $index + 1 %></td>
+                                    <td><a class="btn btn-primary" href="{{ url('/san-pham/chi-tiet') }}/<% likeproduct.slug %>" role="button"  target="_self">Xem chi tiết</a></td>
+                                    <!-- <td><a class="btn btn-primary" href="#" role="button" ng-click="showProductLike(likeproduct)" data-toggle="modal" data-target="#edit_personal">Xem chi tiết</a></td> -->
+                                    <td><% likeproduct.name %></td>
+                                    <td><% likeproduct.concentrations %></td>
+                                    <td><% likeproduct.producer %></td>
+                                    <td><% likeproduct.origin_title %></td>
+                                </tr>
+                                <tr ng-show="notCompleteOrdersMessage == 'No item found'">
+                                    <td colspan="6">Bạn chưa có đơn hàng nào!</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

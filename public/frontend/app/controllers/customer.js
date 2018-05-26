@@ -45,6 +45,16 @@
 
         });
 
+        $http({
+            method: 'GET',
+            url: API_URL + 'show_like_product',
+        }).then(function(success){
+            $scope.showlikeproduct = success.data.result;
+            console.log($scope.showlikeproduct);
+        }, function(error){
+
+        });
+
         /**
          * Fetch personal's COMPLETE order info
          */
@@ -83,6 +93,20 @@
             $uibModal.open({
                 animation: true,
                 templateUrl: 'don-hang/products-in-order-modal',
+                controller: 'ModalController',
+                resolve: {
+                    items: function(){
+                        return products;
+                    }
+                },
+                size: 'lg'
+            }).result.then(function(){}, function(res){});
+        }
+
+        $scope.showProductLike = function(products){
+            $uibModal.open({
+                animation: true,
+                templateUrl: 'product-like/user-like-product-modal',
                 controller: 'ModalController',
                 resolve: {
                     items: function(){

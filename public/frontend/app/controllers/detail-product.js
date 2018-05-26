@@ -36,6 +36,38 @@
         }).then(
             function(success){
                 $scope.detail = success.data[0];
+                $http({
+                    method: 'GET',
+                    url: API_URL + 'get_all_product',
+                }).then(function(response){
+                    $scope.addToLikeProduct = function(product_id){
+                        $http({
+                            method: 'GET',
+                            url: API_URL + 'user_like_product',
+                            params: {
+                                product_id: product_id
+                            }
+                        }).then(function(response){
+                                if($scope.detail.like == "Bỏ yêu thích"){
+                                    $scope.detail.like = "Lưu yêu thích";
+                                }else{
+                                    $scope.detail.like = "Bỏ yêu thích";
+                                }
+                        }, function(error){
+                            console.log(error);
+                        });
+                    };
+                    for(i = 0; i<response.data.result.length ; i++){
+                      if($scope.detail.id == response.data.result[i].product_id && response.data.result[i].user_id == document.getElementById("user_id").innerHTML){
+                         $scope.detail.like = "Bỏ yêu thích";
+                         break;
+                      }else{
+                         $scope.detail.like = "Lưu yêu thích";
+                      }
+                    }    
+                }, function(error){
+                    
+                });
                 product_id = $scope.detail.id;
                 trademark_id = $scope.detail.trademark_id;
 
@@ -50,6 +82,45 @@
                     }).then(
                         function(success){
                             $scope.productTrademarks = success.data;
+                            $http({
+                                method: 'GET',
+                                url: API_URL + 'get_all_product',
+                            }).then(function(response){
+                                $scope.addToLikeProduct1 = function(product_id){
+                                    $http({
+                                        method: 'GET',
+                                        url: API_URL + 'user_like_product',
+                                        params: {
+                                            product_id: product_id
+                                        }
+                                    }).then(function(response){
+                                        for(i = 0; i<$scope.productTrademarks.length ; i++){
+                                            if($scope.productTrademarks[i].id == product_id){
+                                                if($scope.productTrademarks[i].like == "Bỏ yêu thích"){
+                                                    $scope.productTrademarks[i].like = "Lưu yêu thích";
+                                                }else{
+                                                    $scope.productTrademarks[i].like = "Bỏ yêu thích";
+                                                }
+                                                break;
+                                            }
+                                        }
+                                    }, function(error){
+                                        console.log(error);
+                                    });
+                                };
+                                angular.forEach($scope.productTrademarks, function(value, key){
+                                    for(i = 0; i<response.data.result.length ; i++){
+                                      if(value.id == response.data.result[i].product_id && response.data.result[i].user_id == document.getElementById("user_id").innerHTML){
+                                         $scope.productTrademarks[key].like = "Bỏ yêu thích";
+                                         break;
+                                      }else{
+                                         $scope.productTrademarks[key].like = "Lưu yêu thích";
+                                      }
+                                    }
+                                });     
+                            }, function(error){
+                                
+                            });
                         }, function(error){
 
                     });
