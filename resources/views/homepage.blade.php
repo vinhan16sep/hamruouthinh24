@@ -109,7 +109,7 @@
                                     <a class="btn btn-primary" href="#" role="button" ng-click="addToTasting(discount.id)">Thử rượu miên phí</a>
                                     @if(!Auth::guest())
                                         <br>
-                                        <a class="btn btn-primary" href="#" role="button" ng-click="addToLikeProduct(discount.id)" ><% product.like %></a>
+                                        <a class="btn btn-primary" href="#" role="button" ng-click="addToLikeProduct(discount.id)" ><% discount.like %></a>
                                     @else
                                         <br>
                                         <a class="btn btn-primary" href="#" role="button" ng-click="login()" >Lưu yêu thích</a>
