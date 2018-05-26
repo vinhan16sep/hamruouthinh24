@@ -264,10 +264,10 @@
                                                     <i class="fa fa-cart-plus"></i>
                                                 </a>
                                                 @if(!Auth::guest())
-                                                    <a href="#" role="button" class="product_like" data-toggle="modal" data-target="#product_like" ng-if="product.like == 'Bỏ yêu thích'" title="product.like" ng-click="addToLikeProduct1(product.id)">
+                                                    <a href="#" role="button" class="product_like" data-toggle="modal" data-target="#product_like" ng-if="product.like == 'Bỏ yêu thích'" title="<%product.like%>" ng-click="addToLikeProduct1(product.id)">
                                                         <i class="glyphicon glyphicon-heart"></i>
                                                     </a>
-                                                    <a href="#" role="button" class="product_like" data-toggle="modal" data-target="#product_like" ng-if="product.like == 'Lưu yêu thích'" title="product.like" ng-click="addToLikeProduct1(product.id)">
+                                                    <a href="#" role="button" class="product_like" data-toggle="modal" data-target="#product_like" ng-if="product.like == 'Lưu yêu thích'" title="<%product.like%>" ng-click="addToLikeProduct1(product.id)">
                                                         <i class="glyphicon glyphicon-heart-empty"></i>
                                                     </a>
                                                 @else
@@ -275,12 +275,6 @@
                                                         <i class="glyphicon glyphicon-heart-empty"></i>
                                                     </a>
                                                 @endif
-                                                <a href="#" role="button" class="product_like" data-toggle="modal" data-target="#product_like" ng-if="product.like == 'Bỏ yêu thích'" title="product.like" ng-click="addToLikeProduct1(product.id)">
-                                                    <i class="glyphicon glyphicon-heart"></i>
-                                                </a>
-                                                <a href="#" role="button" class="product_like" data-toggle="modal" data-target="#product_like" ng-if="product.like == 'Lưu yêu thích'" title="product.like" ng-click="addToLikeProduct1(product.id)">
-                                                    <i class="glyphicon glyphicon-heart-empty"></i>
-                                                </a>
 
 
                                                 <a href="{{ url('san-pham/chi-tiet') }}/<% product.slug %>"  target="_self"><h4><% product.name %></h4></a>
