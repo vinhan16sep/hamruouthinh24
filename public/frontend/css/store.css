@@ -301,6 +301,13 @@ article > img{
 	transition: all ease .5s;
 }
 
+.product_view:hover .product_like{
+	right: 25px;
+	opacity: 1;
+
+	transition: all ease .5s;
+}
+
 .product_view .badge_KM{
 	width: 70px;
 	height: 70px;
@@ -346,6 +353,24 @@ article > img{
 
 	position: absolute;
 	top: 50%;
+	right: 0;
+	margin-top: -20px;
+	opacity: 0;
+
+	transition: all ease .5s;
+}
+.product_view .product_like{
+	width: 40px;
+	height: 40px;
+	background: #c1272d;
+	color: #fff;
+	border-radius: 50%;
+	padding-left: 13px;
+	padding-top: 9px;
+
+
+	position: absolute;
+	top: 65%;
 	right: 0;
 	margin-top: -20px;
 	opacity: 0;

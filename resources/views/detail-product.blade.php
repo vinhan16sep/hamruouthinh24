@@ -146,6 +146,11 @@
                                         <td colspan="2">
                                             <button class="btn btn-primary" type="submit"  ng-click="addToCart(detail.id)">Thêm vào giỏ hàng</button>
                                             <a href="javascript:void(0);" class="btn btn-primary" role="button" ng-click="addToTasting(detail.id)">Đăng ký thử ruọu</a>
+                                            @if(!Auth::guest())
+                                                <a class="btn btn-primary" href="#" role="button" ng-click="addToLikeProduct(detail.id)" ><% detail.like %></a>
+                                            @else
+                                                <a class="btn btn-primary" href="#" role="button" ng-click="login()" >Lưu yêu thích</a>
+                                            @endif
                                         </td>
                                     </tr>
 
@@ -258,6 +263,20 @@
                                                 <a href="#" class="product_addtoCart" data-toggle="modal" data-target="#product_quickview" title="Thêm vào giỏ hàng">
                                                     <i class="fa fa-cart-plus"></i>
                                                 </a>
+                                                @if(!Auth::guest())
+                                                    <a href="#" role="button" class="product_like" data-toggle="modal" data-target="#product_like" ng-if="product.like == 'Bỏ yêu thích'" title="<%product.like%>" ng-click="addToLikeProduct1(product.id)">
+                                                        <i class="glyphicon glyphicon-heart"></i>
+                                                    </a>
+                                                    <a href="#" role="button" class="product_like" data-toggle="modal" data-target="#product_like" ng-if="product.like == 'Lưu yêu thích'" title="<%product.like%>" ng-click="addToLikeProduct1(product.id)">
+                                                        <i class="glyphicon glyphicon-heart-empty"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="#" role="button" class="product_like" data-toggle="modal" data-target="#product_like"  title="Lưu yêu thích" ng-click="login()">
+                                                        <i class="glyphicon glyphicon-heart-empty"></i>
+                                                    </a>
+                                                @endif
+
+
                                                 <a href="{{ url('san-pham/chi-tiet') }}/<% product.slug %>"  target="_self"><h4><% product.name %></h4></a>
                                                 <p class="price"><% product.price | currency:VND:0 | commaToDot | removeUSCurrency %> vnđ</p>
                                             </div>

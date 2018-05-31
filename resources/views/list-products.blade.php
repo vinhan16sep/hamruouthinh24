@@ -123,9 +123,16 @@
                                     <br>
                                     <a class="btn btn-primary" href="#" role="button" ng-click="addToCart(product.id)">Thêm vào giỏ hàng</a>
                                     <br>
-                                    <a class="btn btn-primary" href="{{ url('/san-pham/chi-tiet') }}/<% product.slug %>" role="button"  target="_self" >Xem chi tiết</a>
+                                    <a class="btn btn-primary" href="{{ url('/san-pham/chi-tiet') }}/<% product.slug %>" role="button"  target="_self">Xem chi tiết</a>
                                     <br>
                                     <a class="btn btn-primary" href="#" role="button" ng-click="addToTasting(product.id)">Đăng ký thử rượu</a>
+                                    @if(!Auth::guest())
+                                        <br>
+                                        <a class="btn btn-primary" href="#" role="button" ng-click="addToLikeProduct(product.id)" ><% product.like %></a>
+                                    @else
+                                        <br>
+                                        <a class="btn btn-primary" href="#" role="button" ng-click="login()" >Lưu yêu thích</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>

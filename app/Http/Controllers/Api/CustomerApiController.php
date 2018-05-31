@@ -13,6 +13,19 @@ class CustomerApiController extends Controller
     public function __construct(){
         //
     }
+    public function fetchCustomerFavoriteProduct(){
+        $user_id = Input::get('user_id');
+
+        $result = DB::table('user_like_product')
+            ->select('*')
+            ->where('user_id', '=', $user_id)
+            ->get();
+
+        if(!$result){
+            return response()->json('No user found', 404);
+        }
+        return response()->json($result, 200);
+    }
 
     public function fetchCustomerInfo(){
         $id = Input::get('id');

@@ -91,6 +91,10 @@ Route::get('don-hang/products-in-order-modal', function() {
     return view('layouts.products-in-order-modal');
 });
 
+Route::get('product-like/user-like-product-modal', function() {
+    return view('layouts.user-like-product-modal');
+});
+
 /**
  * Frontend cart routes
  */

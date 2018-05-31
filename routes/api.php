@@ -79,6 +79,15 @@ Route::prefix('v1')->group(function() {
         Route::get('checkout', 'CartApiController@checkout')->name('cart.checkout');
         Route::get('auto_fill_personal_info', 'CartApiController@fetchLoggedInfo')->name('cart.fetchLoggedInfo');
 
+
+        /**
+         * Like product API
+         */
+        Route::resource('like', 'UserLikeProductApiController');
+        Route::get('user_like_product', 'UserLikeProductApiController@store')->name('like.store');
+        Route::get('get_all_product', 'UserLikeProductApiController@getAll')->name('like.getAll');
+        Route::get('show_like_product', 'UserLikeProductApiController@getAllLike')->name('like.getAllLike');
+
         /**
          * Tasting API
          */
@@ -91,6 +100,7 @@ Route::prefix('v1')->group(function() {
          */
         Route::resource('customer', 'CustomerApiController');
         Route::get('customer_info', 'CustomerApiController@fetchCustomerInfo')->name('customer.fetchCustomerInfo');
+        Route::get('customer_favorite_product', 'CustomerApiController@fetchCustomerFavoriteProduct')->name('customer.fetchCustomerFavoriteProduct');
         Route::get('customer_not_complete', 'CustomerApiController@fetchNotCompleteOrder')->name('customer.fetchNotCompleteOrder');
         Route::get('customer_complete', 'CustomerApiController@fetchCompleteOrder')->name('customer.fetchCompleteOrder');
         Route::get('update_info', 'CustomerApiController@updateInfo')->name('customer.updateInfo');
