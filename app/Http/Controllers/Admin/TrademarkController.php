@@ -95,7 +95,7 @@ class TrademarkController extends Controller
         $trademark = Trademark::find($id);
         $kind = DB::table('kind')->where('id', $trademark->kind_id)->get();
         // Redirect to trademark list if updating trademark wasn't existed
-        if ($trademark == null || count($trademark) == 0) {
+        if ($trademark == null) {
             return redirect()->intended('admin/trademark');
         }
         return view('admin/trademark/edit', [

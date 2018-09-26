@@ -5,9 +5,9 @@
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Thêm mới bài viết - <strong>Danh mục: <span style="color:red">{{ ($type == 'advise') ? 'Tư vấn' : 'Tin tức' }}</span></strong></div>
+                    <div class="panel-heading">Thêm mới bài viết</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ route('blog.store', ['type' => $type]) }}" enctype="multipart/form-data">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ route('blog.store') }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                                 <label for="title" class="col-md-2 control-label">Tên bài viết</label>
@@ -35,7 +35,7 @@
                                 <label for="category_id" class="col-md-2 control-label">Danh mục</label>
 
                                 <div class="col-md-8">
-                                    <select name="category_id" id="category_id">
+                                    <select name="category_id" id="category_id" class="form-control">
                                         <option value="">Chọn danh mục</option>
                                         @if(!empty($categories))
                                             @foreach($categories as $key => $item)

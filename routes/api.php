@@ -43,6 +43,7 @@ Route::prefix('v1')->group(function() {
         Route::get('product', 'ProductApiController@index')->name('product.index');
         Route::get('products', 'ProductApiController@fetchAllProduct')->name('product.fetchAllProduct');
         Route::get('discount_product', 'ProductApiController@fetchDiscountProduct')->name('product.fetchDiscountProduct');
+        Route::get('special_product', 'ProductApiController@fetchSpecialProduct')->name('product.fetchSpecialProduct');
         Route::get('menu_product', 'ProductApiController@fetchMenuProduct')->name('product.fetchMenuProduct');
         Route::get('target_products', 'ProductApiController@fetchTargetProducts')->name('product.fetchTargetProducts');
         Route::get('detail_product', 'ProductApiController@detail')->name('product.detail');
@@ -54,13 +55,12 @@ Route::prefix('v1')->group(function() {
          * Blog API
          */
         Route::resource('blog', 'BlogApiController');
-        Route::get('advises', 'BlogApiController@fetchAllAdvises')->name('blog.fetchAllAdvises');
-        Route::get('latest_advises', 'BlogApiController@fetchLatestAdvises')->name('blog.fetchLatestAdvises');
-        Route::get('news', 'BlogApiController@fetchAllNews')->name('blog.fetchAllNews');
-        Route::get('latest_news', 'BlogApiController@fetchLatestNews')->name('blog.fetchLatestNews');
+        Route::get('blogs', 'BlogApiController@fetchAllBlogs')->name('blog.fetchAllBlogs');
+        Route::get('latest_blog', 'BlogApiController@fetchLatestBlog')->name('blog.fetchLatestBlog');
         Route::get('category', 'BlogApiController@fetchCategoryByType')->name('blog.fetchCategoryByType');
         Route::get('blog_category', 'BlogApiController@fetchBlogByCategory')->name('blog.fetchCafetchBlogByCategorytegoryByType');
         Route::get('detail', 'BlogApiController@detail')->name('blog.detail');
+        Route::get('fetch_all_category', 'BlogApiController@fetchAllCategory')->name('blog.fetchAllCategory');
 
         /**
          * Comment API

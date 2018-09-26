@@ -126,29 +126,29 @@ Route::get('xac-nhan-thu-ruou', function(){
 /**
  * Frontend blog routes
  */
-Route::get('/tu-van', function () {
+Route::get('/bai-viet/{slug}', function () {
     return view('list-advises');
 });
 
-Route::get('/tu-van/danh-muc/{slug}', function () {
-    return view('list-advises');
-});
+// Route::get('/tu-van/danh-muc/{slug}', function () {
+//     return view('list-advises');
+// });
 
-Route::get('/tin-tuc', function () {
-    return view('list-news');
-});
+// Route::get('/tin-tuc', function () {
+//     return view('list-news');
+// });
 
-Route::get('/tin-tuc/danh-muc/{slug}', function () {
-    return view('list-news');
-});
+// Route::get('/tin-tuc/danh-muc/{slug}', function () {
+//     return view('list-news');
+// });
 
-Route::get('/tu-van/{target}', function () {
+Route::get('/bai-viet/chi-tiet/{target}', function () {
     return view('detail-blog');
 });
 
-Route::get('/tin-tuc/{target}', function () {
-    return view('detail-blog');
-});
+// Route::get('/tin-tuc/{target}', function () {
+//     return view('detail-blog');
+// });
 
 /**
  * Frontend contact route
@@ -262,15 +262,15 @@ Route::prefix('admin')->group(function() {
         // Blog routes
         Route::resource('blog', 'BlogController');
         Route::get('advise', 'BlogController@advise')->name('blog.advise');
-        Route::get('news', 'BlogController@news')->name('blog.news');
         Route::post('blog/search', 'BlogController@search')->name('blog.search');
-        Route::post('blog/store', 'BlogController@store')->name('blog.store');
+        // Route::post('blog/store', 'BlogController@store')->name('blog.store');
         Route::post('blog/update/{id}', 'BlogController@update')->name('blog.update');
 
         // Blog Category routes
         Route::resource('blog-category', 'BlogCategoryController');
         Route::post('blog-category/search', 'BlogCategoryController@search')->name('blog-category.search');
         Route::post('blog-category/store', 'BlogCategoryController@store')->name('blog-category.store');
+        Route::post('blog-category/update/{id}', 'BlogCategoryController@update')->name('blog-category.update');
 
         //Tasting routes
         Route::get('tasting/finish', 'TastingController@finish');

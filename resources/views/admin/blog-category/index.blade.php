@@ -31,17 +31,15 @@
           <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
             <thead>
               <tr role="row">
-                <th width="40%" class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">Tên danh mục</th>
-                <th width="30%" class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">Loại bài viết</th>
-                <th width="10%" class="sorting hidden-xs" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Sử dụng?</th>
-                <th tabindex="0" aria-controls="example2" rowspan="1" colspan="2" aria-label="Action: activate to sort column ascending">Hành động</th>
+                <th>Tên danh mục</th>
+                <th>Sử dụng?</th>
+                <th>Hành động</th>
               </tr>
             </thead>
             <tbody>
             @foreach ($categories as $item)
                 <tr role="row" class="odd">
                   <td class="sorting_1">{{ $item->title }}</td>
-                  <td class="sorting_1">{{ ($item->type == '0') ? 'Tư vấn' : 'Tin tức' }}</td>
                   @if($item->is_active != 0)
                   <td class="hidden-xs"><span class="glyphicon glyphicon-ok"></span></td>
                   @else
@@ -67,10 +65,9 @@
             @if(count($categories) > 0)
             <tfoot>
               <tr>
-                <th width="10%" rowspan="1" colspan="1">Tên danh mục</th>
-                <th width="10%" rowspan="1" colspan="1">Thương hiệu</th>
-                <th class="hidden-xs" width="20%" rowspan="1" colspan="1">Sử dụng?</th>
-                <th rowspan="1" colspan="2">Hành động</th>
+                <th>Tên danh mục</th>
+                <th>Sử dụng?</th>
+                <th>Hành động</th>
               </tr>
             </tfoot>
             @endif

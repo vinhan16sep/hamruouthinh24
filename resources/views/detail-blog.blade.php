@@ -67,13 +67,10 @@
                 <div class="nav_side col-md-3 col-sm-3 col-xs-12">
                     <div class="panel panel-default">
                         <!-- Default panel contents -->
-                        <div class="panel-heading">Bài viết <% title %></div>
+                        <div class="panel-heading">Bài viết</div>
                             <ul class="list-group">
-                                <li class="list-group-item" ng-repeat="advise in advises" ng-hide="<% advise.slug == slug %>" ng-if="type == 0">
-                                    <a href="{{ url('/tu-van') }}/<% advise.slug %>" target="_self"><% advise.title %></a>
-                                </li>
-                                <li class="list-group-item" ng-repeat="new in news" ng-hide="<% new.slug == slug %>" ng-if="type == 1">
-                                    <a href="{{ url('/tin-tuc') }}/<% new.slug %>" target="_self"><% new.title %></a>
+                                <li class="list-group-item" ng-repeat="latestBlog in latestBlogs" ng-hide="<% latestBlog.slug == slug %>">
+                                    <a href="{{ url('/bai-viet/chi-tiet') }}/<% latestBlog.slug %>" target="_self"><% latestBlog.title %></a>
                                 </li>
                             </ul>
                     </div>

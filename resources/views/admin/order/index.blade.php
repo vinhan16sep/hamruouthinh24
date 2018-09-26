@@ -116,14 +116,14 @@
                                 @if(count($orders) > 0)
                                     <tfoot>
                                     <tr>
-                                        <th width="20%" rowspan="1" colspan="1">Tên khách hàng</th>
-                                        <th width="10%" rowspan="1" colspan="1">Mã đơn hàng</th>
-                                        <th width="10%" rowspan="1" colspan="1">Thời gian đặt hàng</th>
-                                        <th width="10%" rowspan="1" colspan="1">Cập nhật lần cuối</th>
-                                        <th class="hidden-xs" width="10%" rowspan="1" colspan="1">Tổng giá trị</th>
-                                        <th class="hidden-xs" width="10%" rowspan="1" colspan="1">Chi tiết</th>
-                                        <th class="hidden-xs" width="10%" rowspan="1" colspan="1">Trạng thái</th>
-                                        <th rowspan="1" colspan="2">Hành động</th>
+                                        <th width="20%" class="" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">Tên khách hàng</th>
+                                        <th width="10%" class="" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">Mã đơn hàng</th>
+                                        <th width="10%" class="" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">T/g đặt hàng</th>
+                                        <th width="10%" class="" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">T/g cập nhật</th>
+                                        <th width="10%" class=" hidden-xs" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Tổng giá trị</th>
+                                        <th width="10%" class=" hidden-xs" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Chi tiết</th>
+                                        <th width="10%" class=" hidden-xs" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Trạng thái</th>
+                                        <th tabindex="0" aria-controls="example2" rowspan="1" colspan="2" aria-label="Action: activate to sort column ascending">Hành động</th>
                                     </tr>
                                     </tfoot>
                                 @endif

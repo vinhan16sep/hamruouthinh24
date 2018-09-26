@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\Controller;
 use App\Blog;
+use App\BlogCategory;
 use Response;
 
 class BlogApiController extends Controller
@@ -15,24 +16,13 @@ class BlogApiController extends Controller
         //
     }
 
-    public function fetchAllAdvises(){
+    public function fetchAllBlogs(){
+        $slug = Input::get('slug');
+        $category = BlogCategory::where('slug', $slug)->first();
+        
         $result = DB::table('blog')
             ->select('*')
-            ->where('type', '=', 0)
-            ->where('is_deleted', '=', 0)
-            ->get();
-
-        if(!$result){
-            return response()->json('No item found', 404);
-        }
-        return response()->json($result, 200);
-    }
-
-    public function fetchAllNews(){
-        $result = DB::table('blog')
-            ->select('*')
-            ->where('type', '=', 1)
-            ->where('is_deleted', '=', 0)
+            ->where(['is_deleted' => 0, 'category_id' => $category->id])
             ->get();
         if(!$result){
             return response()->json('No item found', 404);
@@ -43,32 +33,14 @@ class BlogApiController extends Controller
     /**
      * Fetch 4 latest advises
      */
-    public function fetchLatestAdvises(){
+    public function fetchLatestBlog(){
         $result = DB::table('blog')
             ->select('*')
-            ->where('type', '=', 0)
             ->where('is_deleted', '=', 0)
             ->orderBy('id', 'desc')
             ->limit(4)
             ->get();
 
-        if(!$result){
-            return response()->json('No item found', 404);
-        }
-        return response()->json($result, 200);
-    }
-
-    public function fetchLatestNews(){
-        $category_id = Input::get('category_id');
-        $result = DB::table('blog')
-            ->select('*')
-            ->where('type', '=', 1)
-            ->where('is_deleted', '=', 0)
-            ->where('category_id', $category_id)
-            ->orderBy('id', 'desc')
-            ->limit(4)
-            ->get();
-        // print_r($result);die;
         if(!$result){
             return response()->json('No item found', 404);
         }
@@ -120,5 +92,12 @@ class BlogApiController extends Controller
         return response()->json($result, 200);
     }
 
+    public function fetchAllCategory(){
+        $result = BlogCategory::all();
+        if(!$result){
+            return response()->json('No item found', 404);
+        }
+        return response()->json($result, 200);
+    }
     
 }

@@ -157,14 +157,9 @@
                         Blog
                     </a>
                     <ul class="list-unstyled ul_dropdown">
-                        <li>
-                            <a href="{{ url('tu-van') }}" class="color_sub_menu" target="_self">
-                                Tư vấn
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ url('tin-tuc') }}" class="color_sub_menu" target="_self">
-                                Tin tức
+                        <li ng-repeat="category in postsCategories">
+                            <a href="{{ url('bai-viet') }}/<% category.slug %>" class="color_sub_menu" target="_self">
+                                <% category.title %>
                             </a>
                         </li>
                     </ul>

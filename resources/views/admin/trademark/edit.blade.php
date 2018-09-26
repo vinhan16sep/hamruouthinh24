@@ -7,7 +7,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Cập nhật thương hiệu</div>
                     <div class="panel-body">
-                        <p style="color:orange">TIP: Nếu trong Thương hiệu đang chứa Danh mục, không thể bỏ chọn Dùng thương hiệu</p>
+                        {{-- <p style="color:orange">TIP: Nếu trong Thương hiệu đang chứa Danh mục, không thể bỏ chọn Dùng thương hiệu</p> --}}
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('trademark.update', ['id' => $trademark->id]) }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
@@ -91,7 +91,7 @@
                             <div class="form-group">
                                 <label for="avatar" class="col-md-2 control-label" >Hình ảnh hiện tại</label>
                                 <div class="col-md-8">
-                                    {{ HTML::image('storage/app/' . $trademark->image) }}
+                                    {{ HTML::image('storage/app/' . $trademark->image, '',array('width' => 250)) }}
                                 </div>
                             </div>
                             <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">

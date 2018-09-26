@@ -2,6 +2,7 @@
     app.controller('HomepageController', function($scope, $http, API_URL, $uibModal, $mdDialog, menuProductFactory, productsFactory, listNewsFactory, listAdvisesFactory, $sce){
         $scope.products = [];
         $scope.discounts = [];
+        $scope.specials = [];
         $scope.menuProduct = [];
         $scope.latestAdvises = [];
         $scope.news = [];
@@ -48,14 +49,69 @@
                             });
                         };
                         angular.forEach($scope.discounts, function(value, key){
-                            for(i = 0; i<response.data.result.length ; i++){
-                              if(value.id == response.data.result[i].product_id && response.data.result[i].user_id == document.getElementById("user_id").innerHTML){
-                                 $scope.discounts[key].like = "bỏ yêu thích";
-                                 break;
-                              }else{
-                                 $scope.discounts[key].like = "lưu yêu thích";
-                              }
+                            if (response.data != '') {
+                                for(i = 0; i<response.data.result.length ; i++){
+                                    if(value.id == response.data.result[i].product_id && response.data.result[i].user_id == document.getElementById("user_id").innerHTML){
+                                        $scope.discounts[key].like = "bỏ yêu thích";
+                                        break;
+                                    }else{
+                                        $scope.discounts[key].like = "lưu yêu thích";
+                                    }
+                                }
                             }
+
+                        });     
+                    }, function(error){
+                        
+                    });
+        }, function(error){
+
+        });
+
+        $http({
+            method: 'GET',
+            url: API_URL + 'special_product'
+        }).then(function(success){
+            $scope.specials = success.data;
+            $http({
+                        method: 'GET',
+                        url: API_URL + 'get_all_product',
+                    }).then(function(response){
+                        $scope.addToLikeProduct = function(product_id){
+                            $http({
+                                method: 'GET',
+                                url: API_URL + 'user_like_product',
+                                params: {
+                                    product_id: product_id
+                                }
+                            }).then(function(response){
+
+                                for(i = 0; i<$scope.specials.length ; i++){
+                                    if($scope.specials[i].id == product_id){
+                                        if($scope.specials[i].like == "bỏ yêu thích"){
+                                            $scope.specials[i].like = "lưu yêu thích";
+                                        }else{
+                                            $scope.specials[i].like = "bỏ yêu thích";
+                                        }
+                                        break;
+                                    }
+                                }
+                            }, function(error){
+                                console.log(error);
+                            });
+                        };
+                        angular.forEach($scope.specials, function(value, key){
+                            if (response.data != '') {
+                                for(i = 0; i<response.data.result.length ; i++){
+                                    if(value.id == response.data.result[i].product_id && response.data.result[i].user_id == document.getElementById("user_id").innerHTML){
+                                        $scope.specials[key].like = "bỏ yêu thích";
+                                        break;
+                                    }else{
+                                        $scope.specials[key].like = "lưu yêu thích";
+                                    }
+                                }
+                            }
+
                         });     
                     }, function(error){
                         
@@ -82,14 +138,14 @@
 
         });
 
-        $http({
-            method: 'GET',
-            url: API_URL + 'latest_advises'
-        }).then(function(success){
-            $scope.latestAdvises = success.data;
-        }, function(error){
+        // $http({
+        //     method: 'GET',
+        //     url: API_URL + 'latest_advises'
+        // }).then(function(success){
+        //     $scope.latestAdvises = success.data;
+        // }, function(error){
 
-        });
+        // });
 
         $scope.open = function(item){
             $scope.selected = item;
@@ -115,12 +171,12 @@
         });
 
         // Fetch news
-        listAdvisesFactory.advises()
-        .then(function (success) {
-            $scope.advises = success.data;
-        }, function (error) {
+        // listAdvisesFactory.advises()
+        // .then(function (success) {
+        //     $scope.advises = success.data;
+        // }, function (error) {
 
-        });
+        // });
 
     });
 })();

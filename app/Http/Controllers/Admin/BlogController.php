@@ -29,42 +29,14 @@ class BlogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        //
-    }
-
-    /**
-     * Display a listing of the advise.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function advise(){
-        $advises = DB::table('blog')
+        $blogs = DB::table('blog')
             ->select('*')
-            ->where('type', '=', 0)
             ->where('is_deleted', '=', 0)
             ->paginate(10);
-        $categories = $this->getCategoryByType('advise');
-        return view('admin/blog/advise', [
-            'type' => 'advise',
+        $categories = $this->getCategory();
+        return view('admin/blog/index', [
             'categories' => $categories,
-            'advises' => $advises
-        ]);
-    }
-
-    /**
-     * Display a listing of the news.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function news(){
-        $news = DB::table('blog')
-            ->select('*')
-            ->where('type', '=', 1)
-            ->where('is_deleted', '=', 0)
-            ->paginate(10);
-        return view('admin/blog/news', [
-            'type' => 'news',
-            'news' => $news
+            'blogs' => $blogs
         ]);
     }
 
@@ -75,10 +47,8 @@ class BlogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
-        $type = Input::get('type');
-        $categories = $this->getCategoryByType($type);
+        $categories = $this->getCategory();
         return view('admin/blog/create', [
-            'type' => $type,
             'categories' => $categories
         ]);
     }
@@ -90,20 +60,18 @@ class BlogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-        $type = Input::get('type');
         $uniqueSlug = $this->buildUniqueSlug('blog', null, $request->slug);
-
         // Upload image
-        $path = $request->file('image')->store(($type == 'advise') ? 'advises' : 'news');
+        $path = $request->file('image')->store('blogs');
         $keys = ['title', 'category_id', 'description', 'content'];
         $input = $this->createQueryInput($keys, $request);
-        $input['type'] = ($type == 'advise') ? 0 : 1;
+        $input['type'] = 0;
         $input['image'] = $path;
         $input['slug'] = $uniqueSlug;
         // Not implement yet
         Blog::create($input);
 
-        return redirect()->intended(($type == 'advise') ? 'admin/advise' : 'admin/news');
+        return redirect()->intended('admin/blog');
     }
 
     /**
@@ -125,13 +93,14 @@ class BlogController extends Controller
      */
     public function edit($id){
         $blog = Blog::find($id);
+        $categories = $this->getCategory();
         // Redirect to product list if updating product wasn't existed
-        if ($blog == null || count($blog) == 0) {
-            return redirect()->intended(($blog->type == 0) ? 'admin/advise' : 'admin/news');
+        if ($blog == null) {
+            return redirect()->intended('admin/blog');
         }
         return view('admin/blog/edit', [
-            'type' => ($blog->type == 0) ? 'advise' : 'news',
-            'blog' => $blog
+            'blog' => $blog,
+            'categories' => $categories
         ]);
     }
 
@@ -154,14 +123,14 @@ class BlogController extends Controller
 
         // Upload image
         if($request->file('image')){
-            $path = $request->file('image')->store(($blog->type == 'advise') ? 'advises' : 'news');
+            $path = $request->file('image')->store('blogs');
             $input['image'] = $path;
         }
 
         Blog::where('id', $id)
             ->update($input);
 
-        return redirect()->intended(($blog->type == 0) ? 'admin/advise' : 'admin/news');
+        return redirect()->intended('admin/blog');
     }
 
     /**
@@ -173,26 +142,22 @@ class BlogController extends Controller
     public function destroy($id){
         $blog = Blog::findOrFail($id);
         Blog::where('id', $id)->update(['is_deleted' => 1]);
-        return redirect()->intended(($blog->type == 0) ? 'admin/advise' : 'admin/news');
+        return redirect()->intended('admin/blog');
     }
 
     public function search(Request $request){
         $blogs = $this->doSearchingQuery($request);
-        $key = ($request['type'] == 'advise') ? 'advises' : 'news';
+        $categories = $this->getCategory();
 
-        return view(($request['type'] == 'advise') ? 'admin/blog/advise' : 'admin/blog/news', [
-            'type' => $request['type'],
-            $key => $blogs,
+        return view('admin/blog/index', [
+            'blogs' => $blogs,
+            'categories' => $categories,
             'searchingVals' => $request
         ]);
     }
 
-    public function getCategoryByType($type){
-        $categories = DB::table('blog_category')
-            ->select('*')
-            ->where('type', '=', ($type == 'advise') ? 0 : 1)
-            ->where('is_deleted', '=', 0)
-            ->get();
+    public function getCategory(){
+        $categories = BlogCategory::all();
         $arrayCategories = [];
         foreach($categories as $item){
             $arrayCategories[$item->id] = $item->title;

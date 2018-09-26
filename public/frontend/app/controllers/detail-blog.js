@@ -3,24 +3,16 @@
         $scope.$sce = $sce;
         $scope.selected = [];
         $scope.news = [];
+        $scope.latestBlogs = [];
 
         var comment;
         var type = '';
         var page = 1;
         $scope.count = 0;
         $urlSplit = $location.path().split("/");
-        if(($urlSplit[2] == 'tu-van' || $urlSplit[2] == 'tin-tuc') && $urlSplit.length >= 4){
-            var slug = $urlSplit[3];
-            $scope.slug = slug;
-
-        }
-
-        if($urlSplit[2] == 'tu-van' || $urlSplit[2] == 'tin-tuc'){
-            type = ($urlSplit[2] == 'tu-van') ? 0 : 1;
-            title = ($urlSplit[2] == 'tu-van') ? 'tư vấn' : 'tin tức';
-            $scope.title = title;
-            $scope.type = type;
-        }
+        var slug = $urlSplit[4];
+        $scope.slug = slug;
+        
 
         $http({
             method: 'GET',
@@ -71,12 +63,10 @@
 
         $http({
             method: 'GET',
-            url: API_URL + 'latest_advises',
-            params: {
-                type: type
-            }
+            url: API_URL + 'latest_blog',
+            params: {}
         }).then(function(success){
-            $scope.advises = success.data;
+            $scope.latestBlogs = success.data;
         }, function(error){
 
         });

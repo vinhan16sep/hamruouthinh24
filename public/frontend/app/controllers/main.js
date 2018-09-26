@@ -4,6 +4,8 @@
         // 
         $scope.storedProducts = (Cookies.get('cartProducts') != undefined) ? Cookies.get('cartProducts') : [];
         $rootScope.countAddedProducts = 0;
+        $rootScope.countAddedProducts = 0;
+        $rootScope.postsCategories = [];
         if(angular.isArray(Cookies.get('cartProducts')) === true){
             $rootScope.countAddedProducts = Cookies.get('cartProducts').length;
         }else{
@@ -140,7 +142,6 @@
 
                 $scope.tastingProducts = Cookies.get('tastingProducts');
                 $rootScope.counttastingProducts = JSON.parse(Cookies.get('tastingProducts')).length;
-                console.log(tastingProducts);
                 // if($rootScope.counttastingProducts >= 6){
                 //     alert('Không thể thử quá 6 loại rượu');
                 // }
@@ -154,6 +155,15 @@
             alert('Bạn phải đăng nhập');
         };
 
+        $http({
+            method: 'GET',
+            url: API_URL + 'fetch_all_category',
+            params: {}
+        }).then(function(success){
+            $rootScope.postsCategories = success.data;
+        }, function(error){
+
+        });
         
     });
 })();

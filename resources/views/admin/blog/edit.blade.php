@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Chỉnh sửa bài viết - <strong>Danh mục: <span style="color:red">{{ ($type == 'advise') ? 'Tư vấn' : 'Tin tức' }}</span></strong></div>
+                    <div class="panel-heading">Chỉnh sửa bài viết</div>
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('blog.update', ['id' => $blog->id]) }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
@@ -29,6 +29,34 @@
                                         <strong>{{ $errors->first('slug') }}</strong>
                                     </span>
                                     @endif
+                                </div>
+                            </div>
+                            <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
+                                <label for="category_id" class="col-md-2 control-label">Danh mục</label>
+
+                                <div class="col-md-8">
+                                    <select name="category_id" id="category_id" class="form-control">
+                                        <option value="">Chọn danh mục</option>
+                                        @if(!empty($categories))
+                                            @foreach($categories as $key => $item)
+                                                <option value="{{ $key }}"
+                                                        @if ($blog->category_id == $key) selected="selected" @endif>
+                                                        {{ $item }}
+                                                </option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                    @if ($errors->has('category_id'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('category_id') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="avatar" class="col-md-2 control-label" >Hình ảnh đang sử dụng</label>
+                                <div class="col-md-8">
+                                    <img src="{{ asset('storage/app/' . $blog->image) }}" width="250">
                                 </div>
                             </div>
                             <div class="form-group">

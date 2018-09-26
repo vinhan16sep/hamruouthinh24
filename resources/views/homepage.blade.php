@@ -14,38 +14,49 @@
     <section class="main_content" ng-controller="HomepageController" id="main_content">
         <span id="scroll_point"></span>
         <section class="container">
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <div class="container-fluid">
+                <div class="title_big">
+                    Sản phẩm đặc biệt
+                </div>
 
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
-                    <div class="item" ng-repeat="advise in advises" active-on-first-four-items>
-                        <div class="row">
-                            <div class="col-md-8 col-sm-8 col-xs-12">
-                                <img src="{{ asset('storage/app') }}/<% advise.image %>" alt="<% advise.slug %>">
+                <div class="row">
+                    <div class="item col-md-3 col-sm-6 col-xs-12" ng-repeat="special in specials">
+                        <div class="inner">
+                            <div class="mask">
+                                <img src="{{ asset('storage/app/products/') }}/<% special.slug %>/<% special.image[0] %>" alt="<% special.slug %>">
                             </div>
-                            <div class="col-md-4 col-sm-4 col-xs-12">
-                                <a href="{{ url('/tu-van') }}/<% advise.slug %>" class="link-primary" target="_self">
-                                    <h1><% advise.title %></h1>
-                                </a>
-                                <article class="description">
-                                    <p ng-bind-html="$sce.trustAsHtml(advise.description)"></p>
-                                </article>
 
-                                <a class="btn btn-primary" href="{{ url('/tu-van') }}/<% advise.slug %>" role="button" target="_self">Khám phá ngay</a>
+                            <span class="badge">- <% special.discount_percent %>%</span>
+
+                            <span class="productName"><% special.name %></span>
+                            <h4 class="productYear"><% special.year %></h4>
+                            <h3 class="productPrice"><% special.price | currency:VND:0 | commaToDot | removeUSCurrency  %> vnđ</h3>
+                            <br>
+                            <a class="btn btn-primary" href="#" role="button">Thử rượu miễn phí</a>
+
+                            <div class="hover">
+                                <span class="productName"><% special.name %></span>
+                                <h4 class="productYear"><% special.year %></h4>
+                                <h3 class="productPrice"><% special.price | currency:VND:0 | commaToDot | removeUSCurrency  %> vnđ</h3>
+                                <br>
+                                <!--<p ng-bind-html="$sce.trustAsHtml(special.description)"></p>-->
+                                <br>
+                                <a class="btn btn-primary" href="#" role="button" ng-click="addToCart(special.id)">Thêm vào giỏ hàng</a>
+                                <br>
+                                <a class="btn btn-primary" href="{{ url('/san-pham/chi-tiet') }}/<% special.slug %>" role="button"  target="_self" >Xem chi tiết</a>
+                                <br>
+                                <a class="btn btn-primary" href="#" role="button" ng-click="addToTasting(special.id)">Thử rượu miên phí</a>
+                                @if(!Auth::guest())
+                                    <br>
+                                    <a class="btn btn-primary" href="#" role="button" ng-click="addToLikeProduct(special.id)" ><% special.like %></a>
+                                @else
+                                    <br>
+                                    <a class="btn btn-primary" href="#" role="button" ng-click="login()" >Lưu yêu thích</a>
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Controls -->
-                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
             </div>
 
         </section>
@@ -155,7 +166,7 @@
                             <br>
                             <p ng-bind-html="$sce.trustAsHtml(new.description)"></p>
                             <br>
-                            <a href="{{ url('/tin-tuc') }}/<% new.slug %>" class="btn btn-primary" target="_self" >Xem thêm <i class="fa fa-angle-double-right" aria-hidden="false"></i> </a>
+                            <a href="{{ url('bai-viet/chi-tiet/') }}/<% new.slug %>" class="btn btn-primary" target="_self" >Xem thêm <i class="fa fa-angle-double-right" aria-hidden="false"></i> </a>
                         </div>
                     </div>
 

@@ -140,18 +140,18 @@
                                 Đăng nhập
                             </button>
 
-                            <a class="btn btn-link" href="{{ route('password.request') }}">
+                            <a class="btn btn-link" href="{{ route('password.request') }}" target="_self">
                                 Quên mật khẩu?
                             </a>
                         </div>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
                         Đăng nhập qua
                         <a class="btn btn-default btn-facebook btn-sm" href="#" role="button">Facebook</a>
                         <a class="btn btn-default btn-google btn-sm" href="#" role="button">Google +</a>
                         </div>
-                    </div>
+                    </div> --}}
                 </form>
             </div>
             <div class="modal-footer">
