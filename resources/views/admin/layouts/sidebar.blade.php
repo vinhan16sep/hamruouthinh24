@@ -107,7 +107,7 @@
             </li>
           </ul>
         </li>
-        <li class="treeview {{(Request::segment(2) == 'blog-category' || Request::segment(2) == 'advise' || Request::segment(2) == 'news')? 'active' : '' }}">
+        <li class="treeview {{(Request::segment(2) == 'blog-category' || Request::segment(2) == 'blog')? 'active' : '' }}">
           <a href="#"><i class="fa fa-link"></i> <span>Quản lý bài viết</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -117,11 +117,8 @@
             <li class="{{(Request::segment(2) == 'blog-category')? 'active' : '' }}">
               <a href="{{ url('admin/blog-category') }}">Danh mục</a>
             </li>
-            <li class="{{(Request::segment(2) == 'advise')? 'active' : '' }}">
-              <a href="{{ url('admin/advise') }}">Tư vấn</a>
-            </li>
-            <li class="{{(Request::segment(2) == 'news')? 'active' : '' }}">
-              <a href="{{ url('admin/news') }}">Tin tức</a>
+            <li class="{{(Request::segment(2) == 'blog')? 'active' : '' }}">
+              <a href="{{ url('admin/blog') }}">Bài viết</a>
             </li>
           </ul>
         </li>

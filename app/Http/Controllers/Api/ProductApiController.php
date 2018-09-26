@@ -72,6 +72,23 @@ class ProductApiController extends Controller
             ->select('*')
             ->where('is_discount', '=', 1)
             ->where('is_deleted', '=', 0)
+            ->limit(4)
+            ->get();
+        foreach ($result as $key => $value) {
+            $result[$key]->image = json_decode($value->image);
+        }
+        if(!$result){
+            return response()->json('No item found', 404);
+        }
+        return response()->json($result, 200);
+    }
+
+    public function fetchSpecialProduct(){
+        $result = DB::table('product')
+            ->select('*')
+            ->where('is_special', '=', 1)
+            ->where('is_deleted', '=', 0)
+            ->limit(4)
             ->get();
         foreach ($result as $key => $value) {
             $result[$key]->image = json_decode($value->image);

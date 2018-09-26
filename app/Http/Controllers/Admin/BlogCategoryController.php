@@ -29,6 +29,7 @@ class BlogCategoryController extends Controller
      */
     public function index(){
         $categories = DB::table('blog_category')
+            ->where('is_deleted', 0)
             ->select('*')
             ->paginate(10);
         return view('admin/blog-category/index', ['categories' => $categories]);
@@ -54,7 +55,7 @@ class BlogCategoryController extends Controller
         $uniqueSlug = $this->buildUniqueSlug('blog_category', null, $request->slug);
 
         // Upload image
-        $path = $request->file('image')->store(($request->type == '0') ? 'advises/category' : 'news/category');
+        $path = $request->file('image')->store('blogCategories');
         $keys = ['title', 'type', 'is_active', 'description'];
         $input = $this->createQueryInput($keys, $request);
         $input['image'] = $path;
@@ -84,7 +85,14 @@ class BlogCategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        if(!is_numeric($id)){
+            return redirect()->intended('admin/blog-category');
+        }
+        $blogCategory = DB::table('blog_category')
+                            ->select('*')
+                            ->where(['is_deleted' => 0, 'id' => $id])
+                            ->first();
+        return view('admin/blog-category/edit', ['blogCategory' => $blogCategory]);
     }
 
     /**
@@ -96,7 +104,24 @@ class BlogCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $blogCategory = BlogCategory::findOrFail($id);
+        $this->validateInput($request);
+        $uniqueSlug = $this->buildUniqueSlug('blog_category', $request->id, $request->slug);
+
+        $keys = ['title', 'description', 'is_active'];
+        $input = $this->createQueryInput($keys, $request);
+        $input['slug'] = $uniqueSlug;
+
+        // Upload image
+        if($request->file('image')){
+            $path = $request->file('image')->store('blogCategories');
+            $input['image'] = $path;
+        }
+
+        BlogCategory::where('id', $id)
+            ->update($input);
+
+        return redirect()->intended('admin/blog-category');
     }
 
     /**
@@ -107,7 +132,9 @@ class BlogCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $blog = BlogCategory::findOrFail($id);
+        BlogCategory::where('id', $id)->update(['is_deleted' => 1]);
+        return redirect()->intended('admin/blog-category');
     }
 
     /**

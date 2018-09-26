@@ -54,6 +54,7 @@ class UserLikeProductApiController extends Controller
     public function getAllLike(){
         if(!Auth::guest()){
             $check=UserLikeProduct::where('user_id',Auth::user()->id)->get();
+            $whereIn = [];
             foreach ($check as $key => $value) {
                 $whereIn[] =  $value->product_id;
             }

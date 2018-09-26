@@ -75,7 +75,7 @@ var app = angular.module('hamruouthinh24App', ['ng', 'ngRoute', 'ngResource', 'n
                 // Fetch news
                 return $http({
                     method: 'GET',
-                    url: API_URL + 'news'
+                    url: API_URL + 'latest_blog'
                 });
             }
         }

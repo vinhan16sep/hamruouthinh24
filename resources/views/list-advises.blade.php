@@ -8,19 +8,19 @@
                 <div class="col-md-9 col-sm-9 col-xs-12">
                     <div class="row">
 
-                        <div class="col-md-4 col-sm-4 col-xs-12" ng-repeat="advise in advises">
+                        <div class="col-md-4 col-sm-4 col-xs-12" ng-repeat="blog in blogs">
                             <div class="inner">
                                 <div class="mask">
-                                    <img src="{{ asset('storage/app') }}/<% advise.image %>" alt="ảnh mình họa bài viết">
+                                    <img src="{{ asset('storage/app') }}/<% blog.image %>" alt="ảnh mình họa bài viết">
                                 </div>
 
                                 <a href="#">
-                                    <h3><% advise.title %></h3>
+                                    <h3><% blog.title %></h3>
                                 </a>
                                 <br>
-                                <p ng-bind-html="$sce.trustAsHtml(advise.description)"></p>
+                                <p ng-bind-html="$sce.trustAsHtml(blog.description)"></p>
                                 <br>
-                                <a href="{{ url('/tu-van') }}/<% advise.slug %>" class="btn btn-primary" target="_self" >Xem thêm <i class="fa fa-angle-double-right" aria-hidden="false"></i> </a>
+                                <a href="{{ url('bai-viet/chi-tiet') }}/<% blog.slug %>" class="btn btn-primary" target="_self" >Xem thêm <i class="fa fa-angle-double-right" aria-hidden="false"></i> </a>
                             </div>
                         </div>
 
@@ -32,9 +32,9 @@
                         <div class="panel-heading">Danh mục tư vấn</div>
 
                         <!-- List group -->
-                        <ul class="list-group" ng-repeat="category in categories">
+                        <ul class="list-group" ng-repeat="category in postsCategories">
                             <li class="list-group-item">
-                                <a href="{{ url('tu-van/danh-muc') }}/<% category.slug %>" target="_self" ><% category.title %></a>
+                                <a href="{{ url('bai-viet') }}/<% category.slug %>" target="_self" ><% category.title %></a>
                             </li>
                         </ul>
                     </div>
