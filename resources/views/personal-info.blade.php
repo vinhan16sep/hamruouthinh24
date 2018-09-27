@@ -128,7 +128,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr ng-repeat="likeproduct in showlikeproduct" ng-show="notCompleteOrdersMessage == 'Success'">
+                                <tr ng-repeat="likeproduct in showlikeproduct">
                                     <td><% $index + 1 %></td>
                                     <td><a class="btn btn-primary" href="{{ url('/san-pham/chi-tiet') }}/<% likeproduct.slug %>" role="button"  target="_self">Xem chi tiết</a></td>
                                     <!-- <td><a class="btn btn-primary" href="#" role="button" ng-click="showProductLike(likeproduct)" data-toggle="modal" data-target="#edit_personal">Xem chi tiết</a></td> -->
@@ -137,7 +137,7 @@
                                     <td><% likeproduct.producer %></td>
                                     <td><% likeproduct.origin_title %></td>
                                 </tr>
-                                <tr ng-show="notCompleteOrdersMessage == 'No item found'">
+                                <tr ng-show="!(showlikeproduct).length">
                                     <td colspan="6">Bạn chưa có đơn hàng nào!</td>
                                 </tr>
                                 </tbody>

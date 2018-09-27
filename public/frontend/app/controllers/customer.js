@@ -40,7 +40,7 @@
         }).then(function(success){
             $scope.notCompleteOrders = success.data.result;
             $scope.notCompleteOrdersMessage = success.data.message;
-            console.log($scope.notCompleteOrders[0].product_info);
+            console.log($scope.notCompleteOrdersMessage);
         }, function(error){
 
         });
