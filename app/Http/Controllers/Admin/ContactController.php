@@ -1,21 +1,31 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
+
 
 use Illuminate\Http\Request;
-use App\Banner;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Response;
+use Illuminate\Support\Facades\Cookie;
+use App\Contact;
 
-class HomepageController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+        $this->middleware('auth:admin');
+    }
     public function index()
     {
-        $banner = Banner::find(1);
-        return view('homepage',['banner' => $banner]);
+        $contact = Contact::find(1);
+        return view('admin/contact/view', ['contact' => $contact]);
     }
 
     /**
@@ -36,7 +46,7 @@ class HomepageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -58,7 +68,15 @@ class HomepageController extends Controller
      */
     public function edit($id)
     {
-        //
+        if($id == 1){
+            $contact = Contact::find(1);
+            if ($contact == null) {
+                return redirect()->intended('admin/contact/detail');
+            }
+            return view('admin/contact/edit', ['contact' => $contact]);
+        }else{
+            return redirect()->intended('admin/contact/detail');
+        }
     }
 
     /**
@@ -68,9 +86,16 @@ class HomepageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
-        //
+        $keys = ['company','address','numberphone','email','website','map'];
+        $input = $this->createQueryInput($keys, $request);
+        Contact::where('id', 1)
+            ->update($input);
+        $contact = Contact::find(1);
+        return view('admin/contact/edit', [
+            'contact' => $contact
+        ]);
     }
 
     /**

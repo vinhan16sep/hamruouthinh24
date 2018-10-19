@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+use App\Contact;
 Route::get('/', function () {
     return view('homepage');
 });
@@ -154,7 +154,8 @@ Route::get('/bai-viet/chi-tiet/{target}', function () {
  * Frontend contact route
  */
 Route::get('/lien-he', function () {
-    return view('contact');
+    $contact = Contact::find(1);
+    return view('contact',['contact' => $contact]);
 });
 
 /**
@@ -287,6 +288,15 @@ Route::prefix('admin')->group(function() {
         Route::get('comment/blog/{id}', 'CommentController@fetchBlogComment')->name('comment.fetchBlogComment');
         Route::post('comment_blog/delete/{id}/{blog_id}', 'CommentController@deleteBlogComment')->name('comment.deleteBlogComment');
 
+        // Contact routes
+        Route::resource('contact', 'ContactController');
+        Route::get('contact/edit/{id}', 'ContactController@edit');
+        Route::post('contact/update/{id}', 'ContactController@update')->name('contact.update');
+        // Banner routes
+        Route::resource('banner', 'BannerController');
+        Route::post('banner/update/{id}', 'BannerController@update')->name('banner.update');
+        Route::post('banner/deleteBanner', 'BannerController@delete_banner');
+        
         //subscrie routes
         Route::resource('subscribe', 'SubscribeController');
         Route::get('subscrie/send/{email}', 'SubscribeController@sendMail')->name('subscrie.sendMail');

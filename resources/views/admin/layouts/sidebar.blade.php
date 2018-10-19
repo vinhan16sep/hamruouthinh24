@@ -144,6 +144,20 @@
             </span>
           </a>
         </li>
+        <li class="treeview">
+          <a href="{{ url('admin/banner') }}"><i class="fa fa-link"></i> <span>Quản lý banner</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="{{ url('admin/contact') }}"><i class="fa fa-link"></i> <span>Liên hệ</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        </li>
 {{--        <li><a href="{{ route('user-management.index') }}"><i class="fa fa-link"></i> <span>User management</span></a></li>--}}
       </ul>
       <!-- /.sidebar-menu -->

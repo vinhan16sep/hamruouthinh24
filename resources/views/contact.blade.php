@@ -9,15 +9,15 @@
                             <h2>Liên hệ với chúng tôi</h2>
                         </div>
                         <address>
-                            <strong>CTY TNHH MTV TM hóa mỹ phẩm Nam Anh Khương</strong>
+                            <strong>{!!$contact->company!!}</strong>
                             <br>
-                            Địa chỉ: 11/B6 KP. Bình Thuận 2, P.Thuận Giao, TX.Thuận An, Bình Dương
+                            Địa chỉ: {!!$contact->address!!}
                             <br>
-                            Điện thoại: 0650 3717507 hoặc 0983 979 567
+                            Điện thoại: {!!$contact->numberphone!!}
                             <br>
-                            Email: namanhkhuong@yahoo.com.vn
+                            Email: {!!$contact->email!!}
                             <br>
-                            Website: www.hoamyphamnamanhkhuong.com
+                            Website: {!!$contact->website!!}
                         </address>
 
                         <div class="content-title">
@@ -50,8 +50,8 @@
                         </form>
                     </div>
 
-                    <div class="col-md-8 col-sm-8 col-xs-12">
-                        <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.925653583095!2d105.78706381511796!3d21.035660585994542!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab49e86439d1%3A0x3e1480876f45a0c7!2sH%E1%BB%93ng+Minh+Baby+Store!5e0!3m2!1svi!2s!4v1517303542426" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    <div class="col-md-8 col-sm-8 col-xs-12" id="map-contact">
+                        {!!$contact->map!!}
                     </div>
                 </div>
             </div>
