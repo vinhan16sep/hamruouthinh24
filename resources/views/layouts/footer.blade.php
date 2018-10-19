@@ -109,3 +109,16 @@
     <i class="fa fa-chevron-up fa-2x"></i>
 </div>
 
+<script type="text/javascript">
+  if(document.querySelector('#map-contact iframe')){
+    document.querySelector('#map-contact iframe').style.width = '100%';
+    document.querySelector('#map-contact iframe').style.height = '700px';
+  }
+</script>
+<script type="text/javascript">
+    for (var i = 0; i < document.querySelectorAll('#banner .item img').length; i++) {
+      document.querySelectorAll('#banner .item img')[i].style.width = '100%';
+      document.querySelectorAll('#banner .item img')[i].style.height = '100%';
+      
+    }
+</script>

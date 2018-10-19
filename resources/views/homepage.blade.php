@@ -57,20 +57,16 @@
                     </ol>
 
                     <!-- Wrapper for slides -->
-                    <div class="carousel-inner" role="listbox">
-                        <div class="item active">
-                            <img src="..." alt="...">
-                            <div class="carousel-caption">
-                                ...
+                    <div class="carousel-inner" role="listbox" style="width: 100%;height: 100%;" id="banner">
+
+                        <?php foreach (json_decode($banner->image) as $key => $value): ?>
+                            <div class="item <?php echo ($key == 0)? ' active' : ''; ?>" style="width: 100%;height: 100%;">
+                                {{ HTML::image('storage/app/banner/' . $value) }}
+                                <div class="carousel-caption">
+                                    ...
+                                </div>
                             </div>
-                        </div>
-                        <div class="item">
-                            <img src="..." alt="...">
-                            <div class="carousel-caption">
-                                ...
-                            </div>
-                        </div>
-                        ...
+                        <?php endforeach ?>
                     </div>
 
                     <!-- Controls -->
