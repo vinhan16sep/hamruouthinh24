@@ -1,0 +1,51 @@
+/*------------------------------------------------------------------
+ [Footer Stylesheet]
+-------------------------------------------------------------------*/
+
+footer{
+    background-color: #fff;
+
+    .container{
+        .row{
+            .item{
+                h3{
+                    color: $primary;
+                }
+            }
+        }
+    }
+    .subscribe{
+        border-top: 2px solid #f4f4f4;
+        padding-top: 30px;
+
+        h3{
+            color: $primary;
+            margin-top: 0;
+        }
+    }
+
+    ul{
+        li{
+            padding: 3px 0;
+
+            a{
+                color: #95989a;
+            }
+        }
+
+        &.list-inline{
+            li{
+                padding-right: 15px;
+                margin-top: 15px;
+            }
+        }
+    }
+
+    .copyright{
+        padding-top: 7px;
+        padding-bottom: 7px;
+
+        background-color: $primary;
+        color: #fff;
+    }
+}

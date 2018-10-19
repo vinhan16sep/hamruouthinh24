@@ -170,22 +170,12 @@ span.productName{
 }
 
 .row > .item > .inner > .hover .btn{
-    width: 80%;
-    background-color: transparent;
-    border-color: #fff;
-    text-transform: uppercase;
-    margin-bottom: 7px;
+
 
 }
 
 .row > .item > .inner > .badge{
-    position: absolute !important;
-    top:30px;
-    right:30px;
-    z-index: 98;
 
-    padding: 7px;
-    border-radius: 50%;
 
 }
 
@@ -209,14 +199,11 @@ span.productName{
 }
 
 #news .row .inner{
-    padding: 15px;
-    background-color: #fff;
+
 }
 
 #news .mask{
-    width: 100%;
-    height: 250px;
-    overflow: hidden;
+
 }
 
 #news .row .inner .mask img{
@@ -226,17 +213,11 @@ span.productName{
 }
 
 #news .row .inner p{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    line-height: 1.25em;
-    max-height: 5em;
-    -webkit-line-clamp:4;
-    -webkit-box-orient: vertical;
+
 }
 
 #about{
-    height: fit-content;
+
 }
 
 #about .left{
@@ -256,10 +237,7 @@ span.productName{
 }
 
 #about .right{
-    padding: 30px 70px 50px;
-    color: #fff;
 
-    position: relative;
 }
 
 
@@ -277,11 +255,7 @@ span.productName{
     -webkit-box-orient: vertical;
 }
 
-#about .right div[class*="col-"] .fa-3x{
-    font-size: 4em;
-    padding-top: 7px;
-    padding-bottom: 15px;
-}
+#about .right div[class*="col-"]
 
 #about .right .title_big{
     color: #fff;

@@ -3,22 +3,19 @@
 }
 
 .nav_side h3{
-	padding-bottom: 7px;
+
 }
 
 .nav_side ul li{
-	padding-top: 15px;
-	padding-bottom: 15px;
-	border-bottom: 1px solid #eaeaea;
+
 }
 
 .nav_side ul li a{
-	color: #333;
+
 }
 
 .container .row .inner{
-	padding: 15px;
-	background-color: #fff;
+
 }
 
 .container .row .inner .mask{
@@ -38,23 +35,11 @@
 }
 
 .container .row .inner h3{
-	overflow: hidden;
-	text-overflow: ellipsis;
-	display: -webkit-box;
-	line-height: 1.25em;
-	max-height: 4.5em;
-	-webkit-line-clamp:3;
-	-webkit-box-orient: vertical;
+
 }
 
 .container .row .inner p{
-	overflow: hidden;
-	text-overflow: ellipsis;
-	display: -webkit-box;
-	line-height: 1.25em;
-	max-height: 5em;
-	-webkit-line-clamp:4;
-	-webkit-box-orient: vertical;
+
 }
 
 .container > .row > .content{

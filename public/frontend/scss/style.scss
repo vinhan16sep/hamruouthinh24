@@ -1,0 +1,34 @@
+/*------------------------------------------------------------------
+ [Master Stylesheet]
+
+  Project:	HamruouThinh24
+  Version:	1.0.0
+-------------------------------------------------------------------*/
+
+/*
+Core Settings
+ */
+
+@import "variables";
+@import "fontSettings";
+@import "mixins";
+
+/*
+Main Style
+ */
+
+@import "header";
+@import "main";
+@import "footer";
+
+/*
+Pages
+ */
+
+@import "homepage";
+@import "products";
+@import "blogs";
+@import "about";
+@import "contact";
+
+@import "cart";
