@@ -1,0 +1,302 @@
+/*------------------------------------------------------------------
+ [Header Stylesheet]
+-------------------------------------------------------------------*/
+
+.top_header{
+    padding: 7px 0;
+
+    background-color: $primary;
+
+    a{
+        color: #fff;
+    }
+
+    ul{
+        margin-bottom: 0;
+
+        li{
+            color: #fff;
+        }
+    }
+
+    .dropdown-menu{
+        padding: 10px;
+
+        li{
+            color: #333;
+        }
+    }
+}
+
+header{
+    background-color: #fff;
+
+    @include transition(300ms);
+
+    .container{
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        .container-fluid{
+            position: relative;
+        }
+    }
+
+    &.header{
+        .logo{
+            width: 150px;
+            height: 130px;
+            background-repeat: no-repeat;
+            background-position: center center;
+
+            margin: 10px auto;
+
+            background-image: url("../theme/original/img/logo.png");
+
+            img{
+                width: 100%;
+            }
+        }
+
+        .user_activities{
+            position: absolute;
+
+            top:50%;
+            right:0;
+
+            a{
+                color: #aaa;
+
+                &:hover{
+                    color: #6d6d6d;
+                }
+            }
+
+            .login{
+                span{
+                    color: #aaa;
+                }
+            }
+        }
+
+        .user{
+            width: 35%;
+            margin-top: 10px;
+
+            a{
+                color: #333;
+            }
+
+            .icon{
+                border-right: 1px solid #333;
+                padding-right: 7px;
+                padding-top: 5px;
+            }
+
+            .login{
+                padding-left: 7px;
+
+                .login_dropdown{
+                    .dropdown-menu{
+                        padding: 10px 10px;
+
+                        li{
+                            padding: 2px 0;
+                        }
+
+                        >li{
+                            >a{
+                                color: #fff;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .nav_list{
+            text-align: center;
+            width: 100%;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top-width: 2px;
+            border-top-style: solid;
+
+            position: relative;
+
+            li{
+                padding: 0 15px;
+
+                a{
+                    color: #333;
+                }
+            }
+
+            ul{
+                &.nav{
+                    >li{
+                        display: inline-block;
+
+                        position: relative;
+
+                        &:hover{
+                            background-color: #f4f4f4;
+
+                            a{
+                                color: $primary;
+                                background-color: transparent;
+                            }
+                        }
+
+                        >ul{
+                            position: absolute;
+                            top: 100%;
+                            left: 0;
+                            z-index: 999;
+
+                            width: 200%;
+                            padding: 15px;
+                            background-color: #fff;
+                            box-shadow: 3px 3px 5px rgba(0,0,0,.3);
+
+                            text-align: left;
+
+                            display: none;
+
+                            >li{
+                                padding-top: 5px;
+                                padding-bottom: 5px;
+                            }
+                        }
+
+                        &:hover{
+                            >ul{
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.fix_header{
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+
+            background-color: $primary;
+
+            @include transition(300ms);
+
+            .container {
+                padding-top: 5px;
+                padding-bottom: 5px;
+
+                .logo{
+                    width: 90px;
+                    height: 50px;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+
+                    margin: 0;
+
+                    background-image: url("../theme/original/img/logo_resize.png");
+                }
+
+                .nav_list{
+                    margin-top: 7px;
+                    padding-top: 0px;
+                    border-top-color: transparent;
+
+                    a, button{
+                        color: #fff;
+                    }
+
+                    .extended_nav{
+                        .btn{
+                            background: transparent;
+                        }
+                    }
+                }
+
+                .user_activities{
+                    a{
+                        color: #fff;
+
+                        &:hover{
+                            color: #fff;
+                        }
+                    }
+
+                    .login{
+                        span{
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px){
+
+    header{
+        &.header{
+            .nav_list{
+                button{
+                    display: block;
+                    width: 100%;
+                    min-height: 20px;
+                    padding: 7px 15px;
+
+                    text-align: center;
+                }
+
+                ul{
+                    &.nav{
+                        > li{
+                            display: list-item;
+
+                            ul{
+                                list-style: none;
+                                padding-left: 0;
+                            }
+
+                            >ul{
+                                width: 100%;
+                                position: static;
+                                box-shadow: none;
+                            }
+
+                            &:hover{
+                                >ul{
+                                    display: none;
+
+                                    >li{
+                                        text-align: center;
+
+                                        >a{
+                                            color: #333;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .extended_nav{
+                            >.row{
+                                > .col-xs-6{
+                                    margin-top: 5px;
+                                    margin-bottom: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

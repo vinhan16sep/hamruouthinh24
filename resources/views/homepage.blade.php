@@ -1,91 +1,140 @@
 @extends('layouts.frontend-template')
 @section('content')
-    <link href="{{ asset("public/frontend/css/style_slide_product.css")}}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset("public/frontend/css/homepage.css")}}" rel="stylesheet" type="text/css" />
+<section id="homepage">
+    <div class="big_cover">
+        <div class="row">
+            <div class="left col-md-3 hidden-xs">
+                <ul>
+                    <li>
+                        <a href="">
+                            <h3>abc <span class="pull-right"><i class="fa fa-caret-right" aria-hidden="false"></i></span> </h3>
+                        </a>
 
-    <section class="big_cover">
-        <div class="content">
-            <h3>save water</h3>
-            <h1>drink wine</h1>
-            <br>
-            <a class="btn btn-primary" href="#scroll_point" role="button">Khám phá ngay</a>
-        </div>
-    </section>
-    <section class="main_content" ng-controller="HomepageController" id="main_content">
-        <span id="scroll_point"></span>
-        <section class="container">
-            <div class="container-fluid">
-                <div class="title_big">
-                    Sản phẩm đặc biệt
-                </div>
-
-                <div class="row">
-                    <div class="item col-md-3 col-sm-6 col-xs-12" ng-repeat="special in specials">
-                        <div class="inner">
-                            <div class="mask">
-                                <img src="{{ asset('storage/app/products/') }}/<% special.slug %>/<% special.image[0] %>" alt="<% special.slug %>">
-                            </div>
-
-                            <span class="badge">- <% special.discount_percent %>%</span>
-
-                            <span class="productName"><% special.name %></span>
-                            <h4 class="productYear"><% special.year %></h4>
-                            <h3 class="productPrice"><% special.price | currency:VND:0 | commaToDot | removeUSCurrency  %> vnđ</h3>
-                            <br>
-                            <a class="btn btn-primary" href="#" role="button">Thử rượu miễn phí</a>
-
-                            <div class="hover">
-                                <span class="productName"><% special.name %></span>
-                                <h4 class="productYear"><% special.year %></h4>
-                                <h3 class="productPrice"><% special.price | currency:VND:0 | commaToDot | removeUSCurrency  %> vnđ</h3>
-                                <br>
-                                <!--<p ng-bind-html="$sce.trustAsHtml(special.description)"></p>-->
-                                <br>
-                                <a class="btn btn-primary" href="#" role="button" ng-click="addToCart(special.id)">Thêm vào giỏ hàng</a>
-                                <br>
-                                <a class="btn btn-primary" href="{{ url('/san-pham/chi-tiet') }}/<% special.slug %>" role="button"  target="_self" >Xem chi tiết</a>
-                                <br>
-                                <a class="btn btn-primary" href="#" role="button" ng-click="addToTasting(special.id)">Thử rượu miên phí</a>
-                                @if(!Auth::guest())
-                                    <br>
-                                    <a class="btn btn-primary" href="#" role="button" ng-click="addToLikeProduct(special.id)" ><% special.like %></a>
-                                @else
-                                    <br>
-                                    <a class="btn btn-primary" href="#" role="button" ng-click="login()" >Lưu yêu thích</a>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-        <section class="container" id="product_list">
-            <div class="row">
-                <!--<div class="col-md-3 col-sm-3 col-xs-12">
-                    <div class="panel panel-default">
-
-                        <div class="panel-heading">Danh mục sản phẩm</div>
-
-
-                        <ul class="list-group">
-                            <li class="list-group-item" ng-repeat="type in menuProduct.type">
-                                <a href="{{ url('loai-san-pham') }}/<% type.slug %>"  target="_self"><% type.title %></a>
-                                <ul class="list-group">
-                                    <li class="list-group-item" ng-repeat="kind in menuProduct.kind" ng-hide="kind.type_id != type.id">
-                                        <a href="{{ url('dong-san-pham') }}/<% kind.slug %>"  target="_self"><% kind.title %></a>
-                                        <ul class="list-group">
-                                            <li class="list-group-item" ng-repeat="trademarks in menuProduct.trademarks" ng-hide="trademarks.kind_id != kind.id">
-                                                <a href="{{ url('thuong-hieu') }}/<% trademarks.slug %>" target="_self"><% trademarks.name %></a>
-                                            </li>
-                                        </ul>
+                        <ul>
+                            <li>
+                                <a href="">
+                                    <h3>abc 2 <span class="pull-right"><i class="fa fa-caret-right" aria-hidden="false"></i></span> </h3>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="">
+                                            <h3>abc 3</h3>
+                                        </a>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
-                    </div>
-                </div>-->
+                    </li>
+                    <li>
+                        <a href="">
+                            <h3>def <span class="pull-right"><i class="fa fa-caret-right" aria-hidden="false"></i></span> </h3>
+                        </a>
 
+                        <ul>
+                            <li>
+                                <a href="">
+                                    <h3>def 2 <span class="pull-right"><i class="fa fa-caret-right" aria-hidden="false"></i></span> </h3>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="">
+                                            <h3>def 3</h3>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="right col-xs-12 col-md-9">
+                <div id="homepageSlider" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <img src="..." alt="...">
+                            <div class="carousel-caption">
+                                ...
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="..." alt="...">
+                            <div class="carousel-caption">
+                                ...
+                            </div>
+                        </div>
+                        ...
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#homepageSlider" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#homepageSlider" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main_content" ng-controller="HomepageController" id="main_content">
+        <span id="scroll_point"></span>
+        <div class="container product_list">
+            <div class="title_big">
+                Sản phẩm đặc biệt
+            </div>
+
+            <div class="row">
+                <div class="item col-md-3 col-sm-6 col-xs-12" ng-repeat="special in specials">
+                    <div class="inner">
+                        <div class="mask">
+                            <img src="{{ asset('storage/app/products/') }}/<% special.slug %>/<% special.image[0] %>" alt="<% special.slug %>">
+                        </div>
+
+                        <span class="badge">- <% special.discount_percent %>%</span>
+
+                        <span class="productName"><% special.name %></span>
+                        <h4 class="productYear"><% special.year %></h4>
+                        <h3 class="productPrice"><% special.price | currency:VND:0 | commaToDot | removeUSCurrency  %> vnđ</h3>
+                        <br>
+                        <a class="btn btn-primary" href="#" role="button">Thử rượu miễn phí</a>
+
+                        <div class="hover">
+                            <span class="productName"><% special.name %></span>
+                            <h4 class="productYear"><% special.year %></h4>
+                            <h3 class="productPrice"><% special.price | currency:VND:0 | commaToDot | removeUSCurrency  %> vnđ</h3>
+                            <br>
+                            <!--<p ng-bind-html="$sce.trustAsHtml(special.description)"></p>-->
+                            <br>
+                            <a class="btn btn-outline" href="#" role="button" ng-click="addToCart(special.id)">Thêm vào giỏ hàng</a>
+                            <br>
+                            <a class="btn btn-outline" href="{{ url('/san-pham/chi-tiet') }}/<% special.slug %>" role="button"  target="_self" >Xem chi tiết</a>
+                            <br>
+                            <a class="btn btn-outline" href="#" role="button" ng-click="addToTasting(special.id)">Thử rượu miên phí</a>
+                            @if(!Auth::guest())
+                                <br>
+                                <a class="btn btn-outline" href="#" role="button" ng-click="addToLikeProduct(special.id)" ><% special.like %></a>
+                            @else
+                                <br>
+                                <a class="btn btn-outline" href="#" role="button" ng-click="login()" >Lưu yêu thích</a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container product_list">
+            <div class="row">
                 <div class="container-fluid">
                     <div class="title_big">
                         Sản phẩm khuyến mãi
@@ -113,28 +162,27 @@
                                     <br>
                                     <!--<p ng-bind-html="$sce.trustAsHtml(discount.description)"></p>-->
                                     <br>
-                                    <a class="btn btn-primary" href="#" role="button" ng-click="addToCart(discount.id)">Thêm vào giỏ hàng</a>
+                                    <a class="btn btn-outline" href="#" role="button" ng-click="addToCart(discount.id)">Thêm vào giỏ hàng</a>
                                     <br>
-                                    <a class="btn btn-primary" href="{{ url('/san-pham/chi-tiet') }}/<% discount.slug %>" role="button"  target="_self" >Xem chi tiết</a>
+                                    <a class="btn btn-outline" href="{{ url('/san-pham/chi-tiet') }}/<% discount.slug %>" role="button"  target="_self" >Xem chi tiết</a>
                                     <br>
-                                    <a class="btn btn-primary" href="#" role="button" ng-click="addToTasting(discount.id)">Thử rượu miên phí</a>
+                                    <a class="btn btn-outline" href="#" role="button" ng-click="addToTasting(discount.id)">Thử rượu miên phí</a>
                                     @if(!Auth::guest())
                                         <br>
-                                        <a class="btn btn-primary" href="#" role="button" ng-click="addToLikeProduct(discount.id)" ><% discount.like %></a>
+                                        <a class="btn btn-outline" href="#" role="button" ng-click="addToLikeProduct(discount.id)" ><% discount.like %></a>
                                     @else
                                         <br>
-                                        <a class="btn btn-primary" href="#" role="button" ng-click="login()" >Lưu yêu thích</a>
+                                        <a class="btn btn-outline" href="#" role="button" ng-click="login()" >Lưu yêu thích</a>
                                     @endif
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-        </section>
+        </div>
 
-        <section class="container-fluid" id="tasting_wine">
+        <div class="container-fluid" id="tasting_wine">
             <div class="row">
                 <div class="left col-md-4 col-sm-6 col-xs-12 col-md-offset-1 col-sm-offset-1">
                     <div class="title_mid">
@@ -147,9 +195,9 @@
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#tastingWine_UG">Huong dan dang kys thu ruou</a>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <section class="container-fluid" id="news">
+        <div class="container" id="news">
             <div class="container">
                 <div class="title_big">
                     Tin tức
@@ -163,7 +211,6 @@
                             <a href="#">
                                 <h3><% new.title %></h3>
                             </a>
-                            <br>
                             <p ng-bind-html="$sce.trustAsHtml(new.description)"></p>
                             <br>
                             <a href="{{ url('bai-viet/chi-tiet/') }}/<% new.slug %>" class="btn btn-primary" target="_self" >Xem thêm <i class="fa fa-angle-double-right" aria-hidden="false"></i> </a>
@@ -172,9 +219,9 @@
 
                 </div>
             </div>
-        </section>
+        </div>
 
-        <section class="container-fluid" id="about">
+        <section class="container-fluid" id="about-homepage">
             <div class="row" ng-repeat="introduce in introduce">
 
                 <div class="right col-md-6 col-sm-6 col-xs-12 col-md-offset-6 col-sm-offset-6" ng-if="introduce.slug == 've-chung-toi' ">
@@ -183,24 +230,24 @@
                         Về chúng tôi
                     </div>
                     <p ng-bind-html="$sce.trustAsHtml(introduce.content)"></p>
-                    
+
 
                     <div class="row">
-                        <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="item col-md-4 col-sm-4 col-xs-12">
                             <i class="fa fa-3x fa-phone" aria-hidden="false"></i>
                             <br>
                             <h4>Hỗ trợ qua điện thoại</h4>
                             <p>Suspendisse potenti. Cras molestie mi sed iaculis varius. Maecenas fermentum semper sagittis. Sed eu mattis tellus. Mauris dolor ligula, pellentesque id vestibulum nec, consectetur sed sem. Aenean at ante enim. Quisque dapibus ligula ut erat laoreet aliquet. Pellentesque dictum magna ante, venenatis scelerisque risus pretium eget. Nullam et orci vitae felis rutrum tempor. Vestibulum id maximus lacus.</p>
                         </div>
 
-                        <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="item col-md-4 col-sm-4 col-xs-12">
                             <i class="fa fa-3x fa-truck" aria-hidden="false"></i>
                             <br>
                             <h4>Miễn phí giao hàng</h4>
                             <p>Suspendisse potenti. Cras molestie mi sed iaculis varius. Maecenas fermentum semper sagittis. Sed eu mattis tellus. Mauris dolor ligula, pellentesque id vestibulum nec, consectetur sed sem. Aenean at ante enim. Quisque dapibus ligula ut erat laoreet aliquet. Pellentesque dictum magna ante, venenatis scelerisque risus pretium eget. Nullam et orci vitae felis rutrum tempor. Vestibulum id maximus lacus.</p>
                         </div>
 
-                        <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="item col-md-4 col-sm-4 col-xs-12">
                             <i class="fa fa-3x fa-user-o" aria-hidden="false"></i>
                             <br>
                             <h4>Hỗ trợ người mua hàng</h4>
@@ -211,7 +258,8 @@
             </div>
         </section>
         <!-- InstanceEndEditable -->
-    </section>
+    </div>
+</section>
 
     <div class="modal fade" id="tastingWine_UG" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-lg" role="document">

@@ -6,6 +6,7 @@
         $scope.targetProducts = [];
         $scope.currentTarget = '';
         $scope.currentSubTarget = '';
+        $scope.targetDescription = '';
 
         $urlSplit = $location.path().split("/");
         if($urlSplit.length >= 4){
@@ -84,6 +85,8 @@
                     $scope.coverImage = success.data.target[0].image;
                     $scope.targetProducts = success.data.targetProducts;
                     $scope.currentTarget = success.data.type;
+                    //console.log(success.data.target[]);
+                    $scope.targetDescription = success.data.target[0].description;
                     $http({
                         method: 'GET',
                         url: API_URL + 'get_all_product',

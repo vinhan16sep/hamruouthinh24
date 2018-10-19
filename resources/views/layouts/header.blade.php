@@ -40,7 +40,7 @@
 </section>
 
 <header class="header">
-    <section class="container">
+    <div class="container">
         <div class="container-fluid">
             <a href="{{ url('') }}" target="_self">
                 <div class="logo"></div> <!--image logo-->
@@ -209,5 +209,5 @@
                 </form>
             </div>
         </div>
-    </section>
+    </div>
 </header>

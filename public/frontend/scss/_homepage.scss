@@ -1,0 +1,317 @@
+/*------------------------------------------------------------------
+ [Homepage Stylesheet]
+-------------------------------------------------------------------*/
+
+#homepage{
+    .big_cover{
+        width: 100%;
+        height: 60vh;
+
+        .row{
+            height: 100%;
+            margin-left: 0;
+            margin-right: 0;
+
+            .left{
+                padding-left: 0;
+                padding-right: 0;
+
+                height: 100%;
+
+                ul{
+                    height: 100%;
+
+                    padding-left: 0;
+                    list-style: none;
+
+                    > li{
+                        border-top: 1px solid #f4f4f4;
+                        border-bottom: 1px solid #f4f4f4;
+
+                        padding: 10px 30px;
+
+                        position: relative;
+
+                        a{
+                            color: $primary;
+
+                            h3{
+                                text-transform: uppercase;
+                            }
+                        }
+
+                        >ul{
+                            position: absolute;
+                            top: 0;
+                            left: 100%;
+                            z-index: 2;
+
+                            width: 100%;
+
+                            display: none;
+
+                            @include transition(300ms);
+
+                            li{
+                                background-color: #fff;
+
+                                border: 1px solid #f4f4f4
+                            }
+                        }
+
+                        &:hover{
+                            >ul{
+                                display: block;
+
+                                @include transition(300ms);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .right{
+                height: 100%;
+
+                padding-left: 0;
+                padding-right: 0;
+
+                .slide{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+
+    #main_content{
+        position: relative;
+
+        #scroll_point{
+            position: absolute;
+            top:-200px;
+            left: 0;
+            width: 1px;
+            height: 1px;
+        }
+
+        .container, .container-fluid{
+            .title_big{
+                padding: 30px 0;
+
+                text-align: center;
+                color: $primary;
+            }
+        }
+
+        .container{
+            &.product_list{
+                .row{
+                    .item{
+                        margin-bottom: 30px;
+
+                        span.productName{
+                            text-transform: uppercase;
+
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            display: -webkit-box;
+                            height: 6em;
+                            -webkit-line-clamp:4;
+                            -webkit-box-orient: vertical;
+                        }
+
+                        .inner{
+                            text-align: center;
+                            padding: 15px;
+                            background-color: #fff;
+                            overflow: hidden;
+
+                            position: relative;
+
+                            >.mask{
+                                width: 100%;
+                                height: 300px;
+                                overflow: hidden;
+                                margin-bottom: 15px;
+
+
+                            }
+
+                            .hover{
+                                width: 100%;
+                                height: 0;
+                                padding: 0px;
+                                color: #fff !important;
+                                background-color: rgba(193,39,45,.8);
+                                overflow: hidden;
+
+                                position: absolute;
+                                top: 50%;
+                                left: 0%;
+                                z-index: 99;
+
+                                @include transition(300ms);
+
+                                .btn{
+                                    width: 80%;
+                                    background-color: transparent;
+                                    border-color: #fff;
+                                    text-transform: uppercase;
+                                    margin-bottom: 7px;
+
+                                    color: #fff;
+
+                                    &:hover{
+                                        background-color: #fff;
+                                        color: $primary;
+                                    }
+                                }
+                            }
+
+                            >.badge{
+                                position: absolute !important;
+                                top:30px;
+                                right:30px;
+                                z-index: 98;
+
+                                padding: 7px;
+                                border-radius: 50%;
+
+                                background-color: $primary;
+                            }
+
+                            &:hover{
+                                .hover{
+                                    height: 100%;
+                                    padding: 15px;
+
+                                    top:0;
+
+                                    @include transition(300ms);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &#news{
+                .row{
+                    padding-bottom: 50px;
+
+                    .inner{
+                        padding: 15px;
+                        background-color: #fff;
+
+                        .mask{
+                            width: 100%;
+                            height: 250px;
+                            overflow: hidden;
+                        }
+
+                        a{
+                            h3{
+                                color: $primary;
+
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                display: -webkit-box;
+                                line-height: 1.25em;
+                                height: 3.7em;
+                                -webkit-line-clamp:3;
+                                -webkit-box-orient: vertical;
+                            }
+                        }
+
+                        p{
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            display: -webkit-box;
+                            line-height: 1.25em;
+                            height: 5em;
+                            -webkit-line-clamp:4;
+                            -webkit-box-orient: vertical;
+                        }
+                    }
+
+                }
+            }
+        }
+
+        .container-fluid{
+            &#tasting_wine{
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+
+                background-image: url("../theme/original/img/tasting_wine.jpg");
+
+                padding-top: 5em;
+                padding-bottom: 5em;
+
+                .row{
+                    .left{
+                        text-align: center;
+                    }
+                }
+            }
+
+            &#about-homepage{
+                height: fit-content;
+
+                .left{
+                    padding-left: 0;
+                    padding-right: 0;
+
+                    width: 100%;
+                    height:100%;
+
+                    position: absolute;
+                    top:0;
+                    left: -100%;
+
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    background-size: cover;
+
+                    background-image: url("../theme/original/img/big_cover.jpg");
+                }
+
+                .right{
+                    padding: 30px 70px 50px;
+                    color: #fff;
+                    background-color: $primary;
+
+                    position: relative;
+
+                    .title_big{
+                        color: #fff;
+                    }
+
+                    .row{
+                        .item{
+                            text-align: center;
+
+                            p{
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                display: -webkit-box;
+                                line-height: 1.25em;
+                                max-height: 7.5em;
+                                -webkit-line-clamp:6;
+                                -webkit-box-orient: vertical;
+                            }
+
+                            .fa-3x{
+                                font-size: 4em;
+                                padding-top: 7px;
+                                padding-bottom: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
