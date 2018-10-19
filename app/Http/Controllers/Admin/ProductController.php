@@ -239,7 +239,32 @@ class ProductController extends Controller
 
             $index++;
         }
-        return $query->paginate(10);
+        $products =  $query->paginate(10);
+        foreach ($products as $key => $value) {
+            // echo $value->id.'<br>';
+            $count = DB::table('product_comment')
+                ->where('product_id', $value->id)
+                ->where('is_deleted', '=', 0)   
+                ->count();
+            
+            $rating = DB::table('product_comment')
+                ->select('rating')
+                ->where('product_id', $value->id)
+                ->get();
+            $totalRating = 0;
+            foreach ($rating as $k => $val) {
+                $totalRating = $totalRating + $val->rating;
+            }
+            
+            if($count != 0){
+                $averageRating = $totalRating/$count;
+            }else{
+                $averageRating = 0;
+            }
+            $products[$key]->rating = $averageRating;
+            $products[$key]->count = $count;
+        }
+        return $products;
     }
 
     private function validateInput($id = null, $request) {
