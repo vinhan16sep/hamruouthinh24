@@ -35,6 +35,9 @@ class IntroduceController extends Controller
 
     public function saveIntroduce(Request $request, $slug){
         $keys = ['content'];
+        if($slug == 'dang-ky-thu-ruou'){
+            $keys = ['content','description'];
+        }
         $input = $this->createQueryInput($keys, $request);
 
         // Upload image

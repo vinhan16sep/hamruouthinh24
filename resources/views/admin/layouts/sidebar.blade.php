@@ -57,6 +57,9 @@
             <li class="{{(Request::segment(2) == 'library' || Request::segment(2) == 'image')? 'active' : '' }}">
               <a href="{{ url('admin/library') }}">Thư viện ảnh</a>
             </li>
+            <li class="{{(Request::segment(3) == 'dang-ky-thu-ruou')? 'active' : '' }}">
+              <a href="{{ url('admin/introduce/dang-ky-thu-ruou') }}">Đăng ký thử rượu</a>
+            </li>
           </ul>
         </li>
         <li class="treeview {{(Request::segment(2) == 'trademark' || Request::segment(2) == 'category' || Request::segment(2) == 'product' || Request::segment(2) == 'type' || Request::segment(2) == 'kind' || Request::segment(2) == 'origin')? 'active' : '' }}">

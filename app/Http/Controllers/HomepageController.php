@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Banner;
+use App\Introduce;
 
 class HomepageController extends Controller
 {
@@ -15,7 +16,8 @@ class HomepageController extends Controller
     public function index()
     {
         $banner = Banner::find(1);
-        return view('homepage',['banner' => $banner]);
+        $try_wine = Introduce::where('slug','dang-ky-thu-ruou')->first();
+        return view('homepage',['banner' => $banner,'try_wine' => $try_wine]);
     }
 
     /**
