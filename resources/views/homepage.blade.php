@@ -178,7 +178,7 @@
             </div>
         </div>
 
-        <div class="container-fluid" id="tasting_wine" style="background-image: url({{ asset ("storage/app/") }}/{!!$try_wine->image!!});>
+        <div class="container-fluid" id="tasting_wine" style="background-image: url({{ asset ("storage/app/") }}/{!!$try_wine->image!!});">
             <div class="row">
                 <div class="left col-md-4 col-sm-6 col-xs-12 col-md-offset-1 col-sm-offset-1">
                     <div class="title_mid text text-center">

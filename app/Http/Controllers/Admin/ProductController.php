@@ -271,7 +271,7 @@ class ProductController extends Controller
         // echo 'required|unique:product, id, ' . $id . '|max:255';die;
         $this->validate($request, [
             'name' => 'required|max:255',
-            'slug' => 'required|unique:product,slug, ' . $id . '|max:255',
+            // 'slug' => 'required|unique:product,slug, ' . $id . '|max:255',
             'type_id' => 'required',
             'price' => 'required|numeric',
             'selling_price' => 'numeric',

@@ -16,16 +16,34 @@ class Controller extends BaseController
         'isNotEmpty' => '%s %s không trống, không thể %s'
     ];
 
-    protected function buildUniqueSlug($table, $id, $slug){
-        $slugCount = count(DB::table($table)->select('*')->whereRaw("slug REGEXP '^{$slug}(-[0-9]+)?$'")->where('id', '<>', $id)->get());
-        return ($slugCount > 0) ? "{$slug}-{$slugCount}" : $slug;
+    protected function buildUniqueSlug($table, $id = 0, $slug){
+        $allSlugs = $this->getRelatedSlugs($table, $slug, $id);
+        if (! $allSlugs->contains('slug', $slug)){
+            return $slug;
+        }
+        for ($i = 1; $i <= 10; $i++) {
+            $newSlug = $slug.'-'.$i;
+            if (! $allSlugs->contains('slug', $newSlug)) {
+                return $newSlug;
+            }
+        }
+        throw new \Exception('Can not create a unique slug');
     }
 
-    protected function createQueryInput($keys, $request) {
+    protected function getRelatedSlugs($table, $slug, $id = 0)
+    {
+        return DB::table($table)->select('slug')->where('slug', 'like', $slug.'%')
+        ->where('id', '<>', $id)
+        ->get();
+    }
+    protected function createQueryInput($keys, $request,$slug='') {
         $queryInput = [];
         for($i = 0; $i < sizeof($keys); $i++) {
             $key = $keys[$i];
             $queryInput[$key] = $request[$key];
+            if($slug == 've-chung-toi' && $key == 'description'){
+                $queryInput[$key] = json_encode([$request[$key.'1'],$request[$key.'2'],$request[$key.'3']]);
+            }
         }
 
         return $queryInput;
