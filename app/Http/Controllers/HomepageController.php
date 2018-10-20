@@ -17,7 +17,8 @@ class HomepageController extends Controller
     {
         $banner = Banner::find(1);
         $try_wine = Introduce::where('slug','dang-ky-thu-ruou')->first();
-        return view('homepage',['banner' => $banner,'try_wine' => $try_wine]);
+        $about = Introduce::where('slug','ve-chung-toi')->first();
+        return view('homepage',['banner' => $banner,'try_wine' => $try_wine, 'about' => $about]);
     }
 
     /**

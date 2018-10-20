@@ -6,6 +6,7 @@
         $scope.menuProduct = [];
         $scope.latestAdvises = [];
         $scope.news = [];
+        $scope.introduce = [];
         $scope.$sce = $sce;
         var alert;
         // Fetch all products
