@@ -5,46 +5,37 @@
         <div class="row">
             <div class="left col-md-3 hidden-xs">
                 <ul>
-                    <li>
-                        <a href="">
-                            <h3>abc <span class="pull-right"><i class="fa fa-caret-right" aria-hidden="false"></i></span> </h3>
-                        </a>
-
-                        <ul>
-                            <li>
-                                <a href="">
-                                    <h3>abc 2 <span class="pull-right"><i class="fa fa-caret-right" aria-hidden="false"></i></span> </h3>
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a href="">
-                                            <h3>abc 3</h3>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="">
-                            <h3>def <span class="pull-right"><i class="fa fa-caret-right" aria-hidden="false"></i></span> </h3>
-                        </a>
-
-                        <ul>
-                            <li>
-                                <a href="">
-                                    <h3>def 2 <span class="pull-right"><i class="fa fa-caret-right" aria-hidden="false"></i></span> </h3>
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a href="">
-                                            <h3>def 3</h3>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
+                    <?php foreach ($menuProduct['type'] as $key => $value): ?>
+                        <li>
+                            <a href="">
+                                <h3><?php echo $value->title ?><span class="pull-right"><i class="fa fa-caret-right" aria-hidden="false"></i></span> </h3>
+                            </a>
+                            <ul>
+                                <?php foreach ($menuProduct['kind'] as $k => $val): ?>
+                                    <?php if ($val->type_id == $value->id): ?>
+                                        <li>
+                                            <a href="{{ url('dong-san-pham') }}/<?php echo $val->slug ?>"  target="_self">
+                                                <h3><?php echo $val->title ?><span class="pull-right"><i class="fa fa-caret-right" aria-hidden="false"></i></span> </h3>
+                                            </a>
+                                            <ul class="list-unstyled list-inline">
+                                                <?php foreach ($menuProduct['trademarks'] as $ks => $vals): ?>
+                                                    <?php if ($vals->kind_id == $val->id): ?>
+                                                        <li >
+                                                            <a href="{{ url('thuong-hieu') }}/<?php echo $vals->slug ?>" target="_self"><?php echo $vals->name ?></a>
+                                                        </li>
+                                                    <?php endif ?>
+                                                <?php endforeach ?>
+                                            </ul>
+                                        </li>
+                                    <?php endif ?>
+                                <?php endforeach ?>
+                            </ul>
+                            <div class="nav_expand">
+                                <div class="right">
+                                </div>
+                            </div>
+                        </li>
+                    <?php endforeach ?>
                 </ul>
             </div>
             <div class="right col-xs-12 col-md-9">
@@ -82,7 +73,6 @@
             </div>
         </div>
     </div>
-
     <div class="main_content" ng-controller="HomepageController" id="main_content">
         <span id="scroll_point"></span>
         <div class="container product_list">
@@ -220,7 +210,7 @@
             <div class="row" ng-repeat="introduce in introduce">
 
                 <div class="right col-md-6 col-sm-6 col-xs-12 col-md-offset-6 col-sm-offset-6" ng-if="introduce.slug == 've-chung-toi' ">
-                    <div class="left hidden-xs"></div>
+                    <div class="left hidden-xs"  style="background-image: url({{ asset ("storage/app/") }}/{!!$about->image!!});"></div>
                     <div class="title_big">
                         Về chúng tôi
                     </div>
@@ -232,21 +222,21 @@
                             <i class="fa fa-3x fa-phone" aria-hidden="false"></i>
                             <br>
                             <h4>Hỗ trợ qua điện thoại</h4>
-                            <p>Suspendisse potenti. Cras molestie mi sed iaculis varius. Maecenas fermentum semper sagittis. Sed eu mattis tellus. Mauris dolor ligula, pellentesque id vestibulum nec, consectetur sed sem. Aenean at ante enim. Quisque dapibus ligula ut erat laoreet aliquet. Pellentesque dictum magna ante, venenatis scelerisque risus pretium eget. Nullam et orci vitae felis rutrum tempor. Vestibulum id maximus lacus.</p>
+                            <p><?php echo json_decode($about->description)[0]; ?></p>
                         </div>
 
                         <div class="item col-md-4 col-sm-4 col-xs-12">
                             <i class="fa fa-3x fa-truck" aria-hidden="false"></i>
                             <br>
                             <h4>Miễn phí giao hàng</h4>
-                            <p>Suspendisse potenti. Cras molestie mi sed iaculis varius. Maecenas fermentum semper sagittis. Sed eu mattis tellus. Mauris dolor ligula, pellentesque id vestibulum nec, consectetur sed sem. Aenean at ante enim. Quisque dapibus ligula ut erat laoreet aliquet. Pellentesque dictum magna ante, venenatis scelerisque risus pretium eget. Nullam et orci vitae felis rutrum tempor. Vestibulum id maximus lacus.</p>
+                            <p><?php echo json_decode($about->description)[1]; ?></p>
                         </div>
 
                         <div class="item col-md-4 col-sm-4 col-xs-12">
                             <i class="fa fa-3x fa-user-o" aria-hidden="false"></i>
                             <br>
                             <h4>Hỗ trợ người mua hàng</h4>
-                            <p>Suspendisse potenti. Cras molestie mi sed iaculis varius. Maecenas fermentum semper sagittis. Sed eu mattis tellus. Mauris dolor ligula, pellentesque id vestibulum nec, consectetur sed sem. Aenean at ante enim. Quisque dapibus ligula ut erat laoreet aliquet. Pellentesque dictum magna ante, venenatis scelerisque risus pretium eget. Nullam et orci vitae felis rutrum tempor. Vestibulum id maximus lacus.</p>
+                            <p><?php echo json_decode($about->description)[2]; ?></p>
                         </div>
                     </div>
                 </div>

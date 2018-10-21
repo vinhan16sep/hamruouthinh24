@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 20, 2018 lúc 07:15 AM
--- Phiên bản máy phục vụ: 10.1.22-MariaDB
--- Phiên bản PHP: 7.1.4
+-- Thời gian đã tạo: Th10 21, 2018 lúc 05:49 AM
+-- Phiên bản máy phục vụ: 10.1.31-MariaDB
+-- Phiên bản PHP: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -65,7 +65,7 @@ CREATE TABLE `banner` (
 --
 
 INSERT INTO `banner` (`id`, `image`, `created_at`, `updated_at`) VALUES
-(1, '[\"ee6MwruPQnHmfT3XjWsXui5L5Ndmo9OaMYBT5JGH.jpeg\",\"tCqnV0uSaCTpn4xM3TuReLTDHP1hiZ3WcVQX4jMB.jpeg\"]', NULL, '2018-10-19 17:31:24');
+(1, '[\"Zp1vmHyouvnNUHk4fAfNyZINvIze1EqaiOxtSjtQ.jpeg\",\"AIYevItQBjWvUKUgCAfwfrOBNCytNu6XTqABiTXB.jpeg\"]', NULL, '2018-10-20 07:38:42');
 
 -- --------------------------------------------------------
 
@@ -126,7 +126,8 @@ INSERT INTO `blog_category` (`id`, `title`, `slug`, `image`, `description`, `typ
 (1, 'Tin Tức', 'tin-tuc', 'blogCategories/uhtgOSuqaXU1nWExXT4oGO2eB1naOWloizgFwsWr.png', 'Tin Tức', 1, '2018-09-26 04:33:07', '2018-09-26 08:16:10', 1, 0),
 (2, 'Tư Vấn', 'tu-van', 'advises/category/yLwi7WEQ7BpobpMZIe1PSIiIi0pGgcaJ1iOGz1cu.png', 'Tư Vấn', 0, '2018-09-26 04:34:01', '2018-09-26 04:34:01', 1, 0),
 (3, 'Tuyển dụng', 'tuyen-dung', 'news/category/j5ptkT3OcSX46NlIRXNFtOL5NbSdNb1lfLiEXnRt.jpeg', 'Tuyển dụng', 1, '2018-09-26 07:09:31', '2018-09-26 08:17:06', 1, 0),
-(4, 'test', 'test', 'blogCategories/2VYZEqCdj08MHmWh2alIOjdzxsJMFCbHmVSz23W9.jpeg', 'test', NULL, '2018-10-18 04:23:54', '2018-10-18 04:23:54', 1, 0);
+(4, 'test', 'test', 'blogCategories/2VYZEqCdj08MHmWh2alIOjdzxsJMFCbHmVSz23W9.jpeg', 'test', NULL, '2018-10-18 04:23:54', '2018-10-18 04:23:54', 1, 0),
+(5, 'Phần thưởng', 'phan-thuong', 'blogCategories/HlUaQxeclAsgHhH8ihPIMp9zZ4VydHR2yMTodKhZ.jpeg', 'Phần thưởng', NULL, '2018-10-21 03:35:14', '2018-10-21 03:48:12', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -178,7 +179,7 @@ CREATE TABLE `contact` (
 --
 
 INSERT INTO `contact` (`id`, `company`, `address`, `numberphone`, `email`, `website`, `map`, `created_at`, `updated_at`) VALUES
-(1, 'CTY TNHH MTV TM hóa mỹ phẩm Nam Anh Khương', '11/B6 KP. Bình Thuận 2, P.Thuận Giao, TX.Thuận An, Bình Dương', '(0274) 3717 508 - 0933 457 345', 'namanhkhuong@yahoo.com.vn', 'www.hoamyphamnamanhkhuong.com', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.925653583093!2d105.78706381422545!3d21.03566058599462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab49e86439d1%3A0x3e1480876f45a0c7!2sH%E1%BB%93ng+Minh+Baby+Store!5e0!3m2!1svi!2s!4v1539970769042\" width=\"600\" height=\"450\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe>', NULL, '2018-10-19 17:39:45');
+(1, 'CTY TNHH MTV TM hóa mỹ phẩm Nam Anh Khương', '11/B6 KP. Bình Thuận 2, P.Thuận Giao, TX.Thuận An, Bình Dương', '(0274) 3717 508 - 0933 457 345', 'namanhkhuong@yahoo.com.vn', 'www.hoamyphamnamanhkhuong.com', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.925653583093!2d105.78706381422545!3d21.03566058599462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab49e86439d1%3A0x3e1480876f45a0c7!2sH%E1%BB%93ng+Minh+Baby+Store!5e0!3m2!1svi!2s!4v1539970769042\" width=\"600\" height=\"450\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe>', NULL, '2018-10-21 03:33:32');
 
 -- --------------------------------------------------------
 
@@ -227,13 +228,13 @@ CREATE TABLE `introduce` (
 --
 
 INSERT INTO `introduce` (`id`, `title`, `slug`, `image`, `description`, `content`, `is_deleted`, `created_at`, `updated_at`) VALUES
-(1, 'Về chúng tôi', 've-chung-toi', 'introduce/s8ZEzY18Dk193BB4nrsiTugshpjkBYWCV8NLCsHX.jpeg', '', '<p>Được th&agrave;nh lập từ năm 2013 bởi th&agrave;nh quả hợp t&aacute;c của chuy&ecirc;n gia rượu vang v&agrave; những người bạn đồng h&agrave;nh đam m&ecirc; rượu vang, Wineplaza hội tụ đầy đủ những yếu tố để trở th&agrave;nh người cung cấp rượu vang h&agrave;ng đầu tại Việt Nam v&agrave; Thế Giới. Hiểu r&otilde; gu thưởng thức của kh&aacute;ch h&agrave;ng, mọi sản phẩm tại <strong>Hamruou24h</strong> đều được nhập khẩu trực tiếp từ c&aacute;c nh&agrave; sản xuất danh tiếng, sau đ&oacute; được c&aacute;c chuy&ecirc;n gia rượu vang h&agrave;ng đầu kiểm tra v&agrave; thử nghiệm kĩ lưỡng trước khi giới thiệu tới người ti&ecirc;u d&ugrave;ng. Mục đ&iacute;ch cuối c&ugrave;ng của ch&uacute;ng t&ocirc;i l&agrave; đảm bảo bạn được thưởng thức những sản phẩm tuyệt hảo với mức gi&aacute; thấp nhất c&oacute; thể.</p>\r\n<p><strong>Những đối t&aacute;c lớn của Hamruou24h c&oacute; thể kể tới như:</strong>&nbsp;Haidangplaza, ...</p>\r\n<p>&nbsp;</p>', 0, NULL, '2018-10-20 04:50:12'),
+(1, 'Về chúng tôi', 've-chung-toi', 'introduce/ss5Txk4LYAfYSydysBo9ZntUBxuL8OrWfugF9vP8.jpeg', '[\"11Suspendisse potenti. Cras molestie mi sed iaculis varius. Maecenas fermentum semper sagittis. Sed eu mattis tellus. Mauris dolor ligula, pellentesque id vestibulum nec, consectetur sed sem. Aenean at ante enim. Quisque dapibus ligula ut erat laoreet aliquet. Pellentesque dictum magna ante, venenatis scelerisque risus pretium eget. Nullam et orci vitae felis rutrum tempor. Vestibulum id maximus lacus.\",\"221Suspendisse potenti. Cras molestie mi sed iaculis varius. Maecenas fermentum semper sagittis. Sed eu mattis tellus. Mauris dolor ligula, pellentesque id vestibulum nec, consectetur sed sem. Aenean at ante enim. Quisque dapibus ligula ut erat laoreet aliquet. Pellentesque dictum magna ante, venenatis scelerisque risus pretium eget. Nullam et orci vitae felis rutrum tempor. Vestibulum id maximus lacus.\",\"33Suspendisse potenti. Cras molestie mi sed iaculis varius. Maecenas fermentum semper sagittis. Sed eu mattis tellus. 3Mauris dolor ligula, pellentesque id vestibulum nec, consectetur sed sem. Aenean at ante enim. Quisque dapibus ligula ut erat laoreet aliquet. Pellentesque dictum magna ante, venenatis scelerisque risus pretium eget. Nullam et orci vitae felis rutrum tempor. Vestibulum id maximus lacus.\"]', '<p>Được th&agrave;nh lập từ năm 2013 bởi th&agrave;nh quả hợp t&aacute;c của chuy&ecirc;n gia rượu vang v&agrave; những người bạn đồng h&agrave;nh đam m&ecirc; rượu vang, Wineplaza hội tụ đầy đủ những yếu tố để trở th&agrave;nh người cung cấp rượu vang h&agrave;ng đầu tại Việt Nam v&agrave; Thế Giới. Hiểu r&otilde; gu thưởng thức của kh&aacute;ch h&agrave;ng, mọi sản phẩm tại <strong>Hamruou24h</strong> đều được nhập khẩu trực tiếp từ c&aacute;c nh&agrave; sản xuất danh tiếng, sau đ&oacute; được c&aacute;c chuy&ecirc;n gia rượu vang h&agrave;ng đầu kiểm tra v&agrave; thử nghiệm kĩ lưỡng trước khi giới thiệu tới người ti&ecirc;u d&ugrave;ng. Mục đ&iacute;ch cuối c&ugrave;ng của ch&uacute;ng t&ocirc;i l&agrave; đảm bảo bạn được thưởng thức những sản phẩm tuyệt hảo với mức gi&aacute; thấp nhất c&oacute; thể.</p>\r\n<p><strong>Những đối t&aacute;c lớn của Hamruou24h c&oacute; thể kể tới như:</strong>&nbsp;Haidangplaza, ...</p>\r\n<p>&nbsp;</p>', 0, NULL, '2018-10-20 09:35:05'),
 (2, 'Tầm nhìn chiến lược', 'tam-nhin-chien-luoc', 'introduce/DAUXK971T0dSwnalxtFsemkwspZrAb5hFlnWAje1.jpeg', '', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae velit ac risus cursus pretium eget id arcu. Cras non turpis ligula. Nunc placerat justo eget libero blandit pharetra. Suspendisse quis mauris a eros lobortis interdum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec venenatis, nibh non ullamcorper condimentum, diam enim volutpat lacus, at bibendum tortor lorem quis mi. Fusce molestie odio tincidunt, consectetur nisi quis, molestie ante. Curabitur risus neque, condimentum nec quam hendrerit, sollicitudin accumsan risus. Nunc commodo sapien dui, non tempor sapien elementum at. Duis euismod est sed rutrum euismod. Etiam ornare placerat orci, id molestie dolor ornare quis. Curabitur finibus ultrices ultricies. Aliquam viverra sagittis efficitur. Duis ullamcorper lorem in nulla vestibulum porttitor non quis ante.</p>\r\n<p>&nbsp;</p>', 0, NULL, '2018-10-18 03:52:15'),
-(3, 'Sứ mệnh', 'su-menh', 'introduce/3PoFSgfTrcsF0rNtcjDe7iIPh4anRhHjUAkmlVMn.jpeg', '', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae velit ac risus cursus pretium eget id arcu. Cras non turpis ligula. Nunc placerat justo eget libero blandit pharetra. Suspendisse quis mauris a eros lobortis interdum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec venenatis, nibh non ullamcorper condimentum, diam enim volutpat lacus, at bibendum tortor lorem quis mi. Fusce molestie odio tincidunt, consectetur nisi quis, molestie ante. Curabitur risus neque, condimentum nec quam hendrerit, sollicitudin accumsan risus. Nunc commodo sapien dui, non tempor sapien elementum at. Duis euismod est sed rutrum euismod. Etiam ornare placerat orci, id molestie dolor ornare quis. Curabitur finibus ultrices ultricies. Aliquam viverra sagittis efficitur. Duis ullamcorper lorem in nulla vestibulum porttitor non quis ante.</p>', 0, NULL, '2018-10-18 03:51:43'),
+(3, 'Sứ mệnh', 'su-menh', 'introduce/3PoFSgfTrcsF0rNtcjDe7iIPh4anRhHjUAkmlVMn.jpeg', '', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae velit ac risus cursus pretium eget id arcu. Cras non turpis ligula. Nunc placerat justo eget libero blandit pharetra. Suspendisse quis mauris a eros lobortis interdum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec venenatis, nibh non ullamcorper condimentum, diam enim volutpat lacus, at bibendum tortor lorem quis mi. Fusce molestie odio tincidunt, consectetur nisi quis, molestie ante. Curabitur risus neque, condimentum nec quam hendrerit, sollicitudin accumsan risus. Nunc commodo sapien dui, non tempor sapien elementum at. Duis euismod est sed rutrum euismod. Etiam ornare placerat orci, id molestie dolor ornare quis. Curabitur finibus ultrices ultricies. Aliquam viverra sagittis efficitur. Duis ullamcorper lorem in nulla vestibulum porttitor non quis ante.</p>', 0, NULL, '2018-10-20 08:34:48'),
 (4, 'Chứng nhận', 'chung-nhan', 'introduce/z47H97qzTwsB0Ww0LsPCWEBb7HkaPiCAOGVuyhoQ.jpeg', '', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent gravida tempor lacinia. Nam odio metus, ornare vitae diam in, tempus pellentesque magna. Nullam eget nisi non quam luctus posuere. Quisque sem sapien, congue tincidunt varius in, sagittis in lorem. Aliquam feugiat est quis nisl varius sodales. Curabitur vel nibh dapibus, condimentum nunc ac, fringilla nunc. Praesent enim ex, molestie id sapien sed, tincidunt finibus dui. Praesent quis diam ultrices, iaculis nisi et, condimentum ex. In lacinia augue felis, nec lobortis risus aliquet in. Curabitur id tortor diam. Maecenas id interdum felis. Cras egestas, orci ut cursus dictum, neque purus sodales dui, a elementum mauris enim sed arcu.</p>', 0, NULL, '2017-11-28 07:08:53'),
 (5, 'Điểu khoản', 'dieu-khoan', 'introduce/W1cAVHfj4YBGD1yBpx9Wenv2dakH2l8HtScWUdZH.jpeg', '', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae velit ac risus cursus pretium eget id arcu. Cras non turpis ligula. Nunc placerat justo eget libero blandit pharetra. Suspendisse quis mauris a eros lobortis interdum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec venenatis, nibh non ullamcorper condimentum, diam enim volutpat lacus, at bibendum tortor lorem quis mi. Fusce molestie odio tincidunt, consectetur nisi quis, molestie ante. Curabitur risus neque, condimentum nec quam hendrerit, sollicitudin accumsan risus. Nunc commodo sapien dui, non tempor sapien elementum at. Duis euismod est sed rutrum euismod. Etiam ornare placerat orci, id molestie dolor ornare quis. Curabitur finibus ultrices ultricies. Aliquam viverra sagittis efficitur. Duis ullamcorper lorem in nulla vestibulum porttitor non quis ante.</p>', 0, NULL, '2018-10-18 03:52:41'),
 (6, 'Thư viện ảnh', 'thu-vien-anh', 'introduce/lSDOcIRzwjzjY20CS6oDCCMRw9huC3IuqFt4VxSu.jpeg', '', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent gravida tempor lacinia. Nam odio metus, ornare vitae diam in, tempus pellentesque magna. Nullam eget nisi non quam luctus posuere. Quisque sem sapien, congue tincidunt varius in, sagittis in lorem. Aliquam feugiat est quis nisl varius sodales. Curabitur vel nibh dapibus, condimentum nunc ac, fringilla nunc. Praesent enim ex, molestie id sapien sed, tincidunt finibus dui. Praesent quis diam ultrices, iaculis nisi et, condimentum ex. In lacinia augue felis, nec lobortis risus aliquet in. Curabitur id tortor diam. Maecenas id interdum felis. Cras egestas, orci ut cursus dictum, neque purus sodales dui, a elementum mauris enim sed arcu.</p>', 0, NULL, '2017-11-28 07:09:07'),
-(7, 'Đăng ký thử rượu', 'dang-ky-thu-ruou', 'introduce/mBJw2LJSejGOLXqDoh4A21FERCYqfIthTt5bYBDc.jpeg', 'Vivamus ac tempor quam. Maecenas pulvinar tristique malesuada. Donec euismod nibh et dapibus tempor. Nullam elit nulla, rutrum eget eros sollicitudin, ullamcorper ultrices orci. Suspendisse potenti. Ut porta bibendum nibh eu viverra. Sed vel magna ac ligula finibus fermentum fringilla eu lectus. Sed elit ante, ornare nec dui at, molestie congue arcu. Nam at imperdiet neque, non tempus libero. Praesent dolor odio, mattis vulputate est ut, vulputate sollicitudin metus. Nulla id metus turpis. Phasellus non diam nisi. Duis vitae felis et magna elementum dictum. Pellentesque in enim fringilla, ullamcorper lacus et, imperdiet erat.aa', '<ol>\r\n<li>\r\n<h3>Buoc 1:</h3>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam pretium sapien, et gravida nisl vehicula a. Fusce nec augue eu velit tempus finibus in id diam. Vivamus pellentesque orci molestie justo dapibus, id posuere lectus placerat. Cras ut eros rutrum magna accumsan bibendum. Quisque laoreet, elit sit amet imperdiet euismod, lacus mauris consectetur orci, eget aliquam odio ante a massa. Vestibulum convallis egestas dignissim. Donec sit amet iaculis odio.</p>\r\n<p>Morbi vel maximus ex. Vivamus sit amet cursus orci. Aliquam cursus bibendum lacus, quis congue justo. In volutpat, magna sit amet porta gravida, ante erat sodales eros, eget malesuada magna est vitae magna. Phasellus laoreet pharetra scelerisque. Nunc ex mauris, cursus eu ex a, mollis tempus nisi. Integer eleifend justo quam, a imperdiet urna pretium at. Sed porta nulla ut odio volutpat auctor. Maecenas et metus lacus. Integer metus sem, iaculis vel suscipit vel, aliquam at justo. Quisque quis condimentum nibh. Suspendisse hendrerit consequat ipsum, in malesuada urna vestibulum nec. Ut maximus, mi ut sodales lacinia, mauris eros varius lorem, et convallis felis diam eu sapien. Donec sollicitudin, nisl a blandit euismod, risus mauris tristique lectus, sed dignissim quam risus sit amet massa.</p>\r\n</li>\r\n<li>\r\n<h3>Buoc 2:</h3>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam pretium sapien, et gravida nisl vehicula a. Fusce nec augue eu velit tempus finibus in id diam. Vivamus pellentesque orci molestie justo dapibus, id posuere lectus placerat. Cras ut eros rutrum magna accumsan bibendum. Quisque laoreet, elit sit amet imperdiet euismod, lacus mauris consectetur orci, eget aliquam odio ante a massa. Vestibulum convallis egestas dignissim. Donec sit amet iaculis odio.</p>\r\n<p>Morbi vel maximus ex. Vivamus sit amet cursus orci. Aliquam cursus bibendum lacus, quis congue justo. In volutpat, magna sit amet porta gravida, ante erat sodales eros, eget malesuada magna est vitae magna. Phasellus laoreet pharetra scelerisque. Nunc ex mauris, cursus eu ex a, mollis tempus nisi. Integer eleifend justo quam, a imperdiet urna pretium at. Sed porta nulla ut odio volutpat auctor. Maecenas et metus lacus. Integer metus sem, iaculis vel suscipit vel, aliquam at justo. Quisque quis condimentum nibh. Suspendisse hendrerit consequat ipsum, in malesuada urna vestibulum nec. Ut maximus, mi ut sodales lacinia, mauris eros varius lorem, et convallis felis diam eu sapien. Donec sollicitudin, nisl a blandit euismod, risus mauris tristique lectus, sed dignissim quam risus sit amet massa.</p>\r\n</li>\r\n<li>\r\n<h3>Buoc 3:</h3>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam pretium sapien, et gravida nisl vehicula a. Fusce nec augue eu velit tempus finibus in id diam. Vivamus pellentesque orci molestie justo dapibus, id posuere lectus placerat. Cras ut eros rutrum magna accumsan bibendum. Quisque laoreet, elit sit amet imperdiet euismod, lacus mauris consectetur orci, eget aliquam odio ante a massa. Vestibulum convallis egestas dignissim. Donec sit amet iaculis odio.</p>\r\n<p>Morbi vel maximus ex. Vivamus sit amet cursus orci. Aliquam cursus bibendum lacus, quis congue justo. In volutpat, magna sit amet porta gravida, ante erat sodales eros, eget malesuada magna est vitae magna. Phasellus laoreet pharetra scelerisque. Nunc ex mauris, cursus eu ex a, mollis tempus nisi. Integer eleifend justo quam, a imperdiet urna pretium at. Sed porta nulla ut odio volutpat auctor. Maecenas et metus lacus. Integer metus sem, iaculis vel suscipit vel, aliquam at justo. Quisque quis condimentum nibh. Suspendisse hendrerit consequat ipsum, in malesuada urna vestibulum nec. Ut maximus, mi ut sodales lacinia, mauris eros varius lorem, et convallis felis diam eu sapien. Donec sollicitudin, nisl a blandit euismod, risus mauris tristique lectus, sed dignissim quam risus sit amet massa.</p>\r\n</li>\r\n</ol>', 0, '2018-10-19 17:00:00', '2018-10-20 05:12:12');
+(7, 'Đăng ký thử rượu', 'dang-ky-thu-ruou', 'introduce/EQAzuMjNRVP7QYMmszJeyHG3FdlvKe8bW0H9UbC7.jpeg', 'Vivamus ac tempor quam. Maecenas pulvinar tristique malesuada. Donec euismod nibh et dapibus tempor. Nullam elit nulla, rutrum eget eros sollicitudin, ullamcorper ultrices orci. Suspendisse potenti. Ut porta bibendum nibh eu viverra. Sed vel magna ac ligula finibus fermentum fringilla eu lectus. Sed elit ante, ornare nec dui at, molestie congue arcu. Nam at imperdiet neque, non tempus libero. Praesent dolor odio, mattis vulputate est ut, vulputate sollicitudin metus. Nulla id metus turpis. Phasellus non diam nisi. Duis vitae felis et magna elementum dictum. Pellentesque in enim fringilla, ullamcorper lacus et, imperdiet erat.aaaa1', '<ol>\r\n<li>\r\n<h3>Buoc 1:</h3>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam pretium sapien, et gravida nisl vehicula a. Fusce nec augue eu velit tempus finibus in id diam. Vivamus pellentesque orci molestie justo dapibus, id posuere lectus placerat. Cras ut eros rutrum magna accumsan bibendum. Quisque laoreet, elit sit amet imperdiet euismod, lacus mauris consectetur orci, eget aliquam odio ante a massa. Vestibulum convallis egestas dignissim. Donec sit amet iaculis odio.</p>\r\n<p>Morbi vel maximus ex. Vivamus sit amet cursus orci. Aliquam cursus bibendum lacus, quis congue justo. In volutpat, magna sit amet porta gravida, ante erat sodales eros, eget malesuada magna est vitae magna. Phasellus laoreet pharetra scelerisque. Nunc ex mauris, cursus eu ex a, mollis tempus nisi. Integer eleifend justo quam, a imperdiet urna pretium at. Sed porta nulla ut odio volutpat auctor. Maecenas et metus lacus. Integer metus sem, iaculis vel suscipit vel, aliquam at justo. Quisque quis condimentum nibh. Suspendisse hendrerit consequat ipsum, in malesuada urna vestibulum nec. Ut maximus, mi ut sodales lacinia, mauris eros varius lorem, et convallis felis diam eu sapien. Donec sollicitudin, nisl a blandit euismod, risus mauris tristique lectus, sed dignissim quam risus sit amet massa.</p>\r\n</li>\r\n<li>\r\n<h3>Buoc 2:</h3>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam pretium sapien, et gravida nisl vehicula a. Fusce nec augue eu velit tempus finibus in id diam. Vivamus pellentesque orci molestie justo dapibus, id posuere lectus placerat. Cras ut eros rutrum magna accumsan bibendum. Quisque laoreet, elit sit amet imperdiet euismod, lacus mauris consectetur orci, eget aliquam odio ante a massa. Vestibulum convallis egestas dignissim. Donec sit amet iaculis odio.</p>\r\n<p>Morbi vel maximus ex. Vivamus sit amet cursus orci. Aliquam cursus bibendum lacus, quis congue justo. In volutpat, magna sit amet porta gravida, ante erat sodales eros, eget malesuada magna est vitae magna. Phasellus laoreet pharetra scelerisque. Nunc ex mauris, cursus eu ex a, mollis tempus nisi. Integer eleifend justo quam, a imperdiet urna pretium at. Sed porta nulla ut odio volutpat auctor. Maecenas et metus lacus. Integer metus sem, iaculis vel suscipit vel, aliquam at justo. Quisque quis condimentum nibh. Suspendisse hendrerit consequat ipsum, in malesuada urna vestibulum nec. Ut maximus, mi ut sodales lacinia, mauris eros varius lorem, et convallis felis diam eu sapien. Donec sollicitudin, nisl a blandit euismod, risus mauris tristique lectus, sed dignissim quam risus sit amet massa.</p>\r\n</li>\r\n<li>\r\n<h3>Buoc 3:</h3>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam pretium sapien, et gravida nisl vehicula a. Fusce nec augue eu velit tempus finibus in id diam. Vivamus pellentesque orci molestie justo dapibus, id posuere lectus placerat. Cras ut eros rutrum magna accumsan bibendum. Quisque laoreet, elit sit amet imperdiet euismod, lacus mauris consectetur orci, eget aliquam odio ante a massa. Vestibulum convallis egestas dignissim. Donec sit amet iaculis odio.</p>\r\n<p>Morbi vel maximus ex. Vivamus sit amet cursus orci. Aliquam cursus bibendum lacus, quis congue justo. In volutpat, magna sit amet porta gravida, ante erat sodales eros, eget malesuada magna est vitae magna. Phasellus laoreet pharetra scelerisque. Nunc ex mauris, cursus eu ex a, mollis tempus nisi. Integer eleifend justo quam, a imperdiet urna pretium at. Sed porta nulla ut odio volutpat auctor. Maecenas et metus lacus. Integer metus sem, iaculis vel suscipit vel, aliquam at justo. Quisque quis condimentum nibh. Suspendisse hendrerit consequat ipsum, in malesuada urna vestibulum nec. Ut maximus, mi ut sodales lacinia, mauris eros varius lorem, et convallis felis diam eu sapien. Donec sollicitudin, nisl a blandit euismod, risus mauris tristique lectus, sed dignissim quam risus sit amet massa.</p>\r\n</li>\r\n</ol>', 0, '2018-10-19 17:00:00', '2018-10-20 08:00:48');
 
 -- --------------------------------------------------------
 
@@ -586,7 +587,8 @@ INSERT INTO `product` (`id`, `type_id`, `kind_id`, `trademark_id`, `name`, `slug
 (163, 34, 28, 40, 'Rượu Vang Đỏ Pháp - Château Côte Puyblanquet 2014', 'ruou-vang-do-phap---chateau-cote-puyblanquet-2014', 99, NULL, '13%', 'Chauter Côte Puyblenquet', '850000', '850000', '<p><strong>Ch&acirc;teau C&ocirc;te Puyblanquet</strong>&nbsp;m&agrave;u đỏ ruby, mang hương thơm những b&ocirc;ng hoa đang nở rộ,ngo&agrave;i ra c&ograve;n c&oacute; m&ugrave;i hương của mứt hoa quả v&agrave; hương thơm nhẹ nh&agrave;ng của gỗ, khi v&agrave;o v&ograve;m miệng, lan tỏa vị d&agrave;y đặc, c&acirc;n bằng hương vị giữa th&iacute;nh gi&aacute;c v&agrave; vị gi&aacute;c. Nhờ tuổi thọ trung b&igrave;nh của những gốc nho l&acirc;u năm tạo n&ecirc;n tannin trong rượu li&ecirc;n kết chặt chẽ khiến rượu c&oacute; thể giữ được 30-40 năm v&agrave; uống trong c&aacute;c thập kỷ tiếp theo.</p>', '<p><strong>Ch&acirc;teau C&ocirc;te Puyblanquet</strong>&nbsp;m&agrave;u đỏ ruby, mang hương thơm những b&ocirc;ng hoa đang nở rộ,ngo&agrave;i ra c&ograve;n c&oacute; m&ugrave;i hương của mứt hoa quả v&agrave; hương thơm nhẹ nh&agrave;ng của gỗ, khi v&agrave;o v&ograve;m miệng, lan tỏa vị d&agrave;y đặc, c&acirc;n bằng hương vị giữa th&iacute;nh gi&aacute;c v&agrave; vị gi&aacute;c. Nhờ tuổi thọ trung b&igrave;nh của những gốc nho l&acirc;u năm tạo n&ecirc;n tannin trong rượu li&ecirc;n kết chặt chẽ khiến rượu c&oacute; thể giữ được 30-40 năm v&agrave; uống trong c&aacute;c thập kỷ tiếp theo.</p>', NULL, NULL, NULL, 0, 0, 0, '[\"Am44HQgFgxyk7V2ZJ0bugN7khq9QOnkkozy2LdWp.jpeg\"]', 39, '750ml/chai', '750ml/chai,6 chai/thùng', '2014', 'nho Merlot, Cabernet Sauvignon, Cabernet Flanc', '2018-10-13 03:21:58', '2018-10-13 03:21:58', NULL, 0, 0),
 (164, 34, 28, 40, 'Rượu Vang Trắng Pháp - Château Suau (Sauternes) Sauternes Grand Cru Classé 2014', 'ruou-vang-trang-phap---chateau-suau-sauternes-sauternes-grand-cru-classe-2014', 99, NULL, '13%', 'Chauteau Suau', '1450000', '1450000', '<p><span style=\"color: #800000;\"><strong>Ch&acirc;teau Suau</strong>&nbsp;-</span>&nbsp;D&ograve;ng vang trắng hảo hạng của v&ugrave;ng Sauternes, Bordeaux được sản xuất từ hai giống nho&nbsp;Sauvignon Blanc&nbsp;v&agrave; S&eacute;millon nhiễm nấm Botrytis. Hương thơm của mứt cam đọng lại trong v&ograve;m họng sau khi bạn kết th&uacute;c ngụm rượu vang. M&agrave;u v&agrave;ng trắng sang trọng, tinh tế ph&ugrave; hợp d&ugrave;ng để khai vị hoặc tr&aacute;ng miệng trong những bữa tiệc sang trọng.</p>', '<p><span style=\"color: #800000;\"><strong>Ch&acirc;teau Suau</strong>&nbsp;-</span>&nbsp;D&ograve;ng vang trắng hảo hạng của v&ugrave;ng Sauternes, Bordeaux được sản xuất từ hai giống nho&nbsp;Sauvignon Blanc&nbsp;v&agrave; S&eacute;millon nhiễm nấm Botrytis. Hương thơm của mứt cam đọng lại trong v&ograve;m họng sau khi bạn kết th&uacute;c ngụm rượu vang. M&agrave;u v&agrave;ng trắng sang trọng, tinh tế ph&ugrave; hợp d&ugrave;ng để khai vị hoặc tr&aacute;ng miệng trong những bữa tiệc sang trọng.</p>', NULL, NULL, NULL, 0, 0, 0, '[\"NE6tRLAE19zot0XVJT3CvFGTGxqtlRu7HdagTNNQ.jpeg\"]', 40, '750ml', '750ml/chai,6 chai/thùng', '2014', 'nho  Sauvignon Blanc, Sémillon.', '2018-10-13 03:23:25', '2018-10-13 03:23:25', NULL, 0, 0),
 (165, 34, 28, 40, 'Rượu Vang Đỏ Tây Ban Nha - Felix Callejo 2005', 'ruou-vang-do-tay-ban-nha---felix-callejo-2005', 99, NULL, '14%', 'BODEGAS FÉLIX CALLEJO', '4500000', '4500000', '<p><span style=\"color: #800000;\"><strong>Chai rượu vang Felix Callejo</strong></span>&nbsp;l&agrave; th&agrave;nh phẩm của sự lựa chọn cẩn thận v&agrave; nghi&ecirc;m ngặt những tr&aacute;i nho của những c&acirc;y nho Tempranillo tr&ecirc;n 40 tuổi, nằm trong 25 vườn nho với kết cấu đất kh&aacute;c nhau (đ&aacute; v&ocirc;i, đất s&eacute;t, sỏi c&aacute;t) của gia đ&igrave;nh Callejo. Tất cả những tinh t&uacute;y đ&oacute; đ&atilde; g&oacute;p phần tạo n&ecirc;n những sắc th&aacute;i đa dạng, những cung bậc cảm x&uacute;c kh&aacute;c nhau trong c&ugrave;ng một chai rượu vang cao cấp Felix Callejo đạt chuẩn DOC của T&acirc;y Ban Nha.</p>', '<p><span style=\"color: #800000;\"><strong>Chai rượu vang Felix Callejo</strong></span>&nbsp;l&agrave; th&agrave;nh phẩm của sự lựa chọn cẩn thận v&agrave; nghi&ecirc;m ngặt những tr&aacute;i nho của những c&acirc;y nho Tempranillo tr&ecirc;n 40 tuổi, nằm trong 25 vườn nho với kết cấu đất kh&aacute;c nhau (đ&aacute; v&ocirc;i, đất s&eacute;t, sỏi c&aacute;t) của gia đ&igrave;nh Callejo. Tất cả những tinh t&uacute;y đ&oacute; đ&atilde; g&oacute;p phần tạo n&ecirc;n những sắc th&aacute;i đa dạng, những cung bậc cảm x&uacute;c kh&aacute;c nhau trong c&ugrave;ng một chai rượu vang cao cấp Felix Callejo đạt chuẩn DOC của T&acirc;y Ban Nha.</p>', NULL, NULL, NULL, 0, 0, 0, '[\"p6MTcJOj6moG1tIcqWiBJWm0SFiMUdixxi5P1NDR.jpeg\"]', 41, '750ml', '750ml/chai', '2005', 'nho Tempranillo Blend', '2018-10-13 03:24:47', '2018-10-13 03:24:47', NULL, 0, 0),
-(166, 34, 21, 29, 'test 1', 'test-1', 100, NULL, '100', 'test', '1000000', '1000000', '<p>ađ&aacute;</p>', '<p>&aacute;đ&aacute;</p>', 10, '900000', '<p>&aacute;đ&acirc;sd</p>', 1, 0, 0, '[\"JasVGxvBwwgByQwKbIQmYZDoId6tURVEU8S7fwOI.jpeg\"]', 43, 'test', '100', '1993', '109', '2018-10-18 04:08:40', '2018-10-18 04:25:52', NULL, 0, 0);
+(166, 34, 21, 29, 'test 1', 'test-1', 100, NULL, '100', 'test', '1000000', '1000000', '<p>ađ&aacute;</p>', '<p>&aacute;đ&aacute;</p>', 10, '900000', '<p>&aacute;đ&acirc;sd</p>', 1, 0, 0, '[\"JasVGxvBwwgByQwKbIQmYZDoId6tURVEU8S7fwOI.jpeg\"]', 43, 'test', '100', '1993', '109', '2018-10-18 04:08:40', '2018-10-18 04:25:52', NULL, 0, 0),
+(167, 34, 21, 29, 'test-1', 'test-1-1', 2, NULL, '2', 'GOLDEN CROSS', '2', '2', '<p>1</p>', '<p>1</p>', NULL, NULL, '<p>1</p>', 0, 0, 0, '[\"sHln2p1XBTRJYZBrKilFTuBLORGWGfOS4Auk1Zxm.jpeg\"]', 37, '2', NULL, '2', '2', '2018-10-20 09:28:04', '2018-10-20 09:28:04', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1025,126 +1027,151 @@ ALTER TABLE `user_like_product`
 --
 ALTER TABLE `admins`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT cho bảng `banner`
 --
 ALTER TABLE `banner`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT cho bảng `blog`
 --
 ALTER TABLE `blog`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT cho bảng `blog_category`
 --
 ALTER TABLE `blog_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT cho bảng `blog_comment`
 --
 ALTER TABLE `blog_comment`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT cho bảng `contact`
 --
 ALTER TABLE `contact`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT cho bảng `image`
 --
 ALTER TABLE `image`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT cho bảng `introduce`
 --
 ALTER TABLE `introduce`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT cho bảng `kind`
 --
 ALTER TABLE `kind`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
 --
 -- AUTO_INCREMENT cho bảng `library`
 --
 ALTER TABLE `library`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
 --
 -- AUTO_INCREMENT cho bảng `order`
 --
 ALTER TABLE `order`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+
 --
 -- AUTO_INCREMENT cho bảng `order_product`
 --
 ALTER TABLE `order_product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+
 --
 -- AUTO_INCREMENT cho bảng `origin`
 --
 ALTER TABLE `origin`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+
 --
 -- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
+
 --
 -- AUTO_INCREMENT cho bảng `product_category`
 --
 ALTER TABLE `product_category`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT cho bảng `product_comment`
 --
 ALTER TABLE `product_comment`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT cho bảng `product_trademark`
 --
 ALTER TABLE `product_trademark`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
 --
 -- AUTO_INCREMENT cho bảng `subscribe`
 --
 ALTER TABLE `subscribe`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT cho bảng `tasting`
 --
 ALTER TABLE `tasting`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT cho bảng `tasting_product`
 --
 ALTER TABLE `tasting_product`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT cho bảng `trademark`
 --
 ALTER TABLE `trademark`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT cho bảng `type`
 --
 ALTER TABLE `type`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
 --
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
 -- AUTO_INCREMENT cho bảng `user_like_product`
 --
 ALTER TABLE `user_like_product`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;COMMIT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

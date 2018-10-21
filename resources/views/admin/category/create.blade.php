@@ -13,7 +13,7 @@
                                 <label for="type" class="col-md-4 control-label">Loại sản phẩm</label>
 
                                 <div class="col-md-6">
-                                    <select name="type_id"  class="form-control type" autofocus>
+                                    <select name="type_id"  class="form-control type" required autofocus>
                                         <option value="">---------------------Chọn loại sản phẩm---------------------</option>
                                         @foreach($type as $value)
                                             <option value="{{ $value->id }}">{{ $value->title }}</option>
@@ -26,7 +26,7 @@
                                 <label for="type" class="col-md-4 control-label">Loại sản phẩm</label>
 
                                 <div class="col-md-6">
-                                    <select name="kind_id"  class="form-control kind">
+                                    <select name="kind_id"  class="form-control kind" required >
                                         <option class="kind_option" value="">-------------------Chọn loại sản phẩm trước -------------------</option>
                                     </select>
                                 </div>
@@ -36,7 +36,7 @@
                                 <label for="type" class="col-md-4 control-label">Thương hiệu sản phẩm</label>
 
                                 <div class="col-md-6">
-                                    <select name="trademark_id"  class="form-control trademark">
+                                    <select name="trademark_id"  class="form-control trademark" required>
                                         <option class="trademark_option" value="">-------------------Chọn loại sản phẩm trước -------------------</option>
                                     </select>
                                 </div>
@@ -46,7 +46,7 @@
                                 <label for="name" class="col-md-4 control-label">Tên danh mục</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
+                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">

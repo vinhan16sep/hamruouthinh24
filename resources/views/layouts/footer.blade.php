@@ -4,19 +4,19 @@
         <div class="row">
             <div class="item col-md-4 col-sm-6 col-xs-12">
                 <h3>Liên hệ với chúng tôi</h3>
-                <p>Vivamus non finibus tortor. Nulla porttitor pharetra dolor vel molestie. Nullam sagittis, augue a malesuada consequat, nunc felis gravida turpis, id porta augue risus vitae enim.</p>
+                <p><?php echo $contact->company; ?></p>
                 <table class="table">
                     <tr>
                         <td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
-                        <td>Vivamus non finibus tortor. Nulla porttitor pharetra dolor vel molestie.</td>
+                        <td><?php echo $contact->address; ?></td>
                     </tr>
                     <tr>
                         <td><i class="fa fa-phone" aria-hidden="true"></i></td>
-                        <td>024 1234 5678</td>
+                        <td><?php echo $contact->numberphone; ?></td>
                     </tr>
                     <tr>
                         <td><i class="fa fa-envelope-o" aria-hidden="true"></i></td>
-                        <td>hamruouthinh24@gmail.com</td>
+                        <td><?php echo $contact->email; ?></td>
                     </tr>
                 </table>
             </div>

@@ -12,7 +12,7 @@
                             <div class="form-group{{ $errors->has('company') ? ' has-error' : '' }}">
                                 <label for="company" class="col-md-2 control-label">Tên công ty</label>
                                 <div class="col-md-8">
-                                    <input id="company" type="text" class="form-control" name="company" value="{{ $contact->company }}" autofocus>
+                                    <input id="company" type="text" class="form-control" name="company" value="{{ $contact->company }}" required autofocus>
                                     @if ($errors->has('company'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('company') }}</strong>
@@ -23,7 +23,7 @@
                             <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
                                 <label for="address" class="col-md-2 control-label">Địa chỉ</label>
                                 <div class="col-md-8">
-                                    <input id="address" type="text" class="form-control" name="address" value="{{ $contact->address }}" autofocus>
+                                    <input id="address" type="text" class="form-control" name="address" value="{{ $contact->address }}" required autofocus>
                                     @if ($errors->has('address'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('address') }}</strong>
@@ -34,7 +34,7 @@
                             <div class="form-group{{ $errors->has('numberphone') ? ' has-error' : '' }}">
                                 <label for="numberphone" class="col-md-2 control-label">Số điện thoại</label>
                                 <div class="col-md-8">
-                                    <input id="numberphone" type="text" class="form-control" name="numberphone" value="{{ $contact->numberphone }}" autofocus>
+                                    <input id="numberphone" type="text" class="form-control" name="numberphone" value="{{ $contact->numberphone }}" required autofocus>
                                     @if ($errors->has('numberphone'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('numberphone') }}</strong>
@@ -45,7 +45,7 @@
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                 <label for="email" class="col-md-2 control-label">Email</label>
                                 <div class="col-md-8">
-                                    <input id="email" type="text" class="form-control" name="email" value="{{ $contact->email }}" autofocus>
+                                    <input id="email" type="text" class="form-control" name="email" value="{{ $contact->email }}" required autofocus>
                                     @if ($errors->has('email'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -56,7 +56,7 @@
                             <div class="form-group{{ $errors->has('website') ? ' has-error' : '' }}">
                                 <label for="website" class="col-md-2 control-label">Url website</label>
                                 <div class="col-md-8">
-                                    <input id="website" type="text" class="form-control" name="website" value="{{ $contact->website }}" autofocus>
+                                    <input id="website" type="text" class="form-control" name="website" value="{{ $contact->website }}" required autofocus>
                                     @if ($errors->has('website'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('website') }}</strong>
@@ -69,7 +69,7 @@
                                 <div class="col-md-8">
 
                                 	<input type="hidden" id="textarea"  value="{{htmlentities($contact->map)}}" />
-                                	<textarea id="map" name="map" class="form-control" rows=5>
+                                	<textarea id="map" name="map" class="form-control" rows=5 required>
                                 	</textarea>
                                     @if ($errors->has('map'))
                                         <span class="help-block">

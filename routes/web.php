@@ -11,6 +11,8 @@
 |
 */
 use App\Contact;
+use App\Introduce;
+
 Route::get('/', function () {
     return view('homepage');
 });
@@ -42,7 +44,8 @@ Route::get('/thong-tin-ca-nhan', function () {
  * Introduce routes
  */
 Route::get('/gioi-thieu', function () {
-    return view('introduce');
+    $about = Introduce::where('slug','ve-chung-toi')->first();
+    return view('introduce',['about' => $about]);
 });
 
 /**

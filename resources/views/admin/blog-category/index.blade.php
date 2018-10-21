@@ -52,11 +52,11 @@
                         <a href="{{ route('blog-category.edit', ['id' => $item->id]) }}" class="btn btn-warning col-sm-3 col-xs-5 btn-margin">
                         Sửa
                         </a>
-{{--                        @if ($user->username != Auth::user()->username)--}}
+                        @if ($item->slug != 'phan-thuong')
                          <button type="submit" class="btn btn-danger col-sm-3 col-xs-5 btn-margin">
-                          Xoá
-                        </button>
-                        {{--@endif--}}
+                            Xoá
+                          </button>
+                        @endif
                     </form>
                   </td>
               </tr>
