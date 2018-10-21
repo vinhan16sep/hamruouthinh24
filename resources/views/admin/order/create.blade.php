@@ -12,7 +12,7 @@
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="col-md-2 control-label">Tên sản phẩm</label>
                                 <div class="col-md-8">
-                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
+                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
                                     @if ($errors->has('name'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
@@ -24,7 +24,7 @@
                                 <label for="trademark_id" class="col-md-2 control-label">Thương hiệu</label>
 
                                 <div class="col-md-8">
-                                    <select name="trademark_id" id="trademark_id">
+                                    <select name="trademark_id" id="trademark_id" required>
                                         <option value="">Chọn thương hiệu</option>
                                         @if(!empty($trademarks))
                                             @foreach($trademarks as $key => $item)
@@ -45,7 +45,7 @@
                                 <label for="category_id" class="col-md-2 control-label">Danh mục</label>
 
                                 <div class="col-md-8">
-                                    <select name="category_id" id="category_id">
+                                    <select name="category_id" id="category_id" required>
                                         <option value="">Chọn danh mục</option>
                                     </select>
                                     @if ($errors->has('category_id'))

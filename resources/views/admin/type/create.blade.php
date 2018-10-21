@@ -13,7 +13,7 @@
                                 <label for="name" class="col-md-4 control-label">Loại sản phẩm</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
+                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">
@@ -63,7 +63,7 @@
                                 <label for="description" class="col-md-4 control-label">Giới thiệu ngắn</label>
 
                                 <div class="col-md-6">
-                                    <textarea id="description" rows="10" class="form-control" name="description" value="{{ old('description') }}" required autofocus></textarea>
+                                    <textarea id="description" rows="10" class="form-control" name="description" value="{{ old('description') }}" autofocus></textarea>
 
                                     @if ($errors->has('description'))
                                         <span class="help-block">

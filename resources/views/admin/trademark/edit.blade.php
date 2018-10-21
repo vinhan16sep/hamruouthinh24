@@ -14,7 +14,7 @@
                                 <label for="type" class="col-md-2 control-label">Loại sản phẩm</label>
 
                                 <div class="col-md-8">
-                                    <select name="type_id"  class="form-control type" data-page="{{ $trademark->kind_id }}" autofocus>
+                                    <select name="type_id"  class="form-control type" data-page="{{ $trademark->kind_id }}" required autofocus>
                                         @foreach($type as $value)
                                             <option value="{{ $value->id }}" {{ ($value->id == $trademark->type_id)? 'selected' : '' }} >{{ $value->title }}</option>
                                         @endforeach
@@ -23,10 +23,10 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
-                                <label for="type" class="col-md-2 control-label">Loại sản phẩm</label>
+                                <label for="type" class="col-md-2 control-label">Dòng sản phẩm</label>
 
                                 <div class="col-md-8">
-                                    <select name="kind_id"  class="form-control kind">
+                                    <select name="kind_id"  class="form-control kind" required>
                                         <!-- @foreach($kind as $value)
                                             <option value="{{ $value->id }}" {{ ($value->id == $trademark->kind_id)? 'selected' : '' }} >{{ $value->title }}</option>
                                         @endforeach -->
@@ -38,7 +38,7 @@
                                 <label for="name" class="col-md-2 control-label">Tên thương hiệu</label>
 
                                 <div class="col-md-8">
-                                    <input id="name" type="text" class="form-control" name="name" value="{{ $trademark->name }}" autofocus>
+                                    <input id="name" type="text" class="form-control" name="name" value="{{ $trademark->name }}" required autofocus>
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">

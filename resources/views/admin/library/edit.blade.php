@@ -11,7 +11,7 @@
                             <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                                 <label for="title" class="col-md-2 control-label">Tiêu đề</label>
                                 <div class="col-md-8">
-                                    <input id="title" type="text" class="form-control" name="title" value="{{$library->title}}" autofocus>
+                                    <input id="title" type="text" class="form-control" name="title" value="{{$library->title}}" required autofocus>
                                 </div>
                             </div>
                             <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">

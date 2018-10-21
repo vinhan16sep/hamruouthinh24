@@ -35,7 +35,7 @@
                                 <label for="category_id" class="col-md-2 control-label">Danh mục</label>
 
                                 <div class="col-md-8">
-                                    <select name="category_id" id="category_id" class="form-control">
+                                    <select name="category_id" id="category_id" class="form-control" required>
                                         <option value="">Chọn danh mục</option>
                                         @if(!empty($categories))
                                             @foreach($categories as $key => $item)
@@ -69,7 +69,7 @@
                                 <label for="description" class="col-md-2 control-label">Giới thiệu ngắn</label>
 
                                 <div class="col-md-8">
-                                    <textarea id="description" rows="10" class="form-control" name="description">{{ $blog->description }}</textarea>
+                                    <textarea id="description" rows="10" class="form-control" name="description" required>{{ $blog->description }}</textarea>
 
                                     @if ($errors->has('description'))
                                         <span class="help-block">

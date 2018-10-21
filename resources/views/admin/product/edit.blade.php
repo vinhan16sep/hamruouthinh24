@@ -12,7 +12,7 @@
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="col-md-2 control-label">Tên sản phẩm</label>
                                 <div class="col-md-8">
-                                    <input id="name" type="text" class="form-control" name="name" value="{{ $product->name }}" autofocus>
+                                    <input id="name" type="text" class="form-control" name="name" value="{{ $product->name }}" required autofocus>
                                     @if ($errors->has('name'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
@@ -37,7 +37,7 @@
                                 <label for="kind" class="col-md-2 control-label">Dòng sản phẩm</label>
 
                                 <div class="col-md-4">
-                                    <select name="kind_id"  class="form-control kind"  data-page="{{ $product->trademark_id }}" data-id="{{ $product->kind_id }}" >
+                                    <select name="kind_id"  class="form-control kind"  data-page="{{ $product->trademark_id }}" data-id="{{ $product->kind_id }}" required>
                                         <option class="kind_option" value="">-------------------Chọn loại sản phẩm trước -------------------</option>
                                     </select>
                                 </div>
@@ -47,7 +47,7 @@
                                 <label for="trademark" class="col-md-2 control-label">Thương hiệu sản phẩm</label>
 
                                 <div class="col-md-4">
-                                    <select name="trademark_id"  class="form-control trademark">
+                                    <select name="trademark_id"  class="form-control trademark" required>
                                         <option class="trademark_option" value="">-------------------Chọn loại sản phẩm trước -------------------</option>
                                     </select>
                                 </div>
@@ -118,7 +118,7 @@
                             <div class="form-group">
                                 <label for="avatar" class="col-md-2 control-label" >Hình ảnh</label>
                                 <div class="col-md-6">
-                                    <input type="file" id="image" name="image[]" multiple>
+                                    <input type="file" id="image" name="image[]" required multiple>
                                 </div>
                             </div>
                             <div class="form-group{{ $errors->has('concentrations') ? ' has-error' : '' }}">
@@ -190,7 +190,7 @@
                             <div class="form-group{{ $errors->has('origin') ? ' has-error' : '' }}">
                                 <label for="origin" class="col-md-2 control-label">Xuất xứ</label>
                                 <div class="col-md-4">
-                                    <select name="origin_id"  class="form-control" autofocus>
+                                    <select name="origin_id"  class="form-control" required autofocus>
                                         <option value="">-----------------------Chọn quốc gia-----------------------</option>
                                         @foreach($origin as $value)
                                             <option value="{{ $value->id }}" {{ ($value->id == $product->origin_id)? 'selected' : ''}} >{{ $value->name }}</option>

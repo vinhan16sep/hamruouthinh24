@@ -7,7 +7,7 @@
                 <div class="row" ng-repeat="introduce in introduce">
 
                     <div class="right col-md-6 col-sm-6 col-xs-12 col-md-offset-6 col-sm-offset-6" ng-if="introduce.slug == 've-chung-toi' ">
-                        <div class="left hidden-xs"></div>
+                        <div class="left hidden-xs"  style="background-image: url({{ asset ("storage/app/") }}/{!!$about->image!!});"></div>
                         <div class="title_big">
                             Về chúng tôi
                         </div>
@@ -18,21 +18,21 @@
                                 <i class="fa fa-3x fa-phone" aria-hidden="false"></i>
                                 <br>
                                 <h4>Hỗ trợ qua điện thoại</h4>
-                                <p>Suspendisse potenti. Cras molestie mi sed iaculis varius. Maecenas fermentum semper sagittis. Sed eu mattis tellus. Mauris dolor ligula, pellentesque id vestibulum nec, consectetur sed sem. Aenean at ante enim. Quisque dapibus ligula ut erat laoreet aliquet. Pellentesque dictum magna ante, venenatis scelerisque risus pretium eget. Nullam et orci vitae felis rutrum tempor. Vestibulum id maximus lacus.</p>
+                                <p><?php echo json_decode($about->description)[0]; ?></p>
                             </div>
 
                             <div class="item col-md-4 col-sm-4 col-xs-12">
                                 <i class="fa fa-3x fa-truck" aria-hidden="false"></i>
                                 <br>
                                 <h4>Miễn phí giao hàng</h4>
-                                <p>Suspendisse potenti. Cras molestie mi sed iaculis varius. Maecenas fermentum semper sagittis. Sed eu mattis tellus. Mauris dolor ligula, pellentesque id vestibulum nec, consectetur sed sem. Aenean at ante enim. Quisque dapibus ligula ut erat laoreet aliquet. Pellentesque dictum magna ante, venenatis scelerisque risus pretium eget. Nullam et orci vitae felis rutrum tempor. Vestibulum id maximus lacus.</p>
+                                <p><?php echo json_decode($about->description)[1]; ?></p>
                             </div>
 
                             <div class="item col-md-4 col-sm-4 col-xs-12">
                                 <i class="fa fa-3x fa-user-o" aria-hidden="false"></i>
                                 <br>
                                 <h4>Hỗ trợ người mua hàng</h4>
-                                <p>Suspendisse potenti. Cras molestie mi sed iaculis varius. Maecenas fermentum semper sagittis. Sed eu mattis tellus. Mauris dolor ligula, pellentesque id vestibulum nec, consectetur sed sem. Aenean at ante enim. Quisque dapibus ligula ut erat laoreet aliquet. Pellentesque dictum magna ante, venenatis scelerisque risus pretium eget. Nullam et orci vitae felis rutrum tempor. Vestibulum id maximus lacus.</p>
+                                <p><?php echo json_decode($about->description)[2]; ?></p>
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                             <li role="presentation"><a href="{{ url('/thu-vien-anh') }}" role="tab" target="_self">Thư viện hình ảnh</a></li>
                         </ul>
                     </div>
-                    <div class="container-fluid">
+               <!--      <div class="container-fluid">
                         <div class="row">
                             <div class="item col-md-4 col-sm-6 col-xs-12">
                                 <div class="mask">
@@ -71,7 +71,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

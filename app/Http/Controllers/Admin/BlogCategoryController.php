@@ -111,6 +111,10 @@ class BlogCategoryController extends Controller
         $keys = ['title', 'description', 'is_active'];
         $input = $this->createQueryInput($keys, $request);
         $input['slug'] = $uniqueSlug;
+        if($blogCategory->slug == 'phan-thuong'){
+            unset($input['title']);
+            unset($input['slug']);
+        }
 
         // Upload image
         if($request->file('image')){
@@ -133,6 +137,9 @@ class BlogCategoryController extends Controller
     public function destroy($id)
     {
         $blog = BlogCategory::findOrFail($id);
+        if($blog['slug'] == 'phan-thuong'){
+            return redirect()->back();
+        }
         BlogCategory::where('id', $id)->update(['is_deleted' => 1]);
         return redirect()->intended('admin/blog-category');
     }

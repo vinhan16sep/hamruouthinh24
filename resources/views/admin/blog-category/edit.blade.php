@@ -13,7 +13,7 @@
                                 <label for="title" class="col-md-4 control-label">Tên danh mục</label>
 
                                 <div class="col-md-6">
-                                    <input id="title" type="text" class="form-control" name="title" value="{{ $blogCategory->title }}" required autofocus>
+                                    <input id="title" type="text" class="form-control" name="title" value="{{ $blogCategory->title }}" required autofocus <?php echo ($blogCategory->slug == 'phan-thuong')?'readonly': ''; ?>>
 
                                     @if ($errors->has('title'))
                                         <span class="help-block">
