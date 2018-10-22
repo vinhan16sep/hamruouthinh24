@@ -33,7 +33,8 @@
                         <% customerInfo.content %>
 
                         <h3><strong>Hình thức thành toán</strong></h3>
-                        Thanh toán khi giao hàng (COD)
+                        <span  ng-show="customerInfo.paymentMethod == 2">Chuyển khoản</span>
+                        <span  ng-show="customerInfo.paymentMethod == 1">Thanh toán khi giao hàng (COD)</span>
                     </div>
 
                     <div class="col-md-6 col-sm-12 col-xs-12">

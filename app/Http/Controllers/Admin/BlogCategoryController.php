@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use App\Http\Requests\BlogCategoryRequest;
 use App\BlogCategory;
 use Response;
 use File;
@@ -50,8 +51,7 @@ class BlogCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request){
-        $this->validateInput($request);
+    public function store(BlogCategoryRequest $request){
         $uniqueSlug = $this->buildUniqueSlug('blog_category', null, $request->slug);
 
         // Upload image
@@ -102,10 +102,9 @@ class BlogCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BlogCategoryRequest $request, $id)
     {
         $blogCategory = BlogCategory::findOrFail($id);
-        $this->validateInput($request);
         $uniqueSlug = $this->buildUniqueSlug('blog_category', $request->id, $request->slug);
 
         $keys = ['title', 'description', 'is_active'];
@@ -172,23 +171,5 @@ class BlogCategoryController extends Controller
             $index++;
         }
         return $query->paginate(10);
-    }
-
-    private function validateInput($request) {
-        $this->validate($request, [
-            'title' => 'required|max:60',
-//            'price' => 'required|max:60',
-//            'middlename' => 'required|max:60',
-//            'address' => 'required|max:120',
-//            'city_id' => 'required',
-//            'state_id' => 'required',
-//            'country_id' => 'required',
-//            'zip' => 'required|max:10',
-//            'age' => 'required',
-//            'birthdate' => 'required',
-//            'date_hired' => 'required',
-//            'department_id' => 'required',
-//            'division_id' => 'required'
-        ]);
     }
 }

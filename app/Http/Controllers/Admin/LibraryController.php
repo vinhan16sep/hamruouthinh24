@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\LibraryRequest;
 use App\Library;
 use App\Image;
 use File;
@@ -47,7 +48,7 @@ class LibraryController extends Controller
 		return view('admin/library/create');
 	}
 
-	public function store(Request $request){
+	public function store(LibraryRequest $request){
         $slug = $request->input('slug');
         $uniqueSlug = $this->buildUniqueSlug('library', $request->id, $request->slug);
 		$path = base_path() . '/' . 'storage/app/library';
@@ -76,13 +77,13 @@ class LibraryController extends Controller
      public function edit($id){
         $library = Library::find($id);
         // Redirect to product list if updating product wasn't existed
-        if ($library == null || count($library) == 0) {
+        if ($library == null) {
             return redirect()->intended('admin/library');
         }
         return view('admin/library/edit', ['library' => $library]);
     }
 
-    public function update(Request $request, $id)
+    public function update(LibraryRequest $request, $id)
     {
     	$library = Library::findOrFail($id);
     	$input = $request->all();

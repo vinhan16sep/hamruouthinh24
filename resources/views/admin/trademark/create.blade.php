@@ -10,7 +10,7 @@
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('trademark.store') }}" enctype="multipart/form-data">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             {{ csrf_field() }}
-                            <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('type_id') ? ' has-error' : '' }}">
                                 <label for="type" class="col-md-4 control-label">Loại sản phẩm</label>
 
                                 <div class="col-md-6">
@@ -20,16 +20,26 @@
                                             <option value="{{ $value->id }}">{{ $value->title }}</option>
                                         @endforeach
                                     </select>
+                                    @if ($errors->has('type_id'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('type_id') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
-                                <label for="type" class="col-md-4 control-label">Loại sản phẩm</label>
+                            <div class="form-group{{ $errors->has('kind_id') ? ' has-error' : '' }}">
+                                <label for="type" class="col-md-4 control-label">Dòng sản phẩm</label>
 
                                 <div class="col-md-6">
                                     <select name="kind_id"  class="form-control kind" required>
                                         <option class="kind_option" value="">-------------------Chọn loại sản phẩm trước -------------------</option>
                                     </select>
+                                    @if ($errors->has('type_id'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('type_id') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                             </div>
 
@@ -77,10 +87,15 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
                                 <label for="avatar" class="col-md-4 control-label" >Hình ảnh</label>
                                 <div class="col-md-6">
                                     <input type="file" id="image" name="image" required >
+                                    @if ($errors->has('image'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('image') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">

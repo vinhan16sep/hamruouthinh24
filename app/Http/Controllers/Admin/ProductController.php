@@ -15,6 +15,7 @@ use Response;
 use File;
 use Validator;
 use Illuminate\Support\Facades\Cookie;
+use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
@@ -93,8 +94,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request){
-        $this->validateInput('',$request);
+    public function store(ProductRequest $request){
         $uniqueSlug = $this->buildUniqueSlug('product', $request->id, $request->slug);
 
         $path = base_path() . '/' . 'storage/app/products';
@@ -163,9 +163,8 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id){
+    public function update(ProductRequest $request, $id){
         $product = Product::findOrFail($id);
-        $this->validateInput($id, $request);
         $uniqueSlug = $this->buildUniqueSlug('product', $request->id, $request->slug);
 
         $path = base_path() . '/' . 'storage/app/products';
@@ -265,19 +264,6 @@ class ProductController extends Controller
             $products[$key]->count = $count;
         }
         return $products;
-    }
-
-    private function validateInput($id = null, $request) {
-        // echo 'required|unique:product, id, ' . $id . '|max:255';die;
-        $this->validate($request, [
-            'name' => 'required|max:255',
-            // 'slug' => 'required|unique:product,slug, ' . $id . '|max:255',
-            'type_id' => 'required',
-            'price' => 'required|numeric',
-            'selling_price' => 'numeric',
-            'discount_percent' => 'numeric',
-            'discount_price' => 'numeric'
-        ]);
     }
 
     function buildNewFolderPath($path, $fileName){

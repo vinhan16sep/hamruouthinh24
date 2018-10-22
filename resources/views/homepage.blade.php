@@ -36,6 +36,9 @@
                             </div>
                         </li>
                     <?php endforeach ?>
+                        <li>
+                            <a href="{{ url('bai-viet/phan-thuong') }}" target="_self"><h3>Phần Thưởng</h3></a>
+                        </li>
                 </ul>
             </div>
             <div class="right col-xs-12 col-md-9">

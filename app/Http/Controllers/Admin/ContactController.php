@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ContactRequest;
 use Response;
 use Illuminate\Support\Facades\Cookie;
 use App\Contact;
@@ -86,7 +87,7 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(ContactRequest $request,$id)
     {
         $keys = ['company','address','numberphone','email','website','map'];
         $input = $this->createQueryInput($keys, $request);

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use App\Http\Requests\TrademarkRequest;
 use App\Trademark;
 use App\Type;
 use App\Kind;
@@ -58,8 +59,7 @@ class TrademarkController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request){
-        $this->validateInput($request);
+    public function store(TrademarkRequest $request){
 
         // Upload image
         $path = $request->file('image')->store('trademarks');
@@ -112,7 +112,7 @@ class TrademarkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id){
+    public function update(TrademarkRequest $request, $id){
         $trademark = Trademark::findOrFail($id);
         if(!$trademark){
             return redirect()->intended('admin/trademark');
@@ -122,8 +122,6 @@ class TrademarkController extends Controller
         if($count > 0 && $request->is_active == 0){
             return view('admin/trademark/edit', ['trademark' => $trademark, 'error_message' => sprintf($this->commonMessage['isNotEmpty'], 'Thương hiệu', $trademark->name, 'bỏ dùng thương hiệu')]);
         }
-
-        $this->validateInput($request);
         $uniqueSlug = $this->buildUniqueSlug('product_trademark', $request->id, $request->slug);
         $keys = ['name', 'slug', 'is_active', 'description', 'type_id', 'kind_id'];
         $input = $this->createQueryInput($keys, $request);
@@ -201,13 +199,6 @@ class TrademarkController extends Controller
             $index++;
         }
         return $query->paginate(10);
-    }
-
-    private function validateInput($request) {
-        $this->validate($request, [
-            'name' => 'required|max:255',
-            'slug' => 'required|unique:product_trademark|max:255'
-        ]);
     }
 
     public function selectKind()
