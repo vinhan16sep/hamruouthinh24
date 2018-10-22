@@ -12,7 +12,7 @@
                             <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                                 <label for="title" class="col-md-2 control-label">Tên bài viết</label>
                                 <div class="col-md-8">
-                                    <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" required autofocus>
+                                    <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}"  autofocus>
                                     @if ($errors->has('title'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('title') }}</strong>
@@ -23,7 +23,7 @@
                             <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
                                 <label for="slug" class="col-md-2 control-label">Slug</label>
                                 <div class="col-md-8">
-                                    <input id="slug" type="text" class="form-control" name="slug" value="{{ old('slug') }}" required readonly>
+                                    <input id="slug" type="text" class="form-control" name="slug" value="{{ old('slug') }}"  readonly>
                                     @if ($errors->has('slug'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('slug') }}</strong>
@@ -35,7 +35,7 @@
                                 <label for="category_id" class="col-md-2 control-label">Danh mục</label>
 
                                 <div class="col-md-8">
-                                    <select name="category_id" id="category_id" class="form-control" required>
+                                    <select name="category_id" id="category_id" class="form-control" >
                                         <option value="">Chọn danh mục</option>
                                         @if(!empty($categories))
                                             @foreach($categories as $key => $item)
@@ -52,10 +52,15 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
                                 <label for="avatar" class="col-md-2 control-label" >Hình ảnh</label>
                                 <div class="col-md-8">
-                                    <input type="file" id="image" name="image" required >
+                                    <input type="file" id="image" name="image"  >
+                                    @if ($errors->has('image'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('image') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">

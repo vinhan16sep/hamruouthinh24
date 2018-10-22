@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use App\Http\Requests\KindRequest;
 use File;
 use App\Type;
 use App\Kind;
@@ -52,7 +53,7 @@ class KindController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(KindRequest $request)
     {
         $files = Input::file('image');
         $input = $request->all();
@@ -103,7 +104,7 @@ class KindController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(KindRequest $request, $id)
     {
         $kind = Kind::findOrFail($id);
         $path = base_path() . '/storage/app/kind/';

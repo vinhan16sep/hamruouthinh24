@@ -20,7 +20,7 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('type_id') ? ' has-error' : '' }}">
                                 <label for="type" class="col-md-2 control-label">Loại sản phẩm</label>
 
                                 <div class="col-md-4">
@@ -30,6 +30,11 @@
                                             <option value="{{ $value->id }}">{{ $value->title }}</option>
                                         @endforeach
                                     </select>
+                                    @if ($errors->has('name'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                             </div>
 
@@ -95,10 +100,15 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
                                 <label for="avatar" class="col-md-2 control-label" >Hình ảnh</label>
                                 <div class="col-md-8">
                                     <input type="file" id="image" name="image[]" required multiple>
+                                    @if ($errors->has('image'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('image') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                             </div>
 

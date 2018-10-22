@@ -53,10 +53,15 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
                                 <label for="avatar" class="col-md-4 control-label" >Hình ảnh</label>
                                 <div class="col-md-6">
                                     <input type="file" id="image" name="image" required >
+                                    @if ($errors->has('image'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('image') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">

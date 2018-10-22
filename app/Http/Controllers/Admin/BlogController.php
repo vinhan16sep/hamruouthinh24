@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\BlogRequest;
+use App\Http\Requests\BlogCategoryRequest;
 use App\Blog;
 use App\BlogCategory;
 use Response;
@@ -59,7 +61,7 @@ class BlogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request){
+    public function store(BlogRequest $request){
         $uniqueSlug = $this->buildUniqueSlug('blog', null, $request->slug);
         // Upload image
         $path = $request->file('image')->store('blogs');
@@ -111,9 +113,8 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id){
+    public function update(BlogRequest $request, $id){
         $blog = Blog::findOrFail($id);
-        $this->validateInput($request);
         $uniqueSlug = $this->buildUniqueSlug('blog', $request->id, $request->slug);
 
 
@@ -174,23 +175,5 @@ class BlogController extends Controller
             ->where('title', 'like', '%' . $constraints['title'] . '%');
 
         return $query->paginate(10);
-    }
-
-    private function validateInput($request) {
-        $this->validate($request, [
-            'title' => 'required|max:60',
-//            'price' => 'required|max:60',
-//            'middlename' => 'required|max:60',
-//            'address' => 'required|max:120',
-//            'city_id' => 'required',
-//            'state_id' => 'required',
-//            'country_id' => 'required',
-//            'zip' => 'required|max:10',
-//            'age' => 'required',
-//            'birthdate' => 'required',
-//            'date_hired' => 'required',
-//            'department_id' => 'required',
-//            'division_id' => 'required'
-        ]);
     }
 }

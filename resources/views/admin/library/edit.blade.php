@@ -12,12 +12,22 @@
                                 <label for="title" class="col-md-2 control-label">Tiêu đề</label>
                                 <div class="col-md-8">
                                     <input id="title" type="text" class="form-control" name="title" value="{{$library->title}}" required autofocus>
+                                    @if ($errors->has('title'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('title') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
                                 <label for="slug" class="col-md-2 control-label">Slug</label>
                                 <div class="col-md-8">
                                     <input id="slug" type="text" class="form-control" name="slug" value="{{$library->slug}}" required readonly>
+                                    @if ($errors->has('slug'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('slug') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">

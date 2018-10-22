@@ -10,7 +10,7 @@
                         {{-- <p style="color:orange">TIP: Nếu trong Thương hiệu đang chứa Danh mục, không thể bỏ chọn Dùng thương hiệu</p> --}}
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('trademark.update', ['id' => $trademark->id]) }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
-                            <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('type_id') ? ' has-error' : '' }}">
                                 <label for="type" class="col-md-2 control-label">Loại sản phẩm</label>
 
                                 <div class="col-md-8">
@@ -19,10 +19,15 @@
                                             <option value="{{ $value->id }}" {{ ($value->id == $trademark->type_id)? 'selected' : '' }} >{{ $value->title }}</option>
                                         @endforeach
                                     </select>
+                                    @if ($errors->has('type_id'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('type_id') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('kind_id') ? ' has-error' : '' }}">
                                 <label for="type" class="col-md-2 control-label">Dòng sản phẩm</label>
 
                                 <div class="col-md-8">
@@ -31,6 +36,11 @@
                                             <option value="{{ $value->id }}" {{ ($value->id == $trademark->kind_id)? 'selected' : '' }} >{{ $value->title }}</option>
                                         @endforeach -->
                                     </select>
+                                    @if ($errors->has('kind_id'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('kind_id') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                             </div>
 
@@ -81,10 +91,15 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
                                 <label for="avatar" class="col-md-2 control-label" >Hình ảnh</label>
                                 <div class="col-md-8">
                                     <input type="file" id="image" name="image">
+                                    @if ($errors->has('image'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('image') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
 
                             </div>
